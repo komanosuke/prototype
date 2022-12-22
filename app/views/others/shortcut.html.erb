@@ -1,0 +1,542 @@
+<main>
+<div id="shortcut">
+<div class="wrap flex_container_start">
+  <div class="menu-trigger tab_sp" href="javascript:void(0);">
+	<span class="spnavButton__border"></span>
+	<span class="spnavButton__border"></span>
+	<span class="spnavButton__border"></span>
+</div>
+
+<aside class="sidebar_product">
+  <div class="sidebar_product_ttl">公園一覧</div>
+  <div class="park_item">
+    <div class="park_name">内灘サンセットパーク</div>
+   <ul>
+      <li>
+        <%= link_to '/others/parkinfo_edit', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/others/products', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
+          <span class="notification_num">2</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/others/review', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/others/', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <div class="park_item">
+    <div class="park_name">内灘町総合公園</div>
+    <ul>
+      <li>
+        <%= link_to '/others/parkinfo_edit', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/others/products', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
+          <span class="notification_num">2</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/others/review', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/others/', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <div class="park_item">
+    <div class="park_name">ハマナス恐竜公園</div>
+    <ul>
+			<li>
+        <%= link_to '/others/parkinfo_edit', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/others/products', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
+          <span class="notification_num">2</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/others/review', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/others/', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <div class="park_item">
+    <div class="park_name">白帆台第４公園</div>
+    <ul>
+			<li>
+        <%= link_to '/others/parkinfo_edit', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/others/products', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
+          <span class="notification_num">2</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/others/review', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/others/', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <div class="sidebar_help">
+    <div class="sidebar_help_ttl"><%= image_tag "/sidebar/icon_speechbubble.svg" %>ヘルプページはこちら</div>
+    <p>使い方やよくあるご質問等をまとめています。</p>
+    <%= link_to '/others/help', class: "btn hover flex_container" do %>
+      ヘルプはこちらから<%= image_tag "/sidebar/icon_arrow_help_off.svg" %>
+    <% end %>
+  </div>
+</aside>
+
+  <div class="inner_large">
+    <div class="page_ttl_wrap">
+      <div class="page_ttl">
+        <h1>ショートカット</h1>
+        <p class="page_ttl_txt">プロダクトの管理を効率化しませんか？</p>
+      </div>
+    </div>
+    <div class="content flex_container_start">
+      <div class="control_panel_content">
+        <div class="selected_product">
+          <div class="selected_product_txt">現在選択中</div>
+          <div class="selected_product_item">
+            <div class="item_element flex_container">
+              <div class="selected_item">
+                <%= image_tag "/ctrlpanel/icon_bench.svg", alt: "選択中のベンチアイコン" %>
+              </div>
+              <div class="selected_item">
+                <div>名称</div>
+                <div>B4ENZ7</div>
+              </div>
+              <div class="selected_item">
+                <div>OS</div>
+                <div>0.1.1</div>
+              </div>
+              <div class="selected_item">
+                <div>導入日</div>
+                <div>2022.08.09</div>
+              </div>
+              <div class="selected_item">
+                <div>位置情報</div>
+                <div id="product_latlng">36.578,136.648</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="shortcut_popular">
+          <h2>人気のショートカット</h2>
+          <div class="flex_container_start shortcut_popular_item_wrap">
+            <div class="shortcut_popular_item">
+              <div class="flex_container">
+                <%= image_tag "/ctrlpanel/icon_audio_color.svg", alt: "音楽ファイルの再生" %>
+                <div class="plus_icon"><%= image_tag "/ctrlpanel/icon_plus.svg" %></div>
+              </div>
+              <p>決まった時間に<br>音楽を再生する</p>
+            </div>
+            <div class="shortcut_popular_item">
+              <div class="flex_container">
+                <%= image_tag "/ctrlpanel/icon_video_color.svg", alt: "動画ファイルの表示" %>
+                <div class="plus_icon"><%= image_tag "/ctrlpanel/icon_plus.svg" %></div>
+              </div>
+              <p>決まった時間に<br>動画を再生する</p>
+            </div>
+            <div class="shortcut_popular_item">
+              <div class="flex_container">
+                <%= image_tag "/ctrlpanel/icon_img_color.svg", alt: "画像ファイルの表示" %>
+                <div class="plus_icon"><%= image_tag "/ctrlpanel/icon_plus.svg" %></div>
+              </div>
+              <p>決まった時間に<br>画像を表示する</p>
+            </div>
+            <div class="shortcut_popular_item">
+              <div class="flex_container">
+                <%= image_tag "/ctrlpanel/icon_palette_color.svg", alt: "LEDカラーの変更" %>
+                <div class="plus_icon"><%= image_tag "/ctrlpanel/icon_plus.svg" %></div>
+              </div>
+              <p>決まった時間に<br>LEDの色を変更する</p>
+            </div>
+          </div>
+        </div>
+        <div class="shortcut_create">
+          <div class="shortcut_create_inner">
+            <div class="shortcut_create_item">
+              <div class="flex_container shortcut_create_item_ttl">
+                <div class="flex_container_s">
+                  <div class="shortcut_create_img">
+                    <%= image_tag "/ctrlpanel/icon_shortcut_create.svg" %>
+                  </div>
+                  <div class="shortcut_create_name">
+                    <p>トリガー</p>
+                    <div class="shortcut_create_ttl">ベンチに人が座ったら</div>
+                  </div>
+                </div>
+                <div class="shortcut_create_icon">
+                  <%= image_tag "/ctrlpanel/icon_shortcut_check.svg" %>
+                  <%= image_tag "/ctrlpanel/icon_shortcut_edit.svg", class: "edit_icon" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="created_plus_icon"><%= image_tag "/ctrlpanel/icon_plus_b.svg" %></div>
+
+            <div class="shortcut_create_item">
+              <div class="flex_container shortcut_create_item_ttl">
+                <div class="flex_container_s">
+                  <div class="shortcut_create_img">
+                    <%= image_tag "/ctrlpanel/icon_shortcut_create.svg" %>
+                  </div>
+                  <div class="shortcut_create_name">
+                    <p>アクション</p>
+                    <div class="shortcut_create_ttl">LEDを点灯させる</div>
+                  </div>
+                </div>
+                <div class="shortcut_create_icon">
+                  <%= image_tag "/ctrlpanel/icon_shortcut_check.svg" %>
+                  <%= image_tag "/ctrlpanel/icon_shortcut_edit.svg", class: "edit_icon" %>
+                </div>
+              </div>
+              <div class="shortcut_create_setting">
+                <div class="setting_form">
+                  <div class="form_item">
+                    <label>項目を選択する</label>
+                    <div class="select">
+                      <select>
+                        <option value=""></option>
+                        <option value=""></option>
+                      </select>
+                      <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
+                    </div>
+                  </div>
+                  <div class="form_item">
+                    <label>アクションを選択する</label>
+                    <div class="select">
+                      <select>
+                        <option value=""></option>
+                        <option value=""></option>
+                      </select>
+                      <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="shortcut_create_item">
+              <div class="flex_container shortcut_create_item_ttl">
+                <div class="flex_container_s">
+                  <div class="shortcut_create_img">
+                    <%= image_tag "/ctrlpanel/icon_shortcut_create.svg" %>
+                  </div>
+                  <div class="shortcut_create_name">
+                    <p>アクション</p>
+                    <div class="shortcut_create_ttl">アクション未設定</div>
+                  </div>
+                </div>
+                <div class="shortcut_create_icon">
+                  <%= image_tag "/ctrlpanel/icon_shortcut_error.svg" %>
+                  <%= image_tag "/ctrlpanel/icon_shortcut_edit.svg", class: "edit_icon" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="shortcut_create_item">
+              <div class="flex_container shortcut_create_item_ttl">
+                <div class="flex_container_s">
+                  <div class="shortcut_create_img">
+                    <%= image_tag "/ctrlpanel/icon_shortcut_create.svg" %>
+                  </div>
+                  <div class="shortcut_create_name">
+                    <p>アクション</p>
+                    <div class="shortcut_create_ttl">LEDの色を変更する</div>
+                  </div>
+                </div>
+                <div class="shortcut_create_icon">
+                  <%= image_tag "/ctrlpanel/icon_shortcut_check.svg" %>
+                  <%= image_tag "/ctrlpanel/icon_shortcut_edit.svg", class: "edit_icon" %>
+                </div>
+              </div>
+              <div class="shortcut_create_setting">
+                <div class="setting_form">
+                  <div class="form_item">
+                    <label>項目を選択する</label>
+                    <div class="select">
+                      <select>
+                        <option value=""></option>
+                        <option value=""></option>
+                      </select>
+                      <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
+                    </div>
+                  </div>
+                  <div class="form_item">
+                    <label>アクションを選択する</label>
+                    <div class="select">
+                      <select>
+                        <option value=""></option>
+                        <option value=""></option>
+                      </select>
+                      <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
+                    </div>
+                  </div>
+                  <div class="form_item">
+                    <label>プリセットカラーから選択する</label>
+                    <input type="color" value="#EF5658">
+                    <input type="color" value="#FF803C">
+                    <input type="color" value="#FFDE2B">
+                    <input type="color" value="#44D049">
+                    <input type="color" value="#6ABBEF">
+                    <input type="color" value="#3C76F7">
+                    <input type="color" value="#8556EF">
+                    <input type="color" value="#F0F3F8">
+                  </div>
+                  <div class="form_item">
+                    <label>カラーコードで指定する</label>
+                    <input type="text" value="" placeholder="#ffffff">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="shortcut_create_item">
+              <div class="flex_container shortcut_create_item_ttl">
+                <div class="flex_container_s">
+                  <div class="shortcut_create_img">
+                    <%= image_tag "/ctrlpanel/icon_shortcut_create.svg" %>
+                  </div>
+                  <div class="shortcut_create_name">
+                    <p>アクション</p>
+                    <div class="shortcut_create_ttl">モニター</div>
+                  </div>
+                </div>
+                <div class="shortcut_create_icon">
+                  <%= image_tag "/ctrlpanel/icon_shortcut_edit.svg", class: "edit_icon" %>
+                </div>
+              </div>
+              <div class="shortcut_create_setting">
+                <div class="setting_form">
+                  <div class="form_item">
+                    <label>項目を選択する</label>
+                    <div class="select">
+                      <select>
+                        <option value=""></option>
+                        <option value=""></option>
+                      </select>
+                      <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="shortcut_create_btn">
+              <button type="button" name="" class="btn btn_g">このショートカットを保存する</button>
+              <a href="#" class="reset_btn">リセットする</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="sidebar_cp sidebar_sc">
+  <div>
+    <div class="sidebar_item">
+      <div class="sidebar_cp_item_ttl">保存済みのショートカット</div>
+      <div class="shortcut_saved">
+        <div class="sidebar_sc_item">
+          <div class="flex_container">
+            <div><%= image_tag "/ctrlpanel/icon_shortcut_side.svg" %></div>
+            <div><%= image_tag "/ctrlpanel/icon_shortcut_edit.svg" %></div>
+          </div>
+          <div class="saved_txt">
+            <p class="action_name">決まった時間にLEDの色を変更する</p>
+            <p class="created_date">作成日：2022.04.30</p>
+          </div>
+        </div>
+        <div class="sidebar_sc_item">
+          <div class="flex_container">
+            <div><%= image_tag "/ctrlpanel/icon_shortcut_side.svg" %></div>
+            <div><%= image_tag "/ctrlpanel/icon_shortcut_edit.svg" %></div>
+          </div>
+          <div class="saved_txt">
+            <p class="action_name">決まった時間にLEDの色を変更する</p>
+            <p class="created_date">作成日：2022.04.30</p>
+          </div>
+        </div>
+        <div class="sidebar_sc_item">
+          <div class="flex_container">
+            <div><%= image_tag "/ctrlpanel/icon_shortcut_side.svg" %></div>
+            <div><%= image_tag "/ctrlpanel/icon_shortcut_edit.svg" %></div>
+          </div>
+          <div class="saved_txt">
+            <p class="action_name">決まった時間にLEDの色を変更する</p>
+            <p class="created_date">作成日：2022.04.30</p>
+          </div>
+        </div>
+        <div class="sidebar_sc_item">
+          <div class="flex_container">
+            <div><%= image_tag "/ctrlpanel/icon_shortcut_side.svg", class: "edit_icon"%></div>
+            <div><%= image_tag "/ctrlpanel/icon_shortcut_edit.svg", class: "edit_icon" %></div>
+          </div>
+          <div class="saved_txt">
+            <p class="action_name">決まった時間にLEDの色を変更する</p>
+            <p class="created_date">作成日：2022.04.30</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar_item">
+      <div class="sidebar_cp_item_ttl">トリガー</div>
+      <div class="sidebar_sc_item">
+        <div class="flex_container">
+          <div class="flex_container_s">
+            <div class="sidebar_sc_icon"><%= image_tag "/ctrlpanel/icon_shortcut_side01.svg" %></div>
+            <div class="sidebar_sc_txt">任意のトリガー</div>
+          </div>
+          <div class="plus_icon"><%= image_tag "/ctrlpanel/icon_plus.svg" %></div>
+        </div>
+      </div>
+      <div class="sidebar_sc_item">
+        <div class="flex_container">
+          <div class="flex_container_s">
+            <div class="sidebar_sc_icon"><%= image_tag "/ctrlpanel/icon_shortcut_side01.svg" %></div>
+            <div class="sidebar_sc_txt">任意のトリガー</div>
+          </div>
+          <div class="plus_icon"><%= image_tag "/ctrlpanel/icon_plus.svg" %></div>
+        </div>
+      </div>
+      <div class="sidebar_sc_item">
+        <div class="flex_container">
+          <div class="flex_container_s">
+            <div class="sidebar_sc_icon"><%= image_tag "/ctrlpanel/icon_shortcut_side01.svg" %></div>
+            <div class="sidebar_sc_txt">任意のトリガー</div>
+          </div>
+          <div class="plus_icon"><%= image_tag "/ctrlpanel/icon_plus.svg" %></div>
+        </div>
+      </div>
+      <div class="sidebar_sc_item">
+        <div class="flex_container">
+          <div class="flex_container_s">
+            <div class="sidebar_sc_icon"><%= image_tag "/ctrlpanel/icon_shortcut_side01.svg" %></div>
+            <div class="sidebar_sc_txt">任意のトリガー</div>
+          </div>
+          <div class="plus_icon"><%= image_tag "/ctrlpanel/icon_plus.svg" %></div>
+        </div>
+      </div>
+      <div class="sidebar_sc_item_more">
+        <div class="sidebar_sc_item">
+          <div class="flex_container">
+            <div class="flex_container_s">
+              <div class="sidebar_sc_icon"><%= image_tag "/ctrlpanel/icon_shortcut_side01.svg" %></div>
+              <div class="sidebar_sc_txt">任意のトリガー</div>
+            </div>
+            <div class="plus_icon"><%= image_tag "/ctrlpanel/icon_plus.svg" %></div>
+          </div>
+        </div>
+        <div class="sidebar_sc_item">
+          <div class="flex_container">
+            <div class="flex_container_s">
+              <div class="sidebar_sc_icon"><%= image_tag "/ctrlpanel/icon_shortcut_side01.svg" %></div>
+              <div class="sidebar_sc_txt">任意のトリガー</div>
+            </div>
+            <div class="plus_icon"><%= image_tag "/ctrlpanel/icon_plus.svg" %></div>
+          </div>
+        </div>
+      </div>
+      <div class="readmore">もっと見る</div>
+    </div>
+    <div class="sidebar_item">
+      <div class="sidebar_cp_item_ttl">アクション</div>
+      <div class="sidebar_sc_item">
+        <div class="flex_container">
+          <div class="flex_container_s">
+            <div class="sidebar_sc_icon"><%= image_tag "/ctrlpanel/icon_shortcut_side01.svg" %></div>
+            <div class="sidebar_sc_txt">任意のトリガー</div>
+          </div>
+          <div class="plus_icon"><%= image_tag "/ctrlpanel/icon_plus.svg" %></div>
+        </div>
+      </div>
+      <div class="sidebar_sc_item">
+        <div class="flex_container">
+          <div class="flex_container_s">
+            <div class="sidebar_sc_icon"><%= image_tag "/ctrlpanel/icon_shortcut_side01.svg" %></div>
+            <div class="sidebar_sc_txt">任意のトリガー</div>
+          </div>
+          <div class="plus_icon"><%= image_tag "/ctrlpanel/icon_plus.svg" %></div>
+        </div>
+      </div>
+      <div class="sidebar_sc_item">
+        <div class="flex_container">
+          <div class="flex_container_s">
+            <div class="sidebar_sc_icon"><%= image_tag "/ctrlpanel/icon_shortcut_side01.svg" %></div>
+            <div class="sidebar_sc_txt">任意のトリガー</div>
+          </div>
+          <div class="plus_icon"><%= image_tag "/ctrlpanel/icon_plus.svg" %></div>
+        </div>
+      </div>
+      <div class="sidebar_sc_item">
+        <div class="flex_container">
+          <div class="flex_container_s">
+            <div class="sidebar_sc_icon"><%= image_tag "/ctrlpanel/icon_shortcut_side01.svg" %></div>
+            <div class="sidebar_sc_txt">任意のトリガー</div>
+          </div>
+          <div class="plus_icon"><%= image_tag "/ctrlpanel/icon_plus.svg" %></div>
+        </div>
+      </div>
+      <div class="sidebar_sc_item_more">
+        <div class="sidebar_sc_item">
+          <div class="flex_container">
+            <div class="flex_container_s">
+              <div class="sidebar_sc_icon"><%= image_tag "/ctrlpanel/icon_shortcut_side01.svg" %></div>
+              <div class="sidebar_sc_txt">任意のトリガー</div>
+            </div>
+            <div class="plus_icon"><%= image_tag "/ctrlpanel/icon_plus.svg" %></div>
+          </div>
+        </div>
+        <div class="sidebar_sc_item">
+          <div class="flex_container">
+            <div class="flex_container_s">
+              <div class="sidebar_sc_icon"><%= image_tag "/ctrlpanel/icon_shortcut_side01.svg" %></div>
+              <div class="sidebar_sc_txt">任意のトリガー</div>
+            </div>
+            <div class="plus_icon"><%= image_tag "/ctrlpanel/icon_plus.svg" %></div>
+          </div>
+        </div>
+      </div>
+      <div class="readmore">もっと見る</div>
+    </div>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+</main>

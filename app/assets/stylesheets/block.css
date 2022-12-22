@@ -1,0 +1,3967 @@
+@charset "UTF-8";
+/************************************
+ ダッシュボード
+************************************/
+#top .page_ttl_wrap{
+  padding-bottom: 20px;
+}
+
+#top .page_ttl_wrap .page_ttl h2{
+  font-size: 24px;
+}
+
+#top .page_ttl_wrap.page_ttl_wrap_article{
+  margin-top: 65px;
+}
+
+#top .news_content{
+  width: 100%;
+  max-width: 100%;
+}
+
+#top .article_items .article_item{
+  width: 24%;
+  margin-bottom: 0;
+}
+
+#top .more_btn a{
+  font-size: 12px;
+  background: #F2F5FA;
+  color: #415964;
+  display: block;
+  width: 130px;
+  height: 40px;
+  line-height: 40px;
+  margin: 20px 0 0 auto;
+  padding: 0 0 0 20px;
+  border-radius: 5px;
+}
+
+#top .more_btn a:hover{
+  color: #F2F5FA;
+  background: #415964;
+}
+
+#top .more_btn a span{
+  margin-left: 20px;
+}
+/************************************
+公園　ダッシュボード
+************************************/
+#park .park_info_items{
+  margin-top: 40px;
+}
+
+#park .park_info_item{
+  background: #fff;
+  padding: 30px;
+  width: 24%;
+  border-radius: 5px;
+}
+
+#park .park_info_item_icon{
+  margin-right: 10px;
+}
+
+#park .park_info_item_icon img{
+  width: 40px;
+}
+
+#park .park_info_item_ttl h3{
+  margin-bottom: 5px;
+}
+
+#park .park_info_item_num .num{
+  font-weight: bold;
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+#park .park_info_item_num .num.plus{
+  color: #2A81E8;
+}
+
+#park .park_info_item_num .num.minus{
+  color: #EB7357;
+}
+
+#park .park_info_item_num .percent{
+  font-size: 10px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+
+#park .park_info_item_num .percent.plus{
+  color: #2A81E8;
+  background: #F1F7FE;
+}
+
+#park .park_info_item_num .percent .percent_arrow{
+  margin-left: 5px;
+}
+
+#park .park_info_item_txt{
+  border-top: 1px solid #E2E7F0;
+  margin-top: 15px;
+  padding-top: 15px;
+}
+
+#park .park_info_item_num .percent.minus{
+  color: #EB7357;
+  background: #FEF2F2;
+}
+
+#park .graph{
+  margin-top: 40px;
+  background: #fff;
+  height: 400px;
+}
+
+#park .park_info_shortcut_item{
+  background: #fff;
+  width: 24%;
+  border-radius: 5px;
+}
+
+#park .park_info_shortcut_item a{
+  padding: 30px;
+  display: block;
+}
+
+#park .park_info_shortcut_item img{
+  width: 25px;
+}
+
+#park .park_info_shortcut_item h3{
+  margin-left: 15px;
+  font-size: 18px;
+}
+
+#park .park_info_shortcut_item p{
+  margin-top: 15px;
+}
+/************************************
+ ログイン関連
+************************************/
+#login_related{
+  padding: 230px 0 150px;
+}
+
+#login_related .logo{
+  width: 360px;
+  margin: 0 auto 25px;
+}
+
+#login_related .login_related_content{
+  background: #fff;
+  padding: 40px;
+  box-shadow: 0 3px 6px rgba(78, 112, 141, .08);
+}
+
+#login_related h1{
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+#login_related .txt_field,
+#account_related .txt_field{
+  margin-bottom: 30px;
+}
+
+#login_related .txt_field p{
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#login_related .login_related_content .btn{
+  background: #46C541;
+  border: 1px solid #46C541;
+  color: #fff;
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#login_related .login_related_content .btn:hover{
+  background: #fff;
+  color: #46C541;
+}
+
+#login_related #login_form .forget{
+  text-align: center;
+  color: #657F8A;
+  margin-top: 30px;
+}
+
+#login_related #login_form .forget a{
+  color: #657F8A;
+  text-decoration: underline;
+}
+
+#login_related #login_form .forget a:hover{
+  text-decoration: none;
+}
+
+.ex{
+  font-size: 12px;
+  margin-top: 10px;
+  display: block;
+  color: #415964;
+}
+
+.ex a{
+  font-size: 12px;
+  color: #2A81E8;
+  text-decoration: underline;
+}
+
+.ex a:hover{
+  text-decoration: none;
+}
+
+#login_related .login_related_content button,
+#login_related .login_related_content input[type="button"]{
+  width: 100%;
+  margin-top: 40px;
+}
+
+#login_related .new_signup_wrap{
+  font-size: 12px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#login_related .new_signup_wrap a{
+  color: #2A81E8;
+  text-decoration: underline;
+}
+
+#login_related .new_signup_wrap a:hover{
+  text-decoration: none;
+}
+
+#login_related .signupmail_success .signupmail_success_txt{
+  margin-bottom: 30px;
+}
+
+#login_related .signupmail_success .signupmail_success_txt p:first-child{
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+#login_related .signupmail_success .signupmail_success_mail{
+  background: #F2F5FA;
+  padding: 25px;
+}
+
+#login_related .signupmail_success .signupmail_success_mail p{
+  font-weight: bold;
+}
+
+#login_related .signupmail_success .signupmail_success_mail ul{
+  list-style: disc;
+  padding-left: 20px;
+}
+
+#login_related .signupmail_success .signupmail_success_mail li{
+  margin-top: 15px;
+}
+
+#login_related .signupmail_success .signupmail_success_mail li a{
+  color: #2A81E8;
+  text-decoration: underline;
+}
+
+#login_related .signupmail_success .signupmail_success_mail li a:hover{
+  text-decoration: none;
+}
+
+#login_related .step_content{
+  width: 80%;
+  margin: 0 auto 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#login_related .step_content .step_item{
+  position: relative;
+  z-index: 2;
+}
+
+#login_related .step_content .step_item::after{
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 1px;
+  background: #E2E7F0;
+  top: 15px;
+  z-index: -1;
+}
+
+#login_related .step_content .step_item:last-child::after{
+  display: none;
+}
+
+#login_related .step_content .step_item .step_item_num{
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background: #C0CADA;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+#login_related .step_content .step_item.active .step_item_num{
+  background: #46C541;
+}
+
+#login_related .step_content .step_item span{
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  color: #657F8A;
+}
+
+#login_related .step_content .step_item.active span{
+  color: #202323;
+}
+
+#login_related .step_content.step_content_success .step_item.active .step_item_num{
+  background: none;
+}
+
+#login_related .step_content.step_content_success .step_item_num{
+  width: 35px;
+  height: 35px;
+  background: none;
+  border-radius: 0;
+}
+
+#login_related .step_content.step_content_success .step_item.active span{
+  color: #46C541;
+}
+
+#login_related .step_content.step_content_success span{
+  color: #46C541;
+}
+
+#login_related .step_content.step_content_success .step_item:last-child span{
+  color: #202323;
+}
+
+#login_related .signup_success_txt p:first-child{
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+/************************************
+ サイドバー　product
+************************************/
+.sidebar_product{
+  width: 15%;
+  max-width: 320px;
+  background: #fff;
+  padding: 90px 0 40px;
+  position: fixed;
+  top: 0;
+  height: calc(100% - 65px);
+  overflow: scroll;
+}
+
+.sidebar_product_ttl{
+  font-weight: bold;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.sidebar_product .park_name{
+  position: relative;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.sidebar_product .park_name:hover{
+  background: #F2F5FA;
+}
+
+.sidebar_product .park_name::after{
+  content: '';
+  width: 25px;
+  height: 25px;
+  background: url(../img/common/icon_arrow.svg);
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.sidebar_product .park_name.open::after{
+  top: 12px;
+  right: 3px;
+  transform: rotate(180deg);
+}
+
+.sidebar_product .park_item ul{
+  padding: 0 0 0 40px;
+  display: none;
+}
+
+.sidebar_product .park_item li{
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.sidebar_product .park_item li:last-child{
+  margin-bottom: 0;
+}
+
+.sidebar_product .park_item li img{
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin: 0 5px 2px 0;
+}
+
+.sidebar_product .park_item li a{
+  font-weight: bold;
+  display: block;
+}
+
+.sidebar_product .park_item li a:hover{
+  color: #46C541;
+}
+
+.sidebar_product .park_item li .notification_num{
+  background: #EB7357;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  right: 25px;
+  border-radius: 15px;
+  padding: 4px 10px;
+  font-size: 10px;
+}
+
+.sidebar_product .sidebar_help{
+  margin: 150px 15px 0;
+  padding: 30px 15px;
+  background: #F5F7FA;
+}
+
+.sidebar_product .sidebar_help .sidebar_help_ttl{
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.sidebar_product .sidebar_help .sidebar_help_ttl img{
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.sidebar_product .sidebar_help p{
+  margin: 0 0 20px;
+}
+
+.sidebar_product .sidebar_help .btn{
+  font-size: 12px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.sidebar_product .sidebar_help .btn img{
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+}
+/************************************
+ コントロールパネル
+************************************/
+.control_panel_content{
+  width: 80%;
+  max-width: 1100px;
+}
+
+.item_element .selected_item:nth-of-type(1){
+  width: 5%;
+}
+
+.item_element .selected_item{
+  width: 20%;
+}
+
+.selected_product_txt{
+  display: inline-block;
+  background: #46C541;
+  color: #fff;
+  width: 110px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 7px 0;
+  border-radius: 5px 5px 0 0;
+}
+
+.selected_product_item{
+  background: #fff;
+  padding: 20px 30px;
+  margin-bottom: 35px;
+}
+
+#controlpanel .panel_item{
+  padding: 25px 0;
+  background: #fff;
+  width: 49%;
+  margin-bottom: 20px;
+}
+
+#controlpanel .panel_item_content{
+  padding: 0 20px;
+  height: 350px;
+}
+
+#controlpanel .panel_item .panel_item_ttl img{
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+#controlpanel .panel_item .panel_item_ttl h2{
+  font-size: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#controlpanel .panel_item .panel_item_ttl p{
+  margin: 10px 0 20px;
+}
+
+#controlpanel .form_item{
+  margin-top: 20px;
+}
+
+#controlpanel label{
+  display: block;
+  margin-bottom: 5px;
+}
+
+#upload{
+	width: 49%;
+  height: auto;
+  background: #fff;
+  border: 2px dashed #E2E7F0;
+	padding: 20px 0;
+}
+
+.upload_file{
+	display: block;
+	text-align: center;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.upload_file img{
+	width: 40px;
+	height: 40px;
+	display: block;
+	margin: 0 auto 10px;
+}
+
+.upload_file span{
+	color: #46C541;
+	text-decoration: underline;
+}
+
+.preview{
+  width: 49%;
+}
+
+.preview_file{
+  position: relative;
+}
+
+.preview_file img.preview_close_btn{
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.form_attachment_preview {
+  background: #EEF2F5;
+  color: #8F9CAA;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* width: 45%; */
+  height: 40px;
+  line-height: 40px;
+  font-size: 12px;
+  position: relative;
+  padding: 0 10px;
+}
+
+.form_attachment_preview button{
+  background: transparent;
+  font-size: 24px;
+  width: auto;
+  height: auto;
+  border: none;
+  color: #8F9CAA;
+}
+/************************************
+ ON/OFFスイッチ
+************************************/
+.onoff_switch{
+  border-top: 2px solid #F2F5FA;
+  padding: 20px 20px 0;
+  margin-top: 20px;
+}
+
+.onoff_switch .on{
+  font-weight: bold;
+}
+
+.onoff_switch .off{
+  color: #415964;
+}
+
+.toggle {
+  position: relative;
+  width: 70px;
+  height: 30px;
+  border-radius: 50px;
+  overflow: hidden;
+  user-select: none;
+  cursor: pointer;
+}
+/* .toggle input[type=checkbox] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  display: none;
+} */
+.toggle span {
+  position: absolute;
+  top: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 1;
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+.toggle span:nth-of-type(1) {
+  right: 5px;
+  color: #fff;
+}
+.toggle span:nth-of-type(2) {
+  left: 7px;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.toggle input[type=checkbox]{
+  display: block;
+  appearance:checkbox;
+}
+.toggle:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  display: block;
+  background: #657F8A;
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+.toggle:after {
+  content: "";
+  position: absolute;
+  top: 3.5px;
+  left: 5px;
+  width: 23px;
+  height: 23px;
+  display: block;
+  border-radius: 50px;
+  background: #fff;
+  box-shadow: 0 9px 28px -6px rgba(0, 0, 0, 0.3);
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+.toggle.checked:before {
+  background: #35c759;
+}
+.toggle.checked:after {
+  left: 41px;
+  box-shadow: 0 9px 28px -6px rgba(0, 0, 0, 0.5);
+}
+
+.command_switch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 70px;
+  height: 30px;
+  border-radius: 50px;
+  overflow: hidden;
+  user-select: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/************************************
+ 音量両説
+************************************/
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  background: #46C541;
+  height: 45px;
+  width: 100%;
+  border-radius: 30px;
+}
+
+input[type=range] {
+  outline: 0;
+  border: 0;
+  border-radius: 500px;
+  width: 400px;
+  max-width: 100%;
+  margin: 24px 0 16px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type=range] {
+    overflow: hidden;
+    height: 40px;
+    -webkit-appearance: none;
+    background-color: #ddd;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    height: 40px;
+    -webkit-appearance: none;
+    color: #444;
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    width: 40px;
+    -webkit-appearance: none;
+    height: 40px;
+    cursor: ew-resize;
+    background: #fff;
+    box-shadow: -340px 0 0 320px #46C541, inset 0 0 0 40px #46C541;
+    border-radius: 50%;
+    transition: box-shadow 0.2s ease-in-out;
+    position: relative;
+  }
+  input[type=range]:active::-webkit-slider-thumb {
+    background: #fff;
+    box-shadow: -340px 0 0 320px #46C541, inset 0 0 0 3px #46C541;
+  }
+}
+input[type=range]::-moz-range-progress {
+  background-color: #46C541;
+}
+input[type=range]::-moz-range-track {
+  background-color: #9a905d;
+}
+input[type=range]::-ms-fill-lower {
+  background-color: #46C541;
+}
+input[type=range]::-ms-fill-upper {
+  background-color: #9a905d;
+}
+
+#volume_container {
+  width: 400px;
+  max-width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  position: relative;
+	margin-top: 80px;
+}
+
+#volume_container #volume_subcontainer {
+  width: 100%;
+  position: relative;
+}
+
+#volume_container #volume_subcontainer .volume {
+  position: absolute;
+  top: -60px;
+	width: 130px;
+	background: #fff;
+	box-shadow: 2px 2px 20px rgba(78,112,141,16%);
+	text-align: center;
+	padding: 10px;
+	font-size: 12px;
+	color: #415964;
+}
+
+#volume_container #volume_subcontainer .volume p{
+	color: #202323;
+	font-size: 18px;
+  font-weight: bold;
+}
+
+input:not(:active) + #volume_container .volume {
+  opacity: 0;
+  margin-top: -50px;
+  pointer-events: none;
+}
+/************************************
+ サイドバーコントールパネル
+************************************/
+.sidebar_cp{
+  width: 25%;
+  max-width: 370px;
+  margin-left: 30px;
+}
+
+.sidebar_cp .shortcut_banner{
+  margin-bottom: 40px;
+}
+
+.sidebar_cp .sidebar_item{
+  background: #fff;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.sidebar_cp .sidebar_item.todays_weather .sidebar_cp_item_ttl img{
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.sidebar_cp .sidebar_item.todays_weather .todays_weather_txt{
+  font-size: 16px;
+}
+
+.sidebar_cp .sidebar_item.todays_weather .temperature{
+  color: #415964;
+  font-size: 12px;
+}
+
+.sidebar_cp .sidebar_item.todays_weather .temperature span:nth-of-type(1){
+  font-size: 40px;
+  font-weight: bold;
+  color: #202323;
+}
+
+.sidebar_cp .sidebar_item.todays_weather .temperature span:nth-of-type(2){
+  font-size: 24px;
+  color: #415964;
+}
+
+.sidebar_cp .sidebar_item .sidebar_cp_item_ttl{
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+.sidebar_cp .sidebar_item .sidebar_cp_item_ttl img{
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+#sidebar_cp_graph{
+  width: 190px;
+}
+
+.sidebar_cp_item_content{
+  margin-left: 30px;
+  width: 100px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.sidebar_cp_item_content p{
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.sidebar_cp_item_content span{
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+/************************************
+ ショートカット
+************************************/
+.shortcut_popular{
+  margin-bottom: 60px;
+}
+
+.shortcut_popular h2{
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.shortcut_popular .shortcut_popular_item{
+  background: #fff;
+  padding: 15px;
+  width: 24%;
+}
+
+.shortcut_popular .shortcut_popular_item img{
+  width: 30px;
+  height: 30px;
+}
+
+.shortcut_popular .shortcut_popular_item .plus_icon img{
+  width: 25px;
+  height: 25px;
+}
+
+.plus_icon img{
+  cursor: pointer;
+}
+
+.plus_icon img:hover{
+  opacity: 0.8;
+}
+
+.shortcut_popular .shortcut_popular_item p{
+  margin-top: 10px;
+}
+
+.shortcut_create .shortcut_create_inner{
+  width: 530px;
+  margin: 0 auto;
+}
+
+.shortcut_create .shortcut_create_item{
+  background: #fff;
+  margin-bottom: 30px;
+}
+
+.shortcut_create .created_plus_icon{
+  text-align: center;
+}
+
+.shortcut_create .created_plus_icon{
+  position: relative;
+  margin: 30px 0;
+  height: 30px;
+}
+
+.shortcut_create .created_plus_icon::before{
+  content: '';
+  width: 2px;
+  height: 65px;
+  background: #E2E7F0;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  z-index: -1;
+}
+
+.shortcut_create .created_plus_icon::after{
+  content: '';
+  width: 2px;
+  height: 65px;
+  background: #E2E7F0;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  z-index: -1;
+}
+
+.shortcut_create .created_plus_icon img{
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.shortcut_create .shortcut_create_item .shortcut_create_item_ttl{
+  padding: 20px;
+}
+
+.shortcut_create .shortcut_create_img{
+  margin-right: 15px;
+}
+
+.shortcut_create .shortcut_create_name .shortcut_create_ttl{
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.shortcut_create .shortcut_create_icon img{
+  width: 25px;
+  height: 25px;
+  margin-left: 5px;
+}
+
+img.edit_icon{
+  cursor: pointer;
+}
+
+img.edit_icon:hover{
+  opacity: 0.8;
+}
+
+.shortcut_create .shortcut_create_setting{
+  border-top: 1px solid #E2E7F0;
+}
+
+.shortcut_create .shortcut_create_setting .setting_form{
+  padding: 20px 20px 30px 20px;
+}
+
+.shortcut_create .shortcut_create_setting .setting_form .form_item:first-child{
+  margin-top: 0;
+}
+
+.shortcut_create .shortcut_create_setting .setting_form .form_item{
+  margin-top: 20px;
+}
+
+.shortcut_create .shortcut_create_setting .setting_form .form_item label{
+  font-weight: normal;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.shortcut_create .shortcut_create_btn{
+  text-align: center;
+}
+
+.shortcut_create .shortcut_create_btn .btn{
+  width: 260px;
+  height: 50px;
+  line-height: 50px;
+  margin: 0 auto 10px;
+}
+
+.shortcut_create .shortcut_create_btn .reset_btn{
+  text-decoration: underline;
+  color: #657F8A;
+}
+
+.shortcut_create .shortcut_create_btn .reset_btn:hover{
+  text-decoration: none;
+}
+/************************************
+ サイドバーショートカット
+************************************/
+.sidebar_sc .shortcut_saved{
+  height: 200px;
+  overflow: scroll;
+}
+
+.sidebar_sc .sidebar_sc_item{
+  background: #F5F7FA;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.sidebar_sc .sidebar_sc_item .saved_txt{
+  margin-top: 10px;
+}
+
+.sidebar_sc .sidebar_sc_item .saved_txt .created_date{
+  margin-top: 10px;
+  color: #415964;
+  font-size: 12px;
+}
+
+.sidebar_sc .sidebar_sc_item .sidebar_sc_icon{
+  margin-right: 10px;
+}
+
+.sidebar_sc .readmore{
+  color: #415964;
+  cursor: pointer;
+  text-decoration: underline;
+  width: 80px;
+  margin: 0 0 0 auto;
+  text-align: right;
+}
+
+.sidebar_sc .readmore:hover{
+  text-decoration: none;
+}
+
+.sidebar_sc .sidebar_sc_item_more{
+  display: none;
+}
+/************************************
+公園の情報編集
+************************************/
+.content_frame{
+  background: #fff;
+  border-radius: 5px;
+  padding: 50px 65px;
+  margin-top: 50px;
+}
+
+#parkinfo_edit .content_frame:first-child{
+  margin-top: 0;
+}
+
+#parkinfo_edit .parkinfo_edit_ttl{
+  border-bottom: 2px solid #F2F5FA;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+}
+
+#parkinfo_edit h2{
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#parkinfo_edit .parkinfo_edit_ttl p a{
+  color: #2A81E8;
+}
+
+#parkinfo_edit .parkinfo_edit_ttl p a:hover{
+  text-decoration: underline;
+}
+
+#parkinfo_edit .form_item{
+  margin-bottom: 15px;
+}
+
+#parkinfo_edit .park_status_item{
+  margin-right: 20px;
+}
+
+#parkinfo_edit .day_of_week{
+  width: 45px;
+  margin-right: 20px;
+}
+
+#parkinfo_edit .park_status_switch{
+  width: 100px;
+}
+
+#parkinfo_edit .park_status_switch .toggle{
+  width: 50px;
+}
+
+#parkinfo_edit .park_status_switch .toggle:after{
+  top: 4.5px;
+  width: 20px;
+  height: 20px;
+}
+
+#parkinfo_edit .park_status_switch .toggle.checked:after{
+  left: 25px;
+}
+
+#parkinfo_edit .park_status_switch .park_status{
+  margin-left: 5px;
+  font-size: 12px;
+  width: 40px;
+}
+
+#parkinfo_edit .park_status_switch .park_status .off{
+  color: #415964;
+}
+
+#parkinfo_edit .flex_container_time{
+  width: 75%;
+}
+
+#parkinfo_edit .flex_container_time .time_item{
+  width: 30%;
+}
+
+#parkinfo_edit .flex_container_time .time_item .select select{
+  height: 40px;
+}
+
+#parkinfo_edit .flex_container_time label.label_style{
+  font-weight: normal;
+  padding-left: 25px;
+  font-size: 12px;
+  height: 22px;
+  line-height: 22px;
+}
+
+#parkinfo_edit .address input,
+#parkinfo_edit .tel input{
+  width: 50%;
+}
+
+#parkinfo_edit .price .form_item span{
+  width: 10%;
+  display: inline-block;
+}
+
+#parkinfo_edit .price input{
+  width: 30%;
+}
+
+#parkinfo_edit button[type="submit"]{
+  width: 120px;
+  height: 50px;
+  margin-top: 50px;
+}
+
+#parkinfo_edit .label_style_item{
+  margin-bottom: 50px;
+}
+
+#parkinfo_edit .label_content{
+  margin-left: -20px;
+}
+
+#parkinfo_edit .item_head{
+  padding: 0 20px 20px;
+  border-bottom: 1px solid #F2F5FA;
+}
+
+#parkinfo_edit .item_head div{
+  width: 20%;
+}
+
+#parkinfo_edit .item_head div span{
+  margin-left: 15px;
+}
+
+#parkinfo_edit .item_head div:nth-of-type(1){
+  width: 3%;
+}
+
+#parkinfo_edit .item_head div:nth-of-type(2){
+  width: 7%;
+}
+
+#parkinfo_edit .item_head div:nth-of-type(3){
+  width: 25%;
+}
+
+#parkinfo_edit .item_head div:nth-of-type(4){
+  width: 25%;
+}
+
+#parkinfo_edit .item_head div:nth-of-type(5){
+  width: 25%;
+}
+
+#parkinfo_edit .picture_list .item{
+  border-bottom: 1px solid #F2F5FA;
+}
+
+#parkinfo_edit .picture_list .item.bg{
+  background: #FAFBFE;
+}
+
+#parkinfo_edit .item_element{
+  padding: 20px;
+}
+
+#parkinfo_edit .item_element div{
+  width: 20%;
+}
+
+#parkinfo_edit .item_element div:nth-of-type(1){
+  width: 3%;
+}
+
+#parkinfo_edit .item_element div:nth-of-type(2){
+  width: 7%;
+}
+
+#parkinfo_edit .item_element div:nth-of-type(3){
+  width: 25%;
+}
+
+#parkinfo_edit .item_element div:nth-of-type(4){
+  width: 25%;
+}
+
+#parkinfo_edit .item_element div:nth-of-type(5){
+  width: 25%;
+}
+
+#parkinfo_edit .picture_content button{
+  width: 210px;
+}
+
+#parkinfo_edit .picture_content .delete_btn{
+  margin-left: 10px;
+  display: none;
+}
+/************************************
+ この公園の情報
+************************************/
+#singlepark {
+  padding: 0;
+}
+#singlepark .singlepark_headline {
+  background: #F7FAFB;
+  padding: 110px 0 0;
+  margin: 0 0 50px;
+}
+#singlepark .single_park_name {
+  margin: 50px auto 30px;
+}
+#singlepark .single_park_name div {
+  font-weight: bold;
+  margin: 0 0 10px;
+}
+#singlepark .single_park_name h1 {
+  font-size: 32px;
+}
+#singlepark .single_park_name h1 img {
+  width: 40px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0 10px;
+}
+#singlepark .singlepark_headline ul li {
+  width: calc(100% / 5);
+  text-align: center;
+}
+#singlepark .singlepark_headline ul li a {
+  display: block;
+  font-size: 16px;
+  color: #6E7B7B;
+  padding: 25px 10px;
+  border-radius: 18px;
+}
+#singlepark .singlepark_headline ul li a:hover {
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(78,112,141,0.11);
+  font-weight: bold;
+  color: #202323;
+}
+
+#singlepark .park_content {
+  align-items: flex-start;
+}
+#singlepark .park_main_content {
+  width: 70%;
+}
+#singlepark .park_side_content {
+  width: 25%;
+}
+#singlepark .park_main_content section {
+  margin: 0 0 60px;
+}
+#singlepark .park_side_content section {
+  margin: 0 0 40px;
+}
+#singlepark .park_main_content h2 {
+  font-size: 24px;
+  margin: 0 0 25px;
+}
+#singlepark .park_side_content h2 {
+  font-size: 18px;
+  margin: 0 0 12px;
+}
+#singlepark .park_content_wrap {
+  background: #F7FAFB;
+}
+#singlepark .park_main_content .park_content_wrap {
+  padding: 40px 5%;
+  border-radius: 16px;
+}
+#singlepark .park_side_content .park_content_wrap {
+  padding: 25px 5%;
+  border-radius: 20px;
+}
+
+#singlepark .park_content_wrap dl dt {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 15px;
+}
+#singlepark .park_content_wrap dl dt img {
+  width: 18px;
+  display: inline-block;
+  margin: 0 8px 0 0;
+  vertical-align: middle;
+}
+#singlepark .park_content_wrap dl dd {
+  padding: 0 25px;
+}
+
+#singlepark #utility .detail_btn,
+#singlepark .review_btn,
+#singlepark .park_manager p a,
+#singlepark .park_manager .contact_btn,
+#singlepark .park_access a,
+#singlepark .park_contact dl dd a,
+#singlepark .around .readmore {
+  color: #4691D1;
+  text-decoration: underline;
+  font-weight: bold;
+}
+#singlepark #utility .detail_btn:hover,
+#singlepark .review_btn:hover,
+#singlepark .park_manager p a:hover,
+#singlepark .park_manager .contact_btn:hover,
+#singlepark .park_access a:hover,
+#singlepark .park_contact dl dd a:hover,
+#singlepark .around a:hover {
+  cursor: pointer;
+}
+/** section01/基本情報 **/
+#singlepark #basicinfo .park_content_wrap dl div {
+  padding: 20px 0;
+  border-bottom: 1px solid #E7ECED;
+}
+#singlepark #basicinfo .park_content_wrap dl div:first-child {
+  padding: 0 0 20px;
+}
+#singlepark #basicinfo .park_content_wrap dl div:last-child {
+  padding: 20px 0 0;
+  border-bottom: none;
+}
+#singlepark #basicinfo .park_content_wrap dl dd {
+  font-size: 16px;
+}
+/** section02/特徴 **/
+#singlepark #utility .park_content_wrap {
+  margin: 0 0 25px;
+}
+#singlepark #utility .park_content_wrap dl dt {
+  margin: 0 0 30px;
+}
+#singlepark #utility .park_content_wrap ul {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+#singlepark #utility .park_utility_detail ul {
+  border-top: 1px dotted #D0D7D7;
+  padding: 30px 25px 0;
+}
+#singlepark #utility .park_content_wrap ul li {
+  display: flex;
+  align-items: center;
+  width: 22%;
+  margin: 0 4% 25px 0;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+#singlepark #utility .park_utility_detail ul li {
+  margin: 0 4% 20px 0;
+}
+#singlepark #utility .park_content_wrap ul li:nth-child(4n) {
+  margin-right: 0;
+}
+#singlepark #utility .park_utility ul li img {
+  width: 40px;
+  margin: 0 10px 0 0
+}
+#singlepark #utility .park_utility_detail ul li img {
+  width: 20px;
+  margin: 0 10px 0 0;
+}
+#singlepark .park_content_wrap dl dd.park_utility_detail {
+  padding: 0;
+}
+#singlepark #utility .park_content_wrap dl dd p {
+  font-size: 14px;
+}
+#singlepark #utility .detail_btn {
+  text-align: right;
+  font-size: 14px;
+  font-weight: bold;
+}
+#singlepark #utility .detail_btn:hover {
+  cursor: pointer;
+}
+/** section03/写真 **/
+#singlepark .park_photo_l {
+  width: 50%;
+  height: 380px;
+}
+#singlepark .park_photo_list {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 49%;
+}
+#singlepark .park_photo_l img,
+#singlepark .park_photo_list li img {
+  border-radius: 16px;
+}
+#singlepark .park_photo_list li {
+  width: 49%;
+  height: 185px;
+  margin: 0 2% 10px 0;
+}
+#singlepark .park_photo_list li:nth-child(2n) {
+  margin-right: 0;
+}
+#singlepark .park_photo_list li:nth-child(3),
+#singlepark .park_photo_list li:last-child {
+  margin-bottom: 0;
+}
+
+#singlepark .park_photo_l img,
+#singlepark .park_photo_list li img,
+#singlepark #event .park_content_wrap ul li .event_img img,
+#singlepark .around_img img {
+  object-fit: cover;
+  height: 100%;
+}
+/** section04/イベント **/
+#singlepark #event .park_content_wrap ul li {
+  width: 23%;
+}
+#singlepark #event .park_content_wrap ul li .event_img {
+  width: 100%;
+  height: 130px;
+  margin: 0 0 8px;
+}
+#singlepark #event .park_content_wrap ul li .event_img img {
+  border-radius: 4px;
+}
+
+#singlepark #event .park_content_wrap ul li time {
+  display: block;
+  font-size: 12px;
+  margin: 0 0 8px;
+}
+#singlepark #event .park_content_wrap ul li h3 {
+  font-size: 14px;
+}
+/** section05/クチコミ **/
+#singlepark .review_content {
+  margin: 0 0 25px;
+}
+#singlepark .review_user {
+  margin: 0 0 20px;
+}
+#singlepark .review_user img {
+  width: 56px;
+  border-radius: 50%;
+}
+#singlepark .review_user div {
+  width: calc(100% - 70px);
+}
+#singlepark .review_user_name {
+  font-size: 14px;
+  font-weight: bold;
+}
+#singlepark .review_user_date {
+  font-size: 12px;
+  color: #6E7B7B;
+}
+#singlepark .review_txt_warp {
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px 5%;
+  font-size: 14px;
+}
+#singlepark .review_btn {
+  font-size: 12px;
+}
+#singlepark .review_more_btn {
+  display: block;
+  background: #46C541;
+  border: 1px solid #46C541;
+  border-radius: 4px;
+  padding: 18px 20px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 270px;
+  cursor: pointer;
+}
+#singlepark .review_more_btn:hover{
+  background: #fff;
+  color: #46C541;
+}
+/** park_manager **/
+#singlepark .park_manager .park_content_wrap {
+  font-size: 14px;
+}
+#singlepark .manager h2 {
+  font-size: 16px;
+}
+#singlepark .park_manager p {
+  margin: 0 0 15px;
+}
+#singlepark .park_manager ul {
+  background: #fff;
+  padding: 25px 5%;
+  margin: 0 0 20px;
+  border-radius: 10px;
+}
+#singlepark .park_manager ul li {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  margin: 0 0 15px;
+}
+#singlepark .park_manager ul li::before {
+  content: "";
+  background: url('../img/park/check_icon.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 12px;
+  height: 12px;
+  margin: 0 10px 0 0;
+}
+#singlepark .park_manager .contact_btn {
+  display: block;
+  text-align: right;
+  font-size: 16px;
+  font-weight: bold;
+}
+/** park_access **/
+#singlepark .park_access iframe {
+  width: 100%;
+  height: 180px;
+  border-radius: 4px;
+}
+#singlepark .park_access p {
+  font-size: 14px;
+}
+#singlepark .park_access a {
+  font-size: 12px;
+}
+/** park_contact **/
+#singlepark .park_contact dl dt::before {
+  content: "■";
+  color: #6E7B7B;
+  margin: 0 5px 0 0;
+}
+#singlepark .park_contact dl dd {
+  font-size: 16px;
+  margin: 0 0 30px;
+}
+#singlepark .park_contact dl dd:last-child {
+  margin: 0;
+}
+#singlepark .park_contact dl dd a {
+  font-weight: normal;
+}
+/** around **/
+#singlepark .around_head {
+  margin: 0 0 12px;
+}
+#singlepark .around_head h2 {
+  margin: 0;
+}
+#singlepark .around a {
+  font-size: 12px;
+  font-weight: normal;
+}
+#singlepark .around ul li {
+  margin: 0 0 15px;
+}
+#singlepark .around ul li:last-child {
+  margin: 0;
+}
+#singlepark .around_img {
+  width: 64px;
+  height: 64px;
+}
+#singlepark .around_img img {
+  border-radius: 4px;
+}
+#singlepark .around_txt {
+  width: calc(100% - 75px);
+}
+#singlepark .around_name {
+  font-size: 14px;
+}
+#singlepark .around_address {
+  font-size: 12px;
+  color: #6E7B7B
+}
+#singlepark .readmore:hover {
+  cursor: pointer;
+}
+/************************************
+ サイドバー　ショートカット　メニュー
+************************************/
+.sidebar_menu{
+  width: 25%;
+  max-width: 370px;
+  margin-left: 30px;
+  background: #fff;
+  position: sticky;
+	top: 90px;
+}
+
+.sidebar_menu .sidebar_parkedit_ttl{
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 2px solid #F2F5FA;
+  padding: 20px 30px;
+}
+
+.sidebar_menu .sidebar_parkedit_item{
+  border-bottom: 1px solid #F2F5FA;
+  position: relative;
+}
+
+.sidebar_menu .sidebar_parkedit_item a{
+  padding: 20px 30px;
+  display: block;
+}
+
+.sidebar_menu .sidebar_parkedit_item a:hover{
+  background: #F2F5FA;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.sidebar_menu .sidebar_parkedit_item img{
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  width: 14px;
+}
+/************************************
+ プロダクト
+************************************/
+#products .content_frame{
+  margin-top: 0;
+}
+
+#products .products_ttl{
+  margin-bottom: 30px;
+}
+
+#products h2{
+  font-size: 20px;
+}
+
+#products .content_btn .select{
+  margin-right: 0;
+}
+
+#products .content_btn .select img{
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  pointer-events: none;
+  width: 15px;
+  height: 15px;
+}
+
+#products .content_btn .select select{
+  width: 105px;
+  height: 40px;
+  padding: 10px 10px 10px 30px;
+}
+
+#products .create_btn a{
+  font-size: 12px;
+  width: 150px;
+  height: 40px;
+  line-height: 40px;
+}
+
+#products .create_btn img{
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+  margin: 0 5px 2px 0;
+}
+
+#products .item_head{
+  padding: 0 20px 15px 20px;
+}
+
+#products .item_head div{
+  color: #415964;
+  font-size: 12px;
+}
+
+#products .item_head div:nth-of-type(1){
+  width: 5%;
+}
+
+#products .item_head div:nth-of-type(2){
+  width: 7%;
+}
+
+#products .item_head div:nth-of-type(3){
+  width: 17%;
+}
+
+#products .item_head div:nth-of-type(4){
+  width: 10%;
+}
+
+#products .item_head div:nth-of-type(5){
+  width: 15%;
+}
+
+#products .item_head div:nth-of-type(6){
+  width: 35%;
+}
+
+#products .products_list .item{
+  position: relative;
+  border-top: 1px solid #E2E7F0;
+}
+
+#products .item_element{
+  padding: 30px;
+}
+
+#products .item_element:hover{
+  background: #F9FAFC;
+}
+
+#products .item_element div:nth-of-type(1){
+  width: 5%;
+}
+
+#products .item_element div:nth-of-type(1) img{
+  width: 20px;
+  height: 20px;
+  display: block;
+  margin: 0 auto;
+}
+
+#products .item_element div .camela_status{
+  padding: 2px 5px;
+  border-radius: 10px;
+  font-size: 10px;
+  width: 40px;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+}
+
+#products .item_element div .camela_status.live{
+  color: #fff;
+  background: #EB7357;
+}
+
+#products .item_element div .camela_status.stop{
+  color: #415964;
+  background: #F0F3F8;
+}
+
+#products .item_element div:nth-of-type(2){
+  width: 7%;
+}
+
+#products .item_element div:nth-of-type(3){
+  width: 17%;
+}
+
+#products .item_element div:nth-of-type(4){
+  width: 10%;
+}
+
+#products .item_element div:nth-of-type(5){
+  width: 15%;
+}
+
+#products .item_element div:nth-of-type(6){
+  width: 35%;
+}
+
+#products .item_element div object a{
+  color: #415964;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+#products .item_element div object a:hover{
+  text-decoration: none;
+}
+/************************************
+ サイドバー 口コミ
+************************************/
+.sidebar_review{
+  padding: 25px;
+}
+
+.sidebar_review .sidebar_review_ttl{
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.sidebar_review .sidebar_review_ttl img{
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.sidebar_review .sidebar_review_ttl img.help_icon{
+  width: 25px;
+  height: 25px;
+  margin: 0 0 0 auto;
+  cursor: pointer;
+}
+
+.sidebar_review .sidebar_review_ttl img.help_icon:hover{
+  opacity: 0.8;
+}
+
+.sidebar_review .sidebar_review_item{
+  border-bottom: 1px solid #E2E7F0;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.sidebar_review .sidebar_review_item:last-child{
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+/************************************
+ 口コミ
+************************************/
+#review .content_frame{
+  margin-top: 0;
+}
+
+#review h2{
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+#review .review_content{
+  background: #FAFBFE;
+  padding: 30px;
+  border-radius: 5px;
+  position: relative;
+  margin-top: 25px;
+}
+
+#review .review_content .popup_btn{
+  top: 45px;
+}
+
+#review .review_content .review_content_user img.user_icon{
+  margin-right: 10px;
+}
+
+#review .review_content .review_content_user .date{
+  font-size: 12px;
+}
+
+#review .review_content .review_content_user .date span{
+  margin-left: 10px;
+}
+
+#review .review_content .review_content_txt{
+  border-bottom: 1px solid #E2E7F0;
+  padding-bottom: 30px;
+  margin: 20px 0 30px;
+}
+
+#review .review_content .review_content_answer img.user_icon{
+  margin-right: 10px;
+}
+
+#review .review_content .review_content_answer textarea{
+  width: 80%;
+  height: 40px;
+  padding: 7px 10px;
+}
+
+#review .review_content .review_content_answer button{
+  width: 80px;
+  margin-left: 10px;
+}
+/************************************
+ 口コミ　サイドバー
+************************************/
+.sidebar_review{
+
+}
+/************************************
+アカウント関連
+************************************/
+#account_related .page_ttl_wrap{
+  padding-bottom: 0;
+}
+
+#account_related .page_ttl h1{
+  text-align: center;
+}
+
+#account_related .page_ttl_txt a{
+  color: #2A81E8;
+  text-decoration: underline;
+}
+
+#account_related .page_ttl_txt{
+  margin-bottom: 40px;
+}
+
+#account_related .page_ttl_txt a:hover{
+  text-decoration: none;
+}
+
+#account_related.inner_mid{
+  padding: 135px 0;
+}
+
+#account_related .content_frame{
+  padding: 40px 0;
+}
+
+#account_related .content_frame:first-child{
+  margin-top: 0;
+}
+
+#account_related h2{
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#account_related h3{
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#account_related .account_item.account_item_ttl{
+  margin: 0;
+  padding: 0 40px 40px 40px;
+}
+
+#account_related .account_item{
+  border-bottom: 1px solid #F0F3F8;
+  padding: 40px 0;
+  margin: 0 40px;
+}
+
+#account_related .account_form_wrap{
+  padding: 30px 40px 0;
+}
+
+#account_related .prof_img_edit{
+  margin-bottom: 30px;
+}
+
+#account_related .prof_img_edit img.icon{
+  width: 95px;
+  height: 95px;
+}
+
+#account_related .account_item .txt_field{
+  margin-bottom: 0;
+}
+
+#account_related dd a{
+  color: #2A81E8;
+  text-decoration: underline;
+}
+
+#account_related dd a:hover{
+  text-decoration: none;
+}
+
+#account_related .content_frame .btn{
+  width: 190px;
+  margin: 30px auto 0;
+}
+
+#account_related .content_frame .account_item .btn{
+  margin-top: 0;
+}
+/************************************
+お知らせ関連
+************************************/
+#news .page_ttl_wrap,
+#article .page_ttl_wrap{
+  padding-bottom: 0;
+}
+
+.news_content{
+  width: 80%;
+  max-width: 1100px;
+}
+
+.news_item:first-child{
+  margin-top: 0;
+}
+
+.news_item{
+  margin-top: 10px;
+  position: relative;
+}
+
+.news_item a{
+  background: #fff;
+  padding: 20px;
+  display: block;
+  position: relative;
+}
+
+.news_item a:after{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+ -webkit-transform: translateY(-50%);
+ -ms-transform: translateY(-50%);
+  right: 20px;
+  content: '';
+  width: 30px;
+  height: 30px;
+  background-image: url(../img/common/icon_arrow_right.svg);
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+.news_cat{
+  font-size: 12px;
+  color: #415964;
+  font-weight: bold;
+  width: 110px;
+  text-align: center;
+}
+
+.news_time{
+  width: 170px;
+  color: #415964;
+}
+
+.news_ttl{
+  max-width: 65%;
+}
+
+.article_items .article_item{
+  width: 32%;
+  margin-bottom: 20px;
+}
+
+.article_items .article_item a:hover img{
+  transform: scale(1.2);
+}
+
+.article_items .article_img_cat{
+  position: relative;
+  overflow: hidden;
+}
+
+.article_items .article_img_cat img{
+  width: 100%;
+  height: auto;
+  transition: all 0.3s;
+}
+
+.article_items .article_img_cat .cat{
+  background: #fff;
+  border-radius: 10px 10px 0 0;
+  position: absolute;
+  left: 20px;
+  bottom: 0;
+  width: 110px;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.article_items .article_txt{
+  background: #fff;
+  padding: 20px;
+}
+
+.article_items .article_txt h2{
+  margin-top: 10px;
+}
+
+.pagenavi{
+  margin-top: 20px;
+}
+
+.pagenavi span.current{
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  display: inline-block;
+  background: #46C541;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 15px;
+  margin: 0 10px 0 0;
+}
+
+.pagenavi a{
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  display: inline-block;
+  background: #E2E7F0;
+  color: #657F8A;
+  border-radius: 15px;
+  margin: 0 10px 0 0;
+}
+
+.pagenavi a:hover{
+  background: #46C541;
+  color: #fff;
+  font-weight: bold;
+}
+/************************************
+お知らせ関連シングル
+************************************/
+.single_news_content{
+  background: #fff;
+  padding: 50px;
+}
+
+.single_news_content img{
+  max-width: 100%;
+  margin: 20px 0;
+}
+
+.single_news_content .news_cat{
+  display: inline-block;
+}
+
+.single_news_content .news_time{
+  display: inline-block;
+}
+
+.single_news_content .news_ttl{
+  max-width: 100%;
+}
+
+.single_news_content .news_ttl h2{
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+.post_link{
+  margin-top: 20px;
+}
+
+.post_link a{
+  color: #1C323E;
+}
+
+.post_link a:hover{
+  text-decoration: underline;
+}
+
+.post_link .post_link_ttl{
+  width: 30%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  position: relative;
+}
+
+.post_link .post_link_ttl.prev{
+  padding-left: 30px;
+}
+
+.post_link .post_link_ttl.prev::before{
+  content: '';
+  background: url(../img/common/icon_arrow_left.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 0;
+  top: -3px;
+}
+
+.post_link .post_link_ttl.next{
+  padding-right: 30px;
+}
+
+.post_link .post_link_ttl.next::after{
+  content: '';
+  background: url(../img/common/icon_arrow_right.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  top: -3px;
+}
+/************************************
+お知らせ関連サイドバ-
+************************************/
+.sidebar_menu .sidebar_news_ttl{
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 2px solid #F2F5FA;
+  padding: 20px 30px;
+}
+
+.sidebar_menu .sidebar_news_item{
+  border-bottom: 1px solid #F2F5FA;
+  position: relative;
+}
+
+.sidebar_menu .sidebar_news_item a{
+  padding: 20px 30px;
+  display: block;
+}
+
+.sidebar_menu .sidebar_news_item a:hover{
+  background: #F2F5FA;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.sidebar_menu .sidebar_news_item a img{
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  width: 14px;
+}
+/************************************
+お支払い情報・明細確認
+************************************/
+
+
+
+
+
+
+
+/************************************
+ FREE Wi-fi接続画面
+************************************/
+#free_wi-fi{
+  width: 960px;
+  margin: 0 auto;
+  padding: 80px 0 145px;
+}
+
+#free_wi-fi .free_wifi_img{
+  margin-bottom: 50px;
+}
+
+#free_wi-fi .terms{
+  height: 200px;
+  overflow: scroll;
+  background: #fff;
+  border: 1px solid #F2F5FA;
+  border-radius: 5px;
+  padding: 30px;
+  margin: 30px 0;
+}
+
+#free_wi-fi .terms h3{
+  margin: 30px 0 5px;
+}
+
+#free_wi-fi .terms_btn{
+  text-align: center;
+}
+
+#free_wi-fi .terms_checkbox_item{
+  margin-bottom: 10px;
+}
+
+#free_wi-fi input[type="checkbox"]{
+  appearance: checkbox;
+  -webkit-appearance: checkbox;
+}
+
+#free_wi-fi input[type="submit"]{
+  width: 290px;
+  height: 60px;
+  border: 1px solid #E2E7F0;
+}
+
+#free_wi-fi input[type="submit"]:disabled{
+  cursor: not-allowed;
+}
+
+#free_wi-fi input[type="submit"]:disabled:hover{
+  background: #E2E7F0;
+  color: #415964;
+}
+/************************************
+ ヘルプ
+************************************/
+#help .inner_help{
+  width: 1080px;
+  margin: 0 auto;
+  padding: 65px 0 130px;
+}
+
+#help .help_ttl{
+  background: #F2F5FA;
+  padding: 210px 0 130px;
+  text-align: center;
+}
+
+#help .help_ttl h1{
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+#help .help_ttl h1 span{
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+#help .help_ttl input[type="search"]{
+  width: 480px;
+  height: 50px;
+}
+
+#help .help_ttl button{
+  background: #46C541;
+  color: #fff;
+  width: 65px;
+  height: 50px;
+}
+
+#help .help_ttl button:hover{
+  background: #fff;
+  color: #46C541;
+  border: 1px solid #46C541;
+}
+
+#help .help_link .help_link_item{
+  background: #fff;
+  width: 345px;
+  text-align: center;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 6px rgba(78, 112, 141, .08);
+}
+
+#help .help_link .help_link_item a{
+  display: block;
+  padding: 55px 0;
+}
+
+#help .help_link .help_link_item img{
+  width: 55px;
+}
+
+#help .help_link .help_link_item p{
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+#help .help_faq{
+  margin: 70px auto 0;
+}
+
+#help .help_faq h2{
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+#help .faq_list .faq_item{
+  margin-bottom: 25px;
+}
+
+#help .faq_list .faq_item .faq_question{
+  background: #fff;
+  padding: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+#help .faq_list .faq_item .faq_question::after{
+  content: '';
+  width: 25px;
+  height: 25px;
+  background: url(/public/common/icon_arrow.svg);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#help .faq_list .faq_item .faq_question.open::after{
+  top: 15px;
+  right: 15px;
+  transform: rotate(180deg);
+}
+
+#help .faq_list .faq_item .faq_answer{
+  display: none;
+  background: #fff;
+  padding: 20px;
+  margin-top: 5px;
+}
+
+#help .faq_list .faq_item .faq_icon{
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+
+#help .faq_list .faq_item .faq_question .faq_icon{
+  background: #46C541;
+  color: #fff;
+}
+
+#help .faq_list .faq_item .faq_answer .faq_icon{
+  background: #EDFAF5;
+  color: #46C541;
+}
+
+#help .faq_list .faq_item p{
+  display: inline-block;
+  vertical-align: top;
+  line-height: 30px;
+  width: 95%;
+}
+
+#help .help_contact{
+  margin: 70px auto 0;
+}
+
+#help .help_contact .help_contact_item{
+  padding: 40px;
+  background: #fff;
+}
+
+#help .help_contact .help_contact_item_txt{
+  width: 340px;
+}
+
+#help .help_contact .help_contact_item_txt p:first-child{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#help .help_contact .help_contact_item_txt p:last-child{
+  margin-top: 10px;
+}
+
+#help .help_contact .help_contact_item_link{
+  width: 350px;
+}
+
+#help .help_contact .help_contact_item_link p{
+  font-size: 10px;
+  color: #415964;
+  margin-top: 10px;
+}
+/************************************
+ はじめての方
+************************************/
+#help #beginners{
+  padding-bottom: 130px;
+}
+
+#help #beginners .help_ttl{
+  text-align: left;
+  padding-bottom: 0;
+}
+
+#help #beginners .help_ttl h1{
+  font-size: 32px;
+}
+
+#help #beginners .beginners_select_tab{
+  padding-top: 70px;
+}
+
+#help #beginners .beginners_select_tab li{
+  width: 215px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 10px 10px 0  0;
+  padding: 15px 0;
+  cursor: pointer;
+}
+
+#help #beginners .beginners_select_tab li:hover{
+  background: #fff;
+  color: #46C541;
+}
+
+#help #beginners section{
+  padding: 65px 0 0;
+}
+
+#help #beginners section h2{
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#help #beginners section p{
+  margin-bottom: 20px;
+}
+
+#help #beginners section img{
+  margin: 20px 0;
+}
+
+#help #beginners .help_link{
+  width: 340px;
+  margin: 90px auto 0;
+}
+/************************************
+ プライバシーポリシー・利用規約
+************************************/
+#privacy,
+#terms,
+#contact{
+  padding: 65px 0;
+}
+
+#privacy .page_ttl,
+#terms .page_ttl,
+#contact .page_ttl{
+  text-align: center;
+  background: #F2F5FA;
+  padding: 100px 0 80px;
+}
+
+#privacy .page_ttl h1,
+#terms .page_ttl h1,
+#contact .page_ttl h1{
+  margin-bottom: 0;
+  font-size: 16px;
+}
+
+#privacy .page_ttl h1 span,
+#terms .page_ttl h1 span,
+#contact .page_ttl h1 span{
+  display: block;
+  color: #46C541;
+  font-size: 32px;
+}
+
+#privacy h2,
+#terms h2{
+  font-size: 20px;
+  margin: 20px 0 10px;
+}
+
+#privacy h3,
+#terms h3{
+  font-size: 18px;
+  margin: 10px 0 5px;
+}
+
+#privacy section,
+#terms section,
+#contact section{
+  background: #fff;
+  border-radius: 25px;
+  padding: 40px;
+  width: 1080px;
+  margin: 50px auto;
+}
+/************************************
+ お問い合わせ
+************************************/
+#contact .form_term{
+  margin-top: 50px;
+}
+
+#contact .form_description{
+  margin-bottom: 10px;
+}
+
+#contact input[type="submit"]{
+  width: 340px;
+  background: #46C541;
+  border: 1px solid #46C541;
+  color: #fff;
+  border-radius: 5px;
+  height: 50px;
+  line-height: 50px;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  margin: 20px auto 0;
+}
+
+#contact input[type="submit"]:hover{
+  background: #fff;
+  color: #46C541;
+}
+
+#contact textarea{
+  font-size: 14px;
+}
+
+#contact .privacy_txt{
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+#contact .privacy_txt a{
+  color: #2A81E8;
+  text-decoration: underline;
+}
+
+#contact .privacy_txt a:hover{
+  text-decoration: none;
+}
+
+#contact .wpcf7-list-item{
+  margin-left: 0;
+}
+
+#contact input[name="privacy_check"]{
+ appearance: checkbox;
+ -webkit-appearance: checkbox;
+}
+/************************************
+ 404
+************************************/
+.error_page{
+  width: 640px;
+  margin: 0 auto;
+  padding: 230px 0 150px;
+}
+
+.error_page_content{
+  background: #fff;
+  padding: 60px;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(78, 112, 141, .08);
+}
+
+.error_ttl{
+  text-align: center;
+}
+
+.error_ttl h1{
+  font-size: 80px;
+  color: #46C541;
+}
+
+.error_ttl p{
+  color: #46C541;
+  font-weight: bold;
+}
+
+.error_txt{
+  text-align: center;
+  margin: 25px 0 45px;
+}
+
+.error_txt p{
+  line-height: 2;
+}
+
+.top_back_btn{
+  width: 340px;
+  margin: 0 auto;
+}
+
+.top_back_btn .btn{
+  background: #E2E7F0;
+  color: #415964;
+  border: 1px solid #E2E7F0;
+}
+
+.top_back_btn .btn:hover{
+  background: #415964;
+  color: #E2E7F0;
+}
+
+
+
+
+@media screen and (min-width: 1900px) {
+
+  .sidebar_product{
+    width: 17%;
+  }
+
+}
+
+
+
+@media screen and (min-width: 1024px) and (max-width:1400px) {
+
+
+  .sidebar_product{
+    width: 18%;
+  }
+
+  .sidebar_product .sidebar_help{
+    margin: 150px 10px 0;
+    padding: 30px 10px;
+  }
+
+  .sidebar_cp,
+  .sidebar_menu{
+    width: 23%;
+  }
+
+  .sidebar_cp .sidebar_item{
+    padding: 15px;
+  }
+
+  .sidebar_cp .sidebar_item.todays_weather .todays_weather_txt{
+    font-size: 14px;
+  }
+
+  .sidebar_cp .sidebar_item .sidebar_cp_item_ttl{
+    font-size: 14px;
+  }
+
+  .sidebar_sc .sidebar_sc_item{
+    padding: 10px;
+  }
+
+  .sidebar_sc .sidebar_sc_item img{
+    width: 20px;
+    height: 20px;
+  }
+
+  .sidebar_sc .sidebar_sc_item .action_name{
+    font-size: 12px;
+  }
+
+  .sidebar_sc .sidebar_sc_item .saved_txt .created_date{
+    font-size: 10px;
+  }
+
+  .sidebar_sc .sidebar_sc_item .sidebar_sc_txt{
+    font-size: 12px;
+  }
+
+  .sidebar_sc .readmore{
+    font-size: 12px;
+  }
+
+  .sidebar_menu .sidebar_parkedit_ttl,
+  .sidebar_menu .sidebar_news_ttl{
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  .sidebar_menu .sidebar_parkedit_item a,
+  .sidebar_menu .sidebar_news_item a{
+    padding: 20px;
+    font-size: 12px;
+  }
+
+  .news_ttl{
+    max-width: 50%;
+  }
+
+  .content_frame{
+    padding: 50px 25px;
+  }
+
+  #parkinfo_edit .park_status_item{
+    margin-right: 10px;
+  }
+
+  #parkinfo_edit .day_of_week{
+    margin-right: 10px;
+  }
+
+  #products .products_list .item{
+    font-size: 12px;
+  }
+
+  #parkinfo_edit .flex_container_time label.label_style{
+    font-size: 10px;
+  }
+
+  .sidebar_review{
+    padding: 15px;
+  }
+
+  .sidebar_review .sidebar_review_ttl{
+    font-size: 12px;
+  }
+
+  .sidebar_review .sidebar_review_ttl img{
+    width: 30px;
+    height: 30px;
+  }
+
+  .sidebar_review .sidebar_review_ttl img.help_icon{
+    width: 20px;
+    height: 20px;
+  }
+
+
+
+}
+
+
+
+
+
+
+
+@media screen and (max-width:1024px) {
+
+  /************************************
+   ダッシュボード
+  ************************************/
+  #top .article_items .article_item{
+    width: 49%;
+    margin-bottom: 20px;
+  }
+  /************************************
+   公園　ダッシュボード
+  ************************************/
+  #park .park_info_item{
+    width: 49%;
+    margin-bottom: 20px;
+  }
+
+  #park .park_info_shortcut_item{
+    width: 49%;
+    margin-bottom: 20px;
+  }
+  /************************************
+   サイドバープロダクト
+  ************************************/
+  .sidebar_product{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: all .4s;
+    z-index: 997;
+  }
+
+  .sidebar_product.open{
+    left: 0;
+  }
+
+  .control_panel_content{
+    width: 100%;
+  }
+
+  .sidebar_cp{
+    width: 100%;
+    max-width: 100%;
+    margin: 40px 0 0;
+  }
+
+  .sidebar_cp .sidebar_item.todays_weather{
+    width: 100%;
+  }
+
+  .sidebar_cp .sidebar_item{
+    width: 48%;
+    display: inline-block;
+  }
+
+  .sidebar_cp .sidebar_item:nth-child(even){
+    margin-left: 20px;
+  }
+  /************************************
+   サイドバー　ショートカット　メニュー
+  ************************************/
+  .shortcut_popular_item_wrap{
+    flex-flow: wrap;
+  }
+
+  .shortcut_popular .shortcut_popular_item{
+    width: 49%;
+    margin-bottom: 20px;
+  }
+
+  .shortcut_popular .shortcut_popular_item p br{
+    display: none
+  }
+
+  .sidebar_menu{
+    width: 100%;
+    max-width: 100%;
+    margin: 40px 0 0;
+    position: static;
+  }
+  /************************************
+  公園の情報編集
+  ************************************/
+  .content_frame{
+    padding: 30px;
+  }
+
+  #parkinfo_edit .address input,
+  #parkinfo_edit .tel input{
+    width: 100%;
+  }
+
+  #parkinfo_edit .price input{
+    width: 90%;
+  }
+
+  #parkinfo_edit .flex_container_time label.label_style{
+    font-size: 10px;
+  }
+
+  #parkinfo_edit .item_element div:first-child{
+    margin-top: 0;
+  }
+
+  #parkinfo_edit .item_element div{
+    margin-top: 10px;
+  }
+  /************************************
+   この公園の情報
+  ************************************/
+  #singlepark .singlepark_headline {
+    padding: 80px 0 0;
+    margin: 0 0 50px;
+  }
+  #singlepark .single_park_name {
+    margin: 25px auto 15px;
+  }
+  #singlepark .single_park_name div {
+    font-size: 10px;
+  }
+  #singlepark .single_park_name h1 {
+    font-size: 20px;
+  }
+  #singlepark .single_park_name h1 img {
+    width: 25px;
+  }
+  #singlepark .singlepark_headline ul {
+    display: flex;
+  }
+  #singlepark .singlepark_headline ul li a {
+    display: block;
+    font-size: 10px;
+    padding: 10px 5px;
+    border-radius: 8px;
+  }
+  #singlepark .park_content.flex_container{
+    display: block;
+  }
+  #singlepark .park_main_content {
+    width: 100%;
+  }
+  #singlepark .park_side_content {
+    width: 100%;
+  }
+  #singlepark .park_main_content section {
+    margin: 0 0 40px;
+  }
+  #singlepark .park_side_content section {
+    margin: 0 0 30px;
+  }
+  #singlepark .park_main_content h2,
+  #singlepark .park_side_content h2 {
+    font-size: 16px;
+    margin: 0 0 12px;
+  }
+  #singlepark .park_main_content .park_content_wrap {
+    padding: 20px 5%;
+    border-radius: 10px;
+  }
+  #singlepark .park_side_content .park_content_wrap {
+    padding: 20px 5%;
+    border-radius: 0;
+  }
+  #singlepark .park_main_content .park_content_wrap .flex_container{
+    display: block;
+  }
+  #singlepark .park_content_wrap dl dt {
+    font-size: 12px;
+    margin: 0 0 10px;
+  }
+  /** section01/基本情報 **/
+  #singlepark #basicinfo .park_content_wrap dl div {
+    padding: 15px 0;
+  }
+  #singlepark #basicinfo .park_content_wrap dl div:first-child {
+    padding: 0 0 15px;
+  }
+  #singlepark #basicinfo .park_content_wrap dl div:last-child {
+    padding: 15px 0 0;
+  }
+  #singlepark #basicinfo .park_content_wrap dl dd {
+    font-size: 12px;
+  }
+  /** section02/特徴 **/
+  #singlepark #utility .park_content_wrap {
+    margin: 0 0 15px;
+  }
+  #singlepark #utility .park_content_wrap dl dt {
+    margin: 0 0 15px;
+  }
+  #singlepark #utility .park_content_wrap dl dd {
+    padding: 0;
+  }
+  #singlepark #utility .park_content_wrap ul {
+    display: flex;
+  }
+  #singlepark #utility .park_utility_detail ul {
+    padding: 15px 0 0;
+  }
+  #singlepark #utility .park_content_wrap ul li {
+    width: 48%;
+    margin: 0 4% 15px 0;
+    font-size: 12px;
+  }
+  #singlepark #utility .park_utility_detail ul li {
+    margin: 0 4% 15px 0;
+  }
+  #singlepark #utility .park_content_wrap ul li:nth-child(2n) {
+    margin-right: 0;
+  }
+  #singlepark #utility .park_utility ul li img {
+    width: 32px;
+    margin: 0 10px 0 0
+  }
+  #singlepark #utility .park_utility_detail ul li img {
+    width: 16px;
+    margin: 0 10px 0 0;
+  }
+  #singlepark #utility .park_content_wrap dl dd p {
+    font-size: 12px;
+  }
+  #singlepark #utility .detail_btn {
+    font-size: 12px;
+  }
+  #singlepark .park_photo_l {
+    width: 100%;
+    height: 400px;
+    margin: 0 0 5px;
+  }
+  #singlepark .park_photo_list {
+    width: 100%;
+  }
+  #singlepark .park_photo_l img,
+  #singlepark .park_photo_list li img {
+    border-radius: 2px;
+  }
+  #singlepark .park_photo_list li {
+    width: 24%;
+    height: 120px;
+    margin: 0 1.333% 0 0;
+  }
+  #singlepark .park_photo_list li:nth-child(2n) {
+    margin-right: 1.333%;
+  }
+  #singlepark .park_photo_list li:nth-child(4n) {
+    margin-right: 0;
+  }
+  /** section04/イベント **/
+  #singlepark #event .park_content_wrap .flex_container{
+    display: block;
+  }
+
+  #singlepark #event .park_content_wrap ul li {
+    width: 100%;
+    margin: 0 0 10px;
+  }
+  #singlepark #event .park_content_wrap ul li:last-child {
+    margin: 0;
+  }
+  #singlepark #event .park_content_wrap ul li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #singlepark #event .park_content_wrap ul li .event_img {
+    width: 100px;
+    height: 100px;
+    margin: 0;
+  }
+  #singlepark #event .park_content_wrap ul li .event_txt {
+    width: calc(100% - 110px);
+  }
+  /** section05/クチコミ **/
+  #singlepark .review_content {
+    margin: 0 0 15px;
+  }
+  #singlepark .review_user {
+    display: flex;
+    margin: 0 0 10px;
+  }
+  #singlepark .review_user img {
+    width: 48px;
+  }
+  #singlepark .review_user div {
+    width: calc(100% - 60px);
+  }
+  #singlepark .review_user_name {
+    font-size: 12px;
+  }
+  #singlepark .review_user_date {
+    font-size: 10px;
+  }
+  #singlepark .review_txt_warp {
+    padding: 15px 5%;
+    font-size: 12px;
+  }
+  #singlepark .review_btn {
+    font-size: 10px;
+  }
+  #singlepark .review_more_btn {
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  /** park_manager **/
+  #singlepark .park_manager ul {
+    padding: 20px 5%;
+    margin: 0 0 20px;
+    border-radius: 10px;
+  }
+  #singlepark .park_manager ul li {
+    font-size: 12px;
+    margin: 0 0 10px;
+  }
+  #singlepark .park_manager ul li::before {
+    width: 15px;
+    height: 15px;
+    margin: 0 10px 0 0;
+  }
+  #singlepark .park_manager .contact_btn {
+    text-align: center;
+    font-size: 14px;
+  }
+  /** park_access **/
+
+
+  /** park_contact **/
+  #singlepark .park_contact dl dd {
+    font-size: 12px;
+    margin: 0 0 25px;
+  }
+  /** around **/
+  #singlepark .around_head {
+    display: flex;
+    margin: 0 0 12px;
+  }
+  #singlepark .park_main_content .around .park_content_wrap  ul li a {
+    display: flex;
+  }
+  /************************************
+  プロダクト
+  ************************************/
+  #products .item_head{
+    display: none;
+  }
+
+  #products .item_element.flex_container{
+    padding: 25px;
+    display: block;
+  }
+
+  #products .item_element div:first-child{
+    margin-top: 0;
+  }
+
+  #products .item_element div{
+    margin-top: 10px;
+  }
+
+  #products .item_element div:nth-of-type(2){
+    width: 15%;
+  }
+
+  #products .item_element div:nth-of-type(3){
+    width: 100%;
+  }
+
+  #products .item_element div:nth-of-type(4){
+    width: 100%;
+  }
+
+  #products .item_element div:nth-of-type(5){
+    width: 100%;
+  }
+
+  #products .item_element div:nth-of-type(6){
+    width: 100%;
+  }
+
+  #products .popup_btn{
+    top: 10%;
+  }
+  /************************************
+  口コミ
+  ************************************/
+
+
+
+
+  /************************************
+  アカウント情報
+  ************************************/
+
+
+
+  /************************************
+  お知らせ関連
+  ************************************/
+  .news_content{
+    width: 100%;
+  }
+
+  .news_ttl{
+    max-width: 50%;
+  }
+
+  .article_items .article_item{
+    width: 49%;
+  }
+
+  .pagenavi{
+    text-align: center;
+  }
+  /************************************
+  お知らせ関連シングル
+  ************************************/
+  .single_news_content .news_cat{
+    text-align: left;
+  }
+  /************************************
+  お支払い情報・明細確認
+  ************************************/
+
+
+
+
+
+  /************************************
+   FREE Wi-fi接続画面
+  ************************************/
+  #free_wi-fi{
+    width: 90%;
+  }
+  /************************************
+   ヘルプ
+  ************************************/
+  #help .help_ttl{
+    padding: 150px 0 80px;
+  }
+
+  #help .inner_help{
+    width: 90%;
+  }
+
+  #help .faq_list .faq_item p{
+    width: 90%;
+  }
+
+  #help .help_contact .help_contact_item_txt{
+    width: 300px;
+  }
+
+  #help .help_contact .help_contact_item_txt p{
+    font-size: 12px;
+  }
+
+  #help .help_contact .help_contact_item_link{
+    width: 220px;
+  }
+  /************************************
+   はじめての方へ
+  ************************************/
+  #help #beginners .help_ttl{
+    padding-bottom: 80px;
+  }
+
+  #help #beginners h1{
+    text-align: center;
+  }
+
+  #help #beginners .beginners_select_tab{
+    padding-top: 20px;
+  }
+
+  #help #beginners .beginners_select_tab ul{
+    background: #fff;
+    padding: 0 20px;
+  }
+
+  #help #beginners .beginners_select_tab li.first{
+    display: block;
+  }
+
+  #help #beginners .beginners_select_tab li{
+    width: 100%;
+    text-align: left;
+    display: none;
+    position: relative;
+  }
+
+  #help #beginners .beginners_select_tab li.first::after{
+    content: '';
+    width: 25px;
+    height: 25px;
+    background: url(../img/common/icon_arrow.svg);
+    position: absolute;
+    top: 10px;
+    right: 0;
+  }
+
+  #help #beginners .beginners_select_tab li.first.open::after{
+    top: 17px;
+    right: -5px;
+    transform: rotate(180deg);
+  }
+
+  #help #beginners section h2{
+    text-align: center;
+  }
+  /************************************
+   プライバシーポリシー・利用規約
+  ************************************/
+  #privacy .page_ttl,
+  #terms .page_ttl,
+  #contact .page_ttl{
+    padding: 80px 0;
+  }
+
+  #privacy section,
+  #terms section,
+  #contact section{
+    width: 95%;
+  }
+  /************************************
+   お問い合わせ
+  ************************************/
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+@media screen and (max-width:480px) {
+
+  #top .article_items .article_item{
+    width: 100%;
+  }
+
+  #park .park_info_item{
+    width: 100%;
+  }
+
+  #park .park_info_shortcut_item{
+    width: 100%;
+  }
+
+  .sidebar_cp .sidebar_item{
+    width: 100%;
+    display: block;
+    padding: 20px;
+  }
+
+  .sidebar_cp .sidebar_item:nth-child(even){
+    margin-left: 0;
+  }
+
+  .item_element.flex_container{
+    display: block;
+  }
+
+  .item_element .selected_item{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  .item_element .selected_item:nth-of-type(1){
+    width: 20%;
+    margin-top: 0;
+  }
+
+  .panel_item_wrap.flex_container_wrap{
+    display: block;
+  }
+
+  #controlpanel .panel_item{
+    width: 100%;
+  }
+
+  #controlpanel .panel_item .panel_item_ttl h2{
+    font-size: 16px;
+  }
+
+  #controlpanel .panel_item_content{
+    height: auto;
+  }
+
+  #controlpanel .panel_item .flex_container_time.flex_container_s{
+    display: block;
+  }
+
+  #controlpanel .flex_container_time .time_item{
+    width: 100%;
+  }
+
+  #controlpanel .flex_container_time .time_item:nth-of-type(1){
+    margin-bottom: 20px;
+  }
+
+  #controlpanel .time_symbol{
+    display: none;
+  }
+
+  #controlpanel .upload_item.flex_container_start{
+    display: block;
+  }
+
+  #upload{
+    width: 100%;
+  }
+
+  .preview{
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .shortcut_create .shortcut_create_inner{
+    width: 100%;
+  }
+
+  .shortcut_create .shortcut_create_name .shortcut_create_ttl{
+    font-size: 14px;
+  }
+
+  #products h2{
+    font-size: 16px;
+  }
+
+  #products .content_btn .select{
+    margin-right: 0;
+  }
+
+  #products .item_element div:nth-of-type(2){
+    width: 30%;
+  }
+
+  #products .popup_btn{
+    top: 10%;
+  }
+
+  #products .create_btn.sp a{
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  #parkinfo_edit h2{
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+  #parkinfo_edit .parkinfo_edit_ttl p{
+    font-size: 10px;
+  }
+
+  #parkinfo_edit .price .form_item span{
+    width: 20%;
+  }
+
+  #parkinfo_edit .price input{
+    width: 80%;
+  }
+
+  #parkinfo_edit button[type="submit"]{
+    width: 100%;
+  }
+
+  #parkinfo_edit .parkinfo_edit_ttl{
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+  }
+
+  #parkinfo_edit .business_hours .flex_container_s{
+    display: block;
+  }
+
+  #parkinfo_edit .park_status_item{
+    margin-bottom: 10px;
+  }
+
+  #parkinfo_edit .park_status_item.flex_container_s{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  #parkinfo_edit .park_status_switch.flex_container_s{
+    width: auto;
+    display: flex;
+  }
+
+  #parkinfo_edit .flex_container_s.flex_container_time{
+    display: flex;
+    width: 100%;
+  }
+
+  #parkinfo_edit .flex_container_time .time_item{
+    width: 100%;
+  }
+
+  #parkinfo_edit .flex_container_time .time_item .flex_container_s{
+    display: flex;
+  }
+
+  #parkinfo_edit .item_head{
+    display: none;
+  }
+
+  #parkinfo_edit .item_element{
+    padding: 20px 0;
+  }
+
+  #parkinfo_edit .item_element label.label_style::before{
+    left: 0;
+  }
+
+  #parkinfo_edit .item_element label.label_style::after{
+    left: 3px;
+  }
+
+  #parkinfo_edit .item_element div:nth-of-type(2){
+    width: 30%;
+  }
+
+  #parkinfo_edit .item_element div:nth-of-type(3){
+    width: 100%;
+  }
+
+  #parkinfo_edit .item_element div:nth-of-type(4){
+    width: 100%;
+  }
+
+  #parkinfo_edit .item_element div:nth-of-type(5){
+    width: 100%;
+  }
+
+  #singlepark .park_photo_l {
+    height: 330px;
+  }
+  #singlepark .park_photo_list li {
+    height: 80px;
+  }
+
+  #review h2{
+    font-size: 16px;
+  }
+
+  #review .review_content{
+    padding: 25px;
+    font-size: 12px;
+  }
+
+  #review .review_content .review_content_user .date{
+    font-size: 10px;
+  }
+
+  #review .review_content .review_content_user .date span{
+    display: block;
+    margin-left: 0;
+  }
+
+  #review .review_content_answer .flex_container{
+    display: block;
+  }
+
+  #review .review_content .review_content_answer img.user_icon{
+    margin: 0 0 10px;
+  }
+
+  #review .review_content .review_content_answer textarea{
+    width: 100%;
+  }
+
+  #review .review_content .review_content_answer button{
+    width: 100%;
+    margin: 10px 0 0;
+  }
+
+  .news_item .flex_container_s{
+    display: block;
+  }
+
+  .news_item a:after{
+    display: none;
+  }
+
+  .news_cat{
+    display: inline-block;
+    text-align: left;
+  }
+
+  .news_time{
+    display: inline-block;
+  }
+
+  .news_ttl{
+    max-width: 100%;
+    margin-top: 5px;
+  }
+
+  .single_news_content{
+    padding: 50px 20px;
+  }
+
+  .single_news_content .news_ttl h2{
+    font-size: 20px;
+  }
+
+  .article_items .article_item{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #help .help_ttl{
+    padding: 110px 0 60px;
+  }
+
+  #help .help_ttl h1 span{
+    display: block;
+  }
+
+  #help .help_ttl input[type="search"]{
+    width: 75%;
+  }
+
+  #help .help_link.flex_container_wrap{
+    display: block;
+  }
+
+  #help .help_link .help_link_item{
+    width: 100%;
+    text-align: left;
+  }
+
+  #help .help_link .help_link_item a{
+    padding: 20px;
+  }
+
+  #help .help_link .help_link_item img{
+    vertical-align: middle;
+    width: 30px;
+  }
+
+  #help .help_link .help_link_item p{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 0 20px;
+  }
+
+  #help .faq_list .faq_item .faq_icon{
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+  }
+
+  #help .faq_list .faq_item p{
+    width: 80%;
+    line-height: 25px;
+  }
+
+  #help .faq_list .faq_item .faq_question.open::after{
+    top: 22px;
+    right: 13px;
+  }
+
+  #help .help_contact_item{
+    padding: 40px 20px;
+  }
+
+  #help .help_contact .flex_container{
+    display: block;
+  }
+
+  #help .help_contact .help_contact_item_txt{
+    width: 100%;
+  }
+
+  #help .help_contact .help_contact_item_link{
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  #help #beginners .help_ttl{
+    padding-bottom: 60px;
+  }
+
+  #help #beginners .help_ttl h1{
+    font-size: 20px;
+  }
+
+  #help #beginners .inner_mid{
+    width: 90%;
+  }
+
+  #help #beginners section h2{
+    font-size: 20px;
+  }
+
+  #help #beginners .help_link{
+    width: 100%;
+  }
+
+  #login_related .logo{
+    width: 80%;
+  }
+
+  #login_related .login_related_content{
+    padding: 40px 20px;
+  }
+
+  #login_related .step_content .step_item::after{
+    width: 120px;
+  }
+
+  #account_related .page_ttl_wrap{
+    width: 90%;
+    margin: 0 auto 40px;
+  }
+
+  #account_related .page_ttl_txt{
+    margin-bottom: 0;
+  }
+
+  #account_related .content_frame{
+    padding: 30px 0;
+  }
+
+  #account_related h2{
+    text-align: center;
+  }
+
+  #account_related .account_item{
+    padding: 20px 0;
+    margin:  0 20px;
+  }
+
+  #account_related .account_item.prof_img.flex_container,
+  #account_related .prof_img_edit.flex_container{
+    display: flex;
+  }
+
+  #account_related .prof_img div,
+  #account_related .prof_img_edit div{
+    width: 70%;
+  }
+
+  #account_related .prof_img div:nth-of-type(2),
+  #account_related .prof_img_edit div:nth-of-type(2){
+    width: 20%;
+  }
+
+  #account_related .prof_img div img.icon,
+  #account_related .prof_img_edit div img.icon{
+    width: 100%;
+    height: auto;
+  }
+
+  #account_related .account_item.account_item_ttl{
+    padding: 0 20px 20px 20px;
+  }
+
+  #account_related .account_item.flex_container{
+    display: block;
+  }
+
+  #account_related .account_form_wrap{
+    padding: 30px 20px 0;
+  }
+
+  #account_related .content_frame .account_item .btn{
+    margin-top: 20px;
+  }
+
+  #contact input[type="submit"]{
+    width: 100%;
+  }
+
+  .error_page{
+    width: 90%;
+    padding: 160px 0 120px;
+  }
+
+  .error_page_content{
+    padding: 60px 20px;
+  }
+
+  .error_ttl h1{
+    font-size: 60px;
+  }
+
+  .top_back_btn{
+    width: 100%;
+  }
+
+
+
+
+
+
+
+
+}

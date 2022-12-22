@@ -1,0 +1,2 @@
+class TmpDatum < ApplicationRecord
+end

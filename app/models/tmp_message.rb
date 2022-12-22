@@ -1,0 +1,2 @@
+class TmpMessage < ApplicationRecord
+end

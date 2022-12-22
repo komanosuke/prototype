@@ -1,0 +1,113 @@
+<h1>TEST APP</h1>
+
+<%= form_tag(url_for(:action => 'index'), :remote => true) do %>
+    <%= submit_tag "タイトルを変更する(js.erbのテスト)" ,{id: "submitButton"} %>
+<% end %>
+
+<!-- getパラメータで指示を渡す jsで書く、ソケット送信（Controller）＜or jsで直接ソケット送信＞、ソケット受信（Job、requestかあればリクエスト変数に格納してラズパイに返す）   -->
+<!-- パラメータ取るなら、一気にとる必要がある。ソケットから送られてきたデータをViewに出せたが、全て待った上でなので時間かかる。非同期処理じゃないとできない。ヘルパーメソッドも最初の一回だけ。 --->
+
+<button id="ajaxButton">Ajaxで送る(Ajaxのテスト)</button>
+
+<br>
+
+<h2>データ受信中・・・</h2>
+<%= @temperature %>
+<%= @battery %>
+<%= @fan %>
+<%= @inverter %>
+<%= @display %>
+<%= @audio %>
+<%= @LED %>
+<%= @color %>
+<%= @human %>
+<%= @ac1 %>
+<%= @ac2 %>
+<%= @usb5v %>
+<%= @wifiuse %>
+<%= @position %>
+<%= @message %>
+
+<h1 id="ttl">スマートベンチ管理画面（デモ）</h1>
+
+
+<!-- デフォルトでどっちか選んどく --->
+<p>FANを制御ON/OFFします</p>
+<div>
+	<label><input type="radio" name="FAN" value="FAN,ON" class="radio_btn"><span>ON</span></label>
+	<label><input type="radio" name="FAN" value="FAN,OFF" class="radio_btn"><span>OFF</span></label>
+</div>
+
+<p>イベント用LEDを制御ON/OFFします</p>
+<div>
+	<label><input type="radio" name="LED" value="LED,ON" class="radio_btn"><span>ON</span></label>
+	<label><input type="radio" name="LED" value="LED,OFF" class="radio_btn"><span>OFF</span></label>
+</div>
+
+<p>LEDカラーを変更します</p>
+<div>
+	<label><input type="radio" name="COLOR" value="COLOR,R:195,G:110,B:0" class="radio_btn"><span>変更</span></label>
+	<label><input type="radio" name="COLOR" value="COLOR,R:0,G:0,B:0" class="radio_btn"><span>リセット</span></label>
+</div>
+
+<p>液晶ディスプレイを制御ON/OFFします</p>
+<div>
+	<label><input type="radio" name="DISPLAY" value="DISPLAY,ON" class="radio_btn"><span>ON</span></label>
+	<label><input type="radio" name="DISPLAY" value="DISPLAY,OFF" class="radio_btn"><span>OFF</span></label>
+</div>
+
+<p>PDFを制御ON/OFFします</p>
+<div>
+	<label><input type="radio" name="PDF" value="PDF,ON:http://54.64.49.214/sample1.pdf" class="radio_btn"><span>ON</span></label>
+	<label><input type="radio" name="PDF" value="PDF,OFF" class="radio_btn"><span>OFF</span></label>
+</div>
+
+<p>画像を制御ON/OFFします</p>
+<div>
+	<label><input type="radio" name="PDF" value="PDF,ON:http://54.64.49.214/bench.jpg" class="radio_btn"><span>ON</span></label>
+	<label><input type="radio" name="PDF" value="PDF,OFF" class="radio_btn"><span>OFF</span></label>
+</div>
+
+<p>MP4を制御ON/OFFします</p>
+<div>
+	<label><input type="radio" name="MP4" value="MP4,ON:http://54.64.49.214/sample.mp4" class="radio_btn"><span>ON</span></label>
+	<label><input type="radio" name="MP4" value="MP4,OFF" class="radio_btn"><span>OFF</span></label>
+</div>
+
+<p>オーディオを制御ON/OFFします</p>
+<div>
+	<label><input type="radio" name="AUDIO" value="AUDIO,ON" class="radio_btn"><span>ON</span></label>
+	<label><input type="radio" name="AUDIO" value="AUDIO,OFF" class="radio_btn"><span>OFF</span></label>
+</div>
+
+<p>音量を変更します</p>
+<div>
+	<label><input type="radio" name="VOLUME" value="VOLUME,10000" class="radio_btn"><span>ON</span></label>
+	<label><input type="radio" name="VOLUME" value="VOLUME,0" class="radio_btn"><span>OFF</span></label>
+</div>
+
+<p>MP3を制御ON/OFFします</p>
+<div>
+	<label><input type="radio" name="MP3" value="MP3,ON:http://54.64.49.214/sample/sample.mp3" class="radio_btn"><span>ON</span></label>
+	<label><input type="radio" name="MP3" value="MP3,OFF" class="radio_btn"><span>OFF</span></label>
+</div>
+
+<p>USB用5V電源供給を許可ON/OFFします</p>
+<div>
+	<label><input type="radio" name="USB5V" value="USB5V,ON" class="radio_btn"><span>ON</span></label>
+	<label><input type="radio" name="USB5V" value="USB5V,OFF" class="radio_btn"><span>OFF</span></label>
+</div>
+
+<p>LOGを許可ON/OFFします</p>
+<div>
+	<label><input type="radio" name="LOG" value="LOG,ON" class="radio_btn"><span>ON</span></label>
+	<label><input type="radio" name="LOG" value="LOG,OFF" class="radio_btn"><span>OFF</span></label>
+</div>
+
+<span class="response"></span>
+
+<%= javascript_pack_tag 'index' %>
+<%# 
+<div style="width: 500px; height: 200px; overflow-y: auto; border: 1px solid #333;" id="show"></div>
+<input type="text" size="80" id="msg" name="msg" />
+<input id="send_button" type="button" value="送信" /> %>
