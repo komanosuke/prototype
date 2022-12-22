@@ -48,7 +48,7 @@ class PanelsController < ApplicationController
 
     def show
         # server.rbからshowにつなげるとき、server.rbのhost,portを変更・確認
-
+        ghp_iQ8B5kocSHnKspInOU9GWsQInanzxW1vNVM
 
 
         # MACアドレスを認識する処理 JSONからMACアドレス剥ぎ取る
