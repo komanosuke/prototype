@@ -1,0 +1,166 @@
+<main>
+<div id="account_edit">
+<div class="wrap flex_container_start">
+  <div class="menu-trigger tab_sp" href="javascript:void(0);">
+	<span class="spnavButton__border"></span>
+	<span class="spnavButton__border"></span>
+	<span class="spnavButton__border"></span>
+</div>
+
+<aside class="sidebar_product">
+  <div class="sidebar_product_ttl">公園一覧</div>
+  <div class="park_item">
+    <div class="park_name">内灘サンセットパーク</div>
+    <ul>
+      <li>
+        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/park/products', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
+          <span class="notification_num">2</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/parcom/review', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/others/', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <div class="park_item">
+    <div class="park_name">内灘町総合公園</div>
+    <ul>
+      <li>
+        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/park/products', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
+          <span class="notification_num">2</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/parcom/review', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/others/', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <div class="park_item">
+    <div class="park_name">ハマナス恐竜公園</div>
+    <ul>
+			<li>
+        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/park/products', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
+          <span class="notification_num">2</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/parcom/review', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/others/', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <div class="park_item">
+    <div class="park_name">白帆台第４公園</div>
+    <ul>
+			<li>
+        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/park/products', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
+          <span class="notification_num">2</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/parcom/review', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
+        <% end %>
+      </li>
+      <li>
+        <%= link_to '/others/', class: "hover" do %>
+          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <div class="sidebar_help">
+    <div class="sidebar_help_ttl"><%= image_tag "/sidebar/icon_speechbubble.svg" %>ヘルプページはこちら</div>
+    <p>使い方やよくあるご質問等をまとめています。</p>
+    <%= link_to '/parcom/help', class: "btn hover flex_container" do %>
+      ヘルプはこちらから<%= image_tag "/sidebar/icon_arrow_help_off.svg" %>
+    <% end %>
+  </div>
+</aside>
+  <div id="account_related" class="inner_mid">
+    <div class="page_ttl_wrap">
+      <div class="page_ttl">
+        <h1>アカウント情報</h1>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content_frame">
+        <div class="account_item account_item_ttl">
+          <dt><h2>基本情報の変更</h2></dt>
+          <dd>一部の情報はGoogleのサービスと連携されています。<a href="">詳細</a></dd>
+        </div>
+        <div class="account_form_wrap">
+          <div class="prof_img_edit flex_container">
+            <div>
+              <dt class="form_term">プロフィール画像<span class="any">任意</span></dt>
+              <dd class="form_description">アカウントの基本情報を確認・管理・変更することが可能です。<a href="">詳細</a></dd>
+            </div>
+            <div>
+              <%= image_tag "/common/icon_owner_default.svg", class: "icon" %>
+            </div>
+          </div>
+          <form class="" action="" method="post">
+            <div class="txt_field">
+              <dt class="form_term">ユーザーネーム<span class="req">必須</span></dt>
+              <dd class="form_description"><input type="text" name="" placeholder="ユーザーネーム" value=""></dd>
+            </div>
+            <div class="txt_field">
+              <dt class="form_term">自治体名<span class="req">必須</span></dt>
+              <dd class="form_description"><input type="text" name="" placeholder="〇〇市" value=""></dd>
+            </div>
+            <div class="txt_field">
+              <dt class="form_term">所属<span class="req">必須</span></dt>
+              <dd class="form_description"><input type="text" name="" placeholder="公園緑地課" value=""></dd>
+            </div>
+            <button type="submit" class="btn btn_g">この内容で変更する</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>

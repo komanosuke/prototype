@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_22_043217) do
+ActiveRecord::Schema.define(version: 2022_12_23_020025) do
 
   create_table "benches", force: :cascade do |t|
     t.integer "park_id"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2022_12_22_043217) do
     t.string "map"
     t.string "website"
     t.string "size"
-    t.string "profile"
+    t.text "profile"
     t.string "status"
     t.json "parking_info"
     t.json "toilet_info"
@@ -131,23 +131,23 @@ ActiveRecord::Schema.define(version: 2022_12_22_043217) do
 
   create_table "users", force: :cascade do |t|
     t.string "role"
-    t.date "user_registered"
-    t.integer "user_login"
+    t.date "registered"
+    t.integer "login"
     t.string "display_name"
-    t.string "user_email"
-    t.string "user_pass"
-    t.string "user_zip"
-    t.string "user_prefecture"
-    t.string "user_address"
-    t.string "user_street"
-    t.string "user_tel"
-    t.string "user_municipality"
-    t.string "user_division"
-    t.binary "user_image"
-    t.text "user_profile"
-    t.string "user_notification"
-    t.string "user_flag"
-    t.text "user_admin_memo"
+    t.string "email"
+    t.string "password_digest"
+    t.string "zip"
+    t.string "prefecture"
+    t.string "address"
+    t.string "street"
+    t.string "tel"
+    t.string "municipality"
+    t.string "division"
+    t.binary "image"
+    t.text "profile"
+    t.string "notification"
+    t.string "flag"
+    t.text "admin_memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

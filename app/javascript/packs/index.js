@@ -79,7 +79,7 @@ function postData(command){
     let request_cmd =  command + ',MAC,' + mac_adrs;
     console.log('コマンド: ' + request_cmd + ' をMACアドレス: ' + mac_adrs + ' のベンチに送信');
 	$.ajax({
-		url: '/panels/say',
+		url: '/parcom/post_data',
 		type: 'GET',
 		dataType: 'text',
 		async: true,

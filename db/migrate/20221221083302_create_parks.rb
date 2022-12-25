@@ -15,7 +15,7 @@ class CreateParks < ActiveRecord::Migration[6.1]
       t.string :map
       t.string :website
       t.string :size
-      t.string :profile
+      t.text :profile
       t.string :status
       t.json :parking_info
       t.json :toilet_info

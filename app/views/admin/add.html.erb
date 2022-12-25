@@ -1,0 +1,25 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<p id="admin_title">DBにデータを追加する</p>
+<p id="add"><a href="/admin/index">adminトップに戻る>></a></p>
+
+<%= form_with url: 'show',local:false do |form| %>
+    <%= form.select(:category, ["ユーザー", "公園", "ベンチ", "お知らせ", "メディア情報", "写真", "イベント", "プロダクト", "ショートカット", "ベンチからのデータ", "ベンチへのコマンド"],{}, required: true) %>
+    <%= form.submit "変更" %>
+<% end %>
+
+<%= form_for(@tmp_data, url:{controller:'admin', action:'add'}) do |form| %>
+    <div class="form-group">
+        <label for="title">ベンチからのデータ</label>
+        <%= form.text_field :data, class:"form" %>
+    </div>
+    <div class="form-group">
+        <label for="read">MACアドレス</label>
+        <%= form.text_field :mac_address, class:"form" %>
+    </div>
+    <td><%= form.submit "作成" %></td></tr>
+<% end %>
+

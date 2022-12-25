@@ -1,0 +1,356 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<p id="admin_title">管理画面</p>
+<p id="add"><a href="/admin/add">データを追加する>></a></p>
+
+<%= form_with url:'index',local:false do |form| %>
+    <%= form.select(:category, ["ユーザー", "公園", "ベンチ", "お知らせ", "メディア情報", "写真", "イベント", "プロダクト", "ショートカット", "ベンチからのデータ", "ベンチへのコマンド"],{}, required: true) %>
+    <%= form.submit "変更" %>
+<% end %>
+
+<div class="table_name" id="user">
+<h2>ユーザー</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>権限</th>
+        <th>登録日時</th>
+        <th>ユーザーID(不要？)</th>
+        <th>表示名</th>
+        <th>メールアドレス</th>
+        <th>郵便番号</th>
+        <th>住所(都道府県)</th>
+        <th>住所(市区町村)</th>
+        <th>それ以降の住所</th>
+        <th>電話番号</th>
+        <th>自治体名</th>
+        <th>所属課</th>
+        <th>プロフィール画像</th>
+        <th>プロフィール内容</th>
+        <th>メール通知設定</th>
+        <th>通知フラグ</th>
+        <th>管理者メモ</th>
+        <th colspan="2"></th>
+    </tr>
+    <% @users.each do |user| %>
+        <tr>
+            <td><%= user.id %></td>
+            <td><%= user.role %></td>
+            <td><%= user.registered %></td>
+            <td><%= user.login %></td>
+            <td><%= user.display_name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.zip %></td>
+            <td><%= user.prefecture %></td>
+            <td><%= user.address %></td>
+            <td><%= user.street %></td>
+            <td><%= user.tel %></td>
+            <td><%= user.municipality %></td>
+            <td><%= user.division %></td>
+            <td><%= user.image %></td>
+            <td><%= user.profile %></td>
+            <td><%= user.notification %></td>
+            <td><%= user.flag %></td>
+            <td><%= user.admin_memo %></td>
+            <td><a href="/admin/edit/<%= user.id %>">編集</a></td>
+            <td><a href="/admin/delete">削除</a></td>
+        </tr>
+    <% end %>
+</table>
+</div>
+
+
+<div class="table_name" id="park">
+<h2>公園</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>ユーザーID</th>
+        <th>作成日時</th>
+        <th>ステータス</th>
+        <th>公園名</th>
+        <th>郵便番号</th>
+        <th>住所(都道府県)</th>
+        <th>住所(市区町村)</th>
+        <th>それ以降の住所</th>
+        <th>営業時間</th>
+        <th>電話番号</th>
+        <th>入場料金</th>
+        <th>Google Map</th>
+        <th>公式ホームページ</th>
+        <th>面積</th>
+        <th>紹介文</th>
+        <th>状況</th>
+        <th>駐車場情報</th>
+        <th>トイレ情報</th>
+        <th>遊具情報</th>
+        <th>施設情報</th>
+        <th>スポーツ情報</th>
+        <th>景観情報</th>
+        <th>防災情報</th>
+        <th>その他情報</th>
+        <th colspan="2"></th>
+    </tr>
+    <% @parks.each do |park| %>
+        <tr>
+            <td><%= park.id %></td>
+            <td><%= park.user_id %></td>
+            <td><%= park.post_date %></td>
+            <td><%= park.post_status %></td>
+            <td><%= park.name %></td>
+            <td><%= park.zip %></td>
+            <td><%= park.prefecture %></td>
+            <td><%= park.address %></td>
+            <td><%= park.street %></td>
+            <td><%= park.hours %></td>
+            <td><%= park.tel %></td>
+            <td><%= park.fee %></td>
+            <td><%= park.map %></td>
+            <td><%= park.website %></td>
+            <td><%= park.size %></td>
+            <td><%= park.profile %></td>
+            <td><%= park.status %></td>
+            <td><%= park.parking_info %></td>
+            <td><%= park.toilet_info %></td>
+            <td><%= park.playground_info %></td>
+            <td><%= park.facility_info %></td>
+            <td><%= park.sports_info %></td>
+            <td><%= park.view_info %></td>
+            <td><%= park.disaster_info %></td>
+            <td><%= park.other_info %></td>
+            <td><a href="/admin/edit/<%= park.id %>">編集</a></td>
+            <td><a href="/admin/delete">削除</a></td>
+        </tr>
+    <% end %>
+</table>
+</div>
+
+
+<div class="table_name" id="bench">
+<h2>ベンチ</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>所属公園ID</th>
+        <th>ベンチ名</th>
+        <th>MACアドレス</th>
+        <th>OS</th>
+        <th>導入日</th>
+        <th>位置情報</th>
+        <th>タイマーON/OFF</th>
+        <th colspan="2"></th>
+    </tr>
+    <% @benches.each do |bench| %>
+        <tr>
+            <td><%= bench.id %></td>
+            <td><%= bench.park_id %></td>
+            <td><%= bench.name %></td>
+            <td><%= bench.mac_address %></td>
+            <td><%= bench.os_name %></td>
+            <td><%= bench.introduced_date %></td>
+            <td><%= bench.position %></td>
+            <td><%= bench.timer %></td>
+            <td><a href="/admin/edit/<%= bench.id %>">編集</a></td>
+            <td><a href="/admin/delete">削除</a></td>
+        </tr>
+    <% end %>
+</table>
+</div>
+
+
+<div class="table_name" id="news">
+<h2>お知らせ</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>更新日時</th>
+        <th>タイトル</th>
+        <th>内容</th>
+        <th colspan="2"></th>
+    </tr>
+    <% @news.each do |news| %>
+        <tr>
+            <td><%= news.id %></td>
+            <td><%= news.date %></td>
+            <td><%= news.title %></td>
+            <td><%= news.contents %></td>
+            <td><a href="/admin/edit/<%= news.id %>">編集</a></td>
+            <td><a href="/admin/delete">削除</a></td>
+        </tr>
+    <% end %>
+</table>
+</div>
+
+
+<div class="table_name" id="media">
+<h2>メディア情報</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>更新日時</th>
+        <th>タイトル</th>
+        <th>内容</th>
+        <th colspan="2"></th>
+    </tr>
+    <% @media.each do |medium| %>
+        <tr>
+            <td><%= medium.id %></td>
+            <td><%= medium.date %></td>
+            <td><%= medium.title %></td>
+            <td><%= medium.contents %></td>
+            <td><a href="/admin/edit/<%= medium.id %>">編集</a></td>
+            <td><a href="/admin/delete">削除</a></td>
+        </tr>
+    <% end %>
+</table>
+</div>
+
+
+<div class="table_name" id="picture">
+<h2>写真</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>所属公園ID</th>
+        <th>写真のタイトル</th>
+        <th>写真</th>
+        <th colspan="2"></th>
+    </tr>
+    <% @pictures.each do |picture| %>
+        <tr>
+            <td><%= picture.id %></td>
+            <td><%= picture.park_id %></td>
+            <td><%= picture.name %></td>
+            <td><%= picture.picture %></td>
+            <td><a href="/admin/edit/<%= picture.id %>">編集</a></td>
+            <td><a href="/admin/delete">削除</a></td>
+        </tr>
+    <% end %>
+</table>
+</div>
+
+
+<div class="table_name" id="event">
+<h2>イベント</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>所属公園ID</th>
+        <th>イベント名</th>
+        <th>説明</th>
+        <th colspan="2"></th>
+    </tr>
+    <% @events.each do |event| %>
+        <tr>
+            <td><%= event.id %></td>
+            <td><%= event.park_id %></td>
+            <td><%= event.name %></td>
+            <td><%= event.contents %></td>
+            <td><a href="/admin/edit/<%= event.id %>">編集</a></td>
+            <td><a href="/admin/delete">削除</a></td>
+        </tr>
+    <% end %>
+</table>
+</div>
+
+
+<div class="table_name" id="product">
+<h2>プロダクト</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>所属公園ID</th>
+        <th>プロダクト名</th>
+        <th>説明</th>
+        <th colspan="2"></th>
+    </tr>
+    <% @products.each do |product| %>
+        <tr>
+            <td><%= product.id %></td>
+            <td><%= product.park_id %></td>
+            <td><%= product.name %></td>
+            <td><%= product.contents %></td>
+            <td><a href="/admin/edit/<%= product.id %>">編集</a></td>
+            <td><a href="/admin/delete">削除</a></td>
+        </tr>
+    <% end %>
+</table>
+</div>
+
+
+<div class="table_name" id="shortcut">
+<h2>ショートカット</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>ベンチID</th>
+        <th>ショートカット名</th>
+        <th>プログラム内容</th>
+        <th>導入日</th>
+        <th colspan="2"></th>
+    </tr>
+    <% @shortcuts.each do |shortcut| %>
+        <tr>
+            <td><%= shortcut.id %></td>
+            <td><%= shortcut.bench_id %></td>
+            <td><%= shortcut.name %></td>
+            <td><%= shortcut.program %></td>
+            <td><%= shortcut.introduced_date %></td>
+            <td><a href="/admin/edit/<%= shortcut.id %>">編集</a></td>
+            <td><a href="/admin/delete">削除</a></td>
+        </tr>
+    <% end %>
+</table>
+</div>
+
+
+<div class="table_name" id="tmp_data">
+<h2>ベンチからのデータ</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>ベンチからのデータ</th>
+        <th>MACアドレス</th>
+        <th colspan="2"></th>
+    </tr>
+    <% @tmp_data.each do |datum| %>
+        <tr>
+            <td><%= datum.id %></td>
+            <td><%= datum.data %></td>
+            <td><%= datum.mac_address %></td>
+            <td><a href="/admin/edit/<%= datum.id %>">編集</a></td>
+            <td><a href="/admin/delete">削除</a></td>
+        </tr>
+    <% end %>
+</table>
+</div>
+
+
+<div class="table_name" id="tmp_message">
+<h2>ベンチへのコマンド</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>ベンチへのコマンド</th>
+        <th colspan="2"></th>
+    </tr>
+    <% @tmp_messages.each do |message| %>
+        <tr>
+            <td><%= message.id %></td>
+            <td><%= message.message %></td>
+            <td><a href="/admin/edit/<%= message.id %>">編集</a></td>
+            <td><a href="/admin/delete">削除</a></td>
+        </tr>
+    <% end %>
+</table>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

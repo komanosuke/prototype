@@ -7,30 +7,33 @@
 <br>
 <br>
 <h1>LINK</h1>
-<div><%= link_to 'ホーム', {controller: 'others', action:'index'} %></div>
-<div><%= link_to 'はじめての方へ', {controller: 'others', action:'beginners'} %></div>
-<div><%= link_to 'お問合せ', {controller: 'others', action:'contact'} %></div>
-<div><%= link_to 'ヘルプ', {controller: 'others', action:'help'} %></div>
-<div><%= link_to 'プライバシーポリシー', {controller: 'others', action:'privacy'} %></div>
-<div><%= link_to '利用規約', {controller: 'others', action:'terms'} %></div>
-<div><%= link_to 'アカウント編集', {controller: 'others', action:'account'} %></div>
-<div><%= link_to 'お知らせ記事', {controller: 'others', action:'article'} %></div>
-<div><%= link_to 'メールアドレス変更', {controller: 'others', action:'changemail'} %></div>
-<div><%= link_to 'パスワード変更', {controller: 'others', action:'changepwd'} %></div>
-<div><%= link_to 'コントロールパネル', {controller: 'panels', action:'show'} %></div>
-<div><%= link_to 'フリーWiFi', {controller: 'others', action:'free_wifi'} %></div>
-<div><%= link_to 'ログイン', {controller: 'others', action:'login'} %></div>
-<div><%= link_to 'お知らせ', {controller: 'others', action:'news'} %></div>
-<div><%= link_to '公園の最新情報', {controller: 'others', action:'park'} %></div>
-<div><%= link_to '公園情報の編集', {controller: 'others', action:'parkinfo_edit'} %></div>
-<div><%= link_to 'プロダクト', {controller: 'others', action:'products'} %></div>
-<div><%= link_to '公演情報・プロフィール', {controller: 'others', action:'profile'} %></div>
-<div><%= link_to '口コミ・レビュー', {controller: 'others', action:'review'} %></div>
-<div><%= link_to 'ショートカット', {controller: 'others', action:'shortcut'} %></div>
-<div><%= link_to 'アカウント登録完了画面', {controller: 'others', action:'signup_success'} %></div>
-<div><%= link_to 'アカウント登録', {controller: 'others', action:'signup'} %></div>
-<div><%= link_to 'アカウント仮登録完了画面', {controller: 'others', action:'signupmail_success'} %></div>
-<div><%= link_to 'アカウント作成', {controller: 'others', action:'signupmail'} %></div>
+<% if logged_in? and (@user.role == 'admin') %>
+    <div><%= link_to 'PARCOM ADMINへ', {controller: 'admin', action:'index'} %></div>
+<% end %>
+<div><%= link_to 'ホーム', {controller: 'parcom', action:'index'} %></div>
+<div><%= link_to 'はじめての方へ', {controller: 'parcom', action:'beginners'} %></div>
+<div><%= link_to 'お問合せ', {controller: 'parcom', action:'contact'} %></div>
+<div><%= link_to 'ヘルプ', {controller: 'parcom', action:'help'} %></div>
+<div><%= link_to 'プライバシーポリシー', {controller: 'parcom', action:'privacy'} %></div>
+<div><%= link_to '利用規約', {controller: 'parcom', action:'terms'} %></div>
+<div><%= link_to 'アカウント編集', {controller: 'user', action:'account'} %></div>
+<div><%= link_to 'お知らせ記事', {controller: 'parcom', action:'article'} %></div>
+<div><%= link_to 'メールアドレス変更', {controller: 'user', action:'changemail'} %></div>
+<div><%= link_to 'パスワード変更', {controller: 'user', action:'changepwd'} %></div>
+<div><%= link_to 'コントロールパネル', {controller: 'parcom', action:'controlpanel'} %></div>
+<div><%= link_to 'フリーWiFi', {controller: 'parcom', action:'free_wifi'} %></div>
+<div><%= link_to 'ログイン', {controller: 'user', action:'login'} %></div>
+<div><%= link_to 'お知らせ', {controller: 'parcom', action:'news'} %></div>
+<div><%= link_to '公園の最新情報', {controller: 'parcom', action:'park'} %></div>
+<div><%= link_to '公園情報の編集', {controller: 'park', action:'parkinfo_edit'} %></div>
+<div><%= link_to 'プロダクト', {controller: 'park', action:'products'} %></div>
+<div><%= link_to '公演情報・プロフィール', {controller: 'parcom', action:'profile'} %></div>
+<div><%= link_to '口コミ・レビュー', {controller: 'parcom', action:'review'} %></div>
+<div><%= link_to 'ショートカット', {controller: 'shortcut', action:'shortcut'} %></div>
+<div><%= link_to 'アカウント登録完了画面', {controller: 'user', action:'signup_success'} %></div>
+<div><%= link_to 'アカウント登録', {controller: 'user', action:'signup'} %></div>
+<div><%= link_to 'アカウント仮登録完了画面', {controller: 'user', action:'signupmail_success'} %></div>
+<div><%= link_to 'アカウント作成', {controller: 'user', action:'signupmail'} %></div>
 <br>
 <br>
 <br>
