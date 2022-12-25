@@ -1,4 +1,5 @@
 require 'socket'
+require 'json'
 
 def socket_message(msg)
     maxlen = 300
@@ -39,17 +40,16 @@ end
 
 class PanelsController < ApplicationController
 
+    before_action :logged_in_user, except: [:show]
     helper_method :say, :show
 
     def index
         # SocketServerJob.perform_now
-        
+        show
     end
 
     def show
         # server.rbからshowにつなげるとき、server.rbのhost,portを変更・確認
-        ghp_iQ8B5kocSHnKspInOU9GWsQInanzxW1vNVM
-
 
         # MACアドレスを認識する処理 JSONからMACアドレス剥ぎ取る
         # if Bench.find(macaddress) #なかったらDBに保存    !!!!MACアドレスはTmpDataに一緒に保管、MACアドレスをもとにdataをupdate
@@ -60,7 +60,10 @@ class PanelsController < ApplicationController
         # end
 
         # GETパラメータを一時保存　updateでもいいが、前後を見れた方がデバッグしやすいのでこのまま
-        logger.debug params
+        # rcvd_prms = JSON.parse(params)
+        # logger.debug rcvd_prms
+        logger.debug 'ok'
+
         if params.has_key?('ID') and params['ID'] == 'parcom'
             logger.debug 'パラメータを読み取りました！'
             if TmpDatum.exists?

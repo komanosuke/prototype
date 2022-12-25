@@ -1,0 +1,25 @@
+<main>
+<div id="signupmail">
+<div id="login_related">
+  <div class="inner_min">
+    <div class="logo">
+      <%= image_tag "/common/os-logo.svg", alt: "PARCOM OS" %>
+    </div>
+    <div class="login_related_content">
+      <h1>アカウントを作成する</h1>
+      <form name="pre_register">
+        <p id="submit_failed" class="caution" style="display:none;"><%= image_tag "/signin_warning.png" %>メールアドレスまたはパスワードが空欄です</p>
+      	<div class="txt_field">
+          <dt class="form_term">メールアドレス</dt>
+      		<dd class="form_description"><input type="text" name="log" id="login_email" value="" placeholder="メールアドレスを入力してください"></dd>
+          <span class="ex">アカウントを作成することにより、<%= link_to "利用規約", "/parcom/terms" %>および<%= link_to "プライバシーポリシー", "/parcom/privacy" %>を読み、これに同意するものとします。</span>
+      	</div>
+        <button class="btn" type="submit">仮登録メールを送信する</button>
+      </form>
+    </div>
+    <div class="new_signup_wrap">
+      <p>PARCOM ADMINのアカウントをすでにお持ちですか？<br><%= link_to "ログインはこちら", "/user/login" %></p>
+    </div>
+  </div>
+</div>
+</main>

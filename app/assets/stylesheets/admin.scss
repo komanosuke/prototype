@@ -1,0 +1,31 @@
+// Place all the styles related to the admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+#admin_title {
+    font-size: 40px;
+}
+
+.table {
+    border: 2px #333333 solid;
+    th, td {
+        border: 2px #333333 solid;
+        padding: 5px;
+    }
+}
+
+.table_name {
+    display: none;
+}
+
+#add {
+    float: right;
+}
+
+.form {
+    display: block;
+}
+
+td a {
+    color: #46C541;
+}

@@ -1,42 +1,63 @@
 Rails.application.routes.draw do
+  root to: 'others#link'
+
+  get 'sessions/new'
   resources :schedules
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get '/', to: 'others#link'
   post '/', to: 'others#link'
 
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
+  get 'admin/index'
+  post 'admin/index'
+  get 'admin/add'
+  post 'admin/add'
+  get 'admin/edit'
+  get 'admin/delete'
+
   get 'panels/index'
   get 'panels', to: 'panels#index'
   post 'panels/index'
   post 'panels', to: 'panels#index'
 
-  get 'panels/say'
-  post 'panels/say'
-  get 'panels/show'
-  post 'panels/show'
-  get 'panels/done'
+  get 'parcom/index'
+  get 'parcom/beginners'
+  get 'parcom/contact'
+  get 'parcom/help'
+  get 'parcom/privacy'
+  get 'parcom/terms'
+  get 'parcom/article'
+  get 'parcom/free_wifi'
+  get 'parcom/news'
+  get 'parcom/park'
+  get 'parcom/profile'
+  get 'parcom/review'
+  get 'parcom/controlpanel'
+  post 'parcom/controlpanel'
 
-  get 'others/index'
-  get 'others/beginners'
-  get 'others/contact'
-  get 'others/help'
-  get 'others/privacy'
-  get 'others/terms'
-  get 'others/account'
-  get 'others/article'
-  get 'others/changemail'
-  get 'others/changepwd'
-  get 'others/free_wifi'
-  get 'others/login'
-  get 'others/news'
-  get 'others/park'
-  get 'others/parkinfo_edit'
-  get 'others/products'
-  get 'others/profile'
-  get 'others/review'
-  get 'others/shortcut'
-  get 'others/signup_success'
-  get 'others/signup'
-  get 'others/signupmail_success'
-  get 'others/signupmail'
+  get 'parcom/post_data'
+  post 'parcom/post_data'
+  
+
+
+  get 'user/index'
+
+  get 'user/account'
+  get 'user/changemail'
+  get 'user/changepwd'
+  get 'user/login'
+  get 'user/signup_success'
+  get 'user/signup'
+  get 'user/signupmail_success'
+  get 'user/signupmail'
+
+  get 'park/parkinfo_edit'
+  get 'park/products'
+  
+  get 'shortcut/shortcut'
+  
 end

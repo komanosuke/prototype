@@ -1,0 +1,474 @@
+<main>
+<div id="profiel">
+<div id="singlepark">
+  <section class="singlepark_headline">
+            <div class="inner">
+      <div class="single_park_name">
+                <h1>この公園の情報</h1>
+      </div>
+      <ul class="flex_container">
+        <li><a href="#basicinfo">基本情報</a></li>
+        <li><a href="#utility">公園の特徴</a></li>
+        <li><a href="#photo">写真</a></li>
+        <li><a href="#event">イベント</a></li>
+        <li><a href="#review">クチコミ</a></li>
+      </ul>
+    </div>
+  </section>
+  <div class="park_content flex_container inner">
+    <div class="park_main_content">
+      <section id="basicinfo">
+        <h2>基本情報</h2>
+        <div class="park_content_wrap">
+          <dl>
+            <div>
+              <dt><%= image_tag "/park/park_head_icon01.svg", alt: "" %>公園の名称</dt>
+              <dd>この公園の情報</dd>
+            </div>
+            <div>
+              <dt><%= image_tag "/park/park_head_icon02.svg", alt: "" %>所在地</dt>
+              <dd></dd>
+            </div>
+                                  </dl>
+        </div>
+      </section>
+      <section id="utility">
+        <h2>公園の特徴</h2>
+        <div class="park_content_wrap">
+          <dl>
+            <dt><%= image_tag "/park/park_head_icon05.svg", alt: "" %>駐車場</dt>
+            <dd class="park_utility">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_01.svg", alt: "" %>無料駐車場</li>
+                <li><%= image_tag "/park/park_icon_02.svg", alt: "" %>大型バス駐車OK</li>
+                <li><%= image_tag "/park/park_icon_03.svg", alt: "" %>駐輪場</li>
+                <li><%= image_tag "/park/park_icon_04.svg", alt: "" %>EV充電スタンド</li>
+                <li><%= image_tag "/park/park_icon_01.svg", alt: "" %>無料駐車場</li>
+                <li><%= image_tag "/park/park_icon_02.svg", alt: "" %>大型バス駐車OK</li>
+                <li><%= image_tag "/park/park_icon_03.svg", alt: "" %>駐輪場</li>
+                <li><%= image_tag "/park/park_icon_04.svg", alt: "" %>EV充電スタンド</li>
+              </ul>
+            </dd>
+            <dd class="park_utility_detail">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>有料駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>立体駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>コインパーキング</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>平面駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細01</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細02</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細03</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>詳細項目詳細04</li>
+              </ul>
+              <div class="detail_btn">↓ 詳細を見る</div>
+            </dd>
+          </dl>
+        </div>
+        <div class="park_content_wrap">
+          <dl>
+            <dt><%= image_tag "/park/park_head_icon06.svg", alt: "" %>トイレ</dt>
+            <dd class="park_utility">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_01.svg", alt: "" %>男女別トイレ</li>
+                <li><%= image_tag "/park/park_icon_02.svg", alt: "" %>こども用トイレ</li>
+                <li><%= image_tag "/park/park_icon_03.svg", alt: "" %>おむつ交換台</li>
+                <li><%= image_tag "/park/park_icon_04.svg", alt: "" %>ベビーケアルーム</li>
+                <li><%= image_tag "/park/park_icon_01.svg", alt: "" %>ベビーチェア</li>
+                <li><%= image_tag "/park/park_icon_02.svg", alt: "" %>オストメイト用設備</li>
+                <li><%= image_tag "/park/park_icon_03.svg", alt: "" %>バリアフリートイレ</li>
+                <li><%= image_tag "/park/park_icon_04.svg", alt: "" %>着替え台</li>
+              </ul>
+            </dd>
+            <dd class="park_utility_detail">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>有料駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>立体駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>コインパーキング</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>平面駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細01</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細02</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細03</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>詳細項目詳細04</li>
+              </ul>
+              <div class="detail_btn">↓ 詳細を見る</div>
+            </dd>
+          </dl>
+        </div>
+        <div class="park_content_wrap">
+          <dl>
+            <dt><%= image_tag "/park/park_head_icon07.svg", alt: "" %>遊具</dt>
+            <dd class="park_utility">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_01.svg", alt: "" %>すべり台</li>
+                <li><%= image_tag "/park/park_icon_02.svg", alt: "" %>ブランコ</li>
+                <li><%= image_tag "/park/park_icon_03.svg", alt: "" %>スプリング遊具</li>
+                <li><%= image_tag "/park/park_icon_04.svg", alt: "" %>ジャングルジム</li>
+                <li><%= image_tag "/park/park_icon_01.svg", alt: "" %>砂場</li>
+                <li><%= image_tag "/park/park_icon_02.svg", alt: "" %>シーソー</li>
+                <li><%= image_tag "/park/park_icon_03.svg", alt: "" %>てつぼう</li>
+                <li><%= image_tag "/park/park_icon_04.svg", alt: "" %>アスレチック</li>
+              </ul>
+            </dd>
+            <dd class="park_utility_detail">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>有料駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>立体駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>コインパーキング</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>平面駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細01</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細02</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細03</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>詳細項目詳細04</li>
+              </ul>
+              <div class="detail_btn">↓ 詳細を見る</div>
+            </dd>
+          </dl>
+        </div>
+        <div class="park_content_wrap">
+          <dl>
+            <dt><%= image_tag "/park/park_head_icon08.svg", alt: "" %>公園内施設</dt>
+            <dd class="park_utility">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_01.svg", alt: "" %>美術館</li>
+                <li><%= image_tag "/park/park_icon_02.svg", alt: "" %>博物館</li>
+                <li><%= image_tag "/park/park_icon_03.svg", alt: "" %>図書館</li>
+                <li><%= image_tag "/park/park_icon_04.svg", alt: "" %>体育館・ジム</li>
+                <li><%= image_tag "/park/park_icon_01.svg", alt: "" %>屋外プール</li>
+                <li><%= image_tag "/park/park_icon_02.svg", alt: "" %>ドッグラン</li>
+              </ul>
+            </dd>
+            <dd class="park_utility_detail">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>有料駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>立体駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>コインパーキング</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>平面駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細01</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細02</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細03</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>詳細項目詳細04</li>
+              </ul>
+              <div class="detail_btn">↓ 詳細を見る</div>
+            </dd>
+          </dl>
+        </div>
+        <div class="park_content_wrap">
+          <dl>
+            <dt><%= image_tag "/park/park_head_icon09.svg", alt: "" %>公園内施設</dt>
+            <dd class="park_utility">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_01.svg", alt: "" %>公園内レストラン</li>
+                <li><%= image_tag "/park/park_icon_02.svg", alt: "" %>フードトラック</li>
+                <li><%= image_tag "/park/park_icon_03.svg", alt: "" %>自動販売機</li>
+                <li><%= image_tag "/park/park_icon_04.svg", alt: "" %>持ち込みOK</li>
+              </ul>
+            </dd>
+            <dd class="park_utility_detail">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>有料駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>立体駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>コインパーキング</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>平面駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細01</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細02</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細03</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>詳細項目詳細04</li>
+              </ul>
+              <div class="detail_btn">↓ 詳細を見る</div>
+            </dd>
+          </dl>
+        </div>
+        <div class="park_content_wrap">
+          <dl>
+            <dt><%= image_tag "/park/park_head_icon10.svg", alt: "" %>運動・スポーツ</dt>
+            <dd class="park_utility">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_01.svg", alt: "" %>ボール使用OK</li>
+                <li><%= image_tag "/park/park_icon_02.svg", alt: "" %>スケートボードOK</li>
+                <li><%= image_tag "/park/park_icon_03.svg", alt: "" %>自転車走行OK</li>
+              </ul>
+            </dd>
+            <dd class="park_utility_detail">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>有料駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>立体駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>コインパーキング</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>平面駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細01</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細02</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細03</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>詳細項目詳細04</li>
+              </ul>
+              <div class="detail_btn">↓ 詳細を見る</div>
+            </dd>
+          </dl>
+        </div>
+        <div class="park_content_wrap">
+          <dl>
+            <dt><%= image_tag "/park/park_head_icon11.svg", alt: "" %>景観</dt>
+            <dd class="park_utility">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_01.svg", alt: "" %>花見</li>
+                <li><%= image_tag "/park/park_icon_02.svg", alt: "" %>紅葉</li>
+              </ul>
+            </dd>
+            <dd class="park_utility_detail">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>有料駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>立体駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>コインパーキング</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>平面駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細01</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細02</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細03</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>詳細項目詳細04</li>
+              </ul>
+              <div class="detail_btn">↓ 詳細を見る</div>
+            </dd>
+          </dl>
+        </div>
+        <div class="park_content_wrap">
+          <dl>
+            <dt><%= image_tag "/park/park_head_icon12.svg", alt: "" %>防災</dt>
+            <dd class="park_utility">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_01.svg", alt: "" %>防災指定場所</li>
+              </ul>
+            </dd>
+            <dd class="park_utility_detail">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>有料駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>立体駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>コインパーキング</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>平面駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細01</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細02</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細03</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>詳細項目詳細04</li>
+              </ul>
+              <div class="detail_btn">↓ 詳細を見る</div>
+            </dd>
+          </dl>
+        </div>
+        <div class="park_content_wrap">
+          <dl>
+            <dt><%= image_tag "/park/park_head_icon13.svg", alt: "" %>そのほかの設備</dt>
+            <dd class="park_utility">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_01.svg", alt: "" %>無料Wi-Fi提供</li>
+                <li><%= image_tag "/park/park_icon_02.svg", alt: "" %>ベンチ</li>
+                <li><%= image_tag "/park/park_icon_03.svg", alt: "" %>ゴミ箱</li>
+                <li><%= image_tag "/park/park_icon_04.svg", alt: "" %>手洗い場</li>
+                <li><%= image_tag "/park/park_icon_01.svg", alt: "" %>AED</li>
+                <li><%= image_tag "/park/park_icon_02.svg", alt: "" %>噴水</li>
+                <li><%= image_tag "/park/park_icon_03.svg", alt: "" %>芝生</li>
+                <li><%= image_tag "/park/park_icon_04.svg", alt: "" %>充電スポット</li>
+              </ul>
+            </dd>
+            <dd class="park_utility_detail">
+              <ul class="flex_container">
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>有料駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>立体駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>コインパーキング</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>平面駐車場</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細01</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細02</li>
+                <li><%= image_tag "/park/park_icon_n.svg", alt: "" %>詳細項目詳細03</li>
+                <li><%= image_tag "/park/park_icon_y.svg", alt: "" %>詳細項目詳細04</li>
+              </ul>
+              <div class="detail_btn">↓ 詳細を見る</div>
+            </dd>
+          </dl>
+        </div>
+                      </section>
+      <section id="photo">
+        <h2>写真</h2>
+        <div class="park_content_wrap">
+          <div class="flex_container">
+            <div class="park_photo_l"><%= image_tag "/park/park_photo01.png", alt: "" %></div>
+            <ul class="park_photo_list">
+              <li><%= image_tag "/park/park_photo02.png", alt: "" %></li>
+              <li><%= image_tag "/park/park_photo02.png", alt: "" %></li>
+              <li><%= image_tag "/park/park_photo02.png", alt: "" %></li>
+              <li><%= image_tag "/park/park_photo02.png", alt: "" %></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section id="event">
+        <h2>イベント</h2>
+        <div class="park_content_wrap">
+          <ul class="flex_container">
+            <li>
+              <a>
+                <div class="event_img"><%= image_tag "/park/event_img01.png", alt: "" %></div>
+                <div class="event_txt">
+                  <time>2021年5月21日(土)12:00 - 15:00</time>
+                  <h3>イベント名イベント名イベント名イベント名イベント名…</h3>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a>
+                <div class="event_img"><%= image_tag "/park/event_img01.png", alt: "" %></div>
+                <div class="event_txt">
+                  <time>2021年4月28日(木)10:00 - 18:00</time>
+                  <h3>イベント名イベント名イベント名イベント名イベント名…</h3>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a>
+                <div class="event_img"><%= image_tag "/park/event_img01.png", alt: "" %></div>
+                <div class="event_txt">
+                  <time>2022年4月17日(日)11:00 - 14:00</time>
+                  <h3>【終了】イベント名イベント名イベント名イベント名イ…</h3>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a>
+                <div class="event_img"><%= image_tag "/park/event_img01.png", alt: "" %></div>
+                <div class="event_txt">
+                  <time>2022年4月10日(金)12:00 - 17:00</time>
+                  <h3>【終了】イベント名イベント名イベント名イベント名イ…</h3>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section id="review">
+        <h2>クチコミ</h2>
+        <div class="park_content_wrap">
+          <div class="review_content">
+            <div class="review_user flex_container">
+              <%= image_tag "/park/user_icon01.png", alt: "" %>
+              <div>
+                <p class="review_user_name">名前が入ります</p>
+                <p class="review_user_date">投稿日 <span class="f_inter">2021.02.10 14:23</span></p>
+              </div>
+            </div>
+            <div class="review_txt_warp">
+              <p class="review_txt">ジョバンニはそっちを見ましたがね、舟の上から烏うりのあかりを川へながしに行くのジョバンニがまだそう言っていました。するとどこかで待っているかもわからずに、にわかに赤旗をおろして、手ばやくくるくると解きました。そ…</p>
+              <div class="review_btn">もっと見る</div>
+            </div>
+          </div>
+          <div class="review_content">
+            <div class="review_user flex_container">
+              <%= image_tag "/park/user_icon02.png", alt: "" %>
+              <div>
+                <p class="review_user_name">名前が入ります</p>
+                <p class="review_user_date">投稿日 <span class="f_inter">2021.02.10 14:23</span></p>
+              </div>
+            </div>
+            <div class="review_txt_warp">
+              <p class="review_txt">ジョバンニはそっちを見ましたがね、舟の上から烏うりのあかりを川へながしに行くのジョバンニがまだそう言っていました。するとどこかで待っているかもわからずに、にわかに赤旗をおろして、手ばやくくるくると解きました。そ…</p>
+              <div class="review_btn">もっと見る</div>
+            </div>
+          </div>
+          <div class="review_content">
+            <div class="review_user flex_container">
+              <%= image_tag "/park/user_icon03.png", alt: "" %>
+              <div>
+                <p class="review_user_name">名前が入ります</p>
+                <p class="review_user_date">投稿日 <span class="f_inter">2021.02.10 14:23</span></p>
+              </div>
+            </div>
+            <div class="review_txt_warp">
+              <p class="review_txt">ジョバンニはそっちを見ましたがね、舟の上から烏うりのあかりを川へながしに行くのジョバンニがまだそう言っていました。するとどこかで待っているかもわからずに、にわかに赤旗をおろして、手ばやくくるくると解きました。そ…</p>
+            </div>
+          </div>
+          <a class="review_more_btn">クチコミをもっと見る</a>
+        </div>
+      </section>
+            <section id="park_manager" class="park_manager">
+        <div class="park_content_wrap">
+          <h2>この公園の情報の管理者様へ</h2>
+          <p>この公園の情報の管理者様は、PARCOM（パルコム）までご連絡ください。公園ページの管理・編集をはじめとした下記の機能がお使いいただけます。お問い合わせは<a href="http://app.parcom.parcom/contact">こちら</a>。</p>
+          <ul>
+            <li>公園の正確な情報や写真などを編集できるようになります。</li>
+            <li>Googleマイビジネスと連携することができます。</li>
+            <li>関連する利用状況データをみることができます。</li>
+          </ul>
+          <%= link_to "お問い合わせはこちら", "/parcom/contact", class: "contact_btn" %>
+        </div>
+      </section>
+          </div>
+        <div class="park_side_content">
+      <section id="around_facility" class="around">
+        <div class="around_head">
+          <h2>周辺にある施設</h2>
+        </div>
+        <div class="park_content_wrap">
+          <ul>
+            <li>
+              <a class="flex_container">
+                <div class="around_img"><%= image_tag "/park/no_img.png", alt: "" %></div>
+                <div class="around_txt">
+                  <p class="around_name">ファミリーマート 石川県庁前店</p>
+                  <p class="around_address">現在位置から約38m先</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="flex_container">
+                <div class="around_img"><%= image_tag "/park/no_img.png", alt: "" %></div>
+                <div class="around_txt">
+                  <p class="around_name">菓子工房西都 KOGURA</p>
+                  <p class="around_address">現在位置から約40m先</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="flex_container">
+                <div class="around_img"><%= image_tag "/park/no_img.png", alt: "" %></div>
+                <div class="around_txt">
+                  <p class="around_name">すし食いねぇ！ 県庁前店</p>
+                  <p class="around_address">現在位置から約110m先</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="flex_container">
+                <div class="around_img"><%= image_tag "/park/no_img.png", alt: "" %></div>
+                <div class="around_txt">
+                  <p class="around_name">ファミリーマート 石川県庁前店</p>
+                  <p class="around_address">現在位置から約38m先</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="flex_container">
+                <div class="around_img"><%= image_tag "/park/no_img.png", alt: "" %></div>
+                <div class="around_txt">
+                  <p class="around_name">菓子工房西都 KOGURA</p>
+                  <p class="around_address">現在位置から約40m先</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <a class="readmore" tabindex="-1">もっと見る</a>
+        </div>
+      </section>
+      <section id="park_access" class="park_access">
+        <h2>アクセス</h2>
+        <div class="park_content_wrap">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3203.409685078444!2d136.6226506152842!3d36.59244087999193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff9ccb7aae6242d%3A0xa7e1b7e7a00763c0!2z6Z6N5pyI44K744Oz44OI44Op44Or44OR44O844Kv!5e0!3m2!1sja!2sjp!4v1662991916716!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <p></p>
+          <%= link_to "地図で表示", "https://goo.gl/maps/58NBtujY8ruyEAcy9", target: "_blank" %>
+        </div>
+      </section>
+      <section id="park_contact" class="park_contact">
+        <h2>お問い合わせ</h2>
+        <div class="park_content_wrap">
+          <dl>
+          </dl>
+        </div>
+      </section>
+
+      
+    </div>
+  </div>
+</div>
+</main>
