@@ -1,56 +1,52 @@
-<main>
+<%# <main>
 <div id="contact">
   <div class="page_ttl">
     <h1><span>CONTACT</span>お問い合わせ</h1>
   </div>
+
   <section>
     <div class="contact_form">
-      <div role="form" class="wpcf7" id="wpcf7-f93-o1" lang="ja" dir="ltr">
-<div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
-<form action="/test/contact/#wpcf7-f93-o1" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
-<div style="display: none;">
-<input type="hidden" name="_wpcf7" value="93" />
-<input type="hidden" name="_wpcf7_version" value="5.6.4" />
-<input type="hidden" name="_wpcf7_locale" value="ja" />
-<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f93-o1" />
-<input type="hidden" name="_wpcf7_container_post" value="0" />
-<input type="hidden" name="_wpcf7_posted_data_hash" value="" />
-</div>
-<dl class="form_list">
-<dt class="form_term">お問い合わせ種別<span class="req">必須</span></dt>
-<div class="select">
-<dd class="form_description"><span class="wpcf7-form-control-wrap" data-name="your_type"><select name="your_type" class="wpcf7-form-control wpcf7-select" aria-invalid="false"><option value="選択してください">選択してください</option><option value="使い方について">使い方について</option><option value="バグやエラー報告について">バグやエラー報告について</option><option value="その他">その他</option></select></span></dd>
-<div class="arrow arrow_bottom"></div>
-</div>
-</dl>
-<dl class="form_list">
-<dt class="form_term">お名前<span class="req">必須</span></dt>
-<dd class="form_description"><span class="wpcf7-form-control-wrap" data-name="your_name"><input type="text" name="your_name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="お名前を入力してください" /></span></dd>
-<p> <span class="ex">例：公園太郎</span>
-</dl>
-<dl class="form_list">
-<dt class="form_term">自治体・会社名<span class="req">必須</span></dt>
-<dd class="form_description"><span class="wpcf7-form-control-wrap" data-name="your_c_name"><input type="text" name="your_c_name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="自治体・会社名を入力してください" /></span></dd>
-<p> <span class="ex">例：株式会社PARCOM</span>
-</dl>
-<dl class="form_list">
-<dt class="form_term">メールアドレス<span class="req">必須</span></dt>
-<dd class="form_description"><span class="wpcf7-form-control-wrap" data-name="your_email"><input type="email" name="your_email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="メールアドレスを入力してください" /></span></dd>
-<p> <span class="ex">例：admin@parcom.com</span>
-</dl>
-<dl class="form_list">
-<dt class="form_term">電話番号<span class="req">必須</span></dt>
-<dd class="form_description"><span class="wpcf7-form-control-wrap" data-name="your_tel"><input type="tel" name="your_tel" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel" aria-required="true" aria-invalid="false" placeholder="電話番号を入力してください" /></span></dd>
-<p> <span class="ex">例：000-0000-0000</span>
-</dl>
-<dl class="form_list">
-<dt class="form_term">お問い合わせ内容<span class="req">必須</span></dt>
-<dd class="form_description"><span class="wpcf7-form-control-wrap" data-name="textarea"><textarea name="textarea" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="お問い合わせ内容を入力してください"></textarea></span></dd>
-</dl>
-<p class="privacy_txt">お問い合わせフォームへご入力いただいたお名前・メールアドレスなどの個人情報およびメッセージ内容は、お問い合わせの受付および回答が目的です。<br>個人情報の取り扱いについては、<a href="/privacy">プライバシーポリシー</a>をご確認ください。</p>
-<p><span class="wpcf7-form-control-wrap" data-name="privacy_check"><span class="wpcf7-form-control wpcf7-acceptance"><span class="wpcf7-list-item"><label><input type="checkbox" name="privacy_check" value="1" aria-invalid="false" /><span class="wpcf7-list-item-label">プライバシーポリシーに同意します</span></label></span></span></span><br />
-<input type="submit" value="送信する" class="wpcf7-form-control has-spinner wpcf7-submit" /></p>
-<div class="wpcf7-response-output" aria-hidden="true"></div></form></div>    </div>
+      <div role="form" lang="ja" dir="ltr">
+        <form action="/test/contact/#wpcf7-f93-o1" method="post" novalidate="novalidate" data-status="init">
+        
+          <dl class="form_list">
+          <dt class="form_term">お問い合わせ種別<span class="req">必須</span></dt>
+          <div class="select">
+          <dd class="form_description"><span data-name="your_type"><select name="your_type" class="wpcf7-form-control wpcf7-select" aria-invalid="false"><option value="選択してください">選択してください</option><option value="使い方について">使い方について</option><option value="バグやエラー報告について">バグやエラー報告について</option><option value="その他">その他</option></select></span></dd>
+          <div class="arrow arrow_bottom"></div>
+          </div>
+          </dl>
+          <dl class="form_list">
+          <dt class="form_term">お名前<span class="req">必須</span></dt>
+          <dd class="form_description"><span data-name="your_name"><input type="text" name="your_name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="お名前を入力してください" /></span></dd>
+          <p> <span class="ex">例：公園太郎</span>
+          </dl>
+          <dl class="form_list">
+          <dt class="form_term">自治体・会社名<span class="req">必須</span></dt>
+          <dd class="form_description"><span data-name="your_c_name"><input type="text" name="your_c_name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="自治体・会社名を入力してください" /></span></dd>
+          <p> <span class="ex">例：株式会社PARCOM</span>
+          </dl>
+          <dl class="form_list">
+          <dt class="form_term">メールアドレス<span class="req">必須</span></dt>
+          <dd class="form_description"><span data-name="your_email"><input type="email" name="your_email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="メールアドレスを入力してください" /></span></dd>
+          <p> <span class="ex">例：admin@parcom.com</span>
+          </dl>
+          <dl class="form_list">
+          <dt class="form_term">電話番号<span class="req">必須</span></dt>
+          <dd class="form_description"><span data-name="your_tel"><input type="tel" name="your_tel" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel" aria-required="true" aria-invalid="false" placeholder="電話番号を入力してください" /></span></dd>
+          <p> <span class="ex">例：000-0000-0000</span>
+          </dl>
+          <dl class="form_list">
+          <dt class="form_term">お問い合わせ内容<span class="req">必須</span></dt>
+          <dd class="form_description"><span data-name="textarea"><textarea name="textarea" cols="40" rows="10" aria-required="true" aria-invalid="false" placeholder="お問い合わせ内容を入力してください"></textarea></span></dd>
+          </dl>
+          <p class="privacy_txt">お問い合わせフォームへご入力いただいたお名前・メールアドレスなどの個人情報およびメッセージ内容は、お問い合わせの受付および回答が目的です。<br>個人情報の取り扱いについては、<a href="/privacy">プライバシーポリシー</a>をご確認ください。</p>
+          <p><span data-name="privacy_check"><span><span><label><input type="checkbox" name="privacy_check" value="1" aria-invalid="false" /><span>プライバシーポリシーに同意します</span></label></span></span></span><br />
+          <input type="submit" value="送信する" /></p>
+          <div aria-hidden="true"></div>
+        </form>
+      </div>
+    </div>
   </section>
 </div>
-</main>
+</main> %>

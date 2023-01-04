@@ -12,8 +12,11 @@
 }
 
 #ex_chart {
-    max-width: 200px;
-    max-height: 100px;
+    max-height: 50px;
+    max-width: 160px;
+    position: absolute;
+    top: 24%;
+    left: 6%;
 }
 
 #data {
@@ -29,6 +32,12 @@
     aspect-ratio: 18179/10206;
     object-fit: cover;
     width: 182px;
+}
+
+#audio_player {
+    width: 350px;
+    height: 40px;
+    margin: 18px 0;
 }
 
 #submitButton {

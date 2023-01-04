@@ -16,13 +16,13 @@ Rails.application.routes.draw do
   post 'admin/index'
   get 'admin/add'
   post 'admin/add'
+  get 'admin/add_done'
   get 'admin/edit'
+  post 'admin/edit'
+  patch 'admin/edit'
   get 'admin/delete'
-
-  get 'panels/index'
-  get 'panels', to: 'panels#index'
-  post 'panels/index'
-  post 'panels', to: 'panels#index'
+  post 'admin/delete'
+  get 'admin/delete_done'
 
   get 'parcom/index'
   get 'parcom/beginners'
@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   get 'parcom/review'
   get 'parcom/controlpanel'
   post 'parcom/controlpanel'
+  post 'parcom/create'
+  resources :parcom, only: [:new, :create]
 
   get 'parcom/post_data'
   post 'parcom/post_data'
@@ -45,19 +47,35 @@ Rails.application.routes.draw do
 
 
   get 'user/index'
-
+  get 'user/register'
+  post 'user/register'
   get 'user/account'
+  patch 'user/account'
   get 'user/changemail'
+  patch 'user/changemail'
   get 'user/changepwd'
-  get 'user/login'
   get 'user/signup_success'
   get 'user/signup'
   get 'user/signupmail_success'
   get 'user/signupmail'
+  post 'user/signupmail'
+  get 'user/forgetpwd'
+  get 'user/signupmail_error'
+  get 'user/signupmail_confirm'
 
   get 'park/parkinfo_edit'
   get 'park/products'
   
   get 'shortcut/shortcut'
+
+
+  resources :contacts, only: [:new, :create]
+  post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+  post 'contacts/back', to: 'contacts#back', as: 'back'
+  get 'done', to: 'contacts#done', as: 'done'
+
+
+  get '*not_found' => 'application#routing_error'
+  post '*not_found' => 'application#routing_error'
   
 end

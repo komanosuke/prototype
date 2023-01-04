@@ -1,9 +1,23 @@
 class ParcomController < ApplicationController
     before_action :logged_in_user, except: [:controlpanel]
-    helper_method :post_data, :controlpanel
+    helper_method :post_data, :controlpanel, :new, :create
 
     def controlpanel
+        # 選択されたBenchのデータを取得する処理
+        @bench = Bench.find(2)
 
+        # 初期化処理
+        @bench_image_now = BenchImage.last
+        @bench_video_now = BenchVideo.last
+        @bench_audio_now = BenchAudio.last
+        
+
+        #image、video、audioの保存
+        if params[:image] or params[:video] or params[:audio]
+            create
+        end
+
+        # paramsにID:parcomが含まれていれば実行
         if params.has_key?('ID') and params['ID'] == 'parcom'
             params_json = params
             params_json.delete('controller')
@@ -16,6 +30,8 @@ class ParcomController < ApplicationController
             else
                 params_json['TIMER'] = 'ON'
             end
+
+            
 
             logger.debug 'パラメータを読み取りました！'
             if TmpDatum.exists?
@@ -38,6 +54,7 @@ class ParcomController < ApplicationController
         else
             @data = 'データはありません。'
         end
+
     
         # データをViewに表示するための処理② (submitによるrespondでjs.erbにのせてViewに表示)
         respond_to do |format|
@@ -47,7 +64,6 @@ class ParcomController < ApplicationController
     end
 
     def post_data
-
         TmpMessage.create(message: params[:cmd])
         @message = TmpMessage.last.message
 
@@ -55,7 +71,46 @@ class ParcomController < ApplicationController
 
         socket_message(@message)
     end
+
+    def new
+        @bench_image = BenchImage.new
+        @bench_video = BenchVideo.new
+        @bench_audio = BenchAudio.new
+    end
+
+    def create
+        if params[:image]
+            @bench_image = BenchImage.create(image: params[:image], bench_id: 1)
+        elsif params[:video]
+            @bench_video = BenchVideo.create(video: params[:video], bench_id: 1)
+        elsif params[:audio]
+            @bench_audio = BenchAudio.create(audio: params[:audio], bench_id: 1)
+        end
+    end
+
+
+    # benchを認識するため（後で実装）
+    private
+    def bench_images_params
+        params.require(:bench_image).permit(:image).merge(bench_id: 1)
+    end
+
+    private
+    def bench_videos_params
+        params.require(:bench_video).permit(:video).merge(bench_id: 1)
+    end
+
+    private
+    def bench_audios_params
+        params.require(:bench_audio).permit(:audio).merge(bench_id: 1)
+    end
 end
+
+
+
+
+
+
 
 
 require 'socket'

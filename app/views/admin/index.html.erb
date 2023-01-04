@@ -4,11 +4,11 @@
 <br>
 <br>
 <p id="admin_title">管理画面</p>
-<p id="add"><a href="/admin/add">データを追加する>></a></p>
+<p id="back"><a href="/admin/add">データを追加する>></a></p>
 
 <%= form_with url:'index',local:false do |form| %>
-    <%= form.select(:category, ["ユーザー", "公園", "ベンチ", "お知らせ", "メディア情報", "写真", "イベント", "プロダクト", "ショートカット", "ベンチからのデータ", "ベンチへのコマンド"],{}, required: true) %>
-    <%= form.submit "変更" %>
+    <%= form.select(:category, ["ユーザー", "公園", "ベンチ", "写真", "イベント", "プロダクト", "ショートカット", "ベンチからのデータ", "ベンチへのコマンド"],{}, required: true) %>
+    <%= form.submit "表示" %>
 <% end %>
 
 <div class="table_name" id="user">
@@ -55,11 +55,22 @@
             <td><%= user.notification %></td>
             <td><%= user.flag %></td>
             <td><%= user.admin_memo %></td>
-            <td><a href="/admin/edit/<%= user.id %>">編集</a></td>
-            <td><a href="/admin/delete">削除</a></td>
+            <td>
+                <%= form_tag('edit') do %>
+                    <%= text_field_tag 'user_id', user.id , class: 'edit_id' %>
+                    <%= button_to '編集'%>
+                <% end %>
+            </td>
+            <td>
+                <%= form_tag('delete') do %>
+                    <%= text_field_tag 'user_id', user.id , class: 'edit_id' %>
+                    <%= button_to '削除'%>
+                <% end %>
+            </td>
         </tr>
     <% end %>
 </table>
+<%= paginate @users %>
 </div>
 
 
@@ -121,11 +132,22 @@
             <td><%= park.view_info %></td>
             <td><%= park.disaster_info %></td>
             <td><%= park.other_info %></td>
-            <td><a href="/admin/edit/<%= park.id %>">編集</a></td>
-            <td><a href="/admin/delete">削除</a></td>
+            <td>
+                <%= form_tag('edit') do %>
+                    <%= text_field_tag 'park_id', park.id , class: 'edit_id' %>
+                    <%= button_to '編集'%>
+                <% end %>
+            </td>
+            <td>
+                <%= form_tag('delete') do %>
+                    <%= text_field_tag 'park_id', park.id , class: 'edit_id' %>
+                    <%= button_to '削除'%>
+                <% end %>
+            </td>
         </tr>
     <% end %>
 </table>
+<%= paginate @parks %>
 </div>
 
 
@@ -153,59 +175,22 @@
             <td><%= bench.introduced_date %></td>
             <td><%= bench.position %></td>
             <td><%= bench.timer %></td>
-            <td><a href="/admin/edit/<%= bench.id %>">編集</a></td>
-            <td><a href="/admin/delete">削除</a></td>
+            <td>
+                <%= form_tag('edit') do %>
+                    <%= text_field_tag 'bench_id', bench.id , class: 'edit_id' %>
+                    <%= button_to '編集'%>
+                <% end %>
+            </td>
+            <td>
+                <%= form_tag('delete') do %>
+                    <%= text_field_tag 'bench_id', bench.id , class: 'edit_id' %>
+                    <%= button_to '削除'%>
+                <% end %>
+            </td>
         </tr>
     <% end %>
 </table>
-</div>
-
-
-<div class="table_name" id="news">
-<h2>お知らせ</h2>
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>更新日時</th>
-        <th>タイトル</th>
-        <th>内容</th>
-        <th colspan="2"></th>
-    </tr>
-    <% @news.each do |news| %>
-        <tr>
-            <td><%= news.id %></td>
-            <td><%= news.date %></td>
-            <td><%= news.title %></td>
-            <td><%= news.contents %></td>
-            <td><a href="/admin/edit/<%= news.id %>">編集</a></td>
-            <td><a href="/admin/delete">削除</a></td>
-        </tr>
-    <% end %>
-</table>
-</div>
-
-
-<div class="table_name" id="media">
-<h2>メディア情報</h2>
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>更新日時</th>
-        <th>タイトル</th>
-        <th>内容</th>
-        <th colspan="2"></th>
-    </tr>
-    <% @media.each do |medium| %>
-        <tr>
-            <td><%= medium.id %></td>
-            <td><%= medium.date %></td>
-            <td><%= medium.title %></td>
-            <td><%= medium.contents %></td>
-            <td><a href="/admin/edit/<%= medium.id %>">編集</a></td>
-            <td><a href="/admin/delete">削除</a></td>
-        </tr>
-    <% end %>
-</table>
+<%= paginate @benches %>
 </div>
 
 
@@ -225,11 +210,22 @@
             <td><%= picture.park_id %></td>
             <td><%= picture.name %></td>
             <td><%= picture.picture %></td>
-            <td><a href="/admin/edit/<%= picture.id %>">編集</a></td>
-            <td><a href="/admin/delete">削除</a></td>
+            <td>
+                <%= form_tag('edit') do %>
+                    <%= text_field_tag 'picture_id', picture.id , class: 'edit_id' %>
+                    <%= button_to '編集'%>
+                <% end %>
+            </td>
+            <td>
+                <%= form_tag('delete') do %>
+                    <%= text_field_tag 'picture_id', picture.id , class: 'edit_id' %>
+                    <%= button_to '削除'%>
+                <% end %>
+            </td>
         </tr>
     <% end %>
 </table>
+<%= paginate @pictures %>
 </div>
 
 
@@ -249,11 +245,22 @@
             <td><%= event.park_id %></td>
             <td><%= event.name %></td>
             <td><%= event.contents %></td>
-            <td><a href="/admin/edit/<%= event.id %>">編集</a></td>
-            <td><a href="/admin/delete">削除</a></td>
+            <td>
+                <%= form_tag('edit') do %>
+                    <%= text_field_tag 'event_id', event.id , class: 'edit_id' %>
+                    <%= button_to '編集'%>
+                <% end %>
+            </td>
+            <td>
+                <%= form_tag('delete') do %>
+                    <%= text_field_tag 'event_id', event.id , class: 'edit_id' %>
+                    <%= button_to '削除'%>
+                <% end %>
+            </td>
         </tr>
     <% end %>
 </table>
+<%= paginate @events %>
 </div>
 
 
@@ -273,11 +280,22 @@
             <td><%= product.park_id %></td>
             <td><%= product.name %></td>
             <td><%= product.contents %></td>
-            <td><a href="/admin/edit/<%= product.id %>">編集</a></td>
-            <td><a href="/admin/delete">削除</a></td>
+            <td>
+                <%= form_tag('edit') do %>
+                    <%= text_field_tag 'product_id', product.id , class: 'edit_id' %>
+                    <%= button_to '編集'%>
+                <% end %>
+            </td>
+            <td>
+                <%= form_tag('delete') do %>
+                    <%= text_field_tag 'product_id', product.id , class: 'edit_id' %>
+                    <%= button_to '削除'%>
+                <% end %>
+            </td>
         </tr>
     <% end %>
 </table>
+<%= paginate @products %>
 </div>
 
 
@@ -299,11 +317,22 @@
             <td><%= shortcut.name %></td>
             <td><%= shortcut.program %></td>
             <td><%= shortcut.introduced_date %></td>
-            <td><a href="/admin/edit/<%= shortcut.id %>">編集</a></td>
-            <td><a href="/admin/delete">削除</a></td>
+            <td>
+                <%= form_tag('edit') do %>
+                    <%= text_field_tag 'shortcut_id', shortcut.id , class: 'edit_id' %>
+                    <%= button_to '編集'%>
+                <% end %>
+            </td>
+            <td>
+                <%= form_tag('delete') do %>
+                    <%= text_field_tag 'shortcut_id', shortcut.id , class: 'edit_id' %>
+                    <%= button_to '削除'%>
+                <% end %>
+            </td>
         </tr>
     <% end %>
 </table>
+<%= paginate @shortcuts %>
 </div>
 
 
@@ -314,18 +343,16 @@
         <th>ID</th>
         <th>ベンチからのデータ</th>
         <th>MACアドレス</th>
-        <th colspan="2"></th>
     </tr>
     <% @tmp_data.each do |datum| %>
         <tr>
             <td><%= datum.id %></td>
             <td><%= datum.data %></td>
             <td><%= datum.mac_address %></td>
-            <td><a href="/admin/edit/<%= datum.id %>">編集</a></td>
-            <td><a href="/admin/delete">削除</a></td>
         </tr>
     <% end %>
 </table>
+<%= paginate @tmp_data %>
 </div>
 
 
@@ -335,17 +362,15 @@
     <tr>
         <th>ID</th>
         <th>ベンチへのコマンド</th>
-        <th colspan="2"></th>
     </tr>
     <% @tmp_messages.each do |message| %>
         <tr>
             <td><%= message.id %></td>
             <td><%= message.message %></td>
-            <td><a href="/admin/edit/<%= message.id %>">編集</a></td>
-            <td><a href="/admin/delete">削除</a></td>
         </tr>
     <% end %>
 </table>
+<%= paginate @tmp_messages %>
 </div>
 
 <br>

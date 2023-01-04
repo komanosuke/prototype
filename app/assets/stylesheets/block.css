@@ -896,6 +896,7 @@ input:not(:active) + #volume_container .volume {
 
 #sidebar_cp_graph{
   width: 190px;
+  position: relative;
 }
 
 .sidebar_cp_item_content{

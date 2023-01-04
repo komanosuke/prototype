@@ -29,7 +29,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to '/others/', class: "hover" do %>
+        <%= link_to '/analyze/index', class: "hover" do %>
           <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
         <% end %>
       </li>
@@ -55,7 +55,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to '/others/', class: "hover" do %>
+        <%= link_to '/analyze/index', class: "hover" do %>
           <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
         <% end %>
       </li>
@@ -81,7 +81,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to '/others/', class: "hover" do %>
+        <%= link_to '/analyze/index', class: "hover" do %>
           <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
         <% end %>
       </li>
@@ -107,7 +107,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to '/others/', class: "hover" do %>
+        <%= link_to '/analyze/index', class: "hover" do %>
           <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
         <% end %>
       </li>
@@ -139,19 +139,19 @@
               </div>
               <div class="selected_item">
                 <div>名称</div>
-                <div>B4ENZ7</div>
+                <div><%= @bench.name %></div>
               </div>
               <div class="selected_item">
                 <div>OS</div>
-                <div>0.1.1</div>
+                <div><%= @bench.os_name %></div>
               </div>
               <div class="selected_item">
                 <div>導入日</div>
-                <div>2022.08.09</div>
+                <div><%= @bench.introduced_date %></div>
               </div>
               <div class="selected_item">
                 <div>位置情報</div>
-                                <div id="product_latlng">36.578,136.648</div>
+                <div id="product_latlng"><%= @bench.position %></div>
               </div>
             </div>
           </div>
@@ -180,10 +180,6 @@
                 <input name="led_color" id="led_color" type="text" value="" placeholder="#ffffff">
               </div>
             </div>
-            <div id="data"><%= @data %></div>
-            <%= form_tag(url_for(:action => 'controlpanel'), :remote => true) do %>
-                <%= submit_tag "データを更新" ,{id: "submitButton"} %>
-            <% end %>
             <div class="onoff_switch flex_container">
               <div class="onoff_status">
                 <p class="on">現在ONになっています</p>
@@ -459,8 +455,8 @@
                 <label>繰り返し</label>
                 <div class="select">
                   <select name="" id="led_repeat">
-                    <option value="">繰り返ししない</option>
-                    <option value="">繰り返しする</option>
+                    <option value="0">繰り返ししない</option>
+                    <option value="1">繰り返しする</option>
                   </select>
                   <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                 </div>
@@ -491,14 +487,21 @@
                   <label class="upload_file">
                     <%= image_tag "/common/icon_upload.svg", alt: "アイコン" %>
                     ここを<span>クリック</span>または<br>ドラッグ＆ドロップで<br>ファイルをアップロード
-                    <input type="file" name="" id="pdf_file" accept="image/*">
+                    <%= form_with model: @bench_image, local:false do |f| %>
+                      <%= f.file_field :image, id:'pdf_file', accept:'image/*' %>
+                      <%= f.submit "送信"%>
+                    <% end %>
                   </label>
                 </div>
                 <div class="preview">
                   <label>プレビュー</label>
                   <div class="preview_file preview_file_img" id="preview">
                     <%= image_tag "/ctrlpanel/icon_preview_close.svg", class: "preview_close_btn", alt: "閉じるボタン" %>
-                    <%= image_tag "/ctrlpanel/preview_dummy.svg", id: "preview_dummy", alt: "プレビューファイル" %>
+                    <% if @bench_image_now %>
+                      <%= image_tag @bench_image_now.image.to_s, id:"preview_image" %>
+                    <% else %>
+                      <%= image_tag "/ctrlpanel/preview_dummy.svg", id: "preview_dummy", alt: "プレビューファイル" %>
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -558,13 +561,20 @@
                   <label class="upload_file">
                     <%= image_tag "/common/icon_upload.svg", alt: "アイコン" %>
                     ここを<span>クリック</span>または<br>ドラッグ＆ドロップで<br>ファイルをアップロード
-                    <input type="file" name="" id="movie_file" accept="video/*">
+                    <%= form_with model: @bench_video, local:false do |f| %>
+                      <%= f.file_field :video, id:'movie_file', accept:'video/*' %>
+                      <%= f.submit "送信"%>
+                    <% end %>
                   </label>
                 </div>
                 <div class="preview">
                   <label>プレビュー</label>
                   <div class="preview_file preview_file_video">
-                    <%= image_tag "/ctrlpanel/preview_noimage.svg", id:"mp4_preview_dummy", alt: "現在何も表示されていません" %>
+                    <% if @bench_video_now %>
+                      <%= video_tag(@bench_video_now.video.to_s, loop: true, autoplay: true, muted: true, controls: true, id:"mp4_preview_video") %>
+                    <% else %>
+                      <%= image_tag "/ctrlpanel/preview_noimage.svg", id:"mp4_preview_dummy", alt: "現在何も表示されていません" %>
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -595,7 +605,10 @@
                   <label class="upload_file">
                     <%= image_tag "/common/icon_upload.svg", alt: "アイコン" %>
                     ここを<span>クリック</span>または<br>ドラッグ＆ドロップで<br>ファイルをアップロード
-                    <input type="file" name="upload_audio_file" id="audio_file" accept="/*">
+                    <%= form_with model: @bench_audio, local:false do |f| %>
+                      <%= f.file_field :audio, :size => 140, id:'audio_file', accept:'/*' %>
+                      <%= f.submit "送信"%>
+                    <% end %>
                   </label>
                 </div>
                 <div class="preview">
@@ -605,6 +618,7 @@
                   </div>
                 </div>
               </div>
+              <audio src= "<%= "#{@bench_audio_now.audio}" %>" controls="" id="audio_player">
             </div>
             <div class="onoff_switch flex_container">
               <div class="onoff_status">
@@ -679,18 +693,21 @@
       <div class="flex_container">
         <div id="sidebar_cp_graph">
           <%= image_tag "/sidebar/graph_dummy.svg" %>
+          <canvas id="ex_chart"></canvas>
         </div>
         <div class="sidebar_cp_item_content"><p>通信使用量合計</p><span>0</span>MB</div>
       </div>
-    </div>
-    <div class="sidebar_item">
-        <canvas id="ex_chart"></canvas>
     </div>
   </div>
 </aside>
     </div>
   </div>
 </div>
+<div id="data"><%= @data %></div>
+<div id="data2"><%= @data2 %></div>
+<%= form_tag(url_for(:action => 'controlpanel'), :remote => true) do %>
+    <%= submit_tag "データを更新" ,{id: "submitButton"} %>
+<% end %>
 </main>
 
 

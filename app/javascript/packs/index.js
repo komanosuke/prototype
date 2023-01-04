@@ -1,12 +1,12 @@
 //課題
 // バグ検証
-// タイマーの繰り返し処理
+// タイマーの繰り返し処理 　ctrl+F 繰り返し処理
 // 画像、動画、音楽ファイルのファイル制限と、アップロード先
 // ボリュームの中途半端な初期値
-// 映像ファイルの❌ボタン
-// 音楽ファイルの❌ボタン
+// 映像ファイルの×ボタン
+// 音楽ファイルの×ボタン
 
-
+// [ベンチへのコマンド]
 // FAN,ON or OFF
 // LED,ON or OFF
 // COLOR,R:xxx,G:yyy,B:zzz
@@ -24,8 +24,9 @@
 // LEDCANCEL
 // SYSTEMDOWN
 // LOG,ON or OFF
-//ボタンのON,OFF切り替え処理
 
+
+// ボタンのON,OFF切り替え処理
 //オンオフ判定変数
 let on_or_off = [false, false, false, false, false, false];
 let command = ''
@@ -64,6 +65,10 @@ function switchOff(n, command){
 //リロード時に、ベンチからの最新のJSONデータを取得してViewに表示（hiddenなのでコンソールログから確認）
 let data = document.getElementById('data').textContent; //JSON Parseの処理も関数に
 console.log(data);
+
+let data2 = document.getElementById('data2').textContent; //JSON Parseの処理も関数に
+console.log(data2);
+
 data = JSON.parse(data.replaceAll('=>', ':'));
 for(let i = 0; i < btn_name.length; i++){
     if(data[btn_name[i]].includes('ON')){
@@ -161,11 +166,11 @@ $('#led_switch').on('click', function() {
 
 //カラーコードからRGBに変換する処理
 function hex2rgb ( hex ) {
-	if ( hex.slice(0, 1) == "#" ) hex = hex.slice(1) ;
-	if ( hex.length == 3 ) hex = hex.slice(0,1) + hex.slice(0,1) + hex.slice(1,2) + hex.slice(1,2) + hex.slice(2,3) + hex.slice(2,3) ;
+	if ( hex.slice(0, 1) == "#" ) hex = hex.slice(1);
+	if ( hex.length == 3 ) hex = hex.slice(0,1) + hex.slice(0,1) + hex.slice(1,2) + hex.slice(1,2) + hex.slice(2,3) + hex.slice(2,3);
 
-	return [ hex.slice( 0, 2 ), hex.slice( 2, 4 ), hex.slice( 4, 6 ) ].map( function ( str ) {
-		return parseInt( str, 16 ) ;
+	return [ hex.slice(0, 2), hex.slice(2, 4), hex.slice(4, 6) ].map( function (str) {
+		return parseInt(str, 16);
 	} ) ;
 }
 
@@ -178,7 +183,7 @@ const start_hour = document.getElementById('led_start_time_hour');
 const start_min = document.getElementById('led_start_time_min');
 const end_hour = document.getElementById('led_end_time_hour');
 const end_min = document.getElementById('led_end_time_min');
-const led_repeat = document.getElementById('led_repeat'); //コマンド設定追加？
+const led_repeat = document.getElementById('led_repeat');
 
 //LEDタイマー　ON,OFFスイッチ
 $('#ledtime_switch').on('click', function() {
@@ -187,8 +192,12 @@ $('#ledtime_switch').on('click', function() {
         switchOff(1, 'LEDCANCEL');
         start_hour.value = start_min.value = end_hour.value = end_min.value = '00';
         led_repeat.value = '繰り返ししない';
-        //start_hour.textContent, start_min.textContent, end_hour.textContent, end_min.textContent = '00';
     } else if(on_or_off[1] == false){
+        // if(led_repeat.value == '1'){ //繰り返し処理のコマンド
+        //     command += ',1';
+        // } else {
+        //     command += ',0';
+        // }
         switchOn(1, 'LEDONTIME,' + command);
     }
 });
@@ -239,10 +248,10 @@ function previewFile(file) {
     reader.onload = function (e) {
       const imageUrl = e.target.result; // URLはevent.target.resultで呼び出せる
       $('#preview_dummy').css('display', 'none');
-      const img = document.createElement("img"); // img要素を作成
-      img.src = imageUrl; // URLをimg要素にセット
-      img.id = 'preview_image';
-      preview.appendChild(img); // #previewの中に追加
+    //   const img = document.createElement("img"); // img要素を作成
+    //   img.src = imageUrl; // URLをimg要素にセット
+    //   img.id = 'preview_image';
+    //   preview.appendChild(img); // #previewの中に追加
       console.log('PDF,ON:xxxを送信しました。（仮）');
       //postData('PDF,ON:' + imageUrl);  //アップロード画像を液晶表示するコマンドをベンチに送る(previewと連動)
     }
@@ -281,6 +290,9 @@ $('#audio_switch').on('click', function() {
         volume.children[1].textContent = '0';
     } else if(on_or_off[3] == false){
         postData('VOLUME,500,'); //初期値
+        // document.getElementById('volume_input').value = 12; //初期値はざっくりでいい場合
+        // volume.style.left = '12%';
+        // volume.children[1].textContent = '12';
         document.getElementById('volume_input').value = 12.5;
         volume.style.left = '12.5%';
         volume.children[1].textContent = '12.5';
@@ -341,10 +353,10 @@ function preview_mv_File(file) {
     reader.onload = function (e) {
       const videoUrl = e.target.result; // URLはevent.target.resultで呼び出せる
       $('#mp4_preview_dummy').css('display', 'none');
-      const video = document.createElement("video"); // video要素を作成
-      video.src = videoUrl; // URLをvideo要素にセット
-      video.id = 'mp4_preview_video';
-      preview.appendChild(video); // #previewの中に追加
+    //   const video = document.createElement("video"); // video要素を作成
+    //   video.src = videoUrl; // URLをvideo要素にセット
+    //   video.id = 'mp4_preview_video';
+    //   preview.appendChild(video); // #previewの中に追加
       movie_url = 'xxx';
     }
     // いざファイルをURLとして読み込む
@@ -417,114 +429,76 @@ $('.delete_cancel_btn').on('click', function() {
 function submit(){
     const submitButton = document.getElementById("submitButton");
     submitButton.click();
+    data2 = document.getElementById('data2').textContent;
+    console.log(data2);
 }
-//setInterval(submit, 1000);
+setInterval(submit, 1000);
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// 現在の電圧、現在の着席人数、現在の充電機器、現在の接続台数、通信使用量合計?　の数字描画変更
+let battery_num = document.getElementById('product_battery');
+let human_num = document.getElementById('product_human_count');
+let ac_num = document.getElementById('product_ac_count');
+let wifi_num = document.getElementById('product_wifi_count');
+
+battery_num.textContent = (data['BATTERY'].split(','))[1];
+human_num.textContent = Number((data['HUMAN'].split(','))[1].replace('R:','')) + Number((data['HUMAN'].split(','))[2].replace('L:',''));
+// 現在の充電機器の処理
+wifi_num.textContent = (data['WIFIUSE'].split(','))[1];
+// 通信使用量合計の処理
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 
 var ctx = document.getElementById('ex_chart');
 var myChart = new Chart(ctx, {
-type: 'line',
-data: {
-    labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-    datasets: [{
-        fillColor: "",
-        strokeColor: "",
-        borderColor: "rgb(70,197,64)",
-        backgroundColor: "rgb(245,247,250)",
-        pointRadius: 0,
-        borderWidth: 2,
-    label: 'blue',
-    data: [20, 35, 40, 30, 45, 35, 40],
-    // データライン
-        borderColor: 'rgb(70,197,64)',
-        backgroundColor: "rgb(245,247,250)",
-    }],
-},
-options: {
-    plugins: {
-    // グラフタイトル
-    title: {
-        display: true,
-        text: 'Sample Chart',
-        color: 'black',
-        padding: {top: 5, bottom: 5},
-        font: {
-        family: '"Arial", "Times New Roman"',
-        size: 12,
-        },
+    type: 'line',
+    data: {
+        labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        datasets: [{
+            pointRadius: 0,
+            borderWidth: 2,
+            label: '',
+            data: [40, 35, 40, 30, 45, 35, 40, 30, 45, 35],
+            // データライン
+            borderColor: 'rgb(70,197,64)',
+            xAxisID: 'x',
+            yAxisID: 'y'
+        }],
     },
-    // 凡例
-    legend: {
-        position: 'right',
-        align: 'start',
-        // 凡例ラベル
-        labels: {
-        boxWidth: 20,
-        boxHeight: 8,
+    options: {
+        scales: {  // 軸設定
+            x: {  // Ｘ軸設定
+                ticks: {  // 目盛り
+                    display: false
+                    // min: 0,            // 最小値
+                    // max: 25,           // 最大値
+                    // stepSize: 5,       // 間隔
+                },
+                grid: {
+                    display: false,
+                    drawBorder: false
+                }
+            },
+            y: { // Ｙ軸設定
+                ticks: {  // 目盛り
+                    display: false
+                },
+                grid: {  // グリッド線
+                    display: false,
+                    drawBorder: false
+                }
+            }
         },
-        // 凡例タイトル
-        title: {
-        display: true,
-        // text: 'Legend',
-        padding: {top: 20},
-        },
-    },
-    // ツールチップ
-    tooltip: {
-        backgroundColor: '#933',
-    },
-    },
-    scales: {
-    y: {
-        // 最小値・最大値
-        min: 0,
-        max: 60,
-        // 軸タイトル
-        title: {
-        display: true,
-        //text: 'Scale Title',
-        color: 'blue',
-        },
-        // 目盛ラベル
-        ticks: {
-        color: 'blue',
-        stepSize: 20,
-        showLabelBackdrop: true,
-        backdropColor: '#ddf',
-        backdropPadding: { x: 4, y: 2 },
-        major: {
-            enabled: true,
-        },
-        align: 'end',
-        crossAlign: 'center',
-        sampleSize: 4,
-        },
-        grid: {
-        // 軸線
-        borderColor: 'transparent',
-        borderWidth: 1,
-        drawBorder: true,
-        // 目盛線＆グリッド線
-        color: '#080',
-        display: true,
-        // グリッド線
-        borderDash: [3, 3],
-        borderDashOffset: 0,
-        // 目盛線
-        drawTicks: true,
-        tickColor: 'blue',
-        tickLength: 10,
-        tickWidth: 1,
-        tickBorderDash: [2, 2],
-        tickBorderDashOffset: 0,
-        },
-    },
-    x: {
-        grid: {
-        borderColor: 'transparent',
-        borderWidth: 1,
-        },
-    },
-    },
-},
+        plugins: {
+            legend: {
+                display: false
+            }
+        }
+    }
 });

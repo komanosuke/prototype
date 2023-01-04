@@ -29,7 +29,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to '/others/', class: "hover" do %>
+        <%= link_to '/analyze/index', class: "hover" do %>
           <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
         <% end %>
       </li>
@@ -55,7 +55,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to '/others/', class: "hover" do %>
+        <%= link_to '/analyze/index', class: "hover" do %>
           <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
         <% end %>
       </li>
@@ -81,7 +81,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to '/others/', class: "hover" do %>
+        <%= link_to '/analyze/index', class: "hover" do %>
           <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
         <% end %>
       </li>
@@ -107,7 +107,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to '/others/', class: "hover" do %>
+        <%= link_to '/analyze/index', class: "hover" do %>
           <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
         <% end %>
       </li>
@@ -134,16 +134,17 @@
           <dd>ダミーテキストダミーテキストダミーテキストダミーテキスト<a href="">詳細</a></dd>
         </div>
         <div class="account_form_wrap">
-          <form class="" action="" method="post">
+          <%= form_for(@user, url:{controller:'user', action:'changemail'}) do |form| %>
             <div class="txt_field">
               <dt class="form_term">メールアドレス<span class="req">必須</span></dt>
-              <dd class="form_description"><input type="email" name="user_email" placeholder="admin@parcom.jp" value=""></dd>
+              <dd class="form_description"><%= form.text_field :email, placeholder:"admin@parcom.jp" %></dd>
             </div>
             <button type="submit" class="btn btn_g">確認メールを送信する</button>
-          </form>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
 </main>
+    

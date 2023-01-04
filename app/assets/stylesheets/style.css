@@ -270,11 +270,11 @@ input[type="color"]{
 	border: none;
     outline: none;
     background: none;
-    width: 41px;
+    width: 39px;
     height: 42px;
     border-radius: 5px;
     cursor: pointer;
-    padding: 0 1px;
+    padding: 0;
 }
 
 select{
