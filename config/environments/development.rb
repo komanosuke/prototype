@@ -41,7 +41,7 @@ Rails.application.configure do
     port:                  587,
     domain:               'heart-language.jp',
     user_name:            'komai@heart-language.jp',
-    password:             'inlscctjmhesqlma',
+    password:             '',
     enable_starttls_auto: true, # STARTTLSに自動接続する
 
     openssl_verify_mode: 'none',
