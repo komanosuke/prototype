@@ -1,0 +1,56 @@
+<main>
+<div id="contact">
+  <div class="page_ttl">
+    <h1><span>CONTACT</span>お問い合わせ</h1>
+  </div>
+
+  <section>
+    <div class="contact_form">
+        <div role="form" lang="ja" dir="ltr">
+
+        <%= form_for(@contact, url: confirm_path) do |f| %>
+        <dl class="form_list">
+            <dt class="form_term">お問い合わせ種別<span class="req">必須</span></dt>
+            <div class="select">
+                <dd class="form_description"><span data-name="your_type">
+                    <%= f.select(:category, ["使い方について", "バグやエラー報告について", "その他"], { include_blank: '選択してください' }, required: true) %>
+                </span></dd>
+            <div class="arrow arrow_bottom"></div>
+            </div>
+        </dl>
+        <dl class="form_list">
+            <dt class="form_term">お名前<span class="req">必須</span></dt>
+            <dd class="form_description"><span data-name="your_name"><%= f.text_field :name, autofocus: true, class: 'form', size: "40", placeholder: "お名前を入力してください" %></span></dd>
+            <p> <span class="ex">例：公園太郎</span>
+        </dl>
+        <dl class="form_list">
+            <dt class="form_term">自治体・会社名<span class="req">必須</span></dt>
+            <dd class="form_description"><span data-name="your_c_name"><%= f.text_field :organization, autofocus: true, class: 'form', size: "40", placeholder: "自治体・会社名を入力してください" %></span></dd>
+            <p> <span class="ex">例：株式会社PARCOM</span>
+        </dl>
+        <dl class="form_list">
+            <dt class="form_term">メールアドレス<span class="req">必須</span></dt>
+            <dd class="form_description"><span data-name="your_email"><%= f.text_field :email, autofocus: true, class: 'form', size: "40", placeholder: "メールアドレスを入力してください" %></span></dd>
+            <p> <span class="ex">例：admin@parcom.com</span>
+        </dl>
+        <dl class="form_list">
+            <dt class="form_term">電話番号<span class="req">必須</span></dt>
+            <dd class="form_description"><span data-name="your_tel"><%= f.text_field :tel, autofocus: true, class: 'form', size: "40", placeholder: "電話番号を入力してください" %></span></dd>
+            <p> <span class="ex">例：000-0000-0000</span>
+        </dl>
+        <dl class="form_list">
+            <dt class="form_term">お問い合わせ内容<span class="req">必須</span></dt>
+            <dd class="form_description"><span data-name="textarea"><%= f.text_area :message, autofocus: true, class: 'form', cols: "40", rows: "10", placeholder: "お問い合わせ内容を入力してください" %></span></dd>
+        </dl>
+
+        <p class="privacy_txt">お問い合わせフォームへご入力いただいたお名前・メールアドレスなどの個人情報およびメッセージ内容は、お問い合わせの受付および回答が目的です。<br>個人情報の取り扱いについては、<%= link_to "プライバシーポリシー", "/parcom/privacy", target: :_blank, rel: "noopener noreferrer" %>をご確認ください。</p>
+        <p><span data-name="privacy_check"><span><span><label><%= f.check_box :agree, {}, true, false %><span>プライバシーポリシーに同意します</span></label></span></span></span><br />
+        <%= f.submit '送信する' %>
+
+          <div aria-hidden="true"></div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</div>
+</main>

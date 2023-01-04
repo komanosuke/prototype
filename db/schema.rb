@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_23_020025) do
+ActiveRecord::Schema.define(version: 2022_12_27_093123) do
+
+  create_table "bench_audios", force: :cascade do |t|
+    t.integer "bench_id"
+    t.string "name"
+    t.string "audio"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bench_id"], name: "index_bench_audios_on_bench_id"
+  end
+
+  create_table "bench_images", force: :cascade do |t|
+    t.integer "bench_id"
+    t.string "name"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bench_id"], name: "index_bench_images_on_bench_id"
+  end
+
+  create_table "bench_videos", force: :cascade do |t|
+    t.integer "bench_id"
+    t.string "name"
+    t.string "video"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bench_id"], name: "index_bench_videos_on_bench_id"
+  end
 
   create_table "benches", force: :cascade do |t|
     t.integer "park_id"
@@ -23,6 +50,18 @@ ActiveRecord::Schema.define(version: 2022_12_23_020025) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["park_id"], name: "index_benches_on_park_id"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "category", null: false
+    t.string "name", null: false
+    t.string "organization", null: false
+    t.string "email", null: false
+    t.string "tel", null: false
+    t.text "message", null: false
+    t.boolean "agree", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -152,6 +191,9 @@ ActiveRecord::Schema.define(version: 2022_12_23_020025) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "bench_audios", "benches"
+  add_foreign_key "bench_images", "benches"
+  add_foreign_key "bench_videos", "benches"
   add_foreign_key "benches", "parks"
   add_foreign_key "events", "parks"
   add_foreign_key "parks", "users"

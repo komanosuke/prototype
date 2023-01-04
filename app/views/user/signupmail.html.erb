@@ -7,18 +7,20 @@
     </div>
     <div class="login_related_content">
       <h1>アカウントを作成する</h1>
-      <form name="pre_register">
+        <%= form_for(@user, url:{controller:'user', action:'signupmail'}, name:"pre_register", local:true) do |f| %>
+        <!--
         <p id="submit_failed" class="caution" style="display:none;"><%= image_tag "/signin_warning.png" %>メールアドレスまたはパスワードが空欄です</p>
+        -->
       	<div class="txt_field">
           <dt class="form_term">メールアドレス</dt>
-      		<dd class="form_description"><input type="text" name="log" id="login_email" value="" placeholder="メールアドレスを入力してください"></dd>
+      		<dd class="form_description"><%= f.text_field :email, autofocus: true, id:"login_email", size: "40", placeholder: "メールアドレスを入力してください" %></dd>
           <span class="ex">アカウントを作成することにより、<%= link_to "利用規約", "/parcom/terms" %>および<%= link_to "プライバシーポリシー", "/parcom/privacy" %>を読み、これに同意するものとします。</span>
       	</div>
-        <button class="btn" type="submit">仮登録メールを送信する</button>
-      </form>
+        <%= f.submit '仮登録メールを送信する', class:"btn" %>
+      <% end %>
     </div>
     <div class="new_signup_wrap">
-      <p>PARCOM ADMINのアカウントをすでにお持ちですか？<br><%= link_to "ログインはこちら", "/user/login" %></p>
+      <p>PARCOM ADMINのアカウントをすでにお持ちですか？<br><%= link_to "ログインはこちら", action:'index' %></p>
     </div>
   </div>
 </div>

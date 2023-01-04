@@ -4,5 +4,242 @@
 <br>
 <br>
 <br>
-<h1>削除はまだ使えません。</h1>
-<p><a href="/admin/index">adminトップに戻る>></a></p>
+<p id="admin_title">データ削除 確認画面</p>
+<p id="back"><a href="/admin/index">adminトップに戻る>></a></p>
+
+<% if @user != nil %>
+    <p>以下のデータを削除してもいいですか？</p>
+    <br>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>権限</th>
+            <th>登録日時</th>
+            <th>ユーザーID(不要？)</th>
+            <th>表示名</th>
+            <th>メールアドレス</th>
+            <th>郵便番号</th>
+            <th>住所(都道府県)</th>
+            <th>住所(市区町村)</th>
+            <th>それ以降の住所</th>
+            <th>電話番号</th>
+            <th>自治体名</th>
+            <th>所属課</th>
+            <th>プロフィール画像</th>
+            <th>プロフィール内容</th>
+            <th>メール通知設定</th>
+            <th>通知フラグ</th>
+            <th>管理者メモ</th>
+        </tr>
+        <tr>
+            <td><%= @user.id %></td>
+            <td><%= @user.role %></td>
+            <td><%= @user.registered %></td>
+            <td><%= @user.login %></td>
+            <td><%= @user.display_name %></td>
+            <td><%= @user.email %></td>
+            <td><%= @user.zip %></td>
+            <td><%= @user.prefecture %></td>
+            <td><%= @user.address %></td>
+            <td><%= @user.street %></td>
+            <td><%= @user.tel %></td>
+            <td><%= @user.municipality %></td>
+            <td><%= @user.division %></td>
+            <td><%= @user.image %></td>
+            <td><%= @user.profile %></td>
+            <td><%= @user.notification %></td>
+            <td><%= @user.flag %></td>
+            <td><%= @user.admin_memo %></td>
+        </tr>
+    </table>
+    <%= form_tag('delete') do %>
+        <%= text_field_tag 'user_delete_id', @user.id , class: 'edit_id' %>
+        <%= button_to '削除'%>
+    <% end %>
+
+<% elsif @park != nil %>
+    <p>以下のデータを削除してもいいですか？</p>
+    <br>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>ユーザーID</th>
+            <th>作成日時</th>
+            <th>ステータス</th>
+            <th>公園名</th>
+            <th>郵便番号</th>
+            <th>住所(都道府県)</th>
+            <th>住所(市区町村)</th>
+            <th>それ以降の住所</th>
+            <th>営業時間</th>
+            <th>電話番号</th>
+            <th>入場料金</th>
+            <th>Google Map</th>
+            <th>公式ホームページ</th>
+            <th>面積</th>
+            <th>紹介文</th>
+            <th>状況</th>
+            <th>駐車場情報</th>
+            <th>トイレ情報</th>
+            <th>遊具情報</th>
+            <th>施設情報</th>
+            <th>スポーツ情報</th>
+            <th>景観情報</th>
+            <th>防災情報</th>
+            <th>その他情報</th>
+        </tr>
+        <tr>
+            <td><%= @park.id %></td>
+            <td><%= @park.user_id %></td>
+            <td><%= @park.post_date %></td>
+            <td><%= @park.post_status %></td>
+            <td><%= @park.name %></td>
+            <td><%= @park.zip %></td>
+            <td><%= @park.prefecture %></td>
+            <td><%= @park.address %></td>
+            <td><%= @park.street %></td>
+            <td><%= @park.hours %></td>
+            <td><%= @park.tel %></td>
+            <td><%= @park.fee %></td>
+            <td><%= @park.map %></td>
+            <td><%= @park.website %></td>
+            <td><%= @park.size %></td>
+            <td><%= @park.profile %></td>
+            <td><%= @park.status %></td>
+            <td><%= @park.parking_info %></td>
+            <td><%= @park.toilet_info %></td>
+            <td><%= @park.playground_info %></td>
+            <td><%= @park.facility_info %></td>
+            <td><%= @park.sports_info %></td>
+            <td><%= @park.view_info %></td>
+            <td><%= @park.disaster_info %></td>
+            <td><%= @park.other_info %></td>
+        </tr>
+    </table>
+    <%= form_tag('delete') do %>
+        <%= text_field_tag 'park_delete_id', @park.id , class: 'edit_id' %>
+        <%= button_to '削除'%>
+    <% end %>
+
+<% elsif @bench != nil %>
+    <p>以下のデータを削除してもいいですか？</p>
+    <br>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>所属公園ID</th>
+            <th>ベンチ名</th>
+            <th>MACアドレス</th>
+            <th>OS</th>
+            <th>導入日</th>
+            <th>位置情報</th>
+            <th>タイマーON/OFF</th>
+        </tr>
+        <tr>
+            <td><%= @bench.id %></td>
+            <td><%= @bench.park_id %></td>
+            <td><%= @bench.name %></td>
+            <td><%= @bench.mac_address %></td>
+            <td><%= @bench.os_name %></td>
+            <td><%= @bench.introduced_date %></td>
+            <td><%= @bench.position %></td>
+            <td><%= @bench.timer %></td>
+        </tr>
+    </table>
+    <%= form_tag('delete') do %>
+        <%= text_field_tag 'bench_delete_id', @bench.id , class: 'edit_id' %>
+        <%= button_to '削除'%>
+    <% end %>
+
+<% elsif @picture != nil %>
+    <p>以下のデータを削除してもいいですか？</p>
+    <br>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>所属公園ID</th>
+            <th>写真のタイトル</th>
+            <th>写真</th>
+        </tr>
+        <tr>
+            <td><%= @picture.id %></td>
+            <td><%= @picture.park_id %></td>
+            <td><%= @picture.name %></td>
+            <td><%= @picture.picture %></td>
+        </tr>
+    </table>
+    <%= form_tag('delete') do %>
+        <%= text_field_tag 'picture_delete_id', @picture.id , class: 'edit_id' %>
+        <%= button_to '削除'%>
+    <% end %>
+
+<% elsif @event != nil %>
+    <p>以下のデータを削除してもいいですか？</p>
+    <br>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>所属公園ID</th>
+            <th>イベント名</th>
+            <th>説明</th>
+        </tr>
+        <tr>
+            <td><%= @event.id %></td>
+            <td><%= @event.park_id %></td>
+            <td><%= @event.name %></td>
+            <td><%= @event.contents %></td>
+        </tr>
+    </table>
+    <%= form_tag('delete') do %>
+        <%= text_field_tag 'event_delete_id', @event.id , class: 'edit_id' %>
+        <%= button_to '削除'%>
+    <% end %>
+
+<% elsif @product != nil %>
+    <p>以下のデータを削除してもいいですか？</p>
+    <br>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>所属公園ID</th>
+            <th>プロダクト名</th>
+            <th>説明</th>
+        </tr>
+        <tr>
+            <td><%= @product.id %></td>
+            <td><%= @product.park_id %></td>
+            <td><%= @product.name %></td>
+            <td><%= @product.contents %></td>
+        </tr>
+    </table>
+    <%= form_tag('delete') do %>
+        <%= text_field_tag 'product_delete_id', @product.id , class: 'edit_id' %>
+        <%= button_to '削除'%>
+    <% end %>
+
+<% elsif @shortcut != nil %>
+    <p>以下のデータを削除してもいいですか？</p>
+    <br>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>ベンチID</th>
+            <th>ショートカット名</th>
+            <th>プログラム内容</th>
+            <th>導入日</th>
+        </tr>
+        <tr>
+            <td><%= @shortcut.id %></td>
+            <td><%= @shortcut.bench_id %></td>
+            <td><%= @shortcut.name %></td>
+            <td><%= @shortcut.program %></td>
+            <td><%= @shortcut.introduced_date %></td>
+        </tr>
+    </table>
+    <%= form_tag('delete') do %>
+        <%= text_field_tag 'shortcut_delete_id', @shortcut.id , class: 'edit_id' %>
+        <%= button_to '削除'%>
+    <% end %>
+<% else %>
+    <h2>トップページからしか削除対象を指定できません。トップページから操作をやり直してください。</h2>
+<% end %>

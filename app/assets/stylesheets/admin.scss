@@ -18,7 +18,7 @@
     display: none;
 }
 
-#add {
+#back {
     float: right;
 }
 
@@ -28,4 +28,12 @@
 
 td a {
     color: #46C541;
+}
+
+.edit_id {
+    visibility: hidden;
+}
+
+.hidden {
+    display: none;
 }

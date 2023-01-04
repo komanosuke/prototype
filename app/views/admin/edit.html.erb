@@ -3,6 +3,291 @@
 <br>
 <br>
 <br>
+<p id="admin_title">データ編集画面</p>
+<p id="back"><a href="/admin/index">adminトップに戻る>></a></p>
+
+<% if @user != nil %>
+    <h2>ユーザーID: <%= @user.id %> の登録データ編集画面です。</h2>
+    <br>
+    <%= form_for(@user, url:{controller:'admin', action:'edit'}) do |form| %>
+        <div class="form-group hidden">
+            <label for="id">ID</label>
+            <%= form.text_field :id, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="display_name">表示名</label>
+            <%= form.text_field :display_name, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="email">メールアドレス</label>
+            <%= form.text_field :email, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="zip">郵便番号</label>
+            <%= form.text_field :zip, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="prefecture">住所(都道府県)</label>
+            <%= form.text_field :prefecture, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="address">住所(市区町村)</label>
+            <%= form.text_field :address, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="street">それ以降の住所</label>
+            <%= form.text_field :street, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="tel">電話番号</label>
+            <%= form.text_field :tel, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="municipality">自治体名</label>
+            <%= form.text_field :municipality, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="division">所属課</label>
+            <%= form.text_field :division, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="image">プロフィール画像</label>
+            <%= form.text_field :image, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="profile">プロフィール内容</label>
+            <%= form.text_field :profile, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="notification">メール通知設定</label>
+            <%= form.text_field :notification, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="flag">通知フラグ</label>
+            <%= form.text_field :flag, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="admin_memo">管理者メモ</label>
+            <%= form.text_field :admin_memo, class:"form" %>
+        </div>
+        <%= form.submit "更新" %>
+    <% end %>
+
+<% elsif @park != nil %>
+    <h2>公園ID: <%= @park.id %> の登録データ編集画面です。</h2>
+    <br>
+    <%= form_for(@park, url:{controller:'admin', action:'edit'}) do |form| %>
+        <div class="form-group hidden">
+            <label for="id">ID</label>
+            <%= form.text_field :id, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="name">公園名</label>
+            <%= form.text_field :name, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="zip">郵便番号</label>
+            <%= form.text_field :zip, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="prefecture">住所(都道府県)</label>
+            <%= form.text_field :prefecture, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="address">住所(市区町村)</label>
+            <%= form.text_field :address, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="street">それ以降の住所</label>
+            <%= form.text_field :street, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="hours">営業時間</label>
+            <%= form.text_field :hours, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="tel">電話番号</label>
+            <%= form.text_field :tel, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="fee">入場料金</label>
+            <%= form.text_field :fee, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="map">Google MapのURL</label>
+            <%= form.text_field :map, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="website">公式ホームページのURL</label>
+            <%= form.text_field :website, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="size">面積</label>
+            <%= form.text_field :size, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="profile">紹介文</label>
+            <%= form.text_field :profile, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="parking_info">駐車場情報</label>
+            <%= form.text_field :parking_info, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="toilet_info">トイレ情報</label>
+            <%= form.text_field :toilet_info, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="playground_info">遊具情報</label>
+            <%= form.text_field :playground_info, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="facility_info">施設情報</label>
+            <%= form.text_field :facility_info, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="sports_info">スポーツ情報</label>
+            <%= form.text_field :sports_info, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="view_info">景観情報</label>
+            <%= form.text_field :view_info, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="disaster_info">防災情報</label>
+            <%= form.text_field :disaster_info, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="other_info">その他情報</label>
+            <%= form.text_field :other_info, class:"form" %>
+        </div>
+        <%= form.submit "更新" %>
+    <% end %>
+
+<% elsif @bench != nil %>
+    <h2>ベンチID: <%= @bench.id %> の登録データ編集画面です。</h2>
+    <br>
+    <%= form_for(@bench, url:{controller:'admin', action:'edit'}) do |form| %>
+        <div class="form-group hidden">
+            <label for="id">ID</label>
+            <%= form.text_field :id, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="park_id">所属公園ID</label>
+            <%= form.text_field :park_id, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="name">ベンチ名</label>
+            <%= form.text_field :name, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="mac_address">MACアドレス</label>
+            <%= form.text_field :mac_address, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="os_name">OS</label>
+            <%= form.text_field :os_name, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="mac_address">導入日（例: 2022-01-01）</label>
+            <%= form.text_field :introduced_date, class:"form" %>
+        </div>
+        <%= form.submit "更新" %>
+    <% end %>
+
+<% elsif @picture != nil %>
+    <h2>写真ID: <%= @picture.id %> の登録データ編集画面です。</h2>
+    <br>
+    <%= form_for(@picture, url:{controller:'admin', action:'edit'}) do |form| %>
+        <div class="form-group">
+            <label for="park_id">所属公園ID</label>
+            <%= form.text_field :park_id, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="name">写真のタイトル</label>
+            <%= form.text_field :name, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="picture">写真</label>
+            <%= form.text_field :picture, class:"form" %>
+        </div>
+        <%= form.submit "更新" %>
+    <% end %>
+
+<% elsif @event != nil %>
+    <h2>イベントID: <%= @event.id %> の登録データ編集画面です。</h2>
+    <br>
+    <%= form_for(@event, url:{controller:'admin', action:'edit'}) do |form| %>
+        <div class="form-group hidden">
+            <label for="id">ID</label>
+            <%= form.text_field :id, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="park_id">所属公園ID</label>
+            <%= form.text_field :park_id, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="name">イベント名</label>
+            <%= form.text_field :name, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="contents">説明</label>
+            <%= form.text_field :contents, class:"form" %>
+        </div>
+        <%= form.submit "更新" %>
+    <% end %>
+
+<% elsif @product != nil %>
+    <h2>プロダクトID: <%= @product.id %> の登録データ編集画面です。</h2>
+    <br>
+    <%= form_for(@product, url:{controller:'admin', action:'edit'}) do |form| %>
+        <div class="form-group hidden">
+            <label for="id">ID</label>
+            <%= form.text_field :id, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="park_id">所属公園ID</label>
+            <%= form.text_field :park_id, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="name">プロダクト名</label>
+            <%= form.text_field :name, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="contents">説明</label>
+            <%= form.text_field :contents, class:"form" %>
+        </div>
+        <%= form.submit "更新" %>
+    <% end %>
+
+<% elsif @shortcut != nil %>
+    <h2>ショートカットID: <%= @shortcut.id %> の登録データ編集画面です。</h2>
+    <br>
+    <%= form_for(@shortcut, url:{controller:'admin', action:'edit'}) do |form| %>
+        <div class="form-group hidden">
+            <label for="id">ID</label>
+            <%= form.text_field :id, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="bench_id">ショートカットを登録するベンチのID</label>
+            <%= form.text_field :bench_id, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="name">ショートカット名</label>
+            <%= form.text_field :name, class:"form" %>
+        </div>
+        <div class="form-group">
+            <label for="program">プログラム内容</label>
+            <%= form.text_field :program, class:"form" %>
+        </div>
+        <%= form.submit "更新" %>
+    <% end %>
+<% else %>
+    <h2>トップページからしか編集対象を指定できません。トップページから操作をやり直してください。</h2>
+<% end %>
+
 <br>
-<h1>編集はまだ使えません。</h1>
-<p id="add"><a href="/admin/index">adminトップに戻る>></a></p>
+<br>
+<br>
+<br>
+<br>
