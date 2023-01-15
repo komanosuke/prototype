@@ -7,120 +7,7 @@
 	<span class="spnavButton__border"></span>
 </div>
 
-<aside class="sidebar_product">
-  <div class="sidebar_product_ttl">公園一覧</div>
-  <div class="park_item">
-    <div class="park_name">内灘サンセットパーク</div>
-    <ul>
-      <li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">内灘町総合公園</div>
-    <ul>
-      <li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">ハマナス恐竜公園</div>
-    <ul>
-			<li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">白帆台第４公園</div>
-    <ul>
-			<li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="sidebar_help">
-    <div class="sidebar_help_ttl"><%= image_tag "/sidebar/icon_speechbubble.svg" %>ヘルプページはこちら</div>
-    <p>使い方やよくあるご質問等をまとめています。</p>
-    <%= link_to '/parcom/help', class: "btn hover flex_container" do %>
-      ヘルプはこちらから<%= image_tag "/sidebar/icon_arrow_help_off.svg" %>
-    <% end %>
-  </div>
-</aside>
+<%= render partial: "shared/aside" %>
   <div id="account_related" class="inner_mid">
     <div class="page_ttl_wrap">
       <div class="page_ttl">
@@ -134,24 +21,24 @@
           <dd>ダミーテキストダミーテキストダミーテキストダミーテキスト<a href="">詳細</a></dd>
         </div>
         <div class="account_form_wrap">
-          <form class="" action="" method="post">
+        <%= form_for(@user, url:{controller:'user', action:'changepwd'}) do |form| %>
             <div class="txt_field">
               <dt class="form_term">現在のパスワード<span class="req">必須</span></dt>
-              <dd class="form_description"><input type="password" name="user_pass" placeholder="現在のパスワードを入力" value=""></dd>
-              <span class="ex"><a href="/user/forgetpwd">現在のパスワードをお忘れですか？</a></span>
+              <dd class="form_description"><%= form.password_field :password, placeholder:"現在のパスワードを入力", required: true %></dd>
+              <span class="ex"><%= link_to "現在のパスワードをお忘れですか？", new_password_reset_path %></span>
             </div>
             <div class="txt_field">
               <dt class="form_term">新しいパスワード<span class="req">必須</span></dt>
-              <dd class="form_description"><input type="password" name="new_user_pass" placeholder="新しいパスワードを入力" value=""></dd>
+              <dd class="form_description"><%= form.password_field :reset_digest, placeholder:"新しいパスワードを入力",type: "password", required: true %></dd>
               <span class="ex">半角英数字8文字以上</span>
             </div>
             <div class="txt_field">
               <dt class="form_term">新しいパスワード（確認用）<span class="req">必須</span></dt>
-              <dd class="form_description"><input type="password" name="confirm_user_pass" placeholder="" value=""></dd>
+              <dd class="form_description"><%= form.password_field :reset_digest, type: "password", required: true %></dd>
               <span class="ex">上と同じパスワードを入力してください</span>
             </div>
-            <button type="submit" class="btn btn_g">パスワードを変更する</button>
-          </form>
+            <%= form.submit "パスワードを変更する", class: "btn btn_g" %>
+          <% end %>
         </div>
       </div>
     </div>

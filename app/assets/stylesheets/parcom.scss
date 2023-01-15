@@ -11,12 +11,12 @@
     display: none;
 }
 
-#ex_chart {
-    max-height: 50px;
-    max-width: 160px;
+.ex_chart {
+    max-height: 45px;
+    max-width: 90%;
     position: absolute;
     top: 24%;
-    left: 6%;
+    left: 3%;
 }
 
 #data {
@@ -42,4 +42,11 @@
 
 #submitButton {
     display: none;
+}
+
+.gragh_dummy {
+    background-color: #F5F7FA;
+    vertical-align: bottom;
+    width: 100%;
+    height: 70px;
 }

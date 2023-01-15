@@ -10,33 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_27_093123) do
+ActiveRecord::Schema.define(version: 2023_01_14_070524) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string "name"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "bench_audios", force: :cascade do |t|
-    t.integer "bench_id"
+    t.integer "user_id"
     t.string "name"
     t.string "audio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["bench_id"], name: "index_bench_audios_on_bench_id"
+    t.index ["user_id"], name: "index_bench_audios_on_user_id"
   end
 
   create_table "bench_images", force: :cascade do |t|
-    t.integer "bench_id"
+    t.integer "user_id"
     t.string "name"
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["bench_id"], name: "index_bench_images_on_bench_id"
+    t.index ["user_id"], name: "index_bench_images_on_user_id"
   end
 
   create_table "bench_videos", force: :cascade do |t|
-    t.integer "bench_id"
+    t.integer "user_id"
     t.string "name"
     t.string "video"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["bench_id"], name: "index_bench_videos_on_bench_id"
+    t.index ["user_id"], name: "index_bench_videos_on_user_id"
   end
 
   create_table "benches", force: :cascade do |t|
@@ -68,6 +75,7 @@ ActiveRecord::Schema.define(version: 2022_12_27_093123) do
     t.integer "park_id"
     t.string "name"
     t.text "contents"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["park_id"], name: "index_events_on_park_id"
@@ -91,13 +99,12 @@ ActiveRecord::Schema.define(version: 2022_12_27_093123) do
 
   create_table "parks", force: :cascade do |t|
     t.integer "user_id"
-    t.date "post_date"
-    t.string "post_status"
     t.string "name"
     t.string "zip"
     t.string "prefecture"
-    t.string "address"
+    t.string "city"
     t.string "street"
+    t.string "address"
     t.json "hours"
     t.string "tel"
     t.json "fee"
@@ -149,7 +156,6 @@ ActiveRecord::Schema.define(version: 2022_12_27_093123) do
     t.integer "bench_id"
     t.string "name"
     t.text "program"
-    t.date "introduced_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bench_id"], name: "index_shortcuts_on_bench_id"
@@ -169,31 +175,31 @@ ActiveRecord::Schema.define(version: 2022_12_27_093123) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "role"
-    t.date "registered"
-    t.integer "login"
-    t.string "display_name"
+    t.string "name"
     t.string "email"
     t.string "password_digest"
     t.string "zip"
     t.string "prefecture"
-    t.string "address"
+    t.string "city"
     t.string "street"
+    t.string "address"
     t.string "tel"
     t.string "municipality"
     t.string "division"
-    t.binary "image"
+    t.string "image"
     t.text "profile"
     t.string "notification"
     t.string "flag"
     t.text "admin_memo"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "bench_audios", "benches"
-  add_foreign_key "bench_images", "benches"
-  add_foreign_key "bench_videos", "benches"
+  add_foreign_key "bench_audios", "users"
+  add_foreign_key "bench_images", "users"
+  add_foreign_key "bench_videos", "users"
   add_foreign_key "benches", "parks"
   add_foreign_key "events", "parks"
   add_foreign_key "parks", "users"

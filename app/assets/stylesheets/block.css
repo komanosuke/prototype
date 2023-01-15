@@ -184,11 +184,13 @@
   height: 50px;
   border-radius: 5px;
   font-weight: bold;
+  margin-top: 40px;
 }
 
 #login_related .login_related_content .btn:hover{
   background: #fff;
   color: #46C541;
+  cursor: pointer;
 }
 
 #login_related #login_form .forget{

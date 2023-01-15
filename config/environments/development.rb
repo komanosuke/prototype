@@ -40,7 +40,7 @@ Rails.application.configure do
     address:              'smtp.gmail.com',
     port:                  587,
     domain:               'heart-language.jp',
-    user_name:            'komai@heart-language.jp',
+    user_name:            '',
     password:             '',
     enable_starttls_auto: true, # STARTTLSに自動接続する
 

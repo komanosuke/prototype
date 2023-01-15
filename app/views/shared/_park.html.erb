@@ -1,0 +1,26 @@
+<div class="park_item">
+    <div class="park_name"><%= park.name %></div>
+    <ul>
+      <li>
+        <%= link_to "/parkinfo_edit/#{park.id}", class: "hover" do %>
+          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
+        <% end %>
+      </li>
+      <li>
+        <%= link_to "/products/#{park.id}", class: "hover" do %>
+          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
+          <span class="notification_num">2</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to "/review/#{park.id}", class: "hover" do %>
+          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
+        <% end %>
+      </li>
+      <li>
+        <%= link_to "/analyze/#{park.id}", class: "hover" do %>
+          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
+        <% end %>
+      </li>
+    </ul>
+  </div>

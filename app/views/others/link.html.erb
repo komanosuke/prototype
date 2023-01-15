@@ -7,31 +7,22 @@
 <br>
 <br>
 <h1>LINK</h1>
-<% if logged_in? and (@user.role == 'admin') %>
-    <div><%= link_to 'PARCOM ADMINへ', {controller: 'admin', action:'index'} %></div>
-<% end %>
-<div><%= link_to 'ホーム', {controller: 'parcom', action:'index'} %></div>
-<div><%= link_to 'はじめての方へ', {controller: 'parcom', action:'beginners'} %></div>
-<div><%= link_to 'お問合せ', {controller: 'parcom', action:'contact'} %></div>
-<div><%= link_to 'ヘルプ', {controller: 'parcom', action:'help'} %></div>
-<div><%= link_to 'プライバシーポリシー', {controller: 'parcom', action:'privacy'} %></div>
-<div><%= link_to '利用規約', {controller: 'parcom', action:'terms'} %></div>
-<div><%= link_to 'アカウント編集', {controller: 'user', action:'account'} %></div>
-<div><%= link_to 'お知らせ記事', {controller: 'parcom', action:'article'} %></div>
-<div><%= link_to 'メールアドレス変更', {controller: 'user', action:'changemail'} %></div>
-<div><%= link_to 'パスワード変更', {controller: 'user', action:'changepwd'} %></div>
-<div><%= link_to 'コントロールパネル', {controller: 'parcom', action:'controlpanel'} %></div>
-<div><%= link_to 'フリーWiFi', {controller: 'parcom', action:'free_wifi'} %></div>
-<div><%= link_to 'お知らせ', {controller: 'parcom', action:'news'} %></div>
-<div><%= link_to '公園の最新情報', {controller: 'parcom', action:'park'} %></div>
-<div><%= link_to '公園情報の編集', {controller: 'park', action:'parkinfo_edit'} %></div>
-<div><%= link_to 'プロダクト', {controller: 'park', action:'products'} %></div>
-<div><%= link_to '公演情報・プロフィール', {controller: 'parcom', action:'profile'} %></div>
-<div><%= link_to '口コミ・レビュー', {controller: 'parcom', action:'review'} %></div>
-<div><%= link_to 'ショートカット', {controller: 'shortcut', action:'shortcut'} %></div>
-<div><%= link_to 'アカウント登録完了画面', {controller: 'user', action:'signup_success'} %></div>
-<div><%= link_to 'アカウント仮登録完了画面', {controller: 'user', action:'signupmail_success'} %></div>
-<div><%= link_to 'アカウント作成', {controller: 'user', action:'signupmail'} %></div>
+<h2><%= link_to 'ホーム', {controller: 'parcom', action:'index'} %></h2>
+<h2><%= link_to 'お知らせ', {controller: 'parcom', action:'news'} %></h2>
+<h2><%= link_to 'お知らせ記事', {controller: 'parcom', action:'article'} %></h2>
+<br>
+<h2><%= link_to 'アカウント編集(ログイン中のユーザーid)', {controller: 'user', action:'account'} %></h2>
+<h2><%= link_to 'メールアドレス変更(ログイン中のユーザーid)', {controller: 'user', action:'changemail'} %></h2>
+<h2><%= link_to '(パスワード変更)', {controller: 'user', action:'changepwd'} %></h2>
+<br>
+<h2><%= link_to 'コントロールパネル', {controller: 'parcom', action:'controlpanel', bench_id:@bench.id} %></h2>
+<br>
+<h2><%= link_to '公園情報・プロフィール(公園id 未)', {controller: 'parcom', action:'profile', park_id:@park.id} %></h2>
+<h2><%= link_to '公園の最新情報(公園id 未)', {controller: 'parcom', action:'park', park_id:@park.id} %></h2>
+<h2><%= link_to '公園情報の編集(公園id)', {controller: 'park', action:'parkinfo_edit', park_id:@park.id} %></h2>
+<h2><%= link_to 'プロダクト(公園id)', {controller: 'park', action:'products', park_id:@park.id} %></h2>
+<h2><%= link_to '口コミ・レビュー(公園id)', {controller: 'parcom', action:'review', park_id:@park.id} %></h2>
+<h2><%= link_to 'ショートカット(公園id 未)', {controller: 'shortcut', action:'index', park_id:@park.id} %></h2>
 <br>
 <br>
 <br>
@@ -45,7 +36,7 @@
     h1 {
         font-size: 40px;  
     }
-    h1, div {
+    h1, h2 {
         text-align: center;
         margin-top: 5px;
     }

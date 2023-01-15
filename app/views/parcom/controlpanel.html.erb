@@ -7,120 +7,7 @@
 	<span class="spnavButton__border"></span>
 </div>
 
-<aside class="sidebar_product">
-  <div class="sidebar_product_ttl">公園一覧</div>
-  <div class="park_item">
-    <div class="park_name">内灘サンセットパーク</div>
-   <ul>
-      <li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">内灘町総合公園</div>
-    <ul>
-      <li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">ハマナス恐竜公園</div>
-    <ul>
-			<li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">白帆台第４公園</div>
-    <ul>
-			<li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="sidebar_help">
-    <div class="sidebar_help_ttl"><%= image_tag "/sidebar/icon_speechbubble.svg" %>ヘルプページはこちら</div>
-    <p>使い方やよくあるご質問等をまとめています。</p>
-    <%= link_to '/parcom/help', class: "btn hover flex_container" do %>
-      ヘルプはこちらから<%= image_tag "/sidebar/icon_arrow_help_off.svg" %>
-    <% end %>
-  </div>
-</aside>
+<%= render partial: "shared/aside" %>
 <div id="controlpanel" class="inner_large">
     <div class="page_ttl_wrap">
       <div class="page_ttl">
@@ -618,7 +505,9 @@
                   </div>
                 </div>
               </div>
-              <audio src= "<%= "#{@bench_audio_now.audio}" %>" controls="" id="audio_player">
+              <% if @bench_audio_now %>
+                <audio src= "<%= "#{@bench_audio_now.audio}" %>" controls="" id="audio_player">
+              <% end %>
             </div>
             <div class="onoff_switch flex_container">
               <div class="onoff_status">
@@ -640,23 +529,26 @@
       <aside class="sidebar_cp">
   <div>
     <div class="shortcut_banner">
-    <%= link_to "/shortcut/shortcut", class: "hover" do %>
-        <%= image_tag "/ctrlpanel/shortcut_create_banner_off.svg", alt: "ショートカットの作成はこちら" %>
-    <% end %>
+
+    <%#= link_to "/shortcut/#{@bench.park_id}", class: "hover" do %>
+        <%#= image_tag "/ctrlpanel/shortcut_create_banner_off.svg", alt: "ショートカットの作成はこちら" %>
+    <%# end %>
+    
     </div>
     <div class="sidebar_item todays_weather">
-      <div class="sidebar_cp_item_ttl"><%= image_tag "/weather/icon_weather_pin.svg" %>石川県金沢市</div>
-      <div class="todays_weather_txt">今日 4月29日(金)の天気</div>
+      <div class="sidebar_cp_item_ttl"><%= image_tag "/weather/icon_weather_pin.svg" %><%= @park.prefecture + @park.city %></div>
+      <div class="todays_weather_txt">今日 <%= @month %>月<%= @day %>日(<%= @weekday %>)の天気</div>
       <div class="flex_container">
-        <div class="temperature"><span>21</span><span>℃</span><br>晴れ時々曇り</div>
-        <div class="weather_icon"><%= image_tag "/weather/icon_sunny.svg", alt: "今日の天気" %></div>
+        <div class="temperature"><span>21</span><span>℃</span><br><%= @telop %></div>
+        <div class="weather_icon"><%= image_tag @weather_img, alt: "今日の天気" %></div>
       </div>
     </div>
     <div class="sidebar_item">
       <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチのバッテリー</div>
       <div class="flex_container">
         <div id="sidebar_cp_graph">
-          <%= image_tag "/sidebar/graph_dummy.svg" %>
+          <div class="gragh_dummy"></div>
+          <canvas id="battery_chart" class="ex_chart"></canvas>
         </div>
         <div class="sidebar_cp_item_content"><p>現在の電圧</p><span id="product_battery">0</span>V</div>
       </div>
@@ -665,7 +557,8 @@
       <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチの着席情報</div>
       <div class="flex_container">
         <div id="sidebar_cp_graph">
-          <%= image_tag "/sidebar/graph_dummy.svg" %>
+          <div class="gragh_dummy"></div>
+          <canvas id="human_chart" class="ex_chart"></canvas>
         </div>
         <div class="sidebar_cp_item_content"><p>現在の着席人数</p><span id="product_human_count">0</span>人</div>
       </div>
@@ -674,7 +567,8 @@
       <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチの充電機器</div>
       <div class="flex_container">
         <div id="sidebar_cp_graph">
-          <%= image_tag "/sidebar/graph_dummy.svg" %>
+          <div class="gragh_dummy"></div>
+          <canvas id="ac_chart" class="ex_chart"></canvas>
         </div>
         <div class="sidebar_cp_item_content"><p>現在の充電機器</p><span id="product_ac_count">0</span>台</div>
       </div>
@@ -683,7 +577,8 @@
       <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>Wi-Fi接続台数</div>
       <div class="flex_container">
         <div id="sidebar_cp_graph">
-          <%= image_tag "/sidebar/graph_dummy.svg" %>
+          <div class="gragh_dummy"></div>
+          <canvas id="wifi_chart" class="ex_chart"></canvas>
         </div>
         <div class="sidebar_cp_item_content"><p>現在の接続台数</p><span id="product_wifi_count">0</span>台</div>
       </div>
@@ -692,8 +587,8 @@
       <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>データ通信使用量</div>
       <div class="flex_container">
         <div id="sidebar_cp_graph">
-          <%= image_tag "/sidebar/graph_dummy.svg" %>
-          <canvas id="ex_chart"></canvas>
+          <div class="gragh_dummy"></div>
+          <canvas id="data_sum_chart" class="ex_chart"></canvas>
         </div>
         <div class="sidebar_cp_item_content"><p>通信使用量合計</p><span>0</span>MB</div>
       </div>
@@ -704,10 +599,12 @@
   </div>
 </div>
 <div id="data"><%= @data %></div>
-<div id="data2"><%= @data2 %></div>
 <%= form_tag(url_for(:action => 'controlpanel'), :remote => true) do %>
     <%= submit_tag "データを更新" ,{id: "submitButton"} %>
 <% end %>
+
+
+
 </main>
 
 

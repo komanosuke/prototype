@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
-    before_action :logged_in_user
+    before_action :logged_in_admin, except: [:index, :show, :add, :edit, :delete]
+
     helper_method :show
     # adminコントローラーは権限ある人だけアクセス可能
 
@@ -187,16 +188,16 @@ class AdminController < ApplicationController
             end
         end
     end
-        
+    
     # permit()内のパラメータを含んだものだけを許可
     private
     def users_params
-        params.require(:user).permit(:display_name, :email, :zip, :prefecture, :address, :street, :tel, :municipality, :division, :image, :profile, :notification, :flag, :admin_memo)
+        params.require(:user).permit(:name, :email, :zip, :prefecture, :city, :street, :tel, :municipality, :division, :image, :profile, :notification, :flag, :admin_memo)
     end
 
     private
     def parks_params
-        params.require(:park).permit(:name, :zip, :prefecture, :address, :street, :hours, :tel, :fee, :map, :website, :size, :profile, :parking_info, :toilet_info, :playground_info, :facility_info, :sports_info, :view_info, :disaster_info, :other_info)
+        params.require(:park).permit(:name, :zip, :prefecture, :city, :street, :hours, :tel, :fee, :map, :website, :size, :profile, :parking_info, :toilet_info, :playground_info, :facility_info, :sports_info, :view_info, :disaster_info, :other_info)
     end
    
     private

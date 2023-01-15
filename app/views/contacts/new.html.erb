@@ -20,32 +20,32 @@
         </dl>
         <dl class="form_list">
             <dt class="form_term">お名前<span class="req">必須</span></dt>
-            <dd class="form_description"><span data-name="your_name"><%= f.text_field :name, autofocus: true, class: 'form', size: "40", placeholder: "お名前を入力してください" %></span></dd>
+            <dd class="form_description"><span data-name="your_name"><%= f.text_field :name, autofocus: true, class: 'form', size: "40", maxlength: "40", placeholder: "お名前を入力してください", required: true %></span></dd>
             <p> <span class="ex">例：公園太郎</span>
         </dl>
         <dl class="form_list">
             <dt class="form_term">自治体・会社名<span class="req">必須</span></dt>
-            <dd class="form_description"><span data-name="your_c_name"><%= f.text_field :organization, autofocus: true, class: 'form', size: "40", placeholder: "自治体・会社名を入力してください" %></span></dd>
+            <dd class="form_description"><span data-name="your_c_name"><%= f.text_field :organization, autofocus: true, class: 'form', size: "40", maxlength: "40", placeholder: "自治体・会社名を入力してください", required: true %></span></dd>
             <p> <span class="ex">例：株式会社PARCOM</span>
         </dl>
         <dl class="form_list">
             <dt class="form_term">メールアドレス<span class="req">必須</span></dt>
-            <dd class="form_description"><span data-name="your_email"><%= f.text_field :email, autofocus: true, class: 'form', size: "40", placeholder: "メールアドレスを入力してください" %></span></dd>
+            <dd class="form_description"><span data-name="your_email"><%= f.email_field :email, autofocus: true, class: 'form', size: "40", maxlength: "40", placeholder: "メールアドレスを入力してください", required: true %></span></dd>
             <p> <span class="ex">例：admin@parcom.com</span>
         </dl>
         <dl class="form_list">
             <dt class="form_term">電話番号<span class="req">必須</span></dt>
-            <dd class="form_description"><span data-name="your_tel"><%= f.text_field :tel, autofocus: true, class: 'form', size: "40", placeholder: "電話番号を入力してください" %></span></dd>
+            <dd class="form_description"><span data-name="your_tel"><%= f.text_field :tel, autofocus: true, class: 'form', size: "40", maxlength: "40", placeholder: "電話番号を入力してください", required: true %></span></dd>
             <p> <span class="ex">例：000-0000-0000</span>
         </dl>
         <dl class="form_list">
             <dt class="form_term">お問い合わせ内容<span class="req">必須</span></dt>
-            <dd class="form_description"><span data-name="textarea"><%= f.text_area :message, autofocus: true, class: 'form', cols: "40", rows: "10", placeholder: "お問い合わせ内容を入力してください" %></span></dd>
+            <dd class="form_description"><span data-name="textarea"><%= f.text_area :message, autofocus: true, class: 'form', cols: "40", rows: "10", placeholder: "お問い合わせ内容を入力してください", required: true %></span></dd>
         </dl>
 
-        <p class="privacy_txt">お問い合わせフォームへご入力いただいたお名前・メールアドレスなどの個人情報およびメッセージ内容は、お問い合わせの受付および回答が目的です。<br>個人情報の取り扱いについては、<%= link_to "プライバシーポリシー", "/parcom/privacy", target: :_blank, rel: "noopener noreferrer" %>をご確認ください。</p>
-        <p><span data-name="privacy_check"><span><span><label><%= f.check_box :agree, {}, true, false %><span>プライバシーポリシーに同意します</span></label></span></span></span><br />
-        <%= f.submit '送信する' %>
+        <p class="privacy_txt">お問い合わせフォームへご入力いただいたお名前・メールアドレスなどの個人情報およびメッセージ内容は、お問い合わせの受付および回答が目的です。<br>個人情報の取り扱いについては、<%= link_to "プライバシーポリシー", "/privacy", target: :_blank, rel: "noopener noreferrer" %>をご確認ください。</p>
+        <p><span data-name="privacy_check"><span><span><label id="check_label"><%= f.check_box :agree, {checked: false}, true, false %><span>プライバシーポリシーに同意します</span></label></span></span></span><br />
+        <%= f.submit '送信する',id:'contact_submit' %>
 
           <div aria-hidden="true"></div>
         <% end %>
@@ -54,3 +54,38 @@
   </section>
 </div>
 </main>
+
+
+<script>
+let contact_agree = document.getElementById('contact_agree');
+let check_label = document.getElementById('check_label');
+let contact_submit = document.getElementById('contact_submit');
+contact_submit.setAttribute("disabled", true);
+contact_submit.style.backgroundColor = '#fff';
+contact_submit.style.color = '#46C541';
+contact_submit.style.cursor = 'auto';
+
+
+check_label.addEventListener('click', function() {
+  if(contact_agree.checked){
+    contact_submit.removeAttribute("disabled");
+    contact_submit.style.backgroundColor = '#46C541';
+    contact_submit.style.color = '#fff';
+    contact_submit.style.cursor = 'pointer';
+  } else {
+    contact_submit.setAttribute("disabled", true);
+    contact_submit.style.backgroundColor = '#fff';
+    contact_submit.style.color = '#46C541';
+    contact_submit.style.cursor = 'auto';
+  }
+});
+contact_submit.addEventListener('mouseover', () => {
+  contact_submit.style.backgroundColor = '#fff';
+  contact_submit.style.color = '#46C541';
+}, false);
+contact_submit.addEventListener('mouseleave', () => {
+  contact_submit.style.backgroundColor = '#46C541';
+  contact_submit.style.color = '#fff';
+}, false);
+console.log('ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ'.length)
+</script>

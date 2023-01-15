@@ -3,7 +3,7 @@ class ContactMailer < ApplicationMailer
         @contact = contact
         mail(
             from: 'komai@heart-language.jp',
-            to:   'toshihiko.komai616@gmail.com',
+            to:   'komai@heart-language.jp',
             subject: 'お問い合わせ通知'
         )
     end

@@ -1,11 +1,20 @@
 class ApplicationController < ActionController::Base
     include SessionsHelper
+    include AdminSessionsHelper
+    protect_from_forgery
 
     private
     # ログイン済みユーザーかどうか確認
     def logged_in_user
       unless logged_in?
         redirect_to login_url
+      end
+    end
+
+    private
+    def logged_in_admin
+      unless admin_logged_in?
+        redirect_to admin_login_url
       end
     end
 

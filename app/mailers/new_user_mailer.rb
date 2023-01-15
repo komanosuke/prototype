@@ -3,7 +3,7 @@ class NewUserMailer < ApplicationMailer
         @user = new_user
         mail(
             from: 'komai@heart-language.jp',
-            to:   'toshihiko.komai616@gmail.com',
+            to:   @user.email,
             subject: 'お問い合わせ通知'
         )
     end

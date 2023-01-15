@@ -7,125 +7,12 @@
 	<span class="spnavButton__border"></span>
 </div>
 
-<aside class="sidebar_product">
-  <div class="sidebar_product_ttl">公園一覧</div>
-  <div class="park_item">
-    <div class="park_name">内灘サンセットパーク</div>
-   <ul>
-      <li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">内灘町総合公園</div>
-    <ul>
-      <li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">ハマナス恐竜公園</div>
-    <ul>
-			<li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">白帆台第４公園</div>
-    <ul>
-			<li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="sidebar_help">
-    <div class="sidebar_help_ttl"><%= image_tag "/sidebar/icon_speechbubble.svg" %>ヘルプページはこちら</div>
-    <p>使い方やよくあるご質問等をまとめています。</p>
-    <%= link_to '/parcom/help', class: "btn hover flex_container" do %>
-      ヘルプはこちらから<%= image_tag "/sidebar/icon_arrow_help_off.svg" %>
-    <% end %>
-  </div>
-</aside>
+<%= render partial: "shared/aside" %>
 
   <div class="inner_large">
     <div class="page_ttl_wrap">
       <div class="page_ttl">
-        <h1>〇〇〇〇〇〇公園の情報編集</h1>
+        <h1><%= @park.name %>の情報編集</h1>
         <p class="page_ttl_txt">公園の情報をアップデートしましょう。</p>
       </div>
     </div>
@@ -134,21 +21,21 @@
         <div class="content_frame" id="basicinfo_edit">
           <div class="parkinfo_edit_ttl">
             <h2>基本情報の編集</h2>
-            <p>【ダミーテキスト】一部の情報は、Googleサービスを利用する他のユーザーに表示される場合があります。<%= link_to "詳細", "/parcom/help" %></p>
+            <p>【ダミーテキスト】一部の情報は、Googleサービスを利用する他のユーザーに表示される場合があります。<%= link_to "詳細", "/help" %></p>
           </div>
-          <form name="" action="" method="post">
+          <%= form_for(@park, url:{controller:'park', action:'parkinfo_edit'}) do |form| %>
             <dl>
               <dt class="form_term">公園の名称<span class="req">必須</span></dt>
-              <dd class="form_description"><input type="text" name="" placeholder="〇〇〇〇〇〇公園" value=""></dd>
+              <dd class="form_description"><%= form.text_field :name, placeholder:"〇〇〇〇〇〇公園", required: true %></dd>
               <div class="h-adr">
                 <span class="p-country-name" style="display:none;">Japan</span>
                 <dt class="form_term">所在地<span class="req">必須</span></dt>
                 <dd class="form_description address">
                   <div class="form_item">
-                    <input class="p-postal-code" type="text" name="" placeholder="郵便番号を入力" value="">
+                    <%= form.text_field :zip, class:"p-postal-code", placeholder:"郵便番号を入力", required: true %>
                   </div>
                   <div class="form_item">
-                    <input class="p-region p-locality p-street-address p-extended-address" type="text" name="" placeholder="所在地を入力" value="">
+                    <%= form.text_field :address, class:"p-region p-locality p-street-address p-extended-address", placeholder:"所在地を入力", value:@address, required: true %>
                   </div>
                 </dd>
               </div>
@@ -171,122 +58,12 @@
                     <div class="time_item">
                       <div class="flex_container_s">
                         <div class="select">
-                          <select name="time_hour">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="01"
-                              >
-                              01                            </option>
-                                                        <option value="02"
-                              >
-                              02                            </option>
-                                                        <option value="03"
-                              >
-                              03                            </option>
-                                                        <option value="04"
-                              >
-                              04                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="06"
-                              >
-                              06                            </option>
-                                                        <option value="07"
-                              >
-                              07                            </option>
-                                                        <option value="08"
-                              >
-                              08                            </option>
-                                                        <option value="09"
-                              >
-                              09                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="11"
-                              >
-                              11                            </option>
-                                                        <option value="12"
-                              >
-                              12                            </option>
-                                                        <option value="13"
-                              >
-                              13                            </option>
-                                                        <option value="14"
-                              >
-                              14                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="16"
-                              >
-                              16                            </option>
-                                                        <option value="17"
-                              >
-                              17                            </option>
-                                                        <option value="18"
-                              >
-                              18                            </option>
-                                                        <option value="19"
-                              >
-                              19                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="21"
-                              >
-                              21                            </option>
-                                                        <option value="22"
-                              >
-                              22                            </option>
-                                                        <option value="23"
-                              >
-                              23                            </option>
-                                                      </select>
+                          <select name="time_hour"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                         <span>:</span>
                         <div class="select">
-                          <select name="time_min">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="25"
-                              >
-                              25                            </option>
-                                                        <option value="30"
-                              >
-                              30                            </option>
-                                                        <option value="35"
-                              >
-                              35                            </option>
-                                                        <option value="40"
-                              >
-                              40                            </option>
-                                                        <option value="45"
-                              >
-                              45                            </option>
-                                                        <option value="50"
-                              >
-                              50                            </option>
-                                                        <option value="55"
-                              >
-                              55                            </option>
-                                                      </select>
+                          <select name="time_min"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                       </div>
@@ -295,127 +72,17 @@
                     <div class="time_item">
                       <div class="flex_container_s">
                         <div class="select">
-                          <select name="time_hour">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="01"
-                              >
-                              01                            </option>
-                                                        <option value="02"
-                              >
-                              02                            </option>
-                                                        <option value="03"
-                              >
-                              03                            </option>
-                                                        <option value="04"
-                              >
-                              04                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="06"
-                              >
-                              06                            </option>
-                                                        <option value="07"
-                              >
-                              07                            </option>
-                                                        <option value="08"
-                              >
-                              08                            </option>
-                                                        <option value="09"
-                              >
-                              09                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="11"
-                              >
-                              11                            </option>
-                                                        <option value="12"
-                              >
-                              12                            </option>
-                                                        <option value="13"
-                              >
-                              13                            </option>
-                                                        <option value="14"
-                              >
-                              14                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="16"
-                              >
-                              16                            </option>
-                                                        <option value="17"
-                              >
-                              17                            </option>
-                                                        <option value="18"
-                              >
-                              18                            </option>
-                                                        <option value="19"
-                              >
-                              19                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="21"
-                              >
-                              21                            </option>
-                                                        <option value="22"
-                              >
-                              22                            </option>
-                                                        <option value="23"
-                              >
-                              23                            </option>
-                                                      </select>
+                          <select name="time_hour"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                         <span>:</span>
                         <div class="select">
-                          <select name="time_min">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="25"
-                              >
-                              25                            </option>
-                                                        <option value="30"
-                              >
-                              30                            </option>
-                                                        <option value="35"
-                              >
-                              35                            </option>
-                                                        <option value="40"
-                              >
-                              40                            </option>
-                                                        <option value="45"
-                              >
-                              45                            </option>
-                                                        <option value="50"
-                              >
-                              50                            </option>
-                                                        <option value="55"
-                              >
-                              55                            </option>
-                                                      </select>
+                          <select name="time_min"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                       </div>
                     </div>
-                    <label class="label_style"><input type="checkbox" name="" value="" class="label_style_checkbox">以下の曜日にも適用する</label>
+                    <label class="label_style" id="adapt_same"><input type="checkbox" name="" value="" class="label_style_checkbox">以下の曜日にも適用する</label>
                   </div>
                 </div>
                 <div class="form_item flex_container_s">
@@ -435,122 +102,12 @@
                     <div class="time_item">
                       <div class="flex_container_s">
                         <div class="select">
-                          <select name="time_hour">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="01"
-                              >
-                              01                            </option>
-                                                        <option value="02"
-                              >
-                              02                            </option>
-                                                        <option value="03"
-                              >
-                              03                            </option>
-                                                        <option value="04"
-                              >
-                              04                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="06"
-                              >
-                              06                            </option>
-                                                        <option value="07"
-                              >
-                              07                            </option>
-                                                        <option value="08"
-                              >
-                              08                            </option>
-                                                        <option value="09"
-                              >
-                              09                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="11"
-                              >
-                              11                            </option>
-                                                        <option value="12"
-                              >
-                              12                            </option>
-                                                        <option value="13"
-                              >
-                              13                            </option>
-                                                        <option value="14"
-                              >
-                              14                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="16"
-                              >
-                              16                            </option>
-                                                        <option value="17"
-                              >
-                              17                            </option>
-                                                        <option value="18"
-                              >
-                              18                            </option>
-                                                        <option value="19"
-                              >
-                              19                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="21"
-                              >
-                              21                            </option>
-                                                        <option value="22"
-                              >
-                              22                            </option>
-                                                        <option value="23"
-                              >
-                              23                            </option>
-                                                      </select>
+                          <select name="time_hour"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                         <span>:</span>
                         <div class="select">
-                          <select name="time_min">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="25"
-                              >
-                              25                            </option>
-                                                        <option value="30"
-                              >
-                              30                            </option>
-                                                        <option value="35"
-                              >
-                              35                            </option>
-                                                        <option value="40"
-                              >
-                              40                            </option>
-                                                        <option value="45"
-                              >
-                              45                            </option>
-                                                        <option value="50"
-                              >
-                              50                            </option>
-                                                        <option value="55"
-                              >
-                              55                            </option>
-                                                      </select>
+                          <select name="time_min"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                       </div>
@@ -559,122 +116,12 @@
                     <div class="time_item">
                       <div class="flex_container_s">
                         <div class="select">
-                          <select name="time_hour">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="01"
-                              >
-                              01                            </option>
-                                                        <option value="02"
-                              >
-                              02                            </option>
-                                                        <option value="03"
-                              >
-                              03                            </option>
-                                                        <option value="04"
-                              >
-                              04                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="06"
-                              >
-                              06                            </option>
-                                                        <option value="07"
-                              >
-                              07                            </option>
-                                                        <option value="08"
-                              >
-                              08                            </option>
-                                                        <option value="09"
-                              >
-                              09                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="11"
-                              >
-                              11                            </option>
-                                                        <option value="12"
-                              >
-                              12                            </option>
-                                                        <option value="13"
-                              >
-                              13                            </option>
-                                                        <option value="14"
-                              >
-                              14                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="16"
-                              >
-                              16                            </option>
-                                                        <option value="17"
-                              >
-                              17                            </option>
-                                                        <option value="18"
-                              >
-                              18                            </option>
-                                                        <option value="19"
-                              >
-                              19                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="21"
-                              >
-                              21                            </option>
-                                                        <option value="22"
-                              >
-                              22                            </option>
-                                                        <option value="23"
-                              >
-                              23                            </option>
-                                                      </select>
+                          <select name="time_hour"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                         <span>:</span>
                         <div class="select">
-                          <select name="time_min">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="25"
-                              >
-                              25                            </option>
-                                                        <option value="30"
-                              >
-                              30                            </option>
-                                                        <option value="35"
-                              >
-                              35                            </option>
-                                                        <option value="40"
-                              >
-                              40                            </option>
-                                                        <option value="45"
-                              >
-                              45                            </option>
-                                                        <option value="50"
-                              >
-                              50                            </option>
-                                                        <option value="55"
-                              >
-                              55                            </option>
-                                                      </select>
+                          <select name="time_min"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                       </div>
@@ -698,122 +145,12 @@
                     <div class="time_item">
                       <div class="flex_container_s">
                         <div class="select">
-                          <select name="time_hour">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="01"
-                              >
-                              01                            </option>
-                                                        <option value="02"
-                              >
-                              02                            </option>
-                                                        <option value="03"
-                              >
-                              03                            </option>
-                                                        <option value="04"
-                              >
-                              04                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="06"
-                              >
-                              06                            </option>
-                                                        <option value="07"
-                              >
-                              07                            </option>
-                                                        <option value="08"
-                              >
-                              08                            </option>
-                                                        <option value="09"
-                              >
-                              09                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="11"
-                              >
-                              11                            </option>
-                                                        <option value="12"
-                              >
-                              12                            </option>
-                                                        <option value="13"
-                              >
-                              13                            </option>
-                                                        <option value="14"
-                              >
-                              14                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="16"
-                              >
-                              16                            </option>
-                                                        <option value="17"
-                              >
-                              17                            </option>
-                                                        <option value="18"
-                              >
-                              18                            </option>
-                                                        <option value="19"
-                              >
-                              19                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="21"
-                              >
-                              21                            </option>
-                                                        <option value="22"
-                              >
-                              22                            </option>
-                                                        <option value="23"
-                              >
-                              23                            </option>
-                                                      </select>
+                          <select name="time_hour"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                         <span>:</span>
                         <div class="select">
-                          <select name="time_min">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="25"
-                              >
-                              25                            </option>
-                                                        <option value="30"
-                              >
-                              30                            </option>
-                                                        <option value="35"
-                              >
-                              35                            </option>
-                                                        <option value="40"
-                              >
-                              40                            </option>
-                                                        <option value="45"
-                              >
-                              45                            </option>
-                                                        <option value="50"
-                              >
-                              50                            </option>
-                                                        <option value="55"
-                              >
-                              55                            </option>
-                                                      </select>
+                          <select name="time_min"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                       </div>
@@ -822,122 +159,12 @@
                     <div class="time_item">
                       <div class="flex_container_s">
                         <div class="select">
-                          <select name="time_hour">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="01"
-                              >
-                              01                            </option>
-                                                        <option value="02"
-                              >
-                              02                            </option>
-                                                        <option value="03"
-                              >
-                              03                            </option>
-                                                        <option value="04"
-                              >
-                              04                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="06"
-                              >
-                              06                            </option>
-                                                        <option value="07"
-                              >
-                              07                            </option>
-                                                        <option value="08"
-                              >
-                              08                            </option>
-                                                        <option value="09"
-                              >
-                              09                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="11"
-                              >
-                              11                            </option>
-                                                        <option value="12"
-                              >
-                              12                            </option>
-                                                        <option value="13"
-                              >
-                              13                            </option>
-                                                        <option value="14"
-                              >
-                              14                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="16"
-                              >
-                              16                            </option>
-                                                        <option value="17"
-                              >
-                              17                            </option>
-                                                        <option value="18"
-                              >
-                              18                            </option>
-                                                        <option value="19"
-                              >
-                              19                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="21"
-                              >
-                              21                            </option>
-                                                        <option value="22"
-                              >
-                              22                            </option>
-                                                        <option value="23"
-                              >
-                              23                            </option>
-                                                      </select>
+                          <select name="time_hour"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                         <span>:</span>
                         <div class="select">
-                          <select name="time_min">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="25"
-                              >
-                              25                            </option>
-                                                        <option value="30"
-                              >
-                              30                            </option>
-                                                        <option value="35"
-                              >
-                              35                            </option>
-                                                        <option value="40"
-                              >
-                              40                            </option>
-                                                        <option value="45"
-                              >
-                              45                            </option>
-                                                        <option value="50"
-                              >
-                              50                            </option>
-                                                        <option value="55"
-                              >
-                              55                            </option>
-                                                      </select>
+                          <select name="time_min"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                       </div>
@@ -961,122 +188,12 @@
                     <div class="time_item">
                       <div class="flex_container_s">
                         <div class="select">
-                          <select name="time_hour">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="01"
-                              >
-                              01                            </option>
-                                                        <option value="02"
-                              >
-                              02                            </option>
-                                                        <option value="03"
-                              >
-                              03                            </option>
-                                                        <option value="04"
-                              >
-                              04                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="06"
-                              >
-                              06                            </option>
-                                                        <option value="07"
-                              >
-                              07                            </option>
-                                                        <option value="08"
-                              >
-                              08                            </option>
-                                                        <option value="09"
-                              >
-                              09                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="11"
-                              >
-                              11                            </option>
-                                                        <option value="12"
-                              >
-                              12                            </option>
-                                                        <option value="13"
-                              >
-                              13                            </option>
-                                                        <option value="14"
-                              >
-                              14                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="16"
-                              >
-                              16                            </option>
-                                                        <option value="17"
-                              >
-                              17                            </option>
-                                                        <option value="18"
-                              >
-                              18                            </option>
-                                                        <option value="19"
-                              >
-                              19                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="21"
-                              >
-                              21                            </option>
-                                                        <option value="22"
-                              >
-                              22                            </option>
-                                                        <option value="23"
-                              >
-                              23                            </option>
-                                                      </select>
+                          <select name="time_hour"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                         <span>:</span>
                         <div class="select">
-                          <select name="time_min">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="25"
-                              >
-                              25                            </option>
-                                                        <option value="30"
-                              >
-                              30                            </option>
-                                                        <option value="35"
-                              >
-                              35                            </option>
-                                                        <option value="40"
-                              >
-                              40                            </option>
-                                                        <option value="45"
-                              >
-                              45                            </option>
-                                                        <option value="50"
-                              >
-                              50                            </option>
-                                                        <option value="55"
-                              >
-                              55                            </option>
-                                                      </select>
+                          <select name="time_min"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                       </div>
@@ -1085,122 +202,12 @@
                     <div class="time_item">
                       <div class="flex_container_s">
                         <div class="select">
-                          <select name="time_hour">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="01"
-                              >
-                              01                            </option>
-                                                        <option value="02"
-                              >
-                              02                            </option>
-                                                        <option value="03"
-                              >
-                              03                            </option>
-                                                        <option value="04"
-                              >
-                              04                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="06"
-                              >
-                              06                            </option>
-                                                        <option value="07"
-                              >
-                              07                            </option>
-                                                        <option value="08"
-                              >
-                              08                            </option>
-                                                        <option value="09"
-                              >
-                              09                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="11"
-                              >
-                              11                            </option>
-                                                        <option value="12"
-                              >
-                              12                            </option>
-                                                        <option value="13"
-                              >
-                              13                            </option>
-                                                        <option value="14"
-                              >
-                              14                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="16"
-                              >
-                              16                            </option>
-                                                        <option value="17"
-                              >
-                              17                            </option>
-                                                        <option value="18"
-                              >
-                              18                            </option>
-                                                        <option value="19"
-                              >
-                              19                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="21"
-                              >
-                              21                            </option>
-                                                        <option value="22"
-                              >
-                              22                            </option>
-                                                        <option value="23"
-                              >
-                              23                            </option>
-                                                      </select>
+                          <select name="time_hour"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                         <span>:</span>
                         <div class="select">
-                          <select name="time_min">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="25"
-                              >
-                              25                            </option>
-                                                        <option value="30"
-                              >
-                              30                            </option>
-                                                        <option value="35"
-                              >
-                              35                            </option>
-                                                        <option value="40"
-                              >
-                              40                            </option>
-                                                        <option value="45"
-                              >
-                              45                            </option>
-                                                        <option value="50"
-                              >
-                              50                            </option>
-                                                        <option value="55"
-                              >
-                              55                            </option>
-                                                      </select>
+                          <select name="time_min"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                       </div>
@@ -1224,122 +231,12 @@
                     <div class="time_item">
                       <div class="flex_container_s">
                         <div class="select">
-                          <select name="time_hour">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="01"
-                              >
-                              01                            </option>
-                                                        <option value="02"
-                              >
-                              02                            </option>
-                                                        <option value="03"
-                              >
-                              03                            </option>
-                                                        <option value="04"
-                              >
-                              04                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="06"
-                              >
-                              06                            </option>
-                                                        <option value="07"
-                              >
-                              07                            </option>
-                                                        <option value="08"
-                              >
-                              08                            </option>
-                                                        <option value="09"
-                              >
-                              09                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="11"
-                              >
-                              11                            </option>
-                                                        <option value="12"
-                              >
-                              12                            </option>
-                                                        <option value="13"
-                              >
-                              13                            </option>
-                                                        <option value="14"
-                              >
-                              14                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="16"
-                              >
-                              16                            </option>
-                                                        <option value="17"
-                              >
-                              17                            </option>
-                                                        <option value="18"
-                              >
-                              18                            </option>
-                                                        <option value="19"
-                              >
-                              19                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="21"
-                              >
-                              21                            </option>
-                                                        <option value="22"
-                              >
-                              22                            </option>
-                                                        <option value="23"
-                              >
-                              23                            </option>
-                                                      </select>
+                          <select name="time_hour"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                         <span>:</span>
                         <div class="select">
-                          <select name="time_min">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="25"
-                              >
-                              25                            </option>
-                                                        <option value="30"
-                              >
-                              30                            </option>
-                                                        <option value="35"
-                              >
-                              35                            </option>
-                                                        <option value="40"
-                              >
-                              40                            </option>
-                                                        <option value="45"
-                              >
-                              45                            </option>
-                                                        <option value="50"
-                              >
-                              50                            </option>
-                                                        <option value="55"
-                              >
-                              55                            </option>
-                                                      </select>
+                          <select name="time_min"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                       </div>
@@ -1348,122 +245,12 @@
                     <div class="time_item">
                       <div class="flex_container_s">
                         <div class="select">
-                          <select name="time_hour">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="01"
-                              >
-                              01                            </option>
-                                                        <option value="02"
-                              >
-                              02                            </option>
-                                                        <option value="03"
-                              >
-                              03                            </option>
-                                                        <option value="04"
-                              >
-                              04                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="06"
-                              >
-                              06                            </option>
-                                                        <option value="07"
-                              >
-                              07                            </option>
-                                                        <option value="08"
-                              >
-                              08                            </option>
-                                                        <option value="09"
-                              >
-                              09                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="11"
-                              >
-                              11                            </option>
-                                                        <option value="12"
-                              >
-                              12                            </option>
-                                                        <option value="13"
-                              >
-                              13                            </option>
-                                                        <option value="14"
-                              >
-                              14                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="16"
-                              >
-                              16                            </option>
-                                                        <option value="17"
-                              >
-                              17                            </option>
-                                                        <option value="18"
-                              >
-                              18                            </option>
-                                                        <option value="19"
-                              >
-                              19                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="21"
-                              >
-                              21                            </option>
-                                                        <option value="22"
-                              >
-                              22                            </option>
-                                                        <option value="23"
-                              >
-                              23                            </option>
-                                                      </select>
+                          <select name="time_hour"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                         <span>:</span>
                         <div class="select">
-                          <select name="time_min">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="25"
-                              >
-                              25                            </option>
-                                                        <option value="30"
-                              >
-                              30                            </option>
-                                                        <option value="35"
-                              >
-                              35                            </option>
-                                                        <option value="40"
-                              >
-                              40                            </option>
-                                                        <option value="45"
-                              >
-                              45                            </option>
-                                                        <option value="50"
-                              >
-                              50                            </option>
-                                                        <option value="55"
-                              >
-                              55                            </option>
-                                                      </select>
+                          <select name="time_min"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                       </div>
@@ -1487,122 +274,12 @@
                     <div class="time_item">
                       <div class="flex_container_s">
                         <div class="select">
-                          <select name="time_hour">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="01"
-                              >
-                              01                            </option>
-                                                        <option value="02"
-                              >
-                              02                            </option>
-                                                        <option value="03"
-                              >
-                              03                            </option>
-                                                        <option value="04"
-                              >
-                              04                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="06"
-                              >
-                              06                            </option>
-                                                        <option value="07"
-                              >
-                              07                            </option>
-                                                        <option value="08"
-                              >
-                              08                            </option>
-                                                        <option value="09"
-                              >
-                              09                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="11"
-                              >
-                              11                            </option>
-                                                        <option value="12"
-                              >
-                              12                            </option>
-                                                        <option value="13"
-                              >
-                              13                            </option>
-                                                        <option value="14"
-                              >
-                              14                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="16"
-                              >
-                              16                            </option>
-                                                        <option value="17"
-                              >
-                              17                            </option>
-                                                        <option value="18"
-                              >
-                              18                            </option>
-                                                        <option value="19"
-                              >
-                              19                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="21"
-                              >
-                              21                            </option>
-                                                        <option value="22"
-                              >
-                              22                            </option>
-                                                        <option value="23"
-                              >
-                              23                            </option>
-                                                      </select>
+                          <select name="time_hour"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                         <span>:</span>
                         <div class="select">
-                          <select name="time_min">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="25"
-                              >
-                              25                            </option>
-                                                        <option value="30"
-                              >
-                              30                            </option>
-                                                        <option value="35"
-                              >
-                              35                            </option>
-                                                        <option value="40"
-                              >
-                              40                            </option>
-                                                        <option value="45"
-                              >
-                              45                            </option>
-                                                        <option value="50"
-                              >
-                              50                            </option>
-                                                        <option value="55"
-                              >
-                              55                            </option>
-                                                      </select>
+                          <select name="time_min"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                       </div>
@@ -1611,122 +288,12 @@
                     <div class="time_item">
                       <div class="flex_container_s">
                         <div class="select">
-                          <select name="time_hour">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="01"
-                              >
-                              01                            </option>
-                                                        <option value="02"
-                              >
-                              02                            </option>
-                                                        <option value="03"
-                              >
-                              03                            </option>
-                                                        <option value="04"
-                              >
-                              04                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="06"
-                              >
-                              06                            </option>
-                                                        <option value="07"
-                              >
-                              07                            </option>
-                                                        <option value="08"
-                              >
-                              08                            </option>
-                                                        <option value="09"
-                              >
-                              09                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="11"
-                              >
-                              11                            </option>
-                                                        <option value="12"
-                              >
-                              12                            </option>
-                                                        <option value="13"
-                              >
-                              13                            </option>
-                                                        <option value="14"
-                              >
-                              14                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="16"
-                              >
-                              16                            </option>
-                                                        <option value="17"
-                              >
-                              17                            </option>
-                                                        <option value="18"
-                              >
-                              18                            </option>
-                                                        <option value="19"
-                              >
-                              19                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="21"
-                              >
-                              21                            </option>
-                                                        <option value="22"
-                              >
-                              22                            </option>
-                                                        <option value="23"
-                              >
-                              23                            </option>
-                                                      </select>
+                          <select name="time_hour"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                         <span>:</span>
                         <div class="select">
-                          <select name="time_min">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="25"
-                              >
-                              25                            </option>
-                                                        <option value="30"
-                              >
-                              30                            </option>
-                                                        <option value="35"
-                              >
-                              35                            </option>
-                                                        <option value="40"
-                              >
-                              40                            </option>
-                                                        <option value="45"
-                              >
-                              45                            </option>
-                                                        <option value="50"
-                              >
-                              50                            </option>
-                                                        <option value="55"
-                              >
-                              55                            </option>
-                                                      </select>
+                          <select name="time_min"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                       </div>
@@ -1750,122 +317,12 @@
                     <div class="time_item">
                       <div class="flex_container_s">
                         <div class="select">
-                          <select name="time_hour">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="01"
-                              >
-                              01                            </option>
-                                                        <option value="02"
-                              >
-                              02                            </option>
-                                                        <option value="03"
-                              >
-                              03                            </option>
-                                                        <option value="04"
-                              >
-                              04                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="06"
-                              >
-                              06                            </option>
-                                                        <option value="07"
-                              >
-                              07                            </option>
-                                                        <option value="08"
-                              >
-                              08                            </option>
-                                                        <option value="09"
-                              >
-                              09                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="11"
-                              >
-                              11                            </option>
-                                                        <option value="12"
-                              >
-                              12                            </option>
-                                                        <option value="13"
-                              >
-                              13                            </option>
-                                                        <option value="14"
-                              >
-                              14                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="16"
-                              >
-                              16                            </option>
-                                                        <option value="17"
-                              >
-                              17                            </option>
-                                                        <option value="18"
-                              >
-                              18                            </option>
-                                                        <option value="19"
-                              >
-                              19                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="21"
-                              >
-                              21                            </option>
-                                                        <option value="22"
-                              >
-                              22                            </option>
-                                                        <option value="23"
-                              >
-                              23                            </option>
-                                                      </select>
+                          <select name="time_hour"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                         <span>:</span>
                         <div class="select">
-                          <select name="time_min">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="25"
-                              >
-                              25                            </option>
-                                                        <option value="30"
-                              >
-                              30                            </option>
-                                                        <option value="35"
-                              >
-                              35                            </option>
-                                                        <option value="40"
-                              >
-                              40                            </option>
-                                                        <option value="45"
-                              >
-                              45                            </option>
-                                                        <option value="50"
-                              >
-                              50                            </option>
-                                                        <option value="55"
-                              >
-                              55                            </option>
-                                                      </select>
+                          <select name="time_min"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                       </div>
@@ -1874,122 +331,12 @@
                     <div class="time_item">
                       <div class="flex_container_s">
                         <div class="select">
-                          <select name="time_hour">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="01"
-                              >
-                              01                            </option>
-                                                        <option value="02"
-                              >
-                              02                            </option>
-                                                        <option value="03"
-                              >
-                              03                            </option>
-                                                        <option value="04"
-                              >
-                              04                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="06"
-                              >
-                              06                            </option>
-                                                        <option value="07"
-                              >
-                              07                            </option>
-                                                        <option value="08"
-                              >
-                              08                            </option>
-                                                        <option value="09"
-                              >
-                              09                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="11"
-                              >
-                              11                            </option>
-                                                        <option value="12"
-                              >
-                              12                            </option>
-                                                        <option value="13"
-                              >
-                              13                            </option>
-                                                        <option value="14"
-                              >
-                              14                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="16"
-                              >
-                              16                            </option>
-                                                        <option value="17"
-                              >
-                              17                            </option>
-                                                        <option value="18"
-                              >
-                              18                            </option>
-                                                        <option value="19"
-                              >
-                              19                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="21"
-                              >
-                              21                            </option>
-                                                        <option value="22"
-                              >
-                              22                            </option>
-                                                        <option value="23"
-                              >
-                              23                            </option>
-                                                      </select>
+                          <select name="time_hour"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                         <span>:</span>
                         <div class="select">
-                          <select name="time_min">
-                                                        <option value="00"
-                              selected>
-                              00                            </option>
-                                                        <option value="05"
-                              >
-                              05                            </option>
-                                                        <option value="10"
-                              >
-                              10                            </option>
-                                                        <option value="15"
-                              >
-                              15                            </option>
-                                                        <option value="20"
-                              >
-                              20                            </option>
-                                                        <option value="25"
-                              >
-                              25                            </option>
-                                                        <option value="30"
-                              >
-                              30                            </option>
-                                                        <option value="35"
-                              >
-                              35                            </option>
-                                                        <option value="40"
-                              >
-                              40                            </option>
-                                                        <option value="45"
-                              >
-                              45                            </option>
-                                                        <option value="50"
-                              >
-                              50                            </option>
-                                                        <option value="55"
-                              >
-                              55                            </option>
-                                                      </select>
+                          <select name="time_min"></select>
                           <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
                         </div>
                       </div>
@@ -1998,41 +345,45 @@
                 </div>
               </dd>
               <dt class="form_term">電話番号<span class="req">必須</span></dt>
-              <dd class="form_description tel"><input type="tel" name="" placeholder="0120-000-0000" value=""></dd>
+              <dd class="form_description tel"><%= form.text_field :tel, placeholder:"0120-000-0000", required: true %></dd>
               <dt class="form_term">料金<span class="req">必須</span></dt>
               <dd class="form_description price">
                 <div class="form_item">
-                  <span>大人</span><input type="text" name="" placeholder="無料" value="">
+                  <span>大人</span><%= form.text_field :tel, placeholder:"無料", name:"adult_fee", required: true %>
                 </div>
                 <div class="form_item">
-                  <span>子ども</span><input type="text" name="" placeholder="無料" value="">
+                  <span>子ども</span><%= form.text_field :tel, placeholder:"無料", name:"child_fee", required: true %>
                 </div>
               </dd>
-              <button type="submit" class="btn">更新する</button>
+              <p class="hidden" id="hours"><%= @hours %></p>
+              <p class="hidden" id="fee"><%= @fee %></p>
+              <%= form.hidden_field :hours, required: true %>
+              <%= form.hidden_field :fee, required: true %>
+              <%= form.submit "更新する", class:"submit_btn" %>
             </dl>
-          </form>
+          <% end %>
         </div>
         <div class="content_frame" id="facility_edit">
           <div class="parkinfo_edit_ttl">
             <h2>設備情報の編集</h2>
-            <p>【ダミーテキスト】一部の情報は、Googleサービスを利用する他のユーザーに表示される場合があります。<%= link_to "詳細", "/parcom/help" %></p>
+            <p>【ダミーテキスト】一部の情報は、Googleサービスを利用する他のユーザーに表示される場合があります。<%= link_to "詳細", "/help" %></p>
           </div>
-          <form name="">
+          <%= form_for(@park, url:{controller:'park', action:'parkinfo_edit'}) do |form| %>
             <dl class="label_style_item">
               <dt class="form_term">駐車場について<span class="any">任意</span></dt>
-              <div class="label_content">
-                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="parking" value="" id="check_id">無料駐車場</label>
-                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="parking" value="" id="check_id">有料駐車場</label>
-                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="parking" value="" id="check_id">大型バス駐車OK</label>
-                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="parking" value="" id="check_id">駐輪場</label>
-                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="parking" value="" id="check_id">EV充電スタンド</label>
-                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="parking" value="" id="check_id">立体駐車場</label>
-                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="parking" value="" id="check_id">近隣コインパーキング</label>
+              <div class="label_content" id="parking_labels">
+                <label class="label_style label_style_bg parking"><input class="label_style_checkbox" type="checkbox" name="parking" value="" id="check_id">無料駐車場</label>
+                <label class="label_style label_style_bg parking"><input class="label_style_checkbox" type="checkbox" name="parking" value="" id="check_id">有料駐車場</label>
+                <label class="label_style label_style_bg parking"><input class="label_style_checkbox" type="checkbox" name="parking" value="" id="check_id">大型バス駐車OK</label>
+                <label class="label_style label_style_bg parking"><input class="label_style_checkbox" type="checkbox" name="parking" value="" id="check_id">駐輪場</label>
+                <label class="label_style label_style_bg parking"><input class="label_style_checkbox" type="checkbox" name="parking" value="" id="check_id">EV充電スタンド</label>
+                <label class="label_style label_style_bg parking"><input class="label_style_checkbox" type="checkbox" name="parking" value="" id="check_id">立体駐車場</label>
+                <label class="label_style label_style_bg parking"><input class="label_style_checkbox" type="checkbox" name="parking" value="" id="check_id">近隣コインパーキング</label>
               </div>
             </dl>
             <dl class="label_style_item">
               <dt class="form_term">トイレについて<span class="any">任意</span></dt>
-              <div class="label_content">
+              <div class="label_content" id="toilet_labels">
                 <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="toilet" value="" id="check_id">男女別トイレ</label>
                 <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="toilet" value="" id="check_id">子ども用トイレ</label>
                 <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="toilet" value="" id="check_id">おむつ交換台</label>
@@ -2045,23 +396,30 @@
             </dl>
             <dl class="label_style_item">
               <dt class="form_term">遊具について<span class="any">任意</span></dt>
-              <div class="label_content">
-                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="equipment" value="" id="check_id">滑り台</label>
-                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="equipment" value="" id="check_id">ブランコ</label>
-                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="equipment" value="" id="check_id">うんてい</label>
-                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="equipment" value="" id="check_id">ジャングルジム</label>
-                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="equipment" value="" id="check_id">鉄棒</label>
-                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="equipment" value="" id="check_id">スプリング遊具</label>
+              <div class="label_content" id="playground_labels">
+                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="playground" value="" id="check_id">滑り台</label>
+                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="playground" value="" id="check_id">ブランコ</label>
+                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="playground" value="" id="check_id">うんてい</label>
+                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="playground" value="" id="check_id">ジャングルジム</label>
+                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="playground" value="" id="check_id">鉄棒</label>
+                <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="playground" value="" id="check_id">スプリング遊具</label>
               </div>
             </dl>
-            <button type="submit" class="btn">更新する</button>
-          </form>
+            <p class="hidden" id="parking_info"><%= @parking_info %></p>
+            <p class="hidden" id="toilet_info"><%= @toilet_info %></p>
+            <p class="hidden" id="playground_info"><%= @playground_info %></p>
+            <%= form.hidden_field :parking_info %>
+            <%= form.hidden_field :toilet_info %>
+            <%= form.hidden_field :playground_info %>
+            <%= form.submit "更新する", class:"submit_btn" %>
+          <% end %>
         </div>
         <div class="content_frame" id="picture_edit">
           <div class="parkinfo_edit_ttl">
             <h2>写真の管理</h2>
-            <p>【ダミーテキスト】一部の情報は、Googleサービスを利用する他のユーザーに表示される場合があります。<%= link_to "詳細", "/parcom/help" %></p>
+            <p>【ダミーテキスト】一部の情報は、Googleサービスを利用する他のユーザーに表示される場合があります。<%= link_to "詳細", "/help" %></p>
           </div>
+          <% if @pictures.exists? %>
           <div class="item_head flex_container">
             <div><label class="label_style"><input type="checkbox" name="all_select" class="label_style_checkbox"></label></div>
             <div></div>
@@ -2069,66 +427,65 @@
             <div>アップロード日<span>↓</span></div>
             <div>ファイルサイズ<span>↓</span></div>
           </div>
-          <div class="picture_content">
-            <form name="">
-              <ul class="picture_list">
-                <li class="item">
-                  <div class="item_element flex_container">
-                    <div><label class="label_style"><input type="checkbox" name="" value="" class="label_style_checkbox"></label></div>
-                    <div><%= image_tag "/common/picture_edit_dummy.jpg" %></div>
-                    <div>E506ff7f20d5.jpg</div>
-                    <div>2022.02.22 17:39</div>
-                    <div>3.59MB</div>
+          <% end %>
+          
+            <div class="picture_content">
+              <% @pictures.each do |picture| %>
+                <ul class="picture_list">
+                  <li class="item">
+                    <div class="item_element flex_container">
+                      <div><label class="label_style"><input type="checkbox" name="pic" value="" class="label_style_checkbox"></label></div>
+                      <div>
+                        <% if picture %>
+                          <%= image_tag picture.picture.to_s, class:'thumbnail' %>
+                        <% else %>
+                          <%= image_tag "/common/picture_edit_dummy.jpg" %>
+                        <% end %>
+                      </div>
+                      <div><%= picture.name %> E506ff7f20d5.jpg</div>
+                      <div><%= picture.created_at %></div>
+                      <div>3.59MB</div>
+                    </div>
+                  </li>
+                </ul>
+              <% end %>
+                <label id="upload_box">
+                  <div id="upload_form">
+                    <%= form_with model: @picture_new, local:false do |f| %>
+                      <%= f.hidden_field :park_id, {value: @park.id} %>
+                      <p>写真の名前</p>
+                      <%= f.text_field :name, required: true %>
+                      <%= f.file_field :picture, id:'img_file', accept:'image/*', required: true %>
+                      <%= f.submit "写真を追加", id:'add_picture_submit' %>
+                    <% end %>
                   </div>
-                </li>
-                <li class="item">
-                  <div class="item_element flex_container">
-                    <div><label class="label_style"><input type="checkbox" name="" value="" class="label_style_checkbox"></label></div>
-                    <div><%= image_tag "/common/picture_edit_dummy.jpg" %></div>
-                    <div>E506ff7f20d5.jpg</div>
-                    <div>2022.02.22 17:39</div>
-                    <div>3.59MB</div>
-                  </div>
-                </li>
-                <li class="item">
-                  <div class="item_element flex_container">
-                    <div><label class="label_style"><input type="checkbox" name="" value="" class="label_style_checkbox"></label></div>
-                    <div><%= image_tag "/common/picture_edit_dummy.jpg" %></div>
-                    <div>E506ff7f20d5.jpg</div>
-                    <div>2022.02.22 17:39</div>
-                    <div>3.59MB</div>
-                  </div>
-                </li>
-                <li class="item">
-                  <div class="item_element flex_container">
-                    <div><label class="label_style"><input type="checkbox" name="" value="" class="label_style_checkbox"></label></div>
-                    <div><%= image_tag "/common/picture_edit_dummy.jpg" %></div>
-                    <div>E506ff7f20d5.jpg</div>
-                    <div>2022.02.22 17:39</div>
-                    <div>3.59MB</div>
-                  </div>
-                </li>
-              </ul>
-              <div class="flex_container_s">
-                <button type="submit" class="btn">写真を追加する</button>
-                <button type="submit" class="btn btn_g delete_btn">選択した写真を削除する</button>
-              </div>
-            </form>
-          </div>
+                </label>
+                <div class="flex_container_s">
+                  <button class="submit_btn" id="add_picture">写真を追加する</button>
+                  <%= form_for(@park, url:{controller:'park', action:'parkinfo_edit'}) do |f| %>
+                      <%= f.hidden_field "pic_list", {value: ''} %>
+                      <%= f.submit "選択した写真を削除する", class: "btn btn_g delete_btn" %>
+                  <% end %>
+                </div>
+            </div>
         </div>
         <div class="content_frame" id="contact_edit">
           <div class="parkinfo_edit_ttl">
             <h2>お問い合わせ先の編集</h2>
           </div>
-          <form name="">
+          <%= form_for(@park, url:{controller:'park', action:'parkinfo_edit'}) do |form| %>
             <dl>
               <dt class="form_term">電話番号<span class="any">任意</span></dt>
-              <dd class="form_description"><input type="tel" name="" placeholder="0000-000-0000" value=""></dd>
+              <dd class="form_description">
+                <%= form.text_field :tel, placeholder:"0000-000-0000" %>
+              </dd>
               <dt class="form_term">WEBサイト<span class="any">任意</span></dt>
-              <dd class="form_description"><input type="url" name="" placeholder="https://example.com" value=""></dd>
+              <dd class="form_description">
+                <%= form.url_field :website, placeholder:"https://example.com" %>
+              </dd>
             </dl>
-            <button type="submit" class="btn">更新する</button>
-          </form>
+            <%= form.submit "更新する", class:"submit_btn" %>
+          <% end %>
         </div>
       </div>
       <aside class="sidebar_parkedit sidebar_menu">
@@ -2158,4 +515,8 @@
     </div>
   </div>
 </div>
+</div>
+<div id="cover"></div>
 </main>
+
+<%= javascript_pack_tag 'parkinfo_edit' %>

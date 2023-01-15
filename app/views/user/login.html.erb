@@ -1,3 +1,4 @@
+<!--
 <main>
 <div id="login">
 <div id="login_related">
@@ -18,12 +19,13 @@
       		<dd class="form_description"><input type="password" name="pwd" id="login_password" value="" placeholder="パスワードを入力してください"></dd>
       	</div>
       	<input class="btn" id="login_submit" name="submitbtn" type="button" value="ログインする">
-      	<div class="forget">※パスワードをお忘れの方は<%= link_to "こちら", "/user/forgetpwd" %></div>
+      	<div class="forget">※パスワードをお忘れの方は<%= link_to "こちら", new_password_reset_path %></div>
       </form>
     </div>
     <div class="new_signup_wrap">
-      <p>PARCOM ADMINのご利用が初めての場合は、<br class="sp"><%= link_to "アカウントを作成します。", "/user/signupmail" %></p>
+      <p>PARCOM ADMINのご利用が初めての場合は、<br class="sp"><%= link_to "アカウントを作成します。", "/signupmail" %></p>
     </div>
   </div>
 </div>
 </main>
+-->

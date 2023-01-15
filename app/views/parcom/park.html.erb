@@ -8,120 +8,7 @@
 	<span class="spnavButton__border"></span>
 </div>
 
-<aside class="sidebar_product">
-  <div class="sidebar_product_ttl">公園一覧</div>
-  <div class="park_item">
-    <div class="park_name">内灘サンセットパーク</div>
-   <ul>
-      <li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">内灘町総合公園</div>
-    <ul>
-      <li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">ハマナス恐竜公園</div>
-    <ul>
-			<li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">白帆台第４公園</div>
-    <ul>
-			<li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="sidebar_help">
-    <div class="sidebar_help_ttl"><%= image_tag "/sidebar/icon_speechbubble.svg" %>ヘルプページはこちら</div>
-    <p>使い方やよくあるご質問等をまとめています。</p>
-    <%= link_to '/parcom/help', class: "btn hover flex_container" do %>
-      ヘルプはこちらから<%= image_tag "/sidebar/icon_arrow_help_off.svg" %>
-    <% end %>
-  </div>
-</aside>
+<%= render partial: "shared/aside" %>
     <div class="inner_large">
       <div class="page_ttl_wrap">
         <div class="page_ttl">
@@ -241,7 +128,7 @@
         <div class="park_info_shortcut">
           <div class="flex_container_wrap">
             <div class="park_info_shortcut_item">
-              <a href="http://app.parcom.park/parkinfo_edit">
+              <a href="/parkinfo_edit/<%= @park.id %>">
                 <div class="park_info_shortcut_ttl flex_container_s">
                   <%= image_tag"/park/icon_park.svg", alt: "公園の情報編集" %>
                   <h3>公園の情報編集</h3>
@@ -250,7 +137,7 @@
               </a>
             </div>
             <div class="park_info_shortcut_item">
-              <a href="http://app.parcom.park/products">
+              <a href="/products/<%= @park.id %>">
                 <div class="park_info_shortcut_ttl flex_container_s">
                   <%= image_tag"/park/icon_product.svg", alt: "プロダクト" %>
                   <h3>プロダクト</h3>
@@ -259,7 +146,7 @@
               </a>
             </div>
             <div class="park_info_shortcut_item">
-              <a href="http://app.parcom.parcom/review">
+              <a href="/review/<%= @park.id %>">
                 <div class="park_info_shortcut_ttl flex_container_s">
                   <%= image_tag"/park/icon_review.svg", alt: "クチコミ" %>
                   <h3>クチコミ</h3>
@@ -268,7 +155,7 @@
               </a>
             </div>
             <div class="park_info_shortcut_item">
-              <a href="http://app.parcom.others/analytics">
+              <a href="/analyze/<%= @park.id %>">
                 <div class="park_info_shortcut_ttl flex_container_s">
                   <%= image_tag"/park/icon_analyze.svg", alt: "分析" %>
                   <h3>分析</h3>

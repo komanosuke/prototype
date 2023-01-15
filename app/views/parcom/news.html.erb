@@ -7,120 +7,7 @@
 	<span class="spnavButton__border"></span>
 </div>
 
-<aside class="sidebar_product">
-  <div class="sidebar_product_ttl">公園一覧</div>
-  <div class="park_item">
-    <div class="park_name">内灘サンセットパーク</div>
-   <ul>
-      <li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">内灘町総合公園</div>
-    <ul>
-      <li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">ハマナス恐竜公園</div>
-    <ul>
-			<li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">白帆台第４公園</div>
-    <ul>
-			<li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="sidebar_help">
-    <div class="sidebar_help_ttl"><%= image_tag "/sidebar/icon_speechbubble.svg" %>ヘルプページはこちら</div>
-    <p>使い方やよくあるご質問等をまとめています。</p>
-    <%= link_to '/parcom/help', class: "btn hover flex_container" do %>
-      ヘルプはこちらから<%= image_tag "/sidebar/icon_arrow_help_off.svg" %>
-    <% end %>
-  </div>
-</aside>
+<%= render partial: "shared/aside" %>
   <div class="inner_large">
     <div class="page_ttl_wrap">
       <div class="page_ttl">
@@ -130,7 +17,7 @@
     <div class="content flex_container_start">
       <div class="news_content">
                                           <div class="news_item">
-              <a href="http://app.parcom.parcom/news/%e3%83%80%e3%83%9f%e3%83%bc%e3%83%86%e3%82%ad%e3%82%b9%e3%83%88%e3%83%80%e3%83%9f%e3%83%bc%e3%83%86%e3%82%ad%e3%82%b9%e3%83%88%e3%83%80%e3%83%9f%e3%83%bc%e3%83%86%e3%82%ad%e3%82%b9%e3%83%88%e3%83%80">
+              <a href="#">
                 <div class="flex_container_s">
                   <div class="news_cat">お知らせ</div>
                   <div class="news_time">2022-11-02 (Wed)</div>
@@ -139,7 +26,7 @@
               </a>
             </div>
                                   <div class="news_item">
-              <a href="http://app.parcom.parcom/news/%e3%81%8a%e5%95%8f%e3%81%84%e5%90%88%e3%82%8f%e3%81%9b%e7%aa%93%e5%8f%a3%e3%81%ae%e5%96%b6%e6%a5%ad%e6%99%82%e9%96%93%e5%a4%89%e6%9b%b4%e3%81%ab%e9%96%a2%e3%81%99%e3%82%8b%e3%81%8a%e7%9f%a5%e3%82%89">
+              <a href="#">
                 <div class="flex_container_s">
                   <div class="news_cat">お知らせ</div>
                   <div class="news_time">2022-11-02 (Wed)</div>
@@ -148,7 +35,7 @@
               </a>
             </div>
                                   <div class="news_item">
-              <a href="http://app.parcom.parcom/news/%e5%88%a9%e7%94%a8%e7%8a%b6%e6%b3%81%e3%81%ae%e3%83%87%e3%83%bc%e3%82%bf%e3%82%92%e3%83%80%e3%82%a6%e3%83%b3%e3%83%ad%e3%83%bc%e3%83%89%e3%81%a7%e3%81%8d%e3%82%8b%e3%82%88%e3%81%86%e3%81%ab%e3%81%aa">
+              <a href="#">
                 <div class="flex_container_s">
                   <div class="news_cat">新機能・改善</div>
                   <div class="news_time">2022-11-02 (Wed)</div>
@@ -157,7 +44,7 @@
               </a>
             </div>
                                   <div class="news_item">
-              <a href="http://app.parcom.parcom/news/%e3%82%b5%e3%82%a4%e3%83%88%e3%83%a1%e3%83%b3%e3%83%86%e3%83%8a%e3%83%b3%e3%82%b9%e3%81%ae%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b">
+              <a href="#">
                 <div class="flex_container_s">
                   <div class="news_cat">メンテナンス</div>
                   <div class="news_time">2022-11-02 (Wed)</div>
@@ -173,17 +60,17 @@
       <aside class="sidebar_news sidebar_menu">
   <div class="sidebar_news_ttl">お知らせカテゴリ</div>
     <div class="sidebar_news_item">
-    <a href="http://app.parcom.others/cat_news/%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b/">
+    <a href="#">
       お知らせ      <%= image_tag "/sidebar/icon_side_arrow.svg" %>
     </a>
   </div>
     <div class="sidebar_news_item">
-    <a href="http://app.parcom.others/cat_news/%e3%83%a1%e3%83%b3%e3%83%86%e3%83%8a%e3%83%b3%e3%82%b9/">
+    <a href="#">
       メンテナンス      <%= image_tag "/sidebar/icon_side_arrow.svg" %>
     </a>
   </div>
     <div class="sidebar_news_item">
-    <a href="http://app.parcom.others/cat_news/%e6%96%b0%e6%a9%9f%e8%83%bd%e3%83%bb%e6%94%b9%e5%96%84/">
+    <a href="#">
       新機能・改善      <%= image_tag "/sidebar/icon_side_arrow.svg" %>
     </a>
   </div>

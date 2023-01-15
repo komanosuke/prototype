@@ -4,7 +4,6 @@ class CreateShortcuts < ActiveRecord::Migration[6.1]
       t.references :bench, foreign_key: true
       t.string :name
       t.text :program
-      t.date :introduced_date
 
       t.timestamps
     end

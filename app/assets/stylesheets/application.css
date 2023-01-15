@@ -22,3 +22,37 @@ h1 {
 p {
     font-size: 20px;
 } */
+
+
+#logout {
+    float: right;
+    font-weight: 600;
+    background: #fff;
+    color: #46C541;
+    border: 1px solid #46C541;
+    padding: 4px 18px;
+    border-radius: 5px;
+    margin-top: 0;
+}
+
+#logout:hover {
+    background: #46C541;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+@media screen and (max-width: 1024px) and (min-width: 480px) {
+    #logout {
+        font-size: 4px;
+        padding: 2px 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #logout {
+        font-size: 0;
+        padding: 0;
+        width: 16px;
+        height: 16px;
+    }
+}
