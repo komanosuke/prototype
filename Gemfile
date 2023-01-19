@@ -72,3 +72,5 @@ gem 'faraday'
 gem 'mechanize'
 
 gem 'nokogiri'
+
+gem 'rmagick'

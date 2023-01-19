@@ -32,6 +32,13 @@
 # Bench.create(park_id: 5, name: "B4ENZ7-5", mac_address: "e45f01422d6f", os_name: "0.1.1", introduced_date: "2022.08.09", position: "36.578,136.648", timer: false)
 # Bench.create(park_id: 6, name: "B4ENZ7-6", mac_address: "e45f01422d6g", os_name: "0.1.1", introduced_date: "2022.08.09", position: "36.578,136.648", timer: false)
 
+# Camera.create(park_id: 1, name: "CAMERA-1", mac_address: "e45f01422d6b", os_name: "0.1.1", introduced_date: "2022.08.09", position: "36.578,136.648", timer: false)
+# Camera.create(park_id: 2, name: "CAMERA-2", mac_address: "e45f01422d6c", os_name: "0.1.1", introduced_date: "2022.08.09", position: "36.578,136.648", timer: false)
+# Camera.create(park_id: 3, name: "CAMERA-3", mac_address: "e45f01422d6d", os_name: "0.1.1", introduced_date: "2022.08.09", position: "36.578,136.648", timer: false)
+# Camera.create(park_id: 4, name: "CAMERA-4", mac_address: "e45f01422d6e", os_name: "0.1.1", introduced_date: "2022.08.09", position: "36.578,136.648", timer: false)
+# Camera.create(park_id: 5, name: "CAMERA-5", mac_address: "e45f01422d6f", os_name: "0.1.1", introduced_date: "2022.08.09", position: "36.578,136.648", timer: false)
+# Camera.create(park_id: 6, name: "CAMERA-6", mac_address: "e45f01422d6g", os_name: "0.1.1", introduced_date: "2022.08.09", position: "36.578,136.648", timer: false)
+
 # Shortcut.create(bench_id: 1, name: "ショートカット１", program: "a,b,c,d")
 
 # Event.create(park_id: 1, name: "イベント１", contents: "イベントがあります。", image: '')
@@ -39,7 +46,7 @@
 
 # Product.create(park_id: 1, name: "プロダクト１", contents: "こんなプロダクトがあります。")
 
-# Picture.create(park_id: 1, name: "春の景色", picture: nil)
+# Picture.create(park_id: 1, name: "春の景色", picture: )
 
 
 # TmpDatum.create(data: '{"ID"=>"parcom","MAC_ADDRESS"=>"e45f01422d6b","BATTERY"=>"BATTERY,5.635,MAC,e45f01422d6b","TEMPERATURE"=>"TEMPERATURE,19.75,MAC,e45f01422d6b","FAN"=>"FAN,OFF,MAC,e45f01422d6b","DISPLAY"=>"DISPLAY,OFF,MAC,e45f01422d6b","POSITION"=>"POSITION,LAT:36.383,LON:136.381,MAC,e45f01422d6b","LED"=>"LED,OFF,MAC,e45f01422d6b","COLOR"=>"COLOR,R:0,G:0,B:0,MAC,e45f01422d6b","HUMAN"=>"HUMAN,R:0,L:1,MAC,e45f01422d6b","AUDIO"=>"AUDIO,OFF,MAC,e45f01422d6b","USB5V"=>"USB5V,ON,MAC,e45f01422d6b","WIFIUSE"=>"WIFIUSE,1,MAC,e45f01422d6b","MESSAGE"=>"MESSAGE,none,MAC,e45f01422d6b","MP3"=>"MP3,OFF,MAC,e45f01422d6b","MP4"=>"MP4,OFF,MAC,e45f01422d6b","REQUEST"=>"OK","TIMER"=>"OFF"}', mac_address:"e45f01422d6b")

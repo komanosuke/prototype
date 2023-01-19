@@ -2,6 +2,16 @@
     <div class="park_name"><%= park.name %></div>
     <ul>
       <li>
+        <%= link_to "/park/#{park.id}", class: "hover" do %>
+          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報" %>公園の情報
+        <% end %>
+      </li>
+      <li>
+        <%= link_to "/profile/#{park.id}", class: "hover" do %>
+          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "プロフィール" %>公園のプロフィール
+        <% end %>
+      </li>
+      <li>
         <%= link_to "/parkinfo_edit/#{park.id}", class: "hover" do %>
           <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
         <% end %>

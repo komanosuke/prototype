@@ -13,6 +13,11 @@ class UserController < ApplicationController
         end
 
         @parks = Park.where(user_id: current_user.id)
+
+        if params[:image]
+            @user = User.create(image: params[:image])
+        end
+        # 写真保存検証
     end
 
     def changemail
@@ -38,6 +43,8 @@ class UserController < ApplicationController
 
         @parks = Park.where(user_id: current_user.id)
     end
+
+    
 
     
     # ここで初めて入力内容を保存します。
@@ -88,6 +95,7 @@ class UserController < ApplicationController
     def signup_success #ここでUserモデルに許可を出す＝アカウント作成（必須項目だけ）
         if users_account_params
             @user = User.create(users_account_params)
+            @user = @user.update(address: users_account_params[:prefecture] + users_account_params[:city] + users_account_params[:street])
         else
             redirect_to '/signupmail_error'
         end
@@ -108,6 +116,9 @@ class UserController < ApplicationController
         params.require(:user).permit(:password, :reset_digest)
     end
 
+    private
+    def users_image_params
+        params.require(:user).permit(:image)
+    end
 
-    
 end

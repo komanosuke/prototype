@@ -368,7 +368,6 @@
             <h2>設備情報の編集</h2>
             <p>【ダミーテキスト】一部の情報は、Googleサービスを利用する他のユーザーに表示される場合があります。<%= link_to "詳細", "/help" %></p>
           </div>
-          <%= form_for(@park, url:{controller:'park', action:'parkinfo_edit'}) do |form| %>
             <dl class="label_style_item">
               <dt class="form_term">駐車場について<span class="any">任意</span></dt>
               <div class="label_content" id="parking_labels">
@@ -408,6 +407,7 @@
             <p class="hidden" id="parking_info"><%= @parking_info %></p>
             <p class="hidden" id="toilet_info"><%= @toilet_info %></p>
             <p class="hidden" id="playground_info"><%= @playground_info %></p>
+            <%= form_for(@park, url:{controller:'park', action:'parkinfo_edit'}) do |form| %>
             <%= form.hidden_field :parking_info %>
             <%= form.hidden_field :toilet_info %>
             <%= form.hidden_field :playground_info %>
@@ -427,6 +427,8 @@
             <div>アップロード日<span>↓</span></div>
             <div>ファイルサイズ<span>↓</span></div>
           </div>
+          <% else %>
+            <p>写真がアップロードされていません。</p>
           <% end %>
           
             <div class="picture_content">
@@ -442,19 +444,20 @@
                           <%= image_tag "/common/picture_edit_dummy.jpg" %>
                         <% end %>
                       </div>
-                      <div><%= picture.name %> E506ff7f20d5.jpg</div>
-                      <div><%= picture.created_at %></div>
-                      <div>3.59MB</div>
+                      <div><%= picture.name %></div>
+                      <div><%= picture.created_at.to_s[0,10] %></div>
+                      <div><%= picture.size %></div>
                     </div>
                   </li>
                 </ul>
               <% end %>
                 <label id="upload_box">
                   <div id="upload_form">
-                    <%= form_with model: @picture_new, local:false do |f| %>
+                    <%= form_with model: @picture_now, local:true do |f| %>
                       <%= f.hidden_field :park_id, {value: @park.id} %>
                       <p>写真の名前</p>
-                      <%= f.text_field :name, required: true %>
+                      <%= f.hidden_field :name, required: true, id:'img_name' %>
+                      <%= f.hidden_field :size, required: true, id:'img_size' %>
                       <%= f.file_field :picture, id:'img_file', accept:'image/*', required: true %>
                       <%= f.submit "写真を追加", id:'add_picture_submit' %>
                     <% end %>

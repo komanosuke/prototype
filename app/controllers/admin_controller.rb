@@ -5,16 +5,16 @@ class AdminController < ApplicationController
     # adminコントローラーは権限ある人だけアクセス可能
 
     def index #(データ一覧を表示、ビューからボタン押して切り替え)
-        @users = User.page(params[:page]).per(3)
-        @parks = Park.page(params[:page]).per(3)
-        @benches = Bench.page(params[:page]).per(3)
-        @pictures = Picture.page(params[:page]).per(3)
-        @events = Event.page(params[:page]).per(3)
-        @products = Product.page(params[:page]).per(3)
-        @shortcuts = Shortcut.page(params[:page]).per(3)
-        @tmp_data = TmpDatum.page(params[:page]).per(3)
-        @tmp_data = TmpDatum.page(params[:page]).per(3)
-        @tmp_messages = TmpMessage.page(params[:page]).per(3)
+        @users = User.page(params[:page]).per(50)
+        @parks = Park.page(params[:page]).per(50)
+        @benches = Bench.page(params[:page]).per(50)
+        @pictures = Picture.page(params[:page]).per(50)
+        @events = Event.page(params[:page]).per(50)
+        @products = Product.page(params[:page]).per(50)
+        @shortcuts = Shortcut.page(params[:page]).per(50)
+        @tmp_data = TmpDatum.page(params[:page]).per(50)
+        @tmp_data = TmpDatum.page(params[:page]).per(50)
+        @tmp_messages = TmpMessage.page(params[:page]).per(50)
         show
     end
 

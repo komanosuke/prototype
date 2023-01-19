@@ -34,8 +34,6 @@ class ParkController < ApplicationController
             end
         end
 
-        # 初期化処理
-        @picture_now = Picture.last
         #pictureの保存
         if params[:picture]
             create
@@ -48,14 +46,18 @@ class ParkController < ApplicationController
     end
 
     def create
-        @picture_new = Picture.create(picture: params[:picture], park_id: params[:park_id], name: params[:name])
+        @picture_new = Picture.create(picture: params[:picture], park_id: params[:park_id], name: params[:name], size: params[:size])
     end
 
     def products
         @parks = Park.where(user_id: current_user.id)
         @park = @parks.find(params[:park_id])
         @bench = Bench.find_by(park_id: @park.id)
+        @camera = Camera.find_by(park_id: @park.id)
         if !(@bench)
+            redirect_to '/'
+        end
+        if !(@camera)
             redirect_to '/'
         end
     end

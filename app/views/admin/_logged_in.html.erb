@@ -41,7 +41,7 @@
             <td><%= user.email %></td>
             <td><%= user.zip %></td>
             <td><%= user.prefecture %></td>
-            <td><%= user.address %></td>
+            <td><%= user.city %></td>
             <td><%= user.street %></td>
             <td><%= user.tel %></td>
             <td><%= user.municipality %></td>
@@ -97,6 +97,7 @@
         <th>景観情報</th>
         <th>防災情報</th>
         <th>その他情報</th>
+        <th>iframe</th>
         <th colspan="2"></th>
     </tr>
     <% @parks.each do |park| %>
@@ -106,7 +107,7 @@
             <td><%= park.name %></td>
             <td><%= park.zip %></td>
             <td><%= park.prefecture %></td>
-            <td><%= park.address %></td>
+            <td><%= park.city %></td>
             <td><%= park.street %></td>
             <td><%= park.hours %></td>
             <td><%= park.tel %></td>
@@ -124,6 +125,7 @@
             <td><%= park.view_info %></td>
             <td><%= park.disaster_info %></td>
             <td><%= park.other_info %></td>
+            <td><%= park.iframe %></td>
             <td>
                 <%= form_tag('edit') do %>
                     <%= text_field_tag 'park_id', park.id , class: 'edit_id' %>
@@ -193,7 +195,8 @@
         <th>ID</th>
         <th>所属公園ID</th>
         <th>写真のタイトル</th>
-        <th>写真</th>
+        <th>写真のパス</th>
+        <th>サイズ</th>
         <th colspan="2"></th>
     </tr>
     <% @pictures.each do |picture| %>
@@ -202,6 +205,7 @@
             <td><%= picture.park_id %></td>
             <td><%= picture.name %></td>
             <td><%= picture.picture %></td>
+            <td><%= picture.size %></td>
             <td>
                 <%= form_tag('edit') do %>
                     <%= text_field_tag 'picture_id', picture.id , class: 'edit_id' %>

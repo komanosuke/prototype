@@ -26,7 +26,19 @@
               <dd class="form_description">アカウントの基本情報を確認・管理・変更することが可能です。<a href="">詳細</a></dd>
             </div>
             <div>
-              <%= image_tag "/common/icon_owner_default.svg", class: "icon" %>
+              <label id="upload_box">
+                <div id="upload_form">
+                  <%= form_for(@user, url:{controller:'user', action:'account'}) do |form| %>
+                    <%= form.file_field :image, id:'img_file', accept:'image/*' %>
+                    <%= form.submit "写真を追加", id:'add_picture_submit' %>
+                  <% end %>
+                </div>
+              </label>
+              <% if @user.image %>
+                <%= image_tag @user.image, class: "icon", id:"user_image" %>
+              <% else %>
+                <%= image_tag "/common/icon_owner_default.svg", class: "icon", id:"user_image" %>
+              <% end %>
             </div>
           </div>
           <%= form_for(@user, url:{controller:'user', action:'account'}) do |form| %>
@@ -49,4 +61,20 @@
     </div>
   </div>
 </div>
+<div id="cover"></div>
 </main>
+
+<script>
+  const user_image = document.getElementById('user_image');
+  const upload_box = document.getElementById('upload_box');
+  const cover = document.getElementById('cover');
+
+  user_image.addEventListener('click', function() {
+	upload_box.style.display = 'block';
+	cover.style.display = 'block';
+  });
+  cover.addEventListener('click', function() {
+    upload_box.style.display = 'none';
+    cover.style.display = 'none';
+  });
+</script>

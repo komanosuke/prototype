@@ -56,7 +56,7 @@ Rails.application.routes.draw do
   get 'register', to: 'user#register'
   post 'user/register'
   get 'account', to: 'user#account'
-  patch 'user/account'
+  patch 'account', to: 'user#account'
   get 'changemail', to: 'user#changemail'
   patch 'user/changemail'
   get 'changepwd', to: 'user#changepwd'

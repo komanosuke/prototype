@@ -97,10 +97,10 @@
                     <div class="item_element flex_container">
                       <div><span class="camela_status live">LIVE</span></div>
                       <div class="products_icon"><%= image_tag "/products/icon_camela.svg" %></div>
-                      <div>B4ENZ7<br>ライブカメラ</div>
-                      <div>0.1.4</div>
-                      <div>2022.10.08</div>
-                      <div>36.638782299109444<br><object><a href="https://goo.gl/maps/pLPTXNQhMVX8WUdu5" target="_blank">Mapで確認する</a></object></div>
+                      <div><%= @camera.name %><br>ライブカメラ</div>
+                      <div><%= @camera.os_name %></div>
+                      <div><%= @camera.introduced_date %></div>
+                      <div><%= @camera.position %><br><object><a href="https://goo.gl/maps/pLPTXNQhMVX8WUdu5" target="_blank">Mapで確認する</a></object></div>
                     </div>
                   </a>
                   <div class="popup_btn">…</div>

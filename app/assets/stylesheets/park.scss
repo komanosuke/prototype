@@ -51,7 +51,7 @@
 #upload_box {
     position: relative;
     display: none;
-    width: 100%;
+    width: 300px;
     z-index: 2;
 }
 
@@ -76,4 +76,9 @@
     width: 100%;
     background-color: rgba(0,0,0,0.5);
     z-index: 1;
+}
+
+
+#pdf_submit, #movie_submit, #audio_submit {
+    display: none;
 }

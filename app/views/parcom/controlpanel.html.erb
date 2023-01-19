@@ -374,9 +374,9 @@
                   <label class="upload_file">
                     <%= image_tag "/common/icon_upload.svg", alt: "アイコン" %>
                     ここを<span>クリック</span>または<br>ドラッグ＆ドロップで<br>ファイルをアップロード
-                    <%= form_with model: @bench_image, local:false do |f| %>
-                      <%= f.file_field :image, id:'pdf_file', accept:'image/*' %>
-                      <%= f.submit "送信"%>
+                    <%= form_with model:@bench_image, local:false do |f| %>
+                      <%= f.file_field :image, id:'pdf_file', accept:'image/*,.pdf' %>
+                      <%= f.submit "送信", id:"pdf_submit" %>
                     <% end %>
                   </label>
                 </div>
@@ -385,6 +385,7 @@
                   <div class="preview_file preview_file_img" id="preview">
                     <%= image_tag "/ctrlpanel/icon_preview_close.svg", class: "preview_close_btn", alt: "閉じるボタン" %>
                     <% if @bench_image_now %>
+                      <!--<iframe src="<%= @bench_image_now.name %>" id="preview_image"></iframe>-->
                       <%= image_tag @bench_image_now.image.to_s, id:"preview_image" %>
                     <% else %>
                       <%= image_tag "/ctrlpanel/preview_dummy.svg", id: "preview_dummy", alt: "プレビューファイル" %>
@@ -450,7 +451,7 @@
                     ここを<span>クリック</span>または<br>ドラッグ＆ドロップで<br>ファイルをアップロード
                     <%= form_with model: @bench_video, local:false do |f| %>
                       <%= f.file_field :video, id:'movie_file', accept:'video/*' %>
-                      <%= f.submit "送信"%>
+                      <%= f.submit "送信", id:"movie_submit" %>
                     <% end %>
                   </label>
                 </div>
@@ -493,15 +494,20 @@
                     <%= image_tag "/common/icon_upload.svg", alt: "アイコン" %>
                     ここを<span>クリック</span>または<br>ドラッグ＆ドロップで<br>ファイルをアップロード
                     <%= form_with model: @bench_audio, local:false do |f| %>
-                      <%= f.file_field :audio, :size => 140, id:'audio_file', accept:'/*' %>
-                      <%= f.submit "送信"%>
+                      <%= f.hidden_field :name, id:'audio_name' %>
+                      <%= f.file_field :audio, :size => 140, id:'audio_file', accept:'audio/mp3' %>
+                      <%= f.submit "送信", id:"audio_submit" %>
                     <% end %>
                   </label>
                 </div>
                 <div class="preview">
                   <label>プレビュー</label>
                   <div class="preview_file preview_file_audio">
-                    <div class="form_attachment_preview" id="audio_preview">os-logo.svg<button type="button" class="delete_cancel_btn">×</button></div>
+                    <% if @bench_audio_now %>
+                      <div class="form_attachment_preview" id="audio_preview"><%= @bench_audio_now.name %><button type="button" class="delete_cancel_btn">×</button></div>
+                    <% else %>
+                      <div class="form_attachment_preview" id="audio_preview">default.mp3<button type="button" class="delete_cancel_btn">×</button></div>
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -540,7 +546,7 @@
       <div class="todays_weather_txt">今日 <%= @month %>月<%= @day %>日(<%= @weekday %>)の天気</div>
       <div class="flex_container">
         <div class="temperature"><span>21</span><span>℃</span><br><%= @telop %></div>
-        <div class="weather_icon"><%= image_tag @weather_img, alt: "今日の天気" %></div>
+        <div class="weather_icon"><%#= image_tag @weather_img, alt: "今日の天気" %></div>
       </div>
     </div>
     <div class="sidebar_item">
@@ -561,16 +567,6 @@
           <canvas id="human_chart" class="ex_chart"></canvas>
         </div>
         <div class="sidebar_cp_item_content"><p>現在の着席人数</p><span id="product_human_count">0</span>人</div>
-      </div>
-    </div>
-    <div class="sidebar_item">
-      <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチの充電機器</div>
-      <div class="flex_container">
-        <div id="sidebar_cp_graph">
-          <div class="gragh_dummy"></div>
-          <canvas id="ac_chart" class="ex_chart"></canvas>
-        </div>
-        <div class="sidebar_cp_item_content"><p>現在の充電機器</p><span id="product_ac_count">0</span>台</div>
       </div>
     </div>
     <div id="wifi_use" class="sidebar_item">
@@ -604,9 +600,15 @@
 <% end %>
 
 
+<%= @response %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 </main>
 
 
-<%= javascript_pack_tag 'index' %>
 <%= javascript_pack_tag 'controlpanel' %>

@@ -6,4 +6,5 @@ class Park < ApplicationRecord
     has_many :pictures, dependent: :destroy
     has_many :events, dependent: :destroy
     has_many :shortcuts, dependent: :destroy
+    has_many :cameras
 end

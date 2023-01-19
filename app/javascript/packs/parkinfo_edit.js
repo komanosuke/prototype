@@ -461,6 +461,13 @@ for(let i = 0; i < playground_inputs.length; i++){
 //     reader.readAsDataURL(file);
 // }
 
+const img_file = document.getElementById('img_file');
+let img_name = document.getElementById('img_name');
+let img_size = document.getElementById('img_size');
+img_file.addEventListener('change', function() {
+	img_name.value = img_file.files[0].name;
+	img_size.value = Math.round((img_file.files[0].size/1000000)*100)/100 + 'MB';
+});
 
 
 const add_picture = document.getElementById('add_picture');

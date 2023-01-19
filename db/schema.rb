@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_14_070524) do
+ActiveRecord::Schema.define(version: 2023_01_17_040455) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -59,6 +59,19 @@ ActiveRecord::Schema.define(version: 2023_01_14_070524) do
     t.index ["park_id"], name: "index_benches_on_park_id"
   end
 
+  create_table "cameras", force: :cascade do |t|
+    t.integer "park_id"
+    t.string "name"
+    t.string "mac_address"
+    t.string "os_name"
+    t.date "introduced_date"
+    t.string "position"
+    t.boolean "timer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["park_id"], name: "index_cameras_on_park_id"
+  end
+
   create_table "contacts", force: :cascade do |t|
     t.string "category", null: false
     t.string "name", null: false
@@ -81,22 +94,6 @@ ActiveRecord::Schema.define(version: 2023_01_14_070524) do
     t.index ["park_id"], name: "index_events_on_park_id"
   end
 
-  create_table "media", force: :cascade do |t|
-    t.date "date"
-    t.string "title"
-    t.text "contents"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "news", force: :cascade do |t|
-    t.date "date"
-    t.string "title"
-    t.text "contents"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "parks", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
@@ -105,22 +102,23 @@ ActiveRecord::Schema.define(version: 2023_01_14_070524) do
     t.string "city"
     t.string "street"
     t.string "address"
-    t.json "hours"
+    t.string "hours"
     t.string "tel"
-    t.json "fee"
+    t.string "fee"
     t.string "map"
     t.string "website"
+    t.string "iframe"
     t.string "size"
     t.text "profile"
     t.string "status"
-    t.json "parking_info"
-    t.json "toilet_info"
-    t.json "playground_info"
-    t.json "facility_info"
-    t.json "sports_info"
-    t.json "view_info"
-    t.json "disaster_info"
-    t.json "other_info"
+    t.string "parking_info"
+    t.string "toilet_info"
+    t.string "playground_info"
+    t.string "facility_info"
+    t.string "sports_info"
+    t.string "view_info"
+    t.string "disaster_info"
+    t.string "other_info"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_parks_on_user_id"
@@ -129,7 +127,8 @@ ActiveRecord::Schema.define(version: 2023_01_14_070524) do
   create_table "pictures", force: :cascade do |t|
     t.integer "park_id"
     t.string "name"
-    t.binary "picture"
+    t.string "picture"
+    t.string "size"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["park_id"], name: "index_pictures_on_park_id"
@@ -201,6 +200,7 @@ ActiveRecord::Schema.define(version: 2023_01_14_070524) do
   add_foreign_key "bench_images", "users"
   add_foreign_key "bench_videos", "users"
   add_foreign_key "benches", "parks"
+  add_foreign_key "cameras", "parks"
   add_foreign_key "events", "parks"
   add_foreign_key "parks", "users"
   add_foreign_key "pictures", "parks"
