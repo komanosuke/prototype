@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  before_action :logged_in_user
   before_action :set_schedule, only: %i[ show edit update destroy ]
 
   # GET /schedules or /schedules.json
@@ -25,6 +26,7 @@ class SchedulesController < ApplicationController
 
     respond_to do |format|
       if @schedule.save
+        ShortcutJob.set(wait_until: @schedule.start_time).perform_later(@schedule.id)
         format.html { redirect_to schedule_url(@schedule), notice: "Schedule was successfully created." }
         format.json { render :show, status: :created, location: @schedule }
       else

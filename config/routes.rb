@@ -2,15 +2,12 @@ Rails.application.routes.draw do
   get 'password_resets/new'
   get 'password_resets/edit'
   get 'admin_sessions/new'
-  root to: 'others#link'
+  root to: 'parcom#index'
 
   get 'sessions/new'
   resources :schedules
 
-  get '/', to: 'others#link'
-  post '/', to: 'others#link'
-
-  # get '/zyxw', to: 'admin#index' #（例）adminログイン画面のURLを特定されない名前にする
+  # get '/zyzw', to: 'admin#index' #（例）adminログイン画面のURLを特定されない名前にする
   get '/admin_login',   to: 'admin_sessions#new'
   post '/admin_login',   to: 'admin_sessions#create'
   delete '/admin_logout',  to: 'admin_sessions#destroy'
@@ -44,36 +41,40 @@ Rails.application.routes.draw do
   get 'profile/:park_id', to: 'parcom#profile'
   get 'review/:park_id', to: 'parcom#review'
   get 'parcom/get_data'
-  get 'controlpanel/:bench_id', to: 'parcom#controlpanel'
-  post 'controlpanel/:bench_id', to: 'parcom#controlpanel'
+  get 'controlpanel/:park_id/:bench_id', to: 'parcom#controlpanel'
+  post 'controlpanel/:park_id/:bench_id', to: 'parcom#controlpanel'
   post 'parcom/create'
   resources :parcom, only: [:new, :create]
 
   get 'parcom/post_data'
   post 'parcom/post_data'
   
-  get 'user/index'
+  get '/', to: 'parcom#index'
+  post '/', to: 'parcom#index'
+  get 'index', to: 'parcom#index'
   get 'register', to: 'user#register'
-  post 'user/register'
+  post 'register', to: 'user#register'
+  get 'user/create', to: 'user#create'
+  post 'user/create', to: 'user#create'
   get 'account', to: 'user#account'
   patch 'account', to: 'user#account'
   get 'changemail', to: 'user#changemail'
-  patch 'user/changemail'
+  patch 'changemail', to: 'user#changemail'
   get 'changepwd', to: 'user#changepwd'
   post 'changepwd', to: 'user#changepwd'
   patch 'changepwd', to: 'user#changepwd'
   get 'signup_success', to: 'user#signup_success'
   post 'signup_success', to: 'user#signup_success'
-  get 'signup', to: 'user#signup'
   get 'signupmail_success', to: 'user#signupmail_success'
   get 'signupmail', to: 'user#signupmail'
-  post 'user/signupmail'
+  post 'signupmail', to: 'user#signupmail'
   get 'signupmail_error', to: 'user#signupmail_error'
   get 'user/signupmail_confirm'
   post 'user/signupmail_confirm'
   post 'user/back'
   get 'changepwd_error', to: 'user#changepwd_error'
-
+  resources :users, except: [:new]
+  resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
 
   get 'parkinfo_edit/:park_id', to: 'park#parkinfo_edit'
@@ -83,10 +84,11 @@ Rails.application.routes.draw do
   resources :park, only: [:new, :create]
   
   get 'shortcut/:park_id', to: 'shortcut#index'
-
+  post 'shortcut/create', to: 'shortcut#create'
+  post 'shortcut/delete/:shortcut_id', to: 'shortcut#delete'
 
   get 'contacts', to: 'contacts#new'
-  post 'contacts/create', to: 'contacts#create'
+  resources :contacts, only: [:create]
   post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
   post 'contacts/back', to: 'contacts#back', as: 'back'
   get 'contacts/done', to: 'contacts#done', as: 'done'
@@ -95,5 +97,8 @@ Rails.application.routes.draw do
 
   get '*not_found' => 'application#routing_error'
   post '*not_found' => 'application#routing_error'
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web, at: "/sidekiq"
   
 end

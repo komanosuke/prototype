@@ -355,8 +355,6 @@
                   <span>子ども</span><%= form.text_field :tel, placeholder:"無料", name:"child_fee", required: true %>
                 </div>
               </dd>
-              <p class="hidden" id="hours"><%= @hours %></p>
-              <p class="hidden" id="fee"><%= @fee %></p>
               <%= form.hidden_field :hours, required: true %>
               <%= form.hidden_field :fee, required: true %>
               <%= form.submit "更新する", class:"submit_btn" %>
@@ -404,9 +402,6 @@
                 <label class="label_style label_style_bg"><input class="label_style_checkbox" type="checkbox" name="playground" value="" id="check_id">スプリング遊具</label>
               </div>
             </dl>
-            <p class="hidden" id="parking_info"><%= @parking_info %></p>
-            <p class="hidden" id="toilet_info"><%= @toilet_info %></p>
-            <p class="hidden" id="playground_info"><%= @playground_info %></p>
             <%= form_for(@park, url:{controller:'park', action:'parkinfo_edit'}) do |form| %>
             <%= form.hidden_field :parking_info %>
             <%= form.hidden_field :toilet_info %>

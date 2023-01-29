@@ -48,15 +48,22 @@
             </div>
             <div class="products_content">
               <ul class="products_list">
+
+                <% @products.each do |product| %>
+
                 <li class="item">
-                  <a href="/controlpanel/<%= @bench.id %>">
+
+                  <% if product.to_s.include? 'Bench' #スマートベンチ %>
+
+                  <a href="/controlpanel/<%= @park.id %>/<%= product.id %>">
                     <div class="item_element flex_container">
                       <div><%= image_tag "/ctrlpanel/icon_shortcut_check.svg" %></div>
                       <div class="products_icon"><%= image_tag "/products/icon_bench_error.svg" %></div>
-                      <div><%= @bench.name %><br>スマートベンチ</div>
-                      <div><%= @bench.os_name %></div>
-                      <div><%= @bench.introduced_date %></div>
-                      <div><%= @bench.position %><br><object><a href="https://goo.gl/maps/pLPTXNQhMVX8WUdu5" target="_blank">Mapで確認する</a></object></div>
+                      <div><%= product.name %><br>スマートベンチ</div>
+                      <div><%= product.os_name %></div>
+                      <div><%= product.introduced_date %></div>
+                        <% mapinfo = product.position.split(',') %>
+                      <div><%= product.position %><br><object><a href="https://www.google.co.jp/maps/@<%= mapinfo[0] %>,<%= mapinfo[1] %>,20z" target="_blank">Mapで確認する</a></object></div>
                     </div>
                   </a>
                   <div class="popup_btn">…</div>
@@ -69,7 +76,34 @@
                       <li data-action="confirm_delete" class="delete_btn">削除する</li>
                     </ul>
                   </div>
+
+                  <% elsif product.to_s.include? 'Camera' #ライブカメラ %>
+
+                  <a href="#">
+                    <div class="item_element flex_container">
+                      <div><span class="camela_status live">LIVE</span></div>
+                      <div class="products_icon"><%= image_tag "/products/icon_camela.svg" %></div>
+                      <div><%= product.name %><br>ライブカメラ</div>
+                      <div><%= product.os_name %></div>
+                      <div><%= product.introduced_date %></div>
+                        <% mapinfo = product.position.split(',') %>
+                      <div><%= product.position %><br><object><a href="https://www.google.co.jp/maps/@<%= mapinfo[0] %>,<%= mapinfo[1] %>,20z" target="_blank">Mapで確認する</a></object></div>
+                    </div>
+                  </a>
+                  <div class="popup_btn">…</div>
+                  <div class="popup_window" style="display: none;">
+                    <span class="popup_close">×</span>
+                    <ul>
+                      <li class="edit_btn">
+                        <a href="">編集する</a>
+                      </li>
+                      <li data-action="confirm_delete" class="delete_btn">削除する</li>
+                    </ul>
+                  </div>
+                  <% end %>
+                    
                 </li>
+                <% end %>
                 <li class="item">
                   <a href="#">
                     <div class="item_element flex_container">
@@ -97,10 +131,10 @@
                     <div class="item_element flex_container">
                       <div><span class="camela_status live">LIVE</span></div>
                       <div class="products_icon"><%= image_tag "/products/icon_camela.svg" %></div>
-                      <div><%= @camera.name %><br>ライブカメラ</div>
-                      <div><%= @camera.os_name %></div>
-                      <div><%= @camera.introduced_date %></div>
-                      <div><%= @camera.position %><br><object><a href="https://goo.gl/maps/pLPTXNQhMVX8WUdu5" target="_blank">Mapで確認する</a></object></div>
+                      <div>B4ENZ7<br>ライブカメラ</div>
+                      <div>0.1.4</div>
+                      <div>2022.10.08</div>
+                      <div>36.638782299109444<br><object><a href="https://goo.gl/maps/pLPTXNQhMVX8WUdu5" target="_blank">Mapで確認する</a></object></div>
                     </div>
                   </a>
                   <div class="popup_btn">…</div>
@@ -215,11 +249,16 @@
       </div>
       <aside class="sidebar_products sidebar_menu sidebar_cp">
         <div class="sidebar_item todays_weather">
-          <div class="sidebar_cp_item_ttl"><%= image_tag "/weather/icon_weather_pin.svg" %>石川県金沢市</div>
-          <div class="todays_weather_txt">今日 4月29日(金)の天気</div>
+          <div class="sidebar_cp_item_ttl"><%= image_tag "/weather/icon_weather_pin.svg" %><%= @park.prefecture %><%= @park.city %></div>
+          <div class="todays_weather_txt">今日 <%= @month %>月<%= @day %>日(<%= @weekday %>)の天気</div>
           <div class="flex_container">
-            <div class="temperature"><span>21</span><span>℃</span><br>晴れ時々曇り</div>
-            <div class="weather_icon"><%= image_tag "/weather/icon_sunny.svg", alt: "今日の天気" %></div>
+            <div class="temperature"><span>21</span><span>℃</span><br><%= @telop %></div>
+            <div class="weather_icon"><%= image_tag @weather_img, alt: "今日の天気" %></div>
+            <%= @wind %>
+            <%= @chance_of_rain[0] %>
+            <%= @chance_of_rain[1] %>
+            <%= @chance_of_rain[2] %>
+            <%= @chance_of_rain[3] %>
           </div>
           <%= image_tag "/weather/icon_weather_dummy.svg", style: "margin-top: 20px;" %>
         </div>

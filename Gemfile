@@ -74,3 +74,5 @@ gem 'mechanize'
 gem 'nokogiri'
 
 gem 'rmagick'
+
+gem 'httpclient'

@@ -9,7 +9,8 @@
 </div>
 
 <%= render partial: "shared/aside" %>
-    <div class="inner_large" %>
+
+    <div class="inner_large">
       <div class="page_ttl_wrap">
         <div class="page_ttl">
           <h2>サービスに関するお知らせ</h2>
@@ -17,34 +18,18 @@
       </div>
       <div class="content">
         <div class="news_content">
-                              <div class="news_item">
-            <a href="#">
-              <div class="flex_container_s">
-                <div class="news_cat">お知らせ</div>
-                <div class="news_time">2022-11-02 (Wed)</div>
-                <div class="news_ttl"><h2>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</h2></div>
-              </div>
-            </a>
-          </div>
-                              <div class="news_item">
-            <a href="#">
-              <div class="flex_container_s">
-                <div class="news_cat">お知らせ</div>
-                <div class="news_time">2022-11-02 (Wed)</div>
-                <div class="news_ttl"><h2>お問い合わせ窓口の営業時間変更に関するお知らせ</h2></div>
-              </div>
-            </a>
-          </div>
-                              <div class="news_item">
-            <a href="#">
-              <div class="flex_container_s">
-                <div class="news_cat">新機能・改善</div>
-                <div class="news_time">2022-11-02 (Wed)</div>
-                <div class="news_ttl"><h2>利用状況のデータをダウンロードできるようになりました。</h2></div>
-              </div>
-            </a>
-          </div>
-                  </div>
+            <% @news_datas.each do |data| %>
+                <div class="news_item">
+                    <a href="<%= data["link"] %>">
+                      <div class="flex_container_s">
+                        <div class="news_cat"><%= data["cat"] %></div>
+                        <div class="news_time"><%= data["date"] %><%= data["wday"] %></div>
+                        <div class="news_ttl"><%= data["title"] %></div>
+                      </div>
+                    </a>
+                </div>
+            <% end %>
+        </div>
         <div class="more_btn">
           <a href="/news">もっと見る<span>→</span></a>
         </div>
@@ -57,61 +42,32 @@
       <div class="content">
         <div class="news_content">
           <div class="article_items flex_container_wrap">
-                                    <div class="article_item">
-              <a href="#">
-                <div class="article_img_cat">
-                                       <%= image_tag "/common/noimage.jpg", alt: "noimage" %>
-                                    <div class="cat">導入事例</div>
-                </div>
-                <div class="article_txt">
-                  <div class="news_time">2022-11-02 (Wed)</div>
-                  <h2>〇〇市〇〇〇〇公園にてスマートベンチが導入されました。</h2>
-                </div>
-              </a>
-            </div>
-                                    <div class="article_item">
-              <a href="#">
-                <div class="article_img_cat">
-                                       <%= image_tag "/common/noimage.jpg", alt: "noimage" %>
-                                    <div class="cat">メディア情報</div>
-                </div>
-                <div class="article_txt">
-                  <div class="news_time">2022-11-02 (Wed)</div>
-                  <h2>〇〇〇〇〇〇〇〇〇〇〇〇に掲載されました。</h2>
-                </div>
-              </a>
-            </div>
-                                    <div class="article_item">
-              <a href="#">
-                <div class="article_img_cat">
-                                       <%= image_tag "/common/noimage.jpg", alt: "noimage" %>
-                                    <div class="cat">お知らせ</div>
-                </div>
-                <div class="article_txt">
-                  <div class="news_time">2022-11-02 (Wed)</div>
-                  <h2>〇〇〇〇〇〇〇〇に出展します。</h2>
-                </div>
-              </a>
-            </div>
-                                    <div class="article_item">
-              <a href="#">
-                <div class="article_img_cat">
-                                       <%= image_tag "/common/noimage.jpg", alt: "noimage" %>
-                                    <div class="cat">導入事例</div>
-                </div>
-                <div class="article_txt">
-                  <div class="news_time">2022-11-02 (Wed)</div>
-                  <h2>〇〇市〇〇公園にてスマートベンチが導入されました。</h2>
-                </div>
-              </a>
-            </div>
+            <% @article_datas.each do |data| %>
+                <div class="article_item">
+                    <a href="<%= data["link"] %>">
+                      <div class="article_img_cat">
+                        <% if data["thumbnail"].present? %>
+                            <img src=<%= data["thumbnail"] %>>
+                        <% else %>
+                             <%= image_tag "/common/noimage.jpg", alt: "noimage" %>
+                        <% end %>
+                        <div class="cat"><%= data["cat"] %></div>
                       </div>
+                      <div class="article_txt">
+                        <div class="news_time"><%= data["date"] %><%= data["wday"] %></div>
+                        <h2><%= data["title"] %></h2>
+                      </div>
+                    </a>
+                </div>
+            <% end %>
+          </div>
         </div>
         <div class="more_btn">
           <a href="/article">もっと見る<span>→</span></a>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 </main>

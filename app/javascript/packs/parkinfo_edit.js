@@ -61,12 +61,6 @@ $(function(){
 		}
 		$(this).parent().parent().parent().parent().toggleClass('bg');
 	});
-
-
-
-
-
-
 });
 
 
@@ -139,9 +133,7 @@ let hours = {
 let hours_keys = Object.keys(hours);
 
 
-let hours_json = document.getElementById('hours').textContent.replace(/(\\|\/)/g,'').slice(1).slice(0,-1); //StringデータをJSONにできる状態にする
-const park_hours = document.getElementById('park_hours');
-park_hours.value = hours_json;
+let hours_json = document.getElementById('park_hours').value.replace(/(\\|\/)/g,''); //StringデータをJSONにできる状態にする
 hours_json = JSON.parse(hours_json);
 console.log(hours_json);
 
@@ -292,27 +284,21 @@ function makeHoursJson(){
 }
 
 
-
-
-
-
-
-let fee = document.getElementById('fee').textContent.replace(/(\\|\/)/g,'').slice(1).slice(0,-1);
-const park_fee = document.getElementById('park_fee');
-park_fee.value = fee;
-fee = JSON.parse(fee);
-console.log(fee);
+let park_fee = document.getElementById('park_fee');
+park_fee_json = JSON.parse(park_fee.value.replace(/(\\|\/)/g,''));
+console.log(park_fee_json);
 let adult_fee = document.getElementsByName('adult_fee')[0];
 let child_fee = document.getElementsByName('child_fee')[0];
-adult_fee.value = fee['大人'];
-child_fee.value = fee['子供'];
+adult_fee.value = park_fee_json['大人'];
+child_fee.value = park_fee_json['子供'];
 adult_fee.addEventListener('change', function(e) {
-	fee['大人'] = e.target.value;
-	park_fee.value = JSON.stringify(fee);
+	park_fee_json['大人'] = e.target.value;
+	console.log(JSON.stringify(park_fee_json));
+	park_fee.value = JSON.stringify(park_fee_json);
 });
 child_fee.addEventListener('change', function(e) {
-	fee['子供'] = e.target.value;
-	park_fee.value = JSON.stringify(fee);
+	park_fee_json['子供'] = e.target.value;
+	park_fee.value = JSON.stringify(park_fee_json);
 });
 
 
@@ -322,9 +308,7 @@ child_fee.addEventListener('change', function(e) {
 
 /////////////////////////////////////////
 //データ取得、JSON化
-let parking_info = document.getElementById('parking_info').textContent.replace(/(\\|\/)/g,'').slice(1).slice(0,-1);
-const park_parking_info = document.getElementById('park_parking_info');
-park_parking_info.value = parking_info;
+let parking_info = document.getElementById('park_parking_info').value.replace(/(\\|\/)/g,'');
 parking_info = JSON.parse(parking_info);
 console.log(parking_info);
 let parking_info_keys = Object.keys(parking_info);
@@ -337,7 +321,6 @@ for(let i = 0; i < parking_labels.length; i++){
 		parking_labels[i].checked = true;
 	}
 }
-
 //parking_labelsデータの変更をhiddenパラメータのvalueに反映
 let parking_inputs = document.getElementsByName('parking');
 for(let i = 0; i < parking_inputs.length; i++){
@@ -352,12 +335,9 @@ for(let i = 0; i < parking_inputs.length; i++){
 	});
 }
 
-
 /////////////////////////////////////////
 //データ取得、JSON化
-let toilet_info = document.getElementById('toilet_info').textContent.replace(/(\\|\/)/g,'').slice(1).slice(0,-1);
-const park_toilet_info = document.getElementById('park_toilet_info');
-park_toilet_info.value = toilet_info;
+let toilet_info = document.getElementById('park_toilet_info').value.replace(/(\\|\/)/g,'');
 toilet_info = JSON.parse(toilet_info);
 console.log(toilet_info);
 let toilet_info_keys = Object.keys(toilet_info);
@@ -388,9 +368,7 @@ for(let i = 0; i < toilet_inputs.length; i++){
 
 /////////////////////////////////////////
 //データ取得、JSON化
-let playground_info = document.getElementById('playground_info').textContent.replace(/(\\|\/)/g,'').slice(1).slice(0,-1);
-const park_playground_info = document.getElementById('park_playground_info');
-park_playground_info.value = playground_info;
+let playground_info = document.getElementById('park_playground_info').value.replace(/(\\|\/)/g,'');
 playground_info = JSON.parse(playground_info);
 console.log(playground_info);
 let playground_info_keys = Object.keys(playground_info)
@@ -417,6 +395,11 @@ for(let i = 0; i < playground_inputs.length; i++){
 		console.log(playground_info);
 	});
 }
+
+
+
+
+
 
 
 
@@ -494,25 +477,27 @@ cover.addEventListener('click', function() {
 const park_pic_list = document.getElementById('park_pic_list');
 const picture_id = document.getElementsByName('pic');
 const all_select = document.getElementsByName('all_select')[0];
-all_select.addEventListener('click', function() {
-	if(all_select.checked){
-		for(let i = 0; i < picture_id.length; i++){
-			picture_id[i].checked = true;
+if(all_select){
+	all_select.addEventListener('click', function() {
+		if(all_select.checked){
+			for(let i = 0; i < picture_id.length; i++){
+				picture_id[i].checked = true;
+			}
+		} else {
+			for(let i = 0; i < picture_id.length; i++){
+				picture_id[i].checked = false;
+			}
 		}
-	} else {
-		for(let i = 0; i < picture_id.length; i++){
-			picture_id[i].checked = false;
-		}
-	}
-	checkPicId();
-});
+		checkPicId();
+	});
+}
+
 for(let i = 0; i < picture_id.length; i++){
 	picture_id[i].addEventListener('click', function() {
 		checkPicId();
 	});
 }
 
-console.log(picture_id);
 
 function checkPicId(){
 	let pic_list = ''

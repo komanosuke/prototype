@@ -1,11 +1,3 @@
-//課題
-// バグ検証
-// タイマーの繰り返し処理 　ctrl+F 繰り返し処理
-// 画像、動画、音楽ファイルのファイル制限と、アップロード先
-// ボリュームの中途半端な初期値
-// 映像ファイルの×ボタン
-// 音楽ファイルの×ボタン
-
 // [ベンチへのコマンド]
 // FAN,ON or OFF
 // LED,ON or OFF
@@ -28,13 +20,13 @@
 
 // ボタンのON,OFF切り替え処理
 //オンオフ判定変数
-let on_or_off = [false, false, false, false, false, false];
+let on_or_off = [false, false, false, false, false];
 let command = ''
 
 //ONボタン　使うときは、引数にONにしたいボタンの番号を入れる
 // ※TIMERだけは、Railsのデータベースで管理する
-const btn_name = ['LED', 'TIMER', 'DISPLAY', 'AUDIO', 'MP4', 'MP3'];
-const btn_num = { 'LED': 0, 'TIMER': 1, 'DISPLAY': 2, 'AUDIO': 3, 'MP4': 4, 'MP3': 5 };
+const btn_name = ['LED', 'DISPLAY', 'AUDIO', 'MP4', 'MP3'];
+const btn_num = { 'LED': 0, 'DISPLAY': 1, 'AUDIO': 2, 'MP4': 3, 'MP3': 4 };
 function switchOn(n, command){
     data = document.getElementById('data').textContent;
     data = JSON.parse(data.replaceAll('=>', ':'));
@@ -64,7 +56,6 @@ function switchOff(n, command){
 
 //リロード時に、ベンチからの最新のJSONデータを取得してViewに表示（hiddenなのでコンソールログから確認）
 let data = document.getElementById('data').textContent.replace(/(\\|\/)/g,''); //JSON Parseの処理も関数に
-console.log(data);
 
 data = JSON.parse(data.replaceAll('=>', ':'));
 for(let i = 0; i < btn_name.length; i++){
@@ -74,6 +65,7 @@ for(let i = 0; i < btn_name.length; i++){
         switchOff(i);
     }
 }
+console.log(data);
 
 //RailsのコントローラーにAjaxでデータを送信する処理(request_cmdはそのままベンチまで行く)
 function postData(command){
@@ -97,20 +89,24 @@ function postData(command){
 //LEDカラー変更ボタン（変更ボタンを押すとベンチのLEDカラーを変えるコマンドを送る）
 
 //RGBの取得
-let rgb_select = '' //現在選択されている色を格納
+let rgb_select = ''; //現在選択されている色を格納
 
 //プリセットカラーをクリック->取得->スイッチオン(送信)cまで
 $('.preset_color').on('click', function(e) {
     rgb_select = e.target.value;
     command = changeColor(rgb_select);
+    color_code.value = rgb_select;
     switchOn(0, command);
+    led_off_counter = 0;
 });
 const colors = document.getElementsByClassName('preset_color');
 for(let i = 0; i < colors.length; i++){
     colors[i].addEventListener('change', function(e) {
         rgb_select = e.target.value;
         command = changeColor(rgb_select);
+        color_code.value = rgb_select;
         switchOn(0, command);
+        led_off_counter = 0;
     });
 }
 
@@ -121,6 +117,7 @@ color_code.addEventListener('change', function(e) {
     command = changeColor(rgb_select);
     if(command){
         switchOn(0, command);
+        led_off_counter = 0;
     }
 });
 
@@ -144,13 +141,15 @@ function changeColor(rgb_select){
 //LEDカラーのON,OFFスイッチ
 $('#led_switch').on('click', function() {
     if(on_or_off[0] == true){
-        switchOff(0, 'COLOR,R:0,G:0,B:0');
+        switchOff(0, 'LED,OFF');
+        led_on_counter = 0;
         rgb_select = ''; //RGBの選択 初期化
         color_code.value = '';
     } else if(on_or_off[0] == false && rgb_select != ''){
         command = changeColor(rgb_select);
         if(command != ''){
-            switchOn(0, command)
+            switchOn(0, command);
+            led_off_counter = 0;
         }
         
     } else {
@@ -173,55 +172,24 @@ function hex2rgb ( hex ) {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//LEDタイマーのセット  ※リピート処理コマンドに追加
-
-//LEDタイマー
-const start_hour = document.getElementById('led_start_time_hour');
-const start_min = document.getElementById('led_start_time_min');
-const end_hour = document.getElementById('led_end_time_hour');
-const end_min = document.getElementById('led_end_time_min');
-const led_repeat = document.getElementById('led_repeat');
-
-//LEDタイマー　ON,OFFスイッチ
-$('#ledtime_switch').on('click', function() {
-    command = start_hour.value + ':' + start_min.value + '-' + end_hour.value + ':' + end_min.value;
-    if(on_or_off[1] == true){
-        switchOff(1, 'LEDCANCEL');
-        start_hour.value = start_min.value = end_hour.value = end_min.value = '00';
-        led_repeat.value = '繰り返ししない';
-    } else if(on_or_off[1] == false){
-        if(led_repeat.value == '1'){ //繰り返し処理のコマンド
-            command += ',1';
-        } else {
-            command += ',0';
-        }
-        switchOn(1, 'LEDONTIME,' + command);
-    }
-});
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 //画像のアップロード
 function setDisplay(){
 
 }
 
-let pdf_default = true; //デフォルト画像あり
+let pdf_permit = false;
 if(document.getElementById('preview_image')){
-    pdf_default = false;
+    pdf_permit = true;
 }
 
 $('#display_switch').on('click', function() {
-    if(on_or_off[2] == true){
-        switchOff(2, 'DISPLAY,OFF');
-        postData('PDF,OFF')
-    } else if(on_or_off[2] == false){
-        switchOn(2, 'DISPLAY,ON');
-        if(pdf_default == false){
-            postData('PDF,ON:')
+    if(on_or_off[1] == true){
+        switchOff(2, 'PDF,OFF');
+    } else if(on_or_off[1] == false){
+        if(pdf_permit == false){
+            alert('再生する画像ファイルをアップロードしてから押してください。');
         } else {
-            postData('PDF,ON:/ctrlpanel/preview_dummy.svg')
+            switchOn(2, 'PDF,ON:');
         }
     }
 });
@@ -234,7 +202,7 @@ const pdf_file = document.getElementById('pdf_file');
 // changeイベントで呼び出す関数
 function handleFileSelect(){
     let file = pdf_file.files[0];
-    // let pdf_filename = file.name;
+    let pdf_filename = file.name;
     // let pdf_filesize = file.size;
 
     // if (file && file.size > sizeLimit) {
@@ -261,7 +229,7 @@ function previewFile(file) {
         const imageUrl = e.target.result; // URLはevent.target.resultで呼び出せる
         $('#preview_dummy').css('display', 'none');
         $('#preview_image').remove();
-        const img = document.createElement("iframe"); // img要素を作成
+        const img = document.createElement("img"); // img要素を作成
         img.src = imageUrl; // URLをimg要素にセット
         img.id = 'preview_image';
         preview.appendChild(img); // #previewの中に追加
@@ -285,30 +253,39 @@ $('.preview_close_btn').on('click', function() {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//音量の決定   ※ボリュームの初期値500は、ビューの数字としては中途半端???
+//音量の決定
 $('#volume_input').on('click', function(e) {
-    //volume ベンチの仕様上、 0(最小値) ~ 100(最大値) を -3000(最小値) ~ 1000(最大値) に変換して送信しないといけない。
-    let volume = (e.target.value * 40) - 3000;
+    //volume ベンチの仕様上、 0(最小値) ~ 100(最大値) を -1000(最小値) ~ 900(最大値) に変換して送信しないといけない。
+    let volume = (e.target.value * 19) - 1000;
     command = 'VOLUME,' + volume;
-    postData(command);
-    if(on_or_off[3] == false){
-        switchOn(3, 'AUDIO,ON');
+    if(on_or_off[2] == true){
+        if(volume == -1000){
+            switchOff(2, command);
+        } else {
+            switchOn(2, command);
+        }
     }
 });
 
+//音量初期値をビュー表示
+let default_volume = '80';
 let volume = document.getElementsByClassName('volume')[0];
+document.getElementById('volume_input').value = default_volume;
+volume.style.left = default_volume + '%';
+volume.children[1].textContent = default_volume;
+switchOn(2);
+
 $('#audio_switch').on('click', function() {
-    if(on_or_off[3] == true){
-        switchOff(3, 'AUDIO,OFF');
+    if(on_or_off[2] == true){
+        switchOff(2, 'AUDIO,OFF');
         document.getElementById('volume_input').value = 0;
         volume.style.left = '0%';
         volume.children[1].textContent = '0';
-    } else if(on_or_off[3] == false){
-        postData('VOLUME,480'); //初期値
-        document.getElementById('volume_input').value = 12;
-        volume.style.left = '12%';
-        volume.children[1].textContent = '12';
-        switchOn(3, 'AUDIO,ON');
+    } else if(on_or_off[2] == false){
+        let volume_value = document.getElementById('volume_input').value;
+        switchOn(2, 'VOLUME,' + ((volume_value * 19) - 1000));
+        volume.style.left = volume_value + '%';
+        volume.children[1].textContent = volume_value;
     }
 });
 
@@ -335,13 +312,24 @@ if(document.getElementById('mp4_preview_video')){
 const movie_submit = document.getElementById('movie_submit');
 
 $('#mp4_switch').on('click', function() {
-    if(on_or_off[4] == true){
-        switchOff(4, 'MP4,OFF');
-    } else if(on_or_off[4] == false){
+    if(on_or_off[3] == true){
+        switchOff(3, 'MP4,OFF');
+        audio_lock.style.display = 'none';
+        //連動して音量もオフにする(値はそのまま)
+        switchOff(2);
+    } else if(on_or_off[3] == false){
         if(movie_permit == false){
             alert('再生するmp4ファイルをアップロードしてから押してください。');
         } else {
-            switchOn(4, 'MP4,ON:');
+            switchOn(3, 'MP4,ON:');
+            audio_lock.style.display = 'inline';
+            //連動して音量もオンにする
+            switchOn(2);
+            if(document.getElementById('volume_input').value == 0){
+                document.getElementById('volume_input').value = default_volume;
+                volume.style.left = default_volume + '%';
+                volume.children[1].textContent = default_volume;
+            }
         }
     }
 });
@@ -355,7 +343,7 @@ function handle_mv_FileSelect(){
     let movie_filesize = file.size;
     
     preview_mv_File(file);
-    $('#preview_image').css('visibility', 'visible');
+    $('#mp4_preview_video').css('visibility', 'visible');
 }
 // ファイル選択時にhandleFileSelectを発火
 movie_file.addEventListener('change', handle_mv_FileSelect);
@@ -370,9 +358,10 @@ function preview_mv_File(file) {
     reader.onload = function (e) {
       const videoUrl = e.target.result; // URLはevent.target.resultで呼び出せる
       $('#mp4_preview_dummy').css('display', 'none');
+      $('#mp4_preview_video').remove();
       const video = document.createElement("video"); // video要素を作成
       video.src = videoUrl; // URLをvideo要素にセット
-      video.id = 'mp4_preview_video';
+      video.id = 'mp4_preview_dummy';
       preview.appendChild(video); // #previewの中に追加
     }
     // いざファイルをURLとして読み込む
@@ -390,6 +379,9 @@ function preview_mv_File(file) {
 function setMusic(){
 
 }
+//再生したらボリュームはロック
+let audio_lock = document.getElementById('audio_lock');
+
 let audio_permit = false;
 if(document.getElementById('audio_player')){
     audio_permit = true;
@@ -397,13 +389,24 @@ if(document.getElementById('audio_player')){
 const audio_submit = document.getElementById('audio_submit');
 
 $('#mp3_switch').on('click', function() {
-    if(on_or_off[5] == true){
-        switchOff(5, 'MP3,OFF');
-    } else if(on_or_off[5] == false){
+    if(on_or_off[4] == true){
+        switchOff(4, 'MP3,OFF');
+        audio_lock.style.display = 'none';
+        //連動して音量もオフにする(値はそのまま)
+        switchOff(2);
+    } else if(on_or_off[4] == false){
         if(audio_permit == false){
             alert('再生するmp3ファイルをアップロードしてから押してください。');
         } else {
-            switchOn(5, 'MP3,ON:');
+            switchOn(4, 'MP3,ON:');
+            audio_lock.style.display = 'inline';
+            //連動して音量もオンにする
+            switchOn(2);
+            if(document.getElementById('volume_input').value == 0){
+                document.getElementById('volume_input').value = default_volume;
+                volume.style.left = default_volume + '%';
+                volume.children[1].textContent = default_volume;
+            }
         }
     }
 });
@@ -462,52 +465,68 @@ function submit(){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// 現在の電圧、現在の着席人数、現在の充電機器、現在の接続台数、通信使用量合計?　の数字描画変更
-let battery_num = document.getElementById('product_battery');
-let human_num = document.getElementById('product_human_count');
-let ac_num = document.getElementById('product_ac_count');
-let wifi_num = document.getElementById('product_wifi_count');
+let ctx = document.getElementsByClassName('ex_chart');
+let myCharts = [];
+let chart_num = document.getElementsByClassName('sidebar_cp_item_content');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// 各グラフの変数定義
-let ctx1 = document.getElementById('battery_chart');
-let ctx2 = document.getElementById('human_chart');
-let ctx3 = document.getElementById('wifi_chart');
-let ctx4 = document.getElementById('data_sum_chart');
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-data1 = [0,0,0,0,0,0,0,0,0,0]
-data2 = [0,0,0,0,0,0,0,0,0,0]
-data3 = [0,0,0,0,0,0,0,0,0,0]
-data4 = [0,0,0,0,0,0,0,0,0,0]
+chart_data = [];
+for(let i = 0; i < ctx.length; i++){
+    chart_data.push([0,0,0,0,0,0,0,0,0,0]);
+}
 
 
 let chart_check = false;
-// setInterval(updateData, 1000);
-// setInterval(submit, 1000);
+setInterval(updateData, 1000);
+setInterval(submit, 1000);
 
 function updateData(){
-    destroyChart();
-    data1.shift();
-    data2.shift();
-    data3.shift();
-    data4.shift();
     let data = document.getElementById('data').textContent.replace(/(\\|\/)/g,'');
     data = JSON.parse(data.replaceAll('=>', ':'));
-    data1.push(Number(data['BATTERY']));
-    data2.push(Number((data['HUMAN'].split(','))[0].replace('R:','')) + Number((data['HUMAN'].split(','))[1].replace('L:','')));
-    data3.push(Number(data['WIFIUSE']));
-    data4.push(0);
-    battery_num.textContent = (data['BATTERY']);
-    human_num.textContent = Number((data['HUMAN'].split(','))[0].replace('R:','')) + Number((data['HUMAN'].split(','))[1].replace('L:',''));
-    wifi_num.textContent = (data['WIFIUSE']);
-    // 通信使用量合計の処理(SORACOMからもってくる)
 
-    // console.log(data1)
+    destroyChart();
+
+    //下記pushed_dataは、HTMLと順番合わせる + グラフ描画の順番も合わせる
+    // ベンチのバッテリー残量
+    // ベンチの基盤温度
+    // ベンチ周辺の外気温
+    // ベンチの着席情報
+    // Wi-Fi接続台数
+    // ベンチ周辺の湿度
+    // ベンチ周辺の照度
+    // ベンチ周辺の気圧
+    // ベンチ周辺のノイズ
+    // ベンチ周辺の揮発性有機化合物濃度
+    // ベンチ周辺のCO2濃度
+    // ベンチ周辺の不快指数
+    // ベンチ周辺の熱中症警戒度
+    // データ通信使用量
+    pushed_data = [
+        Number(data["BATTERY"]),
+        Number(data["TEMPERATURE"]),
+        Number(data["GTEMPERATURE"]),
+        Number((data['HUMAN'].split(','))[0].replace('R:','')) + Number((data['HUMAN'].split(','))[1].replace('L:','')),
+        Number(data["WIFIUSE"]),
+        Number(data["HUMIDITY"]),
+        Number(data["LIGHT"]),
+        Number(data["PRESS"]),
+        Number(data["NOISE"]),
+        Number(data["ETVOC"]),
+        Number(data["CO2"]),
+        Number(data["DISCOMFORT"]),
+        Number(data["HEAT"]),
+        1 //SORACOMの数値
+    ];
+    for(let i = 0; i < ctx.length; i++){
+        chart_data[i].shift();
+        chart_data[i].push(pushed_data[i]);
+        chart_num[i].querySelector('span').textContent = pushed_data[i];
+    }
+
     chart_check = true;
 
-    window.myChart1 = new Chart(ctx1, {
+    // ベンチのバッテリー残量
+    window.myChart1 = new Chart(ctx[0], {
         type: 'line',
         data: {
             labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -515,8 +534,645 @@ function updateData(){
                 pointRadius: 0,
                 borderWidth: 2,
                 label: '',
-                data: data1,
-                // data: [5.635, 6.635, 8.635, 2.635, 3.635, 7.635, 6.635, 4.635, 5.635, 2.635],
+                data: chart_data[0],
+                // データライン
+                borderColor: 'rgb(70,197,64)',
+                xAxisID: 'x',
+                yAxisID: 'y'
+            }],
+        },
+        options: {
+            animation: false,
+            scales: {  // 軸設定
+                x: {  // Ｘ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                        // min: 0,            // 最小値
+                        // max: 25,           // 最大値
+                        // stepSize: 5,       // 間隔
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    }
+                },
+                y: { // Ｙ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                    },
+                    grid: {  // グリッド線
+                        display: false,
+                        drawBorder: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    
+    // ベンチの基盤温度
+    window.myChart2 = new Chart(ctx[1], {
+        type: 'line',
+        data: {
+            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            datasets: [{
+                pointRadius: 0,
+                borderWidth: 2,
+                label: '',
+                data: chart_data[1],
+                // データライン
+                borderColor: 'rgb(70,197,64)',
+                xAxisID: 'x',
+                yAxisID: 'y'
+            }],
+        },
+        options: {
+            animation: false,
+            scales: {  // 軸設定
+                x: {  // Ｘ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                        // min: 0,            // 最小値
+                        // max: 25,           // 最大値
+                        // stepSize: 5,       // 間隔
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    }
+                },
+                y: { // Ｙ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                    },
+                    grid: {  // グリッド線
+                        display: false,
+                        drawBorder: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    
+
+    // ベンチ周辺の外気温
+    window.myChart3 = new Chart(ctx[2], {
+        type: 'line',
+        data: {
+            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            datasets: [{
+                pointRadius: 0,
+                borderWidth: 2,
+                label: '',
+                data: chart_data[2],
+                // データライン
+                borderColor: 'rgb(70,197,64)',
+                xAxisID: 'x',
+                yAxisID: 'y'
+            }],
+        },
+        options: {
+            animation: false,
+            scales: {  // 軸設定
+                x: {  // Ｘ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                        // min: 0,            // 最小値
+                        // max: 25,           // 最大値
+                        // stepSize: 5,       // 間隔
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    }
+                },
+                y: { // Ｙ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                    },
+                    grid: {  // グリッド線
+                        display: false,
+                        drawBorder: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    
+    // ベンチの着席情報
+    window.myChart4 = new Chart(ctx[3], {
+        type: 'line',
+        data: {
+            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            datasets: [{
+                pointRadius: 0,
+                borderWidth: 2,
+                label: '',
+                data: chart_data[3],
+                // データライン
+                borderColor: 'rgb(70,197,64)',
+                xAxisID: 'x',
+                yAxisID: 'y'
+            }],
+        },
+        options: {
+            animation: false,
+            scales: {  // 軸設定
+                x: {  // Ｘ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                        // min: 0,            // 最小値
+                        // max: 25,           // 最大値
+                        // stepSize: 5,       // 間隔
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    }
+                },
+                y: { // Ｙ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                    },
+                    grid: {  // グリッド線
+                        display: false,
+                        drawBorder: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    
+    // Wi-Fi接続台数
+    window.myChart5 = new Chart(ctx[4], {
+        type: 'line',
+        data: {
+            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            datasets: [{
+                pointRadius: 0,
+                borderWidth: 2,
+                label: '',
+                data: chart_data[4],
+                // データライン
+                borderColor: 'rgb(70,197,64)',
+                xAxisID: 'x',
+                yAxisID: 'y'
+            }],
+        },
+        options: {
+            animation: false,
+            scales: {  // 軸設定
+                x: {  // Ｘ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                        // min: 0,            // 最小値
+                        // max: 25,           // 最大値
+                        // stepSize: 5,       // 間隔
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    }
+                },
+                y: { // Ｙ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                    },
+                    grid: {  // グリッド線
+                        display: false,
+                        drawBorder: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    
+    // ベンチ周辺の湿度
+    window.myChart6 = new Chart(ctx[5], {
+        type: 'line',
+        data: {
+            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            datasets: [{
+                pointRadius: 0,
+                borderWidth: 2,
+                label: '',
+                data: chart_data[5],
+                // データライン
+                borderColor: 'rgb(70,197,64)',
+                xAxisID: 'x',
+                yAxisID: 'y'
+            }],
+        },
+        options: {
+            animation: false,
+            scales: {  // 軸設定
+                x: {  // Ｘ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                        // min: 0,            // 最小値
+                        // max: 25,           // 最大値
+                        // stepSize: 5,       // 間隔
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    }
+                },
+                y: { // Ｙ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                    },
+                    grid: {  // グリッド線
+                        display: false,
+                        drawBorder: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    
+    // ベンチ周辺の照度
+    window.myChart7 = new Chart(ctx[6], {
+        type: 'line',
+        data: {
+            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            datasets: [{
+                pointRadius: 0,
+                borderWidth: 2,
+                label: '',
+                data: chart_data[6],
+                // データライン
+                borderColor: 'rgb(70,197,64)',
+                xAxisID: 'x',
+                yAxisID: 'y'
+            }],
+        },
+        options: {
+            animation: false,
+            scales: {  // 軸設定
+                x: {  // Ｘ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                        // min: 0,            // 最小値
+                        // max: 25,           // 最大値
+                        // stepSize: 5,       // 間隔
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    }
+                },
+                y: { // Ｙ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                    },
+                    grid: {  // グリッド線
+                        display: false,
+                        drawBorder: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    
+    // ベンチ周辺の気圧
+    window.myChart8 = new Chart(ctx[7], {
+        type: 'line',
+        data: {
+            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            datasets: [{
+                pointRadius: 0,
+                borderWidth: 2,
+                label: '',
+                data: chart_data[7],
+                // データライン
+                borderColor: 'rgb(70,197,64)',
+                xAxisID: 'x',
+                yAxisID: 'y'
+            }],
+        },
+        options: {
+            animation: false,
+            scales: {  // 軸設定
+                x: {  // Ｘ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                        // min: 0,            // 最小値
+                        // max: 25,           // 最大値
+                        // stepSize: 5,       // 間隔
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    }
+                },
+                y: { // Ｙ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                    },
+                    grid: {  // グリッド線
+                        display: false,
+                        drawBorder: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    
+    // ベンチ周辺のノイズ
+    window.myChart9 = new Chart(ctx[8], {
+        type: 'line',
+        data: {
+            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            datasets: [{
+                pointRadius: 0,
+                borderWidth: 2,
+                label: '',
+                data: chart_data[8],
+                // データライン
+                borderColor: 'rgb(70,197,64)',
+                xAxisID: 'x',
+                yAxisID: 'y'
+            }],
+        },
+        options: {
+            animation: false,
+            scales: {  // 軸設定
+                x: {  // Ｘ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                        // min: 0,            // 最小値
+                        // max: 25,           // 最大値
+                        // stepSize: 5,       // 間隔
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    }
+                },
+                y: { // Ｙ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                    },
+                    grid: {  // グリッド線
+                        display: false,
+                        drawBorder: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    
+    // ベンチ周辺の揮発性有機化合物濃度
+    window.myChart10 = new Chart(ctx[9], {
+        type: 'line',
+        data: {
+            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            datasets: [{
+                pointRadius: 0,
+                borderWidth: 2,
+                label: '',
+                data: chart_data[9],
+                // データライン
+                borderColor: 'rgb(70,197,64)',
+                xAxisID: 'x',
+                yAxisID: 'y'
+            }],
+        },
+        options: {
+            animation: false,
+            scales: {  // 軸設定
+                x: {  // Ｘ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                        // min: 0,            // 最小値
+                        // max: 25,           // 最大値
+                        // stepSize: 5,       // 間隔
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    }
+                },
+                y: { // Ｙ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                    },
+                    grid: {  // グリッド線
+                        display: false,
+                        drawBorder: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    
+    // ベンチ周辺のCO2濃度
+    window.myChart11 = new Chart(ctx[10], {
+        type: 'line',
+        data: {
+            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            datasets: [{
+                pointRadius: 0,
+                borderWidth: 2,
+                label: '',
+                data: chart_data[10],
+                // データライン
+                borderColor: 'rgb(70,197,64)',
+                xAxisID: 'x',
+                yAxisID: 'y'
+            }],
+        },
+        options: {
+            animation: false,
+            scales: {  // 軸設定
+                x: {  // Ｘ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                        // min: 0,            // 最小値
+                        // max: 25,           // 最大値
+                        // stepSize: 5,       // 間隔
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    }
+                },
+                y: { // Ｙ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                    },
+                    grid: {  // グリッド線
+                        display: false,
+                        drawBorder: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    
+    // ベンチ周辺の不快指数
+    window.myChart12 = new Chart(ctx[11], {
+        type: 'line',
+        data: {
+            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            datasets: [{
+                pointRadius: 0,
+                borderWidth: 2,
+                label: '',
+                data: chart_data[11],
+                // データライン
+                borderColor: 'rgb(70,197,64)',
+                xAxisID: 'x',
+                yAxisID: 'y'
+            }],
+        },
+        options: {
+            animation: false,
+            scales: {  // 軸設定
+                x: {  // Ｘ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                        // min: 0,            // 最小値
+                        // max: 25,           // 最大値
+                        // stepSize: 5,       // 間隔
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    }
+                },
+                y: { // Ｙ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                    },
+                    grid: {  // グリッド線
+                        display: false,
+                        drawBorder: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    
+    // ベンチ周辺の熱中症警戒度
+    window.myChart13 = new Chart(ctx[12], {
+        type: 'line',
+        data: {
+            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            datasets: [{
+                pointRadius: 0,
+                borderWidth: 2,
+                label: '',
+                data: chart_data[12],
+                // データライン
+                borderColor: 'rgb(70,197,64)',
+                xAxisID: 'x',
+                yAxisID: 'y'
+            }],
+        },
+        options: {
+            animation: false,
+            scales: {  // 軸設定
+                x: {  // Ｘ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                        // min: 0,            // 最小値
+                        // max: 25,           // 最大値
+                        // stepSize: 5,       // 間隔
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false
+                    }
+                },
+                y: { // Ｙ軸設定
+                    ticks: {  // 目盛り
+                        display: false
+                    },
+                    grid: {  // グリッド線
+                        display: false,
+                        drawBorder: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    
+    // データ通信使用量
+    window.myChart14 = new Chart(ctx[13], {
+        type: 'line',
+        data: {
+            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            datasets: [{
+                pointRadius: 0,
+                borderWidth: 2,
+                label: '',
+                data: chart_data[13],
                 // データライン
                 borderColor: 'rgb(70,197,64)',
                 xAxisID: 'x',
@@ -556,176 +1212,29 @@ function updateData(){
         }
     });
 
-
-
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    window.myChart2 = new Chart(ctx2, {
-        type: 'line',
-        data: {
-            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            datasets: [{
-                pointRadius: 0,
-                borderWidth: 2,
-                label: '',
-                data: data2,
-                // data: [1, 2, 0, 2, 2, 2, 1, 1, 1, 0],
-                // データライン
-                borderColor: 'rgb(70,197,64)',
-                xAxisID: 'x',
-                yAxisID: 'y'
-            }],
-        },
-        options: {
-            animation: false,
-            scales: {  // 軸設定
-                x: {  // Ｘ軸設定
-                    ticks: {  // 目盛り
-                        display: false
-                        // min: 0,            // 最小値
-                        // max: 25,           // 最大値
-                        // stepSize: 5,       // 間隔
-                    },
-                    grid: {
-                        display: false,
-                        drawBorder: false
-                    }
-                },
-                y: { // Ｙ軸設定
-                    ticks: {  // 目盛り
-                        display: false
-                    },
-                    grid: {  // グリッド線
-                        display: false,
-                        drawBorder: false
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
-        }
-    });
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    window.myChart3 = new Chart(ctx3, {
-        type: 'line',
-        data: {
-            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            datasets: [{
-                pointRadius: 0,
-                borderWidth: 2,
-                label: '',
-                data: data3,
-                // data: [1, 2, 2, 2, 3, 4, 7, 6, 10, 0],
-                // データライン
-                borderColor: 'rgb(70,197,64)',
-                xAxisID: 'x',
-                yAxisID: 'y'
-            }],
-        },
-        options: {
-            animation: false,
-            scales: {  // 軸設定
-                x: {  // Ｘ軸設定
-                    ticks: {  // 目盛り
-                        display: false
-                        // min: 0,            // 最小値
-                        // max: 25,           // 最大値
-                        // stepSize: 5,       // 間隔
-                    },
-                    grid: {
-                        display: false,
-                        drawBorder: false
-                    }
-                },
-                y: { // Ｙ軸設定
-                    ticks: {  // 目盛り
-                        display: false
-                    },
-                    grid: {  // グリッド線
-                        display: false,
-                        drawBorder: false
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
-        }
-    });
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    window.myChart4 = new Chart(ctx4, {
-        type: 'line',
-        data: {
-            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            datasets: [{
-                pointRadius: 0,
-                borderWidth: 2,
-                label: '',
-                data: data4,
-                // data: [40, 35, 40, 30, 45, 35, 40, 30, 45, 35],
-                // データライン
-                borderColor: 'rgb(70,197,64)',
-                xAxisID: 'x',
-                yAxisID: 'y'
-            }],
-        },
-        options: {
-            animation: false,
-            scales: {  // 軸設定
-                x: {  // Ｘ軸設定
-                    ticks: {  // 目盛り
-                        display: false
-                        // min: 0,            // 最小値
-                        // max: 25,           // 最大値
-                        // stepSize: 5,       // 間隔
-                    },
-                    grid: {
-                        display: false,
-                        drawBorder: false
-                    }
-                },
-                y: { // Ｙ軸設定
-                    ticks: {  // 目盛り
-                        display: false
-                    },
-                    grid: {  // グリッド線
-                        display: false,
-                        drawBorder: false
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
-        }
-    });
 }
-
 updateData();
 
 function destroyChart(){
     if (chart_check) {
-        myChart1.destroy();
-        myChart2.destroy();
-        myChart3.destroy();
-        myChart4.destroy();
-        //chart1_check = false;
+        for(let i = 0; i < ctx.length; i++){
+            myChart1.destroy();
+            myChart2.destroy();
+            myChart3.destroy();
+            myChart4.destroy();
+            myChart5.destroy();
+            myChart6.destroy();
+            myChart7.destroy();
+            myChart8.destroy();
+            myChart9.destroy();
+            myChart10.destroy();
+            myChart11.destroy();
+            myChart12.destroy();
+            myChart13.destroy();
+            myChart14.destroy();
+        }
     }
 }
-
-
 
 let temperature = document.getElementsByClassName('temperature')[0].children[0];
 temperature.textContent = Math.round(data['GTEMPERATURE']);

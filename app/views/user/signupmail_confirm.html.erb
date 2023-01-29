@@ -17,7 +17,7 @@
     <p>自治体名: <%= @user.municipality %></p>
     <p>所属課: <%= @user.division %></p>
     <p>プロフィール内容: <%= @user.profile %></p>
-    <%= form_for(@user, url:{controller:'user', action:'signup_success'}) do |f| %>
+    <%= form_for(@user, url:{controller:'user', action:'create'}) do |f| %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :email %>
         <%= f.hidden_field :password %>

@@ -16,65 +16,29 @@
     </div>
     <div class="content flex_container_start">
       <div class="news_content">
-                                          <div class="news_item">
-              <a href="#">
-                <div class="flex_container_s">
-                  <div class="news_cat">お知らせ</div>
-                  <div class="news_time">2022-11-02 (Wed)</div>
-                  <div class="news_ttl"><h2>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</h2></div>
-                </div>
-              </a>
-            </div>
-                                  <div class="news_item">
-              <a href="#">
-                <div class="flex_container_s">
-                  <div class="news_cat">お知らせ</div>
-                  <div class="news_time">2022-11-02 (Wed)</div>
-                  <div class="news_ttl"><h2>お問い合わせ窓口の営業時間変更に関するお知らせ</h2></div>
-                </div>
-              </a>
-            </div>
-                                  <div class="news_item">
-              <a href="#">
-                <div class="flex_container_s">
-                  <div class="news_cat">新機能・改善</div>
-                  <div class="news_time">2022-11-02 (Wed)</div>
-                  <div class="news_ttl"><h2>利用状況のデータをダウンロードできるようになりました。</h2></div>
-                </div>
-              </a>
-            </div>
-                                  <div class="news_item">
-              <a href="#">
-                <div class="flex_container_s">
-                  <div class="news_cat">メンテナンス</div>
-                  <div class="news_time">2022-11-02 (Wed)</div>
-                  <div class="news_ttl"><h2>サイトメンテナンスのお知らせ</h2></div>
-                </div>
-              </a>
-            </div>
-                    <div class="pagenavi">
-            <div class='wp-pagenavi' role='navigation'>
-<span aria-current='page' class='current'>1</span>
-</div>          </div>
+          <% @news_datas.each do |data| %>
+              <div class="news_item">
+                  <a href="<%= data["link"] %>">
+                    <div class="flex_container_s">
+                      <div class="news_cat"><%= data["cat"] %></div>
+                      <div class="news_time"><%= data["date"] %><%= data["wday"] %></div>
+                      <div class="news_ttl"><%= data["title"] %></div>
+                    </div>
+                  </a>
               </div>
+          <% end %>
+          <%= paginate @pager %>
+      </div>
       <aside class="sidebar_news sidebar_menu">
-  <div class="sidebar_news_ttl">お知らせカテゴリ</div>
-    <div class="sidebar_news_item">
-    <a href="#">
-      お知らせ      <%= image_tag "/sidebar/icon_side_arrow.svg" %>
-    </a>
-  </div>
-    <div class="sidebar_news_item">
-    <a href="#">
-      メンテナンス      <%= image_tag "/sidebar/icon_side_arrow.svg" %>
-    </a>
-  </div>
-    <div class="sidebar_news_item">
-    <a href="#">
-      新機能・改善      <%= image_tag "/sidebar/icon_side_arrow.svg" %>
-    </a>
-  </div>
-  </aside>
+        <div class="sidebar_news_ttl">お知らせカテゴリ</div>
+        <% @news_datas_cat.each do |data| %>
+            <div class="sidebar_news_item">
+              <a href="<%= data["link"] %>">
+                <%= data["name"] %><%= image_tag "/sidebar/icon_side_arrow.svg" %>
+              </a>
+            </div>
+        <% end %>
+      </aside>
     </div>
   </div>
 </div>

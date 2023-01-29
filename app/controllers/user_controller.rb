@@ -1,6 +1,5 @@
 class UserController < ApplicationController
-    before_action :logged_in_user, except: [:signupmail, :signupmail_success, :signupmail_confirm, :signupmail_error, :register, :signup_success, :back]
-    helper_method :create
+    before_action :logged_in_user, except: [:signupmail, :signupmail_success, :signupmail_confirm, :signupmail_error, :register, :signup_success, :back, :create]
 
     def index
         @parks = Park.all
@@ -51,54 +50,83 @@ class UserController < ApplicationController
     # セキュリティーのためにも一定時間で入力内容の削除を行ってもいいかもしれません。
     def signupmail
         @user = User.new
-        logger.debug @user[:email]
-        
-        if params[:user]
-            @user = User.new(email: params[:user][:email])
-            NewUserMailer.send_mail(@user).deliver_now
-            # if
-            redirect_to '/signupmail_success'
-            # else
-            #     redirect_to '/user/signupmail_error'
-            # end //失敗したときの処理を書く？
+        if logged_in?
+            render :_logged_in
+        else
+            if params[:user]
+                @user = User.new(email: params[:user][:email])
+                NewUserMailer.send_mail(@user).deliver_now
+                # if
+                redirect_to '/signupmail_success'
+                # else
+                #     redirect_to '/user/signupmail_error'
+                # end //失敗したときの処理を書く？
+            end
+        end
+    end
+
+    def create
+        if logged_in?
+            render :_logged_in
+        else
+            @user = User.new(users_account_params)
+            if @user.save
+                UserMailer.account_activation(@user).deliver_now
+                flash[:notice] = "アカウント有効化メールを送信しました。メールが届きましたら、記載されているリンクをクリックしてアカウントを有効化してください。"
+                @user = @user.update(address: users_account_params[:prefecture] + users_account_params[:city] + users_account_params[:street])
+            else
+                render :new, status: :unprocessable_entity
+            end
         end
     end
     
     
     def register
-        @user = User.new
+        if logged_in?
+            render :_logged_in
+        else
+            @user = User.new
+        end
     end
 
     def back
-        @user = User.new(users_account_params)
-        render :register
+        if logged_in?
+            render :_logged_in
+        else
+            @user = User.new(users_account_params)
+            render :register
+        end
     end
     
     def signupmail_confirm
-        if params[:user]
-            @user = User.new(users_account_params)
+        if logged_in?
+            render :_logged_in
+        else
+            if params[:user]
+                @user = User.new(users_account_params)
+            end
+            # if @user.invalid?
+            #     render :register
+            # else
+            #     @user = User.create users_account_params
+            # end
         end
-        # if @user.invalid?
-        #     render :register
-        # else
-        #     @user = User.create users_account_params
-        # end
     end
 
     def signupmail_success
-        
+        if logged_in?
+            render :_logged_in
+        end
     end
 
     def signupmail_error
+        if logged_in?
+            render :_logged_in
+        end
     end
 
     def signup_success #ここでUserモデルに許可を出す＝アカウント作成（必須項目だけ）
-        if users_account_params
-            @user = User.create(users_account_params)
-            @user = @user.update(address: users_account_params[:prefecture] + users_account_params[:city] + users_account_params[:street])
-        else
-            redirect_to '/signupmail_error'
-        end
+        
     end
 
     private

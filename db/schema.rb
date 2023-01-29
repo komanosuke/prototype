@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_17_040455) do
+ActiveRecord::Schema.define(version: 2023_01_29_145211) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -21,28 +21,37 @@ ActiveRecord::Schema.define(version: 2023_01_17_040455) do
 
   create_table "bench_audios", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "bench_id"
     t.string "name"
     t.string "audio"
+    t.string "pdf_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["bench_id"], name: "index_bench_audios_on_bench_id"
     t.index ["user_id"], name: "index_bench_audios_on_user_id"
   end
 
   create_table "bench_images", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "bench_id"
     t.string "name"
     t.string "image"
+    t.string "pdf_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["bench_id"], name: "index_bench_images_on_bench_id"
     t.index ["user_id"], name: "index_bench_images_on_user_id"
   end
 
   create_table "bench_videos", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "bench_id"
     t.string "name"
     t.string "video"
+    t.string "pdf_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["bench_id"], name: "index_bench_videos_on_bench_id"
     t.index ["user_id"], name: "index_bench_videos_on_user_id"
   end
 
@@ -152,12 +161,16 @@ ActiveRecord::Schema.define(version: 2023_01_17_040455) do
   end
 
   create_table "shortcuts", force: :cascade do |t|
-    t.integer "bench_id"
-    t.string "name"
-    t.text "program"
+    t.integer "park_id"
+    t.string "title", null: false
+    t.string "nickname"
+    t.datetime "start_time", null: false
+    t.datetime "end_time"
+    t.string "repeat"
+    t.text "program", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["bench_id"], name: "index_shortcuts_on_bench_id"
+    t.index ["park_id"], name: "index_shortcuts_on_park_id"
   end
 
   create_table "tmp_data", force: :cascade do |t|
@@ -190,6 +203,10 @@ ActiveRecord::Schema.define(version: 2023_01_17_040455) do
     t.string "notification"
     t.string "flag"
     t.text "admin_memo"
+    t.string "remember_digest"
+    t.string "activation_digest"
+    t.boolean "activated"
+    t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.datetime "created_at", precision: 6, null: false
@@ -205,5 +222,5 @@ ActiveRecord::Schema.define(version: 2023_01_17_040455) do
   add_foreign_key "parks", "users"
   add_foreign_key "pictures", "parks"
   add_foreign_key "products", "parks"
-  add_foreign_key "shortcuts", "benches"
+  add_foreign_key "shortcuts", "parks"
 end

@@ -32,5 +32,10 @@
           <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
         <% end %>
       </li>
+      <li>
+        <%= link_to "/shortcut/#{park.id}", class: "hover" do %>
+          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "ショートカット" %>ショートカット
+        <% end %>
+      </li>
     </ul>
   </div>

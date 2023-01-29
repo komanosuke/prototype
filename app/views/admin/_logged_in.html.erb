@@ -9,7 +9,7 @@
 <p id="back"><a href="/admin/command">コマンドによる制御操作>></a></p>
 
 <%= form_with url:'index',local:false do |form| %>
-    <%= form.select(:category, ["ユーザー", "公園", "ベンチ", "写真", "イベント", "プロダクト", "ショートカット", "ベンチからのデータ", "ベンチへのコマンド"],{}, required: true) %>
+    <%= form.select(:category, ["ユーザー", "公園", "ベンチ", "写真", "イベント", "プロダクト", "ショートカット"],{}, required: true) %>
     <%= form.submit "表示" %>
 <% end %>
 
