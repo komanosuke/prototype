@@ -19,8 +19,8 @@ class ShortcutController < ApplicationController
         @shortcut = Shortcut.new
         @shortcuts = Shortcut.where(park_id: @park.id)
 
-        shortcut = Shortcut.find(1)
-        p shortcut.program
+        # shortcut = Shortcut.find(1)
+        # p shortcut.program
     end
 
     def create

@@ -297,8 +297,9 @@ for(let i = 0; i < start_times.length; i++){
 }
 //リピート
 let repeat = document.getElementById('repeat');
+const shortcut_repeat = document.getElementById('shortcut_repeat');
 repeat.addEventListener('change', function(e) {
-    time["REPEAT"] = e.target.value;
+    shortcut_repeat.value = e.target.value;
     confirmShortcut();
 });
 

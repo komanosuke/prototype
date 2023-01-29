@@ -799,6 +799,7 @@
               <%= form.hidden_field :park_id, {value: @park.id} %>
               <%= form.hidden_field :title %>
               <%= form.hidden_field :program %>
+              <%= form.hidden_field :repeat %>
               <%= form.submit "このショートカットを保存する", class:"btn btn_g", id:"save_btn", local:true %>
               <a href="/shortcut/<%= @park.id %>" class="reset_btn">リセットする</a>
             </div>
