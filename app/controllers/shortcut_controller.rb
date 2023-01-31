@@ -24,17 +24,17 @@ class ShortcutController < ApplicationController
     end
 
     def create
-        @shortcut = Shortcut.create(shortcut_params)
-        if @shortcut
-            if @shortcut.end_time != nil
-                ShortcutJob.set(wait_until: @shortcut.start_time).perform_later(@shortcut.id)
-                ShortcutJob.set(wait_until: @shortcut.end_time).perform_later(@shortcut.id)
-            else
-                ShortcutJob.set(wait_until: @shortcut.start_time).perform_later(@shortcut.id)
-            end
-        else
-            redirect_to '/'
-        end
+        # @shortcut = Shortcut.create(shortcut_params)
+        # if @shortcut
+        #     if @shortcut.end_time != nil
+        #         ShortcutJob.set(wait_until: @shortcut.start_time).perform_later(@shortcut.id)
+        #         ShortcutJob.set(wait_until: @shortcut.end_time).perform_later(@shortcut.id)
+        #     else
+        #         ShortcutJob.set(wait_until: @shortcut.start_time).perform_later(@shortcut.id)
+        #     end
+        # else
+        #     redirect_to '/'
+        # end
     end
 
     def delete
@@ -48,6 +48,6 @@ class ShortcutController < ApplicationController
 
     private
     def shortcut_params
-        params.require(:shortcut).permit(:park_id, :title, :start_time, :end_time, :program)
+        params.require(:shortcut).permit(:park_id, :title, :start_time, :end_time, :program, :repeat)
     end
 end

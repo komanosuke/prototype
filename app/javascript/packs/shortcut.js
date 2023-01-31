@@ -148,6 +148,10 @@ const trigger_none = document.getElementById('trigger_none');
 const action_none = document.getElementById('action_none');
 const sc_choice = document.getElementsByClassName('sc_choice');
 const save_btn = document.getElementById('save_btn');
+const save_filter = document.getElementById('save_filter');
+save_filter.addEventListener('click', function(e) {
+    alert('ショートカットを完成させてから押してください。');
+});
 
 const symbols = document.getElementsByClassName('symbols');
 
@@ -155,17 +159,17 @@ const start_times = document.getElementsByClassName('time_setting')[0].querySele
 const end_times = document.getElementsByClassName('time_setting')[1].querySelectorAll('select');
 
 //ショートカットモデル登録用のhiddenフォームのvalue作成用
-const shortcut_title = document.getElementById('shortcut_title');
-const shortcut_program = document.getElementById('shortcut_program');
+let shortcut_title = document.getElementById('shortcut_title');
+let shortcut_program = document.getElementById('shortcut_program');
 
 //トリガーの方はAND,ORの関係で順序が厳格、アクションの方はSTARTとENDに分ける
 let shortcut = {"PRODUCT1": "", "TRIGGERS": {}, "PRODUCT2": "", "ACTIONS": {"START":[], "END":[]}};
-// let shortcut = {"PRODUCT1": "", "TRIGGERS": {}, "PRODUCT2": "", "ACTIONS":[]};
 //イメージ
 // shortcut["PRODUCT1"]:"e45f01422d6b"
-// shortcut["TRIGGERS"]:["or,DISCOMFORT,50<80", "and,AUDIO,OFF"] (例)"演算子, 受信コマンド, 数値"　※(A and B) or C みたいなことはできないので順番を守る
+// shortcut["TRIGGERS"]:{"BATTERY":['and', '23', '以上', '44', '以下'],"TEMPERATURE":['and', '23', '以上', '44', '以下'],"GTEMPERATURE":['or', '23', '以上', '44', '以下']}
+//    (例)"演算子, 受信コマンド, 数値"　※(A and B) or C みたいなことはできないので順番を守る
 // shortcut["PRODUCT2"]:"e45f01422d6b"
-// shortcut["ACTIONS"]:{"START":["MP4,ON:xxx.pdf"],"END":["MP4,ON:xxx.pdf"]}
+// shortcut["ACTIONS"]:{"START":["MP4,ON:xxx.pdf"],"END":["MP4,OFF"]}
 
 // サイドバーのトリガーの項目を3つ複製して４つにする
 let $trigger_views = document.getElementsByClassName('trigger');
@@ -297,7 +301,8 @@ for(let i = 0; i < start_times.length; i++){
 }
 //リピート
 let repeat = document.getElementById('repeat');
-const shortcut_repeat = document.getElementById('shortcut_repeat');
+let shortcut_repeat = document.getElementById('shortcut_repeat');
+shortcut_repeat.value = repeat.value;
 repeat.addEventListener('change', function(e) {
     shortcut_repeat.value = e.target.value;
     confirmShortcut();
@@ -471,10 +476,13 @@ function confirmShortcut(){
     console.log(shortcut);
     shortcut_title.value = trigger_text;
     shortcut_program.value = JSON.stringify(shortcut);
-}
 
-// contact_submit.removeAttribute("disabled");
-// contact_submit.setAttribute("disabled", true);
+    if(Object.keys(shortcut["TRIGGERS"]).length == 0 || shortcut["ACTIONS"]["START"].length == 0 || shortcut["ACTIONS"]["END"].length == 0){
+        save_filter.style.display = 'block';
+    } else {
+        save_filter.style.display = 'none';
+    }
+}
 
 
 
@@ -591,7 +599,7 @@ console.log(checkData(dummy_data));
 //     postCommand();
 // }
 
-if(dummy_data){
-    postCommand('LED,OFF', 'e45f01422d6b');
-}
+// if(dummy_data){
+//     postCommand('LED,OFF', 'e45f01422d6b');
+// }
 
