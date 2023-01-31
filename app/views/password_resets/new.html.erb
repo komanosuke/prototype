@@ -1,0 +1,22 @@
+<main>
+<div id="signupmail">
+<div id="login_related">
+  <div class="inner_min">
+    <div class="logo">
+      <%= image_tag "/common/os-logo.svg", alt: "PARCOM OS" %>
+    </div>
+    <div class="login_related_content">
+      <h1>パスワード再設定</h1>
+        <%= form_with(scope: :password_reset, url: password_resets_path, local: true) do |f| %>
+        <!--
+        <p id="submit_failed" class="caution" style="display:none;"><%= image_tag "/signin_warning.png" %>メールアドレスまたはパスワードが空欄です</p>
+        -->
+      	<div class="txt_field">
+          <dt class="form_term">メールアドレス</dt>
+      		<dd class="form_description"><%= f.email_field :email, autofocus: true, id:"login_email", size: "40", placeholder: "メールアドレスを入力してください" %></dd>
+        <%= f.submit '送信する', class:"btn" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</main>

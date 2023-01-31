@@ -14,6 +14,9 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  host = 'localhost:3000'
+  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
@@ -30,6 +33,9 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  # ログの定期的な削除
+  config.logger = Logger.new('log/sample.log', 10, 5 * 1024 * 1024)
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
@@ -40,8 +46,8 @@ Rails.application.configure do
     address:              'smtp.gmail.com',
     port:                  587,
     domain:               'heart-language.jp',
-    user_name:            'komai@heart-language.jp',
-    password:             '',
+    user_name:            ENV['SMTP_USERNAME'],
+    password:             ENV['SMTP_PASSWORD'],
     enable_starttls_auto: true, # STARTTLSに自動接続する
 
     openssl_verify_mode: 'none',

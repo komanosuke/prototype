@@ -64,3 +64,15 @@ gem 'carrierwave'
 gem 'audiojs-rails'
 
 gem 'kaminari'
+
+# 
+
+gem 'faraday'
+
+gem 'mechanize'
+
+gem 'nokogiri'
+
+gem 'rmagick'
+
+gem 'httpclient'

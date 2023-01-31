@@ -13,8 +13,8 @@
         -->
       	<div class="txt_field">
           <dt class="form_term">メールアドレス</dt>
-      		<dd class="form_description"><%= f.text_field :email, autofocus: true, id:"login_email", size: "40", placeholder: "メールアドレスを入力してください" %></dd>
-          <span class="ex">アカウントを作成することにより、<%= link_to "利用規約", "/parcom/terms" %>および<%= link_to "プライバシーポリシー", "/parcom/privacy" %>を読み、これに同意するものとします。</span>
+      		<dd class="form_description"><%= f.email_field :email, autofocus: true, id:"login_email", size: "40", placeholder: "メールアドレスを入力してください" %></dd>
+          <span class="ex">アカウントを作成することにより、<%= link_to "利用規約", "/terms" %>および<%= link_to "プライバシーポリシー", "/privacy" %>を読み、これに同意するものとします。</span>
       	</div>
         <%= f.submit '仮登録メールを送信する', class:"btn" %>
       <% end %>

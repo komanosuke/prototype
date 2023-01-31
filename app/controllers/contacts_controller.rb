@@ -1,5 +1,4 @@
 class ContactsController < ApplicationController
-    before_action :logged_in_user
     
     def new
         @contact = Contact.new
@@ -27,13 +26,13 @@ class ContactsController < ApplicationController
     # ここで初めて入力内容を保存します。
     # セキュリティーのためにも一定時間で入力内容の削除を行ってもいいかもしれません。
     def create
-    @contact = Contact.new(contact_params)
-    if @contact.save
-        ContactMailer.send_mail(@contact).deliver_now
-        redirect_to done_path
-    else
-        render :new
-    end
+        @contact = Contact.new(contact_params)
+        if @contact.save
+            ContactMailer.send_mail(@contact).deliver_now
+            redirect_to done_path
+        else
+            render :new
+        end
     end
 
     # 送信完了画面を使用する場合お使いください。

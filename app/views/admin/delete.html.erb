@@ -33,10 +33,7 @@
         </tr>
         <tr>
             <td><%= @user.id %></td>
-            <td><%= @user.role %></td>
-            <td><%= @user.registered %></td>
-            <td><%= @user.login %></td>
-            <td><%= @user.display_name %></td>
+            <td><%= @user.name %></td>
             <td><%= @user.email %></td>
             <td><%= @user.zip %></td>
             <td><%= @user.prefecture %></td>
@@ -91,8 +88,6 @@
         <tr>
             <td><%= @park.id %></td>
             <td><%= @park.user_id %></td>
-            <td><%= @park.post_date %></td>
-            <td><%= @park.post_status %></td>
             <td><%= @park.name %></td>
             <td><%= @park.zip %></td>
             <td><%= @park.prefecture %></td>

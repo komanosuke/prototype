@@ -1,0 +1,22 @@
+<main>
+<div id="signupmail">
+<div id="login_related">
+  <div class="inner_min">
+    <div class="logo">
+      <%= image_tag "/common/os-logo.svg", alt: "PARCOM OS" %>
+    </div>
+    <div class="login_related_content">
+      <h1>パスワード再設定フォーム</h1>
+        <%= form_with(scope: :password_reset, url: password_resets_path, local: true) do |f| %>
+      	<div class="txt_field">
+            <dt class="form_term">新しいパスワード</dt>
+                <dd class="form_description"><%= form.password_field :password, placeholder: "パスワード" %></dd>
+            <dt class="form_term">新しいパスワード（確認用）</dt>
+      		    <dd class="form_description"><%= form.password_field :password_confirmation, placeholder: "パスワード(確認用)" %></dd>
+        <%= f.submit '送信する', class:"btn" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</main>

@@ -6,6 +6,9 @@
 					<%= image_tag "/common/os-logo.svg", alt: "PARCOM OS" %>
 				<% end %>
             </div>
+			<% if logged_in? %>
+				<%= link_to "LOG OUT", logout_path, method: :delete, id: "logout" %>
+			<% end %>
 		</div>
 	</div>
 </header>

@@ -1,3 +1,87 @@
 // Place all the styles related to the shortcut controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.trigger_title, .action_title {
+    cursor: pointer;
+}
+
+.options {
+    display: none;
+}
+
+.trigger_options {
+    display: none;
+}
+
+.action_options {
+    display: none;
+}
+
+.symbols {
+    text-align: center;
+}
+
+.and_btn {
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+    background-color: #46C541;
+    color: #fff;
+    border: 1px solid #46C541;
+}
+
+.or_btn {
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+    background-color: #fff;
+    color: #46C541;
+    border: 1px solid #46C541;
+}
+
+.trigger_cancel,.action_cancel {
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+    background-color: #E2E7F0;
+    color: #415964;
+}
+
+.trigger_cancel:hover,.action_cancel:hover {
+    background-color: #415964;
+    color: #E2E7F0;
+}
+
+.shortcut_popular_item {
+    cursor: pointer;
+}
+
+.choice_num {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#save_btn {
+    padding: 1px 6px;
+    border-radius: 5px;
+}
+
+.time_setting select {
+    width: 85px;
+}
+
+.data {
+    display: none;
+}
+
+#save_filter {
+    background-color: transparent;
+    width: 260px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}

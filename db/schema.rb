@@ -10,33 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_27_093123) do
+ActiveRecord::Schema.define(version: 2023_01_29_145211) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string "name"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "bench_audios", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "bench_id"
     t.string "name"
     t.string "audio"
+    t.string "pdf_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bench_id"], name: "index_bench_audios_on_bench_id"
+    t.index ["user_id"], name: "index_bench_audios_on_user_id"
   end
 
   create_table "bench_images", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "bench_id"
     t.string "name"
     t.string "image"
+    t.string "pdf_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bench_id"], name: "index_bench_images_on_bench_id"
+    t.index ["user_id"], name: "index_bench_images_on_user_id"
   end
 
   create_table "bench_videos", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "bench_id"
     t.string "name"
     t.string "video"
+    t.string "pdf_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bench_id"], name: "index_bench_videos_on_bench_id"
+    t.index ["user_id"], name: "index_bench_videos_on_user_id"
   end
 
   create_table "benches", force: :cascade do |t|
@@ -50,6 +66,19 @@ ActiveRecord::Schema.define(version: 2022_12_27_093123) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["park_id"], name: "index_benches_on_park_id"
+  end
+
+  create_table "cameras", force: :cascade do |t|
+    t.integer "park_id"
+    t.string "name"
+    t.string "mac_address"
+    t.string "os_name"
+    t.date "introduced_date"
+    t.string "position"
+    t.boolean "timer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["park_id"], name: "index_cameras_on_park_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -68,52 +97,37 @@ ActiveRecord::Schema.define(version: 2022_12_27_093123) do
     t.integer "park_id"
     t.string "name"
     t.text "contents"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["park_id"], name: "index_events_on_park_id"
   end
 
-  create_table "media", force: :cascade do |t|
-    t.date "date"
-    t.string "title"
-    t.text "contents"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "news", force: :cascade do |t|
-    t.date "date"
-    t.string "title"
-    t.text "contents"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "parks", force: :cascade do |t|
     t.integer "user_id"
-    t.date "post_date"
-    t.string "post_status"
     t.string "name"
     t.string "zip"
     t.string "prefecture"
-    t.string "address"
+    t.string "city"
     t.string "street"
-    t.json "hours"
+    t.string "address"
+    t.string "hours"
     t.string "tel"
-    t.json "fee"
+    t.string "fee"
     t.string "map"
     t.string "website"
+    t.string "iframe"
     t.string "size"
     t.text "profile"
     t.string "status"
-    t.json "parking_info"
-    t.json "toilet_info"
-    t.json "playground_info"
-    t.json "facility_info"
-    t.json "sports_info"
-    t.json "view_info"
-    t.json "disaster_info"
-    t.json "other_info"
+    t.string "parking_info"
+    t.string "toilet_info"
+    t.string "playground_info"
+    t.string "facility_info"
+    t.string "sports_info"
+    t.string "view_info"
+    t.string "disaster_info"
+    t.string "other_info"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_parks_on_user_id"
@@ -122,7 +136,8 @@ ActiveRecord::Schema.define(version: 2022_12_27_093123) do
   create_table "pictures", force: :cascade do |t|
     t.integer "park_id"
     t.string "name"
-    t.binary "picture"
+    t.string "picture"
+    t.string "size"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["park_id"], name: "index_pictures_on_park_id"
@@ -146,13 +161,16 @@ ActiveRecord::Schema.define(version: 2022_12_27_093123) do
   end
 
   create_table "shortcuts", force: :cascade do |t|
-    t.integer "bench_id"
-    t.string "name"
-    t.text "program"
-    t.date "introduced_date"
+    t.integer "park_id"
+    t.string "title", null: false
+    t.string "nickname"
+    t.datetime "start_time", null: false
+    t.datetime "end_time"
+    t.string "repeat"
+    t.text "program", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["bench_id"], name: "index_shortcuts_on_bench_id"
+    t.index ["park_id"], name: "index_shortcuts_on_park_id"
   end
 
   create_table "tmp_data", force: :cascade do |t|
@@ -169,35 +187,40 @@ ActiveRecord::Schema.define(version: 2022_12_27_093123) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "role"
-    t.date "registered"
-    t.integer "login"
-    t.string "display_name"
+    t.string "name"
     t.string "email"
     t.string "password_digest"
     t.string "zip"
     t.string "prefecture"
-    t.string "address"
+    t.string "city"
     t.string "street"
+    t.string "address"
     t.string "tel"
     t.string "municipality"
     t.string "division"
-    t.binary "image"
+    t.string "image"
     t.text "profile"
     t.string "notification"
     t.string "flag"
     t.text "admin_memo"
+    t.string "remember_digest"
+    t.string "activation_digest"
+    t.boolean "activated"
+    t.datetime "activated_at"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "bench_audios", "benches"
-  add_foreign_key "bench_images", "benches"
-  add_foreign_key "bench_videos", "benches"
+  add_foreign_key "bench_audios", "users"
+  add_foreign_key "bench_images", "users"
+  add_foreign_key "bench_videos", "users"
   add_foreign_key "benches", "parks"
+  add_foreign_key "cameras", "parks"
   add_foreign_key "events", "parks"
   add_foreign_key "parks", "users"
   add_foreign_key "pictures", "parks"
   add_foreign_key "products", "parks"
-  add_foreign_key "shortcuts", "benches"
+  add_foreign_key "shortcuts", "parks"
 end

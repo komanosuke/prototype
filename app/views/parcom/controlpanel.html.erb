@@ -7,120 +7,7 @@
 	<span class="spnavButton__border"></span>
 </div>
 
-<aside class="sidebar_product">
-  <div class="sidebar_product_ttl">公園一覧</div>
-  <div class="park_item">
-    <div class="park_name">内灘サンセットパーク</div>
-   <ul>
-      <li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">内灘町総合公園</div>
-    <ul>
-      <li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">ハマナス恐竜公園</div>
-    <ul>
-			<li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="park_item">
-    <div class="park_name">白帆台第４公園</div>
-    <ul>
-			<li>
-        <%= link_to '/park/parkinfo_edit', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_park_side_off.svg", alt: "情報編集" %>公園の情報編集
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/park/products', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_product_side_off.svg", alt: "プロダクト" %>プロダクト
-          <span class="notification_num">2</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/parcom/review', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_review_side_off.svg", alt: "口コミ" %>クチコミ
-        <% end %>
-      </li>
-      <li>
-        <%= link_to '/analyze/index', class: "hover" do %>
-          <%= image_tag "/sidebar/icon_analyze_side_off.svg", alt: "分析" %>分析
-        <% end %>
-      </li>
-    </ul>
-  </div>
-  <div class="sidebar_help">
-    <div class="sidebar_help_ttl"><%= image_tag "/sidebar/icon_speechbubble.svg" %>ヘルプページはこちら</div>
-    <p>使い方やよくあるご質問等をまとめています。</p>
-    <%= link_to '/parcom/help', class: "btn hover flex_container" do %>
-      ヘルプはこちらから<%= image_tag "/sidebar/icon_arrow_help_off.svg" %>
-    <% end %>
-  </div>
-</aside>
+<%= render partial: "shared/aside" %>
 <div id="controlpanel" class="inner_large">
     <div class="page_ttl_wrap">
       <div class="page_ttl">
@@ -196,288 +83,6 @@
           <div class="panel_item">
             <div class="panel_item_content">
               <div class="panel_item_ttl">
-                <%= image_tag "/ctrlpanel/icon_watch_color.svg", alt: "LEDタイマーの設定" %>
-                <h2>LEDタイマーの設定</h2>
-                <p>設定時間になると自動的にLEDが点灯または消灯するように設定が可能です。</p>
-              </div>
-              <div class="flex_container_s flex_container_time form_item">
-                <div class="time_item">
-                  <label>タイマー開始時間</label>
-                  <div class="flex_container_s">
-                    <div class="select">
-                      <select name="led_start_time_hour" id="led_start_time_hour">
-                                                <option value="00"
-                          selected>
-                          00                        </option>
-                                                <option value="01"
-                          >
-                          01                        </option>
-                                                <option value="02"
-                          >
-                          02                        </option>
-                                                <option value="03"
-                          >
-                          03                        </option>
-                                                <option value="04"
-                          >
-                          04                        </option>
-                                                <option value="05"
-                          >
-                          05                        </option>
-                                                <option value="06"
-                          >
-                          06                        </option>
-                                                <option value="07"
-                          >
-                          07                        </option>
-                                                <option value="08"
-                          >
-                          08                        </option>
-                                                <option value="09"
-                          >
-                          09                        </option>
-                                                <option value="10"
-                          >
-                          10                        </option>
-                                                <option value="11"
-                          >
-                          11                        </option>
-                                                <option value="12"
-                          >
-                          12                        </option>
-                                                <option value="13"
-                          >
-                          13                        </option>
-                                                <option value="14"
-                          >
-                          14                        </option>
-                                                <option value="15"
-                          >
-                          15                        </option>
-                                                <option value="16"
-                          >
-                          16                        </option>
-                                                <option value="17"
-                          >
-                          17                        </option>
-                                                <option value="18"
-                          >
-                          18                        </option>
-                                                <option value="19"
-                          >
-                          19                        </option>
-                                                <option value="20"
-                          >
-                          20                        </option>
-                                                <option value="21"
-                          >
-                          21                        </option>
-                                                <option value="22"
-                          >
-                          22                        </option>
-                                                <option value="23"
-                          >
-                          23                        </option>
-                                              </select>
-                      <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
-                    </div>
-                    <span>:</span>
-                    <div class="select">
-                      <select name="led_start_time_min" id="led_start_time_min">
-                                                <option value="00"
-                          selected>
-                          00                        </option>
-                                                <option value="05"
-                          >
-                          05                        </option>
-                                                <option value="10"
-                          >
-                          10                        </option>
-                                                <option value="15"
-                          >
-                          15                        </option>
-                                                <option value="20"
-                          >
-                          20                        </option>
-                                                <option value="25"
-                          >
-                          25                        </option>
-                                                <option value="30"
-                          >
-                          30                        </option>
-                                                <option value="35"
-                          >
-                          35                        </option>
-                                                <option value="40"
-                          >
-                          40                        </option>
-                                                <option value="45"
-                          >
-                          45                        </option>
-                                                <option value="50"
-                          >
-                          50                        </option>
-                                                <option value="55"
-                          >
-                          55                        </option>
-                                              </select>
-                      <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
-                    </div>
-                  </div>
-                </div>
-                <span class="time_symbol">~</span>
-                <div class="time_item">
-                  <label>タイマー終了時間</label>
-                  <div class="flex_container_s">
-                    <div class="select">
-                      <select name="led_end_time_hour" id="led_end_time_hour">
-                                                <option value="00"
-                          selected>
-                          00                        </option>
-                                                <option value="01"
-                          >
-                          01                        </option>
-                                                <option value="02"
-                          >
-                          02                        </option>
-                                                <option value="03"
-                          >
-                          03                        </option>
-                                                <option value="04"
-                          >
-                          04                        </option>
-                                                <option value="05"
-                          >
-                          05                        </option>
-                                                <option value="06"
-                          >
-                          06                        </option>
-                                                <option value="07"
-                          >
-                          07                        </option>
-                                                <option value="08"
-                          >
-                          08                        </option>
-                                                <option value="09"
-                          >
-                          09                        </option>
-                                                <option value="10"
-                          >
-                          10                        </option>
-                                                <option value="11"
-                          >
-                          11                        </option>
-                                                <option value="12"
-                          >
-                          12                        </option>
-                                                <option value="13"
-                          >
-                          13                        </option>
-                                                <option value="14"
-                          >
-                          14                        </option>
-                                                <option value="15"
-                          >
-                          15                        </option>
-                                                <option value="16"
-                          >
-                          16                        </option>
-                                                <option value="17"
-                          >
-                          17                        </option>
-                                                <option value="18"
-                          >
-                          18                        </option>
-                                                <option value="19"
-                          >
-                          19                        </option>
-                                                <option value="20"
-                          >
-                          20                        </option>
-                                                <option value="21"
-                          >
-                          21                        </option>
-                                                <option value="22"
-                          >
-                          22                        </option>
-                                                <option value="23"
-                          >
-                          23                        </option>
-                                              </select>
-                      <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
-                    </div>
-                    <span>:</span>
-                    <div class="select">
-                      <select name="led_end_time_min" id="led_end_time_min">
-                                                <option value="00"
-                          selected>
-                          00                        </option>
-                                                <option value="05"
-                          >
-                          05                        </option>
-                                                <option value="10"
-                          >
-                          10                        </option>
-                                                <option value="15"
-                          >
-                          15                        </option>
-                                                <option value="20"
-                          >
-                          20                        </option>
-                                                <option value="25"
-                          >
-                          25                        </option>
-                                                <option value="30"
-                          >
-                          30                        </option>
-                                                <option value="35"
-                          >
-                          35                        </option>
-                                                <option value="40"
-                          >
-                          40                        </option>
-                                                <option value="45"
-                          >
-                          45                        </option>
-                                                <option value="50"
-                          >
-                          50                        </option>
-                                                <option value="55"
-                          >
-                          55                        </option>
-                                              </select>
-                      <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="form_item">
-                <label>繰り返し</label>
-                <div class="select">
-                  <select name="" id="led_repeat">
-                    <option value="0">繰り返ししない</option>
-                    <option value="1">繰り返しする</option>
-                  </select>
-                  <div class="arrow arrow_bottom"><%= image_tag "/common/icon_arrow.svg", class: "arrow" %></div>
-                </div>
-              </div>
-            </div>
-            <div class="onoff_switch flex_container">
-              <div class="onoff_status">
-                <p class="on">現在ONになっています</p>
-                <p class="off">現在OFFになっています</p>
-              </div>
-              <div class="toggle">
-                <input type="checkbox" name="ledtime_switch" value="LEDTIME">
-                <span>OFF</span>
-                <span>ON</span>
-                <div class="command_switch" id="ledtime_switch"></div>
-              </div>
-            </div>
-          </div>
-          <div class="panel_item">
-            <div class="panel_item_content">
-              <div class="panel_item_ttl">
                 <%= image_tag "/ctrlpanel/icon_img_color.svg", alt: "画像ファイルの表示" %>
                 <h2>ディスプレイの表示</h2>
                 <p>ディスプレイに表示されている画像・動画を非表示にして、ディスプレイの電源を切ることができます。</p>
@@ -487,9 +92,10 @@
                   <label class="upload_file">
                     <%= image_tag "/common/icon_upload.svg", alt: "アイコン" %>
                     ここを<span>クリック</span>または<br>ドラッグ＆ドロップで<br>ファイルをアップロード
-                    <%= form_with model: @bench_image, local:false do |f| %>
-                      <%= f.file_field :image, id:'pdf_file', accept:'image/*' %>
-                      <%= f.submit "送信"%>
+                    <%= form_with model:@bench_image, local:false do |f| %>
+                      <%= f.file_field :image, id:'pdf_file', accept:'image/*,.pdf' %>
+                      <%= f.hidden_field :name, id:'pdf_name' %>
+                      <%= f.submit "送信", id:"pdf_submit" %>
                     <% end %>
                   </label>
                 </div>
@@ -498,6 +104,7 @@
                   <div class="preview_file preview_file_img" id="preview">
                     <%= image_tag "/ctrlpanel/icon_preview_close.svg", class: "preview_close_btn", alt: "閉じるボタン" %>
                     <% if @bench_image_now %>
+                      <!--<iframe src="<%= @bench_image_now.pdf_url %>" id="preview_image"></iframe>-->
                       <%= image_tag @bench_image_now.image.to_s, id:"preview_image" %>
                     <% else %>
                       <%= image_tag "/ctrlpanel/preview_dummy.svg", id: "preview_dummy", alt: "プレビューファイル" %>
@@ -520,7 +127,8 @@
               </div>
             </div>
           </div>
-          <div class="panel_item">
+          <div class="panel_item" id="audio_item">
+            <div id="audio_lock"></div>
             <div class="panel_item_content">
               <div class="panel_item_ttl">
                 <%= image_tag "/ctrlpanel/icon_vol_color.svg", alt: "スピーカーの音量調節" %>
@@ -563,7 +171,8 @@
                     ここを<span>クリック</span>または<br>ドラッグ＆ドロップで<br>ファイルをアップロード
                     <%= form_with model: @bench_video, local:false do |f| %>
                       <%= f.file_field :video, id:'movie_file', accept:'video/*' %>
-                      <%= f.submit "送信"%>
+                      <%= f.hidden_field :name, id:'movie_name' %>
+                      <%= f.submit "送信", id:"movie_submit" %>
                     <% end %>
                   </label>
                 </div>
@@ -606,19 +215,26 @@
                     <%= image_tag "/common/icon_upload.svg", alt: "アイコン" %>
                     ここを<span>クリック</span>または<br>ドラッグ＆ドロップで<br>ファイルをアップロード
                     <%= form_with model: @bench_audio, local:false do |f| %>
-                      <%= f.file_field :audio, :size => 140, id:'audio_file', accept:'/*' %>
-                      <%= f.submit "送信"%>
+                      <%= f.hidden_field :name, id:'audio_name' %>
+                      <%= f.file_field :audio, :size => 140, id:'audio_file', accept:'audio/mp3' %>
+                      <%= f.submit "送信", id:"audio_submit" %>
                     <% end %>
                   </label>
                 </div>
                 <div class="preview">
                   <label>プレビュー</label>
                   <div class="preview_file preview_file_audio">
-                    <div class="form_attachment_preview" id="audio_preview">os-logo.svg<button type="button" class="delete_cancel_btn">×</button></div>
+                    <% if @bench_audio_now %>
+                      <div class="form_attachment_preview" id="audio_preview"><%= @bench_audio_now.name %><button type="button" class="delete_cancel_btn">×</button></div>
+                    <% else %>
+                      <div class="form_attachment_preview" id="audio_preview">default.mp3<button type="button" class="delete_cancel_btn">×</button></div>
+                    <% end %>
                   </div>
                 </div>
               </div>
-              <audio src= "<%= "#{@bench_audio_now.audio}" %>" controls="" id="audio_player">
+              <% if @bench_audio_now %>
+                <audio src= "<%= "#{@bench_audio_now.audio}" %>" controls="" id="audio_player">
+              <% end %>
             </div>
             <div class="onoff_switch flex_container">
               <div class="onoff_status">
@@ -640,60 +256,156 @@
       <aside class="sidebar_cp">
   <div>
     <div class="shortcut_banner">
-    <%= link_to "/shortcut/shortcut", class: "hover" do %>
-        <%= image_tag "/ctrlpanel/shortcut_create_banner_off.svg", alt: "ショートカットの作成はこちら" %>
-    <% end %>
+
+    <%#= link_to "/shortcut/#{@bench.park_id}", class: "hover" do %>
+        <%#= image_tag "/ctrlpanel/shortcut_create_banner_off.svg", alt: "ショートカットの作成はこちら" %>
+    <%# end %>
+    
     </div>
     <div class="sidebar_item todays_weather">
-      <div class="sidebar_cp_item_ttl"><%= image_tag "/weather/icon_weather_pin.svg" %>石川県金沢市</div>
-      <div class="todays_weather_txt">今日 4月29日(金)の天気</div>
+      <div class="sidebar_cp_item_ttl"><%= image_tag "/weather/icon_weather_pin.svg" %><%= @park.prefecture + @park.city %></div>
+      <div class="todays_weather_txt">今日 <%= @month %>月<%= @day %>日(<%= @weekday %>)の天気</div>
       <div class="flex_container">
-        <div class="temperature"><span>21</span><span>℃</span><br>晴れ時々曇り</div>
-        <div class="weather_icon"><%= image_tag "/weather/icon_sunny.svg", alt: "今日の天気" %></div>
+        <div class="temperature"><span>21</span><span>℃</span><br><%= @telop %></div>
+        <div class="weather_icon"><%= image_tag @weather_img, alt: "今日の天気" %></div>
       </div>
     </div>
     <div class="sidebar_item">
-      <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチのバッテリー</div>
+      <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチのバッテリー残量</div>
       <div class="flex_container">
         <div id="sidebar_cp_graph">
-          <%= image_tag "/sidebar/graph_dummy.svg" %>
+          <div class="gragh_dummy"></div>
+          <canvas class="ex_chart"></canvas>
         </div>
-        <div class="sidebar_cp_item_content"><p>現在の電圧</p><span id="product_battery">0</span>V</div>
+        <div class="sidebar_cp_item_content"><p>現在の電圧</p><span>0</span>V</div>
+      </div>
+    </div>
+    <div class="sidebar_item">
+      <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチの基盤温度</div>
+      <div class="flex_container">
+        <div id="sidebar_cp_graph">
+          <div class="gragh_dummy"></div>
+          <canvas class="ex_chart"></canvas>
+        </div>
+        <div class="sidebar_cp_item_content"><p>現在の基盤温度</p><span>0</span>℃</div>
+      </div>
+    </div>
+    <div class="sidebar_item">
+      <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチ周辺の外気温</div>
+      <div class="flex_container">
+        <div id="sidebar_cp_graph">
+          <div class="gragh_dummy"></div>
+          <canvas class="ex_chart"></canvas>
+        </div>
+        <div class="sidebar_cp_item_content"><p>現在の外気温</p><span>0</span>℃</div>
       </div>
     </div>
     <div class="sidebar_item">
       <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチの着席情報</div>
       <div class="flex_container">
         <div id="sidebar_cp_graph">
-          <%= image_tag "/sidebar/graph_dummy.svg" %>
+          <div class="gragh_dummy"></div>
+          <canvas class="ex_chart"></canvas>
         </div>
-        <div class="sidebar_cp_item_content"><p>現在の着席人数</p><span id="product_human_count">0</span>人</div>
-      </div>
-    </div>
-    <div class="sidebar_item">
-      <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチの充電機器</div>
-      <div class="flex_container">
-        <div id="sidebar_cp_graph">
-          <%= image_tag "/sidebar/graph_dummy.svg" %>
-        </div>
-        <div class="sidebar_cp_item_content"><p>現在の充電機器</p><span id="product_ac_count">0</span>台</div>
+        <div class="sidebar_cp_item_content"><p>現在の着席人数</p><span>0</span>人</div>
       </div>
     </div>
     <div id="wifi_use" class="sidebar_item">
       <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>Wi-Fi接続台数</div>
       <div class="flex_container">
         <div id="sidebar_cp_graph">
-          <%= image_tag "/sidebar/graph_dummy.svg" %>
+          <div class="gragh_dummy"></div>
+          <canvas class="ex_chart"></canvas>
         </div>
-        <div class="sidebar_cp_item_content"><p>現在の接続台数</p><span id="product_wifi_count">0</span>台</div>
+        <div class="sidebar_cp_item_content"><p>現在の接続台数</p><span>0</span>台</div>
+      </div>
+    </div>
+    <div class="sidebar_item">
+      <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチ周辺の湿度</div>
+      <div class="flex_container">
+        <div id="sidebar_cp_graph">
+          <div class="gragh_dummy"></div>
+          <canvas class="ex_chart"></canvas>
+        </div>
+        <div class="sidebar_cp_item_content"><p>現在の湿度</p><span>0</span>%RH</div>
+      </div>
+    </div>
+    <div class="sidebar_item">
+      <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチ周辺の照度</div>
+      <div class="flex_container">
+        <div id="sidebar_cp_graph">
+          <div class="gragh_dummy"></div>
+          <canvas class="ex_chart"></canvas>
+        </div>
+        <div class="sidebar_cp_item_content"><p>現在の照度</p><span>0</span>LX</div>
+      </div>
+    </div>
+    <div class="sidebar_item">
+      <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチ周辺の気圧</div>
+      <div class="flex_container">
+        <div id="sidebar_cp_graph">
+          <div class="gragh_dummy"></div>
+          <canvas class="ex_chart"></canvas>
+        </div>
+        <div class="sidebar_cp_item_content"><p>現在の気圧</p><span>0</span>hPa</div>
+      </div>
+    </div>
+    <div class="sidebar_item">
+      <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチ周辺のノイズ</div>
+      <div class="flex_container">
+        <div id="sidebar_cp_graph">
+          <div class="gragh_dummy"></div>
+          <canvas class="ex_chart"></canvas>
+        </div>
+        <div class="sidebar_cp_item_content"><p>現在のノイズ</p><span>0</span>dB</div>
+      </div>
+    </div>
+    <div class="sidebar_item">
+      <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチ周辺の揮発性有機化合物濃度</div>
+      <div class="flex_container">
+        <div id="sidebar_cp_graph">
+          <div class="gragh_dummy"></div>
+          <canvas class="ex_chart"></canvas>
+        </div>
+        <div class="sidebar_cp_item_content"><p>現在の揮発性有機化合物濃度</p><span>0</span>ppmC</div>
+      </div>
+    </div>
+    <div class="sidebar_item">
+      <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチ周辺のCO2濃度</div>
+      <div class="flex_container">
+        <div id="sidebar_cp_graph">
+          <div class="gragh_dummy"></div>
+          <canvas class="ex_chart"></canvas>
+        </div>
+        <div class="sidebar_cp_item_content"><p>現在のCO2濃度</p><span>0</span>ppm</div>
+      </div>
+    </div>
+    <div class="sidebar_item">
+      <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチ周辺の不快指数</div>
+      <div class="flex_container">
+        <div id="sidebar_cp_graph">
+          <div class="gragh_dummy"></div>
+          <canvas class="ex_chart"></canvas>
+        </div>
+        <div class="sidebar_cp_item_content"><p>現在の不快指数</p><span>0</span></div>
+      </div>
+    </div>
+    <div class="sidebar_item">
+      <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>ベンチ周辺の熱中症警戒度</div>
+      <div class="flex_container">
+        <div id="sidebar_cp_graph">
+          <div class="gragh_dummy"></div>
+          <canvas class="ex_chart"></canvas>
+        </div>
+        <div class="sidebar_cp_item_content"><p>現在の熱中症警戒度</p><span>0</span></div>
       </div>
     </div>
     <div class="sidebar_item">
       <div class="sidebar_cp_item_ttl"><%= image_tag "/sidebar/icon_sidecp01.svg" %>データ通信使用量</div>
       <div class="flex_container">
         <div id="sidebar_cp_graph">
-          <%= image_tag "/sidebar/graph_dummy.svg" %>
-          <canvas id="ex_chart"></canvas>
+          <div class="gragh_dummy"></div>
+          <canvas class="ex_chart"></canvas>
         </div>
         <div class="sidebar_cp_item_content"><p>通信使用量合計</p><span>0</span>MB</div>
       </div>
@@ -703,13 +415,36 @@
     </div>
   </div>
 </div>
+
 <div id="data"><%= @data %></div>
-<div id="data2"><%= @data2 %></div>
+<div id="mac_adrs"><%= @bench.mac_address %></div>
 <%= form_tag(url_for(:action => 'controlpanel'), :remote => true) do %>
-    <%= submit_tag "データを更新" ,{id: "submitButton"} %>
+    <%= submit_tag @bench.mac_address ,{id: "submitButton"} %>
 <% end %>
+<input type="text" id="socket_message" />
+<input type="button" id="send" value="send"/>
+<ul id="msg-area"></ul>
+<div id="sock"><%= @sock %></div>
+<div id="bench_timer"><%= @bench.timer %></div>
+<p>＜現在のベンチの状態＞</p>
+<p id="fan"></p>
+<p id="display"></p>
+<p id="position"></p>
+<p id="led"></p>
+<p id="color"></p>
+<p id="audio"></p>
+<p id="mp3"></p>
+<p id="mp4"></p>
+<p id="usb"></p>
+<p id="message"></p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 </main>
 
 
-<%= javascript_pack_tag 'index' %>
 <%= javascript_pack_tag 'controlpanel' %>

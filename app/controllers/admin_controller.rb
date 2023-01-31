@@ -1,19 +1,20 @@
 class AdminController < ApplicationController
-    before_action :logged_in_user
+    before_action :logged_in_admin, except: [:index, :show, :add, :edit, :delete]
+
     helper_method :show
     # adminコントローラーは権限ある人だけアクセス可能
 
     def index #(データ一覧を表示、ビューからボタン押して切り替え)
-        @users = User.page(params[:page]).per(3)
-        @parks = Park.page(params[:page]).per(3)
-        @benches = Bench.page(params[:page]).per(3)
-        @pictures = Picture.page(params[:page]).per(3)
-        @events = Event.page(params[:page]).per(3)
-        @products = Product.page(params[:page]).per(3)
-        @shortcuts = Shortcut.page(params[:page]).per(3)
-        @tmp_data = TmpDatum.page(params[:page]).per(3)
-        @tmp_data = TmpDatum.page(params[:page]).per(3)
-        @tmp_messages = TmpMessage.page(params[:page]).per(3)
+        @users = User.page(params[:page]).per(50)
+        @parks = Park.page(params[:page]).per(50)
+        @benches = Bench.page(params[:page]).per(50)
+        @pictures = Picture.page(params[:page]).per(50)
+        @events = Event.page(params[:page]).per(50)
+        @products = Product.page(params[:page]).per(50)
+        @shortcuts = Shortcut.page(params[:page]).per(50)
+        @tmp_data = TmpDatum.page(params[:page]).per(50)
+        @tmp_data = TmpDatum.page(params[:page]).per(50)
+        @tmp_messages = TmpMessage.page(params[:page]).per(50)
         show
     end
 
@@ -187,16 +188,16 @@ class AdminController < ApplicationController
             end
         end
     end
-        
+    
     # permit()内のパラメータを含んだものだけを許可
     private
     def users_params
-        params.require(:user).permit(:display_name, :email, :zip, :prefecture, :address, :street, :tel, :municipality, :division, :image, :profile, :notification, :flag, :admin_memo)
+        params.require(:user).permit(:name, :email, :zip, :prefecture, :city, :street, :tel, :municipality, :division, :image, :profile, :notification, :flag, :admin_memo)
     end
 
     private
     def parks_params
-        params.require(:park).permit(:name, :zip, :prefecture, :address, :street, :hours, :tel, :fee, :map, :website, :size, :profile, :parking_info, :toilet_info, :playground_info, :facility_info, :sports_info, :view_info, :disaster_info, :other_info)
+        params.require(:park).permit(:name, :zip, :prefecture, :city, :street, :hours, :tel, :fee, :map, :website, :size, :profile, :parking_info, :toilet_info, :playground_info, :facility_info, :sports_info, :view_info, :disaster_info, :other_info)
     end
    
     private

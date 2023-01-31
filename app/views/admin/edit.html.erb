@@ -15,12 +15,12 @@
             <%= form.text_field :id, class:"form" %>
         </div>
         <div class="form-group">
-            <label for="display_name">表示名</label>
-            <%= form.text_field :display_name, class:"form" %>
+            <label for="name">表示名</label>
+            <%= form.text_field :name, class:"form" %>
         </div>
         <div class="form-group">
             <label for="email">メールアドレス</label>
-            <%= form.text_field :email, class:"form" %>
+            <%= form.email_field :email, class:"form" %>
         </div>
         <div class="form-group">
             <label for="zip">郵便番号</label>
@@ -31,8 +31,8 @@
             <%= form.text_field :prefecture, class:"form" %>
         </div>
         <div class="form-group">
-            <label for="address">住所(市区町村)</label>
-            <%= form.text_field :address, class:"form" %>
+            <label for="city">住所(市区町村)</label>
+            <%= form.text_field :city, class:"form" %>
         </div>
         <div class="form-group">
             <label for="street">それ以降の住所</label>
@@ -94,8 +94,8 @@
             <%= form.text_field :prefecture, class:"form" %>
         </div>
         <div class="form-group">
-            <label for="address">住所(市区町村)</label>
-            <%= form.text_field :address, class:"form" %>
+            <label for="city">住所(市区町村)</label>
+            <%= form.text_field :city, class:"form" %>
         </div>
         <div class="form-group">
             <label for="street">それ以降の住所</label>
@@ -199,6 +199,10 @@
     <h2>写真ID: <%= @picture.id %> の登録データ編集画面です。</h2>
     <br>
     <%= form_for(@picture, url:{controller:'admin', action:'edit'}) do |form| %>
+        <div class="form-group hidden">
+            <label for="id">ID</label>
+            <%= form.text_field :id, class:"form" %>
+        </div>
         <div class="form-group">
             <label for="park_id">所属公園ID</label>
             <%= form.text_field :park_id, class:"form" %>

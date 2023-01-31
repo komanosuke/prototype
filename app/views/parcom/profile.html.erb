@@ -23,11 +23,11 @@
           <dl>
             <div>
               <dt><%= image_tag "/park/park_head_icon01.svg", alt: "" %>公園の名称</dt>
-              <dd>この公園の情報</dd>
+              <dd><%= @park.name %></dd>
             </div>
             <div>
               <dt><%= image_tag "/park/park_head_icon02.svg", alt: "" %>所在地</dt>
-              <dd></dd>
+              <dd><%= @park.address %></dd>
             </div>
                                   </dl>
         </div>
@@ -285,7 +285,7 @@
         <h2>写真</h2>
         <div class="park_content_wrap">
           <div class="flex_container">
-            <div class="park_photo_l"><%= image_tag "/park/park_photo01.png", alt: "" %></div>
+            <div class="park_photo_l"><%= image_tag @picture.picture.to_s , alt: "" %></div>
             <ul class="park_photo_list">
               <li><%= image_tag "/park/park_photo02.png", alt: "" %></li>
               <li><%= image_tag "/park/park_photo02.png", alt: "" %></li>
@@ -379,19 +379,19 @@
               <p class="review_txt">ジョバンニはそっちを見ましたがね、舟の上から烏うりのあかりを川へながしに行くのジョバンニがまだそう言っていました。するとどこかで待っているかもわからずに、にわかに赤旗をおろして、手ばやくくるくると解きました。そ…</p>
             </div>
           </div>
-          <a class="review_more_btn">クチコミをもっと見る</a>
+          <a class="review_more_btn" href="/review/<%= @park.id %>">クチコミをもっと見る</a>
         </div>
       </section>
             <section id="park_manager" class="park_manager">
         <div class="park_content_wrap">
           <h2>この公園の情報の管理者様へ</h2>
-          <p>この公園の情報の管理者様は、PARCOM（パルコム）までご連絡ください。公園ページの管理・編集をはじめとした下記の機能がお使いいただけます。お問い合わせは<a href="http://app.parcom.parcom/contact">こちら</a>。</p>
+          <p>この公園の情報の管理者様は、PARCOM（パルコム）までご連絡ください。公園ページの管理・編集をはじめとした下記の機能がお使いいただけます。お問い合わせは<%= link_to 'こちら', '/contacts' %>。</p>
           <ul>
             <li>公園の正確な情報や写真などを編集できるようになります。</li>
             <li>Googleマイビジネスと連携することができます。</li>
             <li>関連する利用状況データをみることができます。</li>
           </ul>
-          <%= link_to "お問い合わせはこちら", "/parcom/contact", class: "contact_btn" %>
+          <%= link_to "お問い合わせはこちら", "/contacts", class: "contact_btn" %>
         </div>
       </section>
           </div>
@@ -454,9 +454,9 @@
       <section id="park_access" class="park_access">
         <h2>アクセス</h2>
         <div class="park_content_wrap">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3203.409685078444!2d136.6226506152842!3d36.59244087999193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff9ccb7aae6242d%3A0xa7e1b7e7a00763c0!2z6Z6N5pyI44K744Oz44OI44Op44Or44OR44O844Kv!5e0!3m2!1sja!2sjp!4v1662991916716!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3204.6675644266707!2d136.6604628152832!3d36.56212777999836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff83383f9b25905%3A0x970a7b3df003f2e4!2z5YW85YWt5ZyS!5e0!3m2!1sja!2sjp!4v1673509628809!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           <p></p>
-          <%= link_to "地図で表示", "https://goo.gl/maps/58NBtujY8ruyEAcy9", target: "_blank" %>
+          <%= link_to "地図で表示", @park.map, target: "_blank" %>
         </div>
       </section>
       <section id="park_contact" class="park_contact">
@@ -472,3 +472,5 @@
   </div>
 </div>
 </main>
+
+<%= javascript_pack_tag 'profile' %>
