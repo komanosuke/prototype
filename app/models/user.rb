@@ -1,7 +1,11 @@
 class User < ApplicationRecord
     has_secure_password
     validates :password, presence: true, #空白を許可しない
-                        length: {minimum: 8} #最低8文字必要とする
+                        length: {minimum: 8}, #最低8文字必要とする
+                        on: :create
+    validates :email, presence: true,
+                        length: { maximum: 255 },
+                        uniqueness: true
     attr_accessor  :remember_token, :activation_token, :reset_token
     before_save   :downcase_email
     before_create :create_activation_digest
@@ -11,6 +15,8 @@ class User < ApplicationRecord
     has_many :bench_audios, dependent: :destroy
     has_many :bench_images, dependent: :destroy
     has_many :bench_videos, dependent: :destroy
+
+    mount_uploader :image, ImageUploader
 
     
 
@@ -69,19 +75,6 @@ class User < ApplicationRecord
         update_attribute(:activated_at, Time.zone.now)
     end
 
-    private
-    # メールアドレスをすべて小文字にする
-    def downcase_email
-        self.email = email.downcase
-    end
-    # 有効化トークンとダイジェストを作成及び代入する
-    def create_activation_digest
-        self.activation_token = User.new_token
-        self.activation_digest = User.digest(activation_token)
-    end
-
-    
-
     # パスワード再設定の属性を設定する
     def create_reset_digest
         self.reset_token = User.new_token
@@ -98,4 +91,16 @@ class User < ApplicationRecord
     def password_reset_expired?
         reset_sent_at < 2.hours.ago
     end
+
+    private
+    # メールアドレスをすべて小文字にする
+    def downcase_email
+        self.email = email.downcase
+    end
+    # 有効化トークンとダイジェストを作成及び代入する
+    def create_activation_digest
+        self.activation_token = User.new_token
+        self.activation_digest = User.digest(activation_token)
+    end
+
 end

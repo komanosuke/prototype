@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-    before_action :logged_in_user, except: [:signupmail, :signupmail_success, :signupmail_confirm, :signupmail_error, :register, :signup_success, :back, :create]
+    before_action :logged_in_user, except: [:signupmail, :signupmail_success, :signupmail_confirm, :signupmail_error, :register, :signup_success, :back, :create, :not_activated]
 
     def index
         @parks = Park.all
@@ -7,16 +7,14 @@ class UserController < ApplicationController
 
     def account 
         @user = User.find(current_user.id)
-        if request.patch? then
+        if request.patch? and params[:image] then
+            @user.update users_image_params
+        elsif request.patch? then
             @user.update users_account_params
         end
 
         @parks = Park.where(user_id: current_user.id)
-
-        if params[:image]
-            @user = User.create(image: params[:image])
-        end
-        # 写真保存検証
+        p @user.image
     end
 
     def changemail
@@ -34,7 +32,8 @@ class UserController < ApplicationController
         @user = User.find(current_user.id)
         if request.patch? then
             if @user && @user.authenticate(users_password_params[:password])
-                @user.update(password: users_password_params[:reset_digest])
+                @user.update(password: users_password_params[:password_confirmation])
+                redirect_to '/changepwd_success'
             else
                 redirect_to '/changepwd_error'
             end
@@ -131,7 +130,7 @@ class UserController < ApplicationController
 
     private
     def users_account_params
-        params.require(:user).permit(:name, :email, :password, :zip,  :prefecture, :city, :street, :tel, :municipality, :division, :profile)
+        params.require(:user).permit(:name, :email, :password, :zip,  :prefecture, :city, :street, :tel, :municipality, :division, :profile, :image)
     end
 
     private
@@ -141,7 +140,7 @@ class UserController < ApplicationController
 
     private
     def users_password_params
-        params.require(:user).permit(:password, :reset_digest)
+        params.require(:user).permit(:password, :password_confirmation)
     end
 
     private

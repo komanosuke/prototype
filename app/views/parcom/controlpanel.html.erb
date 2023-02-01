@@ -104,8 +104,8 @@
                   <div class="preview_file preview_file_img" id="preview">
                     <%= image_tag "/ctrlpanel/icon_preview_close.svg", class: "preview_close_btn", alt: "閉じるボタン" %>
                     <% if @bench_image_now %>
-                      <!--<iframe src="<%= @bench_image_now.pdf_url %>" id="preview_image"></iframe>-->
-                      <%= image_tag @bench_image_now.image.to_s, id:"preview_image" %>
+                      <iframe src="<%= @bench_image_now.pdf_url %>" id="preview_image"></iframe>
+                      <%#= image_tag @bench_image_now.image.to_s, id:"preview_image" %>
                     <% else %>
                       <%= image_tag "/ctrlpanel/preview_dummy.svg", id: "preview_dummy", alt: "プレビューファイル" %>
                     <% end %>
@@ -421,12 +421,8 @@
 <%= form_tag(url_for(:action => 'controlpanel'), :remote => true) do %>
     <%= submit_tag @bench.mac_address ,{id: "submitButton"} %>
 <% end %>
-<input type="text" id="socket_message" />
-<input type="button" id="send" value="send"/>
-<ul id="msg-area"></ul>
-<div id="sock"><%= @sock %></div>
-<div id="bench_timer"><%= @bench.timer %></div>
-<p>＜現在のベンチの状態＞</p>
+
+<p>＜現在のベンチの状態（リアルタイム反映）＞</p>
 <p id="fan"></p>
 <p id="display"></p>
 <p id="position"></p>

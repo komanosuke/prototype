@@ -3,7 +3,14 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 #admin_title {
-    font-size: 40px;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+#contents {
+    width: 90%;
+    margin: auto;
 }
 
 .table {
@@ -15,11 +22,33 @@
 }
 
 .table_name {
+    overflow-x: auto;
     display: none;
 }
 
-#back {
+.table_wrap {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.table_user {
+    table-layout: fixed;
+    width: 2000px;
+}
+
+.table_park {
+    table-layout: fixed;
+    width: 5000px;
+}
+
+
+
+.back {
     float: right;
+}
+
+.back a:hover {
+    color: #46C541;
 }
 
 .form {
@@ -40,4 +69,24 @@ td a {
 
 .position_default {
     width: 200px !important;
+}
+
+#model_submit {
+    display: none;
+}
+
+#hidden_model {
+    display: none;
+}
+
+.make_model_wrap {
+    text-align: center;
+}
+
+.make_model_btn {
+    width: 200px;
+    height: 50px;
+    margin: 20px auto;
+    background-color: #46C541;
+    color: #fff;
 }

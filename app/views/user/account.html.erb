@@ -34,8 +34,8 @@
                   <% end %>
                 </div>
               </label>
-              <% if @user.image %>
-                <%= image_tag @user.image, class: "icon", id:"user_image" %>
+              <% if @user.image.to_s != "" %>
+                <%= image_tag @user.image.to_s, class: "icon", id:"user_image" %>
               <% else %>
                 <%= image_tag "/common/icon_owner_default.svg", class: "icon", id:"user_image" %>
               <% end %>
@@ -77,4 +77,5 @@
     upload_box.style.display = 'none';
     cover.style.display = 'none';
   });
+  
 </script>

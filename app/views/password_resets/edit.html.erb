@@ -7,13 +7,14 @@
     </div>
     <div class="login_related_content">
       <h1>パスワード再設定フォーム</h1>
-        <%= form_with(scope: :password_reset, url: password_resets_path, local: true) do |f| %>
+        <%= form_with(model: @user, url: password_reset_path(params[:id]), local: true) do |form| %>
       	<div class="txt_field">
             <dt class="form_term">新しいパスワード</dt>
-                <dd class="form_description"><%= form.password_field :password, placeholder: "パスワード" %></dd>
+                <dd class="form_description"><%= form.password_field :password, placeholder: "パスワード", required: true %></dd>
             <dt class="form_term">新しいパスワード（確認用）</dt>
-      		    <dd class="form_description"><%= form.password_field :password_confirmation, placeholder: "パスワード(確認用)" %></dd>
-        <%= f.submit '送信する', class:"btn" %>
+      		    <dd class="form_description"><%= form.password_field :password_confirmation, placeholder: "パスワード(確認用)", required: true %></dd>
+        <%= hidden_field_tag :email, @user.email %>
+        <%= form.submit '更新する', class:"btn" %>
         </div>
       <% end %>
     </div>

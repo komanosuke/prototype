@@ -5,11 +5,16 @@
 <br>
 <br>
 <p id="admin_title">データ削除 確認画面</p>
-<p id="back"><a href="/admin/index">adminトップに戻る>></a></p>
+<div id="contents">
+    <div class="back"><%= link_to "ADMINからログアウトする>>", admin_logout_path, method: :delete %></div>
+    <br>
+    <div class="back"><a href="/admin/index">adminトップに戻る>></a></div>
+    <br>
+    <div class="back"><a href="/admin/command">ベンチを指定してコマンドを送る>></a></div>
 
 <% if @user != nil %>
     <p>以下のデータを削除してもいいですか？</p>
-    <br>
+    <br><div class="table_wrap">
     <table class="table">
         <tr>
             <th>ID</th>
@@ -56,7 +61,7 @@
 
 <% elsif @park != nil %>
     <p>以下のデータを削除してもいいですか？</p>
-    <br>
+    <br><div class="table_wrap">
     <table class="table">
         <tr>
             <th>ID</th>
@@ -118,7 +123,7 @@
 
 <% elsif @bench != nil %>
     <p>以下のデータを削除してもいいですか？</p>
-    <br>
+    <br><div class="table_wrap">
     <table class="table">
         <tr>
             <th>ID</th>
@@ -148,7 +153,7 @@
 
 <% elsif @picture != nil %>
     <p>以下のデータを削除してもいいですか？</p>
-    <br>
+    <br><div class="table_wrap">
     <table class="table">
         <tr>
             <th>ID</th>
@@ -170,7 +175,7 @@
 
 <% elsif @event != nil %>
     <p>以下のデータを削除してもいいですか？</p>
-    <br>
+    <br><div class="table_wrap">
     <table class="table">
         <tr>
             <th>ID</th>
@@ -192,7 +197,7 @@
 
 <% elsif @product != nil %>
     <p>以下のデータを削除してもいいですか？</p>
-    <br>
+    <br><div class="table_wrap">
     <table class="table">
         <tr>
             <th>ID</th>
@@ -214,7 +219,7 @@
 
 <% elsif @shortcut != nil %>
     <p>以下のデータを削除してもいいですか？</p>
-    <br>
+    <br><div class="table_wrap">
     <table class="table">
         <tr>
             <th>ID</th>

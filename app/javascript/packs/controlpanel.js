@@ -18,18 +18,16 @@
 // LOG,ON or OFF
 
 
+
 // ボタンのON,OFF切り替え処理
 //オンオフ判定変数
 let on_or_off = [false, false, false, false, false];
 let command = ''
 
 //ONボタン　使うときは、引数にONにしたいボタンの番号を入れる
-// ※TIMERだけは、Railsのデータベースで管理する
 const btn_name = ['LED', 'DISPLAY', 'AUDIO', 'MP4', 'MP3'];
 const btn_num = { 'LED': 0, 'DISPLAY': 1, 'AUDIO': 2, 'MP4': 3, 'MP3': 4 };
 function switchOn(n, command){
-    data = document.getElementById('data').textContent;
-    data = JSON.parse(data.replaceAll('=>', ':'));
     $('.toggle').eq(n).addClass('checked');
     $('.on').eq(n).css({'display':'block'});
     $('.off').eq(n).css({'display':'none'});
@@ -42,8 +40,6 @@ function switchOn(n, command){
 
 //OFFボタン
 function switchOff(n, command){
-    data = document.getElementById('data').textContent;
-    data = JSON.parse(data.replaceAll('=>', ':'));
     $('.toggle').eq(n).removeClass('checked');
     $('.on').eq(n).css({'display':'none'});
     $('.off').eq(n).css({'display':'block'});
@@ -54,9 +50,9 @@ function switchOff(n, command){
     }
 }
 
-//リロード時に、ベンチからの最新のJSONデータを取得してViewに表示（hiddenなのでコンソールログから確認）
-let data = document.getElementById('data').textContent.replace(/(\\|\/)/g,''); //JSON Parseの処理も関数に
 
+//リロード時に、ベンチからの最新のJSONデータを取得してViewに表示（hiddenなのでコンソールログから確認）
+data = document.getElementById('data').textContent.replace(/(\\|\/)/g,''); //JSON Parseの処理も関数に
 data = JSON.parse(data.replaceAll('=>', ':'));
 for(let i = 0; i < btn_name.length; i++){
     if(data[btn_name[i]].includes('ON')){
@@ -66,6 +62,7 @@ for(let i = 0; i < btn_name.length; i++){
     }
 }
 console.log(data);
+
 
 //RailsのコントローラーにAjaxでデータを送信する処理(request_cmdはそのままベンチまで行く)
 function postData(command){
@@ -173,10 +170,6 @@ function hex2rgb ( hex ) {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //画像のアップロード
-function setDisplay(){
-
-}
-
 let pdf_permit = false;
 if(document.getElementById('preview_image')){
     pdf_permit = true;
@@ -184,12 +177,12 @@ if(document.getElementById('preview_image')){
 
 $('#display_switch').on('click', function() {
     if(on_or_off[1] == true){
-        switchOff(2, 'PDF,OFF');
+        switchOff(1, 'PDF,OFF');
     } else if(on_or_off[1] == false){
         if(pdf_permit == false){
             alert('再生する画像ファイルをアップロードしてから押してください。');
         } else {
-            switchOn(2, 'PDF,ON:');
+            switchOn(1, 'PDF,ON:');
         }
     }
 });
@@ -247,7 +240,6 @@ $('.preview_close_btn').on('click', function() {
     $('#preview_image').remove();
     $('.preview_close_btn').css('visibility', 'hidden');
     pdf_file.value = '';
-    postData('PDF,OFF');  //画像表示をやめる(previewと連動)※液晶はついている
 });
 
 
@@ -301,10 +293,6 @@ $('[type="range"]').on('change input', function() {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //動画のアップロード
-function setMovie(){
-
-}
-
 let movie_permit = false;
 if(document.getElementById('mp4_preview_video')){
     movie_permit = true;
@@ -376,9 +364,7 @@ function preview_mv_File(file) {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //音楽のアップロード
-function setMusic(){
 
-}
 //再生したらボリュームはロック
 let audio_lock = document.getElementById('audio_lock');
 
@@ -525,6 +511,19 @@ function updateData(){
 
     chart_check = true;
 
+    document.getElementById("fan").textContent = "FAN: " + data["FAN"];
+    document.getElementById("display").textContent = "DISPLAY: " + data["DISPLAY"];
+    document.getElementById("position").textContent = "POSITION: " + data["POSITION"];
+    document.getElementById("led").textContent = "LED: " + data["LED"];
+    document.getElementById("color").textContent = "COLOR: " + data["COLOR"];
+    document.getElementById("audio").textContent = "AUDIO: " + data["AUDIO"];
+    document.getElementById("mp3").textContent = "MP3: " + data["MP3"];
+    document.getElementById("mp4").textContent = "MP4: " + data["MP4"];
+    document.getElementById("usb").textContent = "USB5V: " + data["USB5V"];
+    document.getElementById("message").textContent = "MESSAGE: " + data["MESSAGE"];
+
+
+    ///////////// 以下グラフ描画 ///////////////
     // ベンチのバッテリー残量
     window.myChart1 = new Chart(ctx[0], {
         type: 'line',

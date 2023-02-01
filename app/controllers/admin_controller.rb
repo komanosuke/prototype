@@ -2,30 +2,32 @@ class AdminController < ApplicationController
     before_action :logged_in_admin, except: [:index, :show, :add, :edit, :delete]
 
     helper_method :show
-    # adminコントローラーは権限ある人だけアクセス可能
 
     def index #(データ一覧を表示、ビューからボタン押して切り替え)
-        @users = User.page(params[:page]).per(50)
-        @parks = Park.page(params[:page]).per(50)
-        @benches = Bench.page(params[:page]).per(50)
-        @pictures = Picture.page(params[:page]).per(50)
-        @events = Event.page(params[:page]).per(50)
-        @products = Product.page(params[:page]).per(50)
-        @shortcuts = Shortcut.page(params[:page]).per(50)
-        @tmp_data = TmpDatum.page(params[:page]).per(50)
-        @tmp_data = TmpDatum.page(params[:page]).per(50)
-        @tmp_messages = TmpMessage.page(params[:page]).per(50)
+        @users = User.page(params[:page]).per(30)
+        @parks = Park.page(params[:page]).per(30)
+        @benches = Bench.page(params[:page]).per(30)
+        @pictures = Picture.page(params[:page]).per(30)
+        @events = Event.page(params[:page]).per(30)
+        @shortcuts = Shortcut.page(params[:page]).per(30)
+        @bench_images = BenchImage.page(params[:page]).per(30)
+        @bench_videos = BenchVideo.page(params[:page]).per(30)
+        @bench_audios = BenchAudio.page(params[:page]).per(30)
         show
     end
 
     def show
-        logger.debug params[:category]
-        @result = params[:category]
+        # @model = params[:category]
+        @model = params[:model]
 
         respond_to do |format|
             format.html
             format.js
         end
+    end
+
+    def command
+        @benches = Bench.all
     end
 
     def add
@@ -36,7 +38,6 @@ class AdminController < ApplicationController
         @bench = Bench.new
         @picture = Picture.new
         @event = Event.new
-        @product = Product.new
         @shortcut = Shortcut.new
         show
 
@@ -65,25 +66,10 @@ class AdminController < ApplicationController
                 Event.create events_params
                 redirect_to '/admin/add_done'
             end
-        elsif params[:product]
-            if request.post? then
-                Product.create products_params
-                redirect_to '/admin/add_done'
-            end
         elsif params[:shortcut]
             if request.post? then
                 Shortcut.create shortcuts_params
                 redirect_to '/admin/add_done'
-            end
-        end
-
-
-        @tmp_data = TmpDatum.new
-        if params[:tmp_datum]
-            logger.debug 'aaa'
-            if request.post? then
-                TmpDatum.create tmp_data_params
-                redirect_to '/admin/delete_done'
             end
         end
     end
@@ -101,8 +87,6 @@ class AdminController < ApplicationController
             @picture = Picture.find(params[:picture_id])  
         elsif params[:event_id]
             @event = Event.find(params[:event_id])    
-        elsif params[:product_id]
-            @product = Product.find(params[:product_id])
         elsif params[:shortcut_id]
             @shortcut = Shortcut.find(params[:shortcut_id])
         end
@@ -124,9 +108,6 @@ class AdminController < ApplicationController
             elsif params[:event]
                 @event = Event.find(params[:event][:id])
                 @event.update events_params 
-            elsif params[:product]
-                @product = Product.find(params[:product][:id])
-                @product.update products_params
             elsif params[:shortcut]
                 @shortcut = Shortcut.find(params[:shortcut][:id])
                 @shortcut.update shortcuts_params
@@ -149,8 +130,6 @@ class AdminController < ApplicationController
             @picture = Picture.find(params[:picture_id])
         elsif params[:event_id]
             @event = Event.find(params[:event_id])
-        elsif params[:product_id]
-            @product = Product.find(params[:product_id])
         elsif params[:shortcut_id]
             @shortcut = Shortcut.find(params[:shortcut_id])
         end
@@ -177,10 +156,6 @@ class AdminController < ApplicationController
                 @event = Event.find(params[:event_delete_id])
                 @event.destroy
                 redirect_to '/admin/delete_done'
-            elsif params[:product_delete_id]
-                @product = Product.find(params[:product_delete_id])
-                @product.destroy
-                redirect_to '/admin/delete_done'
             elsif params[:shortcut_delete_id]
                 @shortcut = Shortcut.find(params[:shortcut_delete_id])
                 @shortcut.destroy
@@ -197,7 +172,7 @@ class AdminController < ApplicationController
 
     private
     def parks_params
-        params.require(:park).permit(:name, :zip, :prefecture, :city, :street, :hours, :tel, :fee, :map, :website, :size, :profile, :parking_info, :toilet_info, :playground_info, :facility_info, :sports_info, :view_info, :disaster_info, :other_info)
+        params.require(:park).permit(:name, :zip, :prefecture, :city, :street, :hours, :tel, :fee, :map, :website, :size, :profile, :parking_info, :toilet_info, :playground_info, :facility_info, :sports_info, :view_info, :disaster_info, :other_info, :iframe)
     end
    
     private
@@ -212,16 +187,11 @@ class AdminController < ApplicationController
 
     private
     def events_params
-        params.require(:event).permit(:park_id, :name, :contents)
-    end
-
-    private
-    def products_params
-        params.require(:product).permit(:park_id, :name, :contents)
+        params.require(:event).permit(:park_id, :name, :image, :contents)
     end
 
     private
     def shortcuts_params
-        params.require(:shortcut).permit(:bench_id, :name, :program)
+        params.require(:shortcut).permit(:park_id, :nickname, :start_time, :end_time, :repeat, :program)
     end
 end

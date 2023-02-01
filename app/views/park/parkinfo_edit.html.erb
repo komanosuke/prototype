@@ -448,7 +448,7 @@
               <% end %>
                 <label id="upload_box">
                   <div id="upload_form">
-                    <%= form_with model: @picture_now, local:true do |f| %>
+                    <%= form_with model: @picture, local:true do |f| %>
                       <%= f.hidden_field :park_id, {value: @park.id} %>
                       <p>写真の名前</p>
                       <%= f.hidden_field :name, required: true, id:'img_name' %>

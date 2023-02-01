@@ -3,8 +3,15 @@
 <br>
 <br>
 <br>
-<p id="admin_title">データ編集画面</p>
-<p id="back"><a href="/admin/index">adminトップに戻る>></a></p>
+<p id="admin_title">データを編集する</p>
+
+<div id="contents">
+<div class="back"><%= link_to "ADMINからログアウトする>>", admin_logout_path, method: :delete %></div>
+<br>
+<div class="back"><a href="/admin/index">adminトップに戻る>></a></div>
+<br>
+<div class="back"><a href="/admin/command">ベンチを指定してコマンドを送る>></a></div>
+<br>
 
 <% if @user != nil %>
     <h2>ユーザーID: <%= @user.id %> の登録データ編集画面です。</h2>
@@ -70,7 +77,7 @@
             <label for="admin_memo">管理者メモ</label>
             <%= form.text_field :admin_memo, class:"form" %>
         </div>
-        <%= form.submit "更新" %>
+        <div class="make_model_wrap"><%= form.submit "更新", class:"make_model_btn" %></div>
     <% end %>
 
 <% elsif @park != nil %>
@@ -161,7 +168,7 @@
             <label for="other_info">その他情報</label>
             <%= form.text_field :other_info, class:"form" %>
         </div>
-        <%= form.submit "更新" %>
+        <div class="make_model_wrap"><%= form.submit "更新", class:"make_model_btn" %></div>
     <% end %>
 
 <% elsif @bench != nil %>
@@ -192,7 +199,7 @@
             <label for="mac_address">導入日（例: 2022-01-01）</label>
             <%= form.text_field :introduced_date, class:"form" %>
         </div>
-        <%= form.submit "更新" %>
+        <div class="make_model_wrap"><%= form.submit "更新", class:"make_model_btn" %></div>
     <% end %>
 
 <% elsif @picture != nil %>
@@ -215,7 +222,7 @@
             <label for="picture">写真</label>
             <%= form.text_field :picture, class:"form" %>
         </div>
-        <%= form.submit "更新" %>
+        <div class="make_model_wrap"><%= form.submit "更新", class:"make_model_btn" %></div>
     <% end %>
 
 <% elsif @event != nil %>
@@ -238,7 +245,7 @@
             <label for="contents">説明</label>
             <%= form.text_field :contents, class:"form" %>
         </div>
-        <%= form.submit "更新" %>
+        <div class="make_model_wrap"><%= form.submit "更新", class:"make_model_btn" %></div>
     <% end %>
 
 <% elsif @product != nil %>
@@ -261,7 +268,7 @@
             <label for="contents">説明</label>
             <%= form.text_field :contents, class:"form" %>
         </div>
-        <%= form.submit "更新" %>
+        <div class="make_model_wrap"><%= form.submit "更新", class:"make_model_btn" %></div>
     <% end %>
 
 <% elsif @shortcut != nil %>
@@ -284,12 +291,13 @@
             <label for="program">プログラム内容</label>
             <%= form.text_field :program, class:"form" %>
         </div>
-        <%= form.submit "更新" %>
+        <div class="make_model_wrap"><%= form.submit "更新", class:"make_model_btn" %></div>
     <% end %>
 <% else %>
     <h2>トップページからしか編集対象を指定できません。トップページから操作をやり直してください。</h2>
 <% end %>
 
+</div>
 <br>
 <br>
 <br>

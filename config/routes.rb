@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   get 'user/create', to: 'user#create'
   post 'user/create', to: 'user#create'
   get 'account', to: 'user#account'
+  post 'account', to: 'user#account'
   patch 'account', to: 'user#account'
   get 'changemail', to: 'user#changemail'
   patch 'changemail', to: 'user#changemail'
@@ -72,10 +73,15 @@ Rails.application.routes.draw do
   get 'user/signupmail_confirm'
   post 'user/signupmail_confirm'
   post 'user/back'
+  get 'changepwd_success', to: 'user#changepwd_success'
   get 'changepwd_error', to: 'user#changepwd_error'
+  get 'not_activated', to: 'user#not_activated'
   resources :users, except: [:new]
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
+  get 'password_resets/mail_done'
+  get 'password_resets/mail_error'
+  get 'password_resets/success'
 
   get 'parkinfo_edit/:park_id', to: 'park#parkinfo_edit'
   post 'parkinfo_edit/:park_id', to: 'park#parkinfo_edit'
