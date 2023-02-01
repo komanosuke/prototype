@@ -285,12 +285,25 @@
         <h2>写真</h2>
         <div class="park_content_wrap">
           <div class="flex_container">
-            <div class="park_photo_l"><%= image_tag @picture.picture.to_s , alt: "" %></div>
+            <div class="park_photo_l">
+              <% if @pictures != [] %>
+                <%= image_tag @pictures[4].picture.to_s , alt: "" %>
+              <% else %>
+                <%= image_tag "/park/park_photo01.png", alt: "" %>
+              <% end %>
+            </div>
             <ul class="park_photo_list">
-              <li><%= image_tag "/park/park_photo02.png", alt: "" %></li>
-              <li><%= image_tag "/park/park_photo02.png", alt: "" %></li>
-              <li><%= image_tag "/park/park_photo02.png", alt: "" %></li>
-              <li><%= image_tag "/park/park_photo02.png", alt: "" %></li>
+              <% if @pictures != [] %>
+                <li><%= image_tag @pictures[3].picture.to_s , alt: "" %></li>
+                <li><%= image_tag @pictures[2].picture.to_s , alt: "" %></li>
+                <li><%= image_tag @pictures[1].picture.to_s , alt: "" %></li>
+                <li><%= image_tag @pictures[0].picture.to_s , alt: "" %></li>
+              <% else %>
+                <li><%= image_tag "/park/park_photo02.png", alt: "" %></li>
+                <li><%= image_tag "/park/park_photo02.png", alt: "" %></li>
+                <li><%= image_tag "/park/park_photo02.png", alt: "" %></li>
+                <li><%= image_tag "/park/park_photo02.png", alt: "" %></li>
+              <% end %>
             </ul>
           </div>
         </div>

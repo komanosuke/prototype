@@ -5,3 +5,12 @@
 #user_image:hover {
     cursor: pointer;
 }
+
+#update_btn_filter {
+    background-color: transparent;
+    width: 200px;
+    height: 45px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}

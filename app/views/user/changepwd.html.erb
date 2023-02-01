@@ -29,15 +29,17 @@
             </div>
             <div class="txt_field">
               <dt class="form_term">新しいパスワード<span class="req">必須</span></dt>
-              <dd class="form_description"><%= form.password_field :reset_digest, placeholder:"新しいパスワードを入力",type: "password", required: true %></dd>
+              <dd class="form_description"><%= form.password_field :password_confirmation, placeholder:"新しいパスワードを入力",type: "password", required: true, id: "new_password" %></dd>
               <span class="ex">半角英数字8文字以上</span>
             </div>
             <div class="txt_field">
               <dt class="form_term">新しいパスワード（確認用）<span class="req">必須</span></dt>
-              <dd class="form_description"><%= form.password_field :reset_digest, type: "password", required: true %></dd>
+              <dd class="form_description"><%= form.password_field :password_confirmation, type: "password", required: true, id: "new_password_confirm" %></dd>
               <span class="ex">上と同じパスワードを入力してください</span>
+              <p id="match_message">パスワードが一致していません。</p>
             </div>
-            <%= form.submit "パスワードを変更する", class: "btn btn_g" %>
+            <div id="update_btn_filter"></div>
+            <%= form.submit "パスワードを変更する", class: "btn btn_g", id:"update_btn" %>
           <% end %>
         </div>
       </div>
@@ -45,3 +47,27 @@
   </div>
 </div>
 </main>
+<script>
+let new_password = document.getElementById('new_password');
+let new_password_confirm = document.getElementById('new_password_confirm');
+let match_message = document.getElementById('match_message');
+let update_btn_filter = document.getElementById('update_btn_filter');
+let update_btn = document.getElementById('update');
+
+new_password.addEventListener('change', function() {
+    judgeMatch();
+});
+new_password_confirm.addEventListener('change', function() {
+    judgeMatch();
+});
+
+function  judgeMatch() {
+    if(new_password.value == new_password_confirm.value){
+      match_message.textContent = '';
+      update_btn_filter.style.display = 'none';
+    } else {
+      match_message.textContent = 'パスワードが一致していません。';
+      update_btn_filter.style.display = 'block';
+    }
+}
+</script>

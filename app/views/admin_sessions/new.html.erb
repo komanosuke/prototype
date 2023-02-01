@@ -1,13 +1,43 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br><h1>ADMINログイン</h1>
-<%= form_for(:session, url: admin_login_path) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.submit "Log in" %>
+<main>
+<% if admin_logged_in? %>
+  <div id="login">
+    <div id="login_related">
+      <div class="inner_min">
+        <div class="logo">
+          <%= image_tag "/common/os-logo.svg", alt: "PARCOM OS" %>
+        </div>
+        <div class="login_related_content">
+          <h1>ADMINにログインしています。</h1>
+          <%= link_to "ADMIN管理画面トップへ", '/admin/index', class:'btn' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div id="login">
+    <div id="login_related">
+      <div class="inner_min">
+        <div class="logo">
+          <%= image_tag "/common/os-logo.svg", alt: "PARCOM OS" %>
+        </div>
+        <div class="login_related_content" id="admin_login_back">
+          <h1>管理者ページへのログイン</h1>
+          <div id="login_form" name="login_form">
+            <%= form_for(:session, url: admin_login_path) do |f| %>
+            <!--<p id="submit_failed" class="caution" style="display:none;"><%= image_tag "/signin_warning.png" %>メールアドレスまたはパスワードが空欄です</p>-->
+            <div class="txt_field">
+              <dt class="form_term">ID</dt>
+              <dd class="form_description"><%= f.text_field :name, placeholder:'管理者IDを入力してください' %></dd>
+            </div>
+            <div class="txt_field">
+              <dt class="form_term">パスワード</dt>
+              <dd class="form_description"><%= f.password_field :password, id:'login_password', placeholder:'パスワードを入力してください'  %></dd>
+            </div>
+            <%= f.submit 'ログインする', class:'btn', id:'login_submit' %>
+          </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
 <% end %>
+</main>

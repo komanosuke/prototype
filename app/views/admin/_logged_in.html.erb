@@ -1,339 +1,441 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<p id="admin_title">管理画面</p>
-<p id="back"><a href="/admin/add">データを追加する>></a></p>
-<br>
-<p id="back"><a href="/admin/command">コマンドによる制御操作>></a></p>
+<main>
 
-<%= form_with url:'index',local:false do |form| %>
-    <%= form.select(:category, ["ユーザー", "公園", "ベンチ", "写真", "イベント", "プロダクト", "ショートカット"],{}, required: true) %>
-    <%= form.submit "表示" %>
-<% end %>
+<p id="admin_title">管理画面トップページ</p>
 
-<div class="table_name" id="user">
-<h2>ユーザー</h2>
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>表示名</th>
-        <th>メールアドレス</th>
-        <th>郵便番号</th>
-        <th>住所(都道府県)</th>
-        <th>住所(市区町村)</th>
-        <th>それ以降の住所</th>
-        <th>電話番号</th>
-        <th>自治体名</th>
-        <th>所属課</th>
-        <th>プロフィール画像</th>
-        <th>プロフィール内容</th>
-        <th>メール通知設定</th>
-        <th>通知フラグ</th>
-        <th>管理者メモ</th>
-        <th colspan="2"></th>
-    </tr>
-    <% @users.each do |user| %>
-        <tr>
-            <td><%= user.id %></td>
-            <td><%= user.name %></td>
-            <td><%= user.email %></td>
-            <td><%= user.zip %></td>
-            <td><%= user.prefecture %></td>
-            <td><%= user.city %></td>
-            <td><%= user.street %></td>
-            <td><%= user.tel %></td>
-            <td><%= user.municipality %></td>
-            <td><%= user.division %></td>
-            <td><%= user.image %></td>
-            <td><%= user.profile %></td>
-            <td><%= user.notification %></td>
-            <td><%= user.flag %></td>
-            <td><%= user.admin_memo %></td>
-            <td>
-                <%= form_tag('edit') do %>
-                    <%= text_field_tag 'user_id', user.id , class: 'edit_id' %>
-                    <%= button_to '編集'%>
-                <% end %>
-            </td>
-            <td>
-                <%= form_tag('delete') do %>
-                    <%= text_field_tag 'user_id', user.id , class: 'edit_id' %>
-                    <%= button_to '削除'%>
-                <% end %>
-            </td>
-        </tr>
+<div id="contents">
+    <div class="back"><%= link_to "ADMINからログアウトする>>", admin_logout_path, method: :delete %></div>
+    <br>
+    <div class="back"><a href="/admin/add">データを追加する>></a></div>
+    <br>
+    <div class="back"><a href="/admin/command">ベンチを指定してコマンドを送る>></a></div>
+    <br>
+    <p>モデルを選択してデータ内容を表示</p>
+
+    <%= form_with url:'index',local:false do |form| %>
+        <%= form.select(:category, ["ユーザー", "公園", "ベンチ", "写真", "イベント", "ショートカット", "ベンチ用PDF", "ベンチ用MP4", "ベンチ用MP3"],{}, required: true, id:'model_select') %>
+        <%= form.submit "表示", id: "model_submit" %>
     <% end %>
-</table>
-<%= paginate @users %>
-</div>
 
-
-<div class="table_name" id="park">
-<h2>公園</h2>
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>ユーザーID</th>
-        <th>公園名</th>
-        <th>郵便番号</th>
-        <th>住所(都道府県)</th>
-        <th>住所(市区町村)</th>
-        <th>それ以降の住所</th>
-        <th>営業時間</th>
-        <th>電話番号</th>
-        <th>入場料金</th>
-        <th>Google Map</th>
-        <th>公式ホームページ</th>
-        <th>面積</th>
-        <th>紹介文</th>
-        <th>状況</th>
-        <th>駐車場情報</th>
-        <th>トイレ情報</th>
-        <th>遊具情報</th>
-        <th>施設情報</th>
-        <th>スポーツ情報</th>
-        <th>景観情報</th>
-        <th>防災情報</th>
-        <th>その他情報</th>
-        <th>iframe</th>
-        <th colspan="2"></th>
-    </tr>
-    <% @parks.each do |park| %>
+    <div class="table_name" id="user">
+    <h2>ユーザー</h2>
+    <div class="table_wrap table_user">
+    <table class="table">
         <tr>
-            <td><%= park.id %></td>
-            <td><%= park.user_id %></td>
-            <td><%= park.name %></td>
-            <td><%= park.zip %></td>
-            <td><%= park.prefecture %></td>
-            <td><%= park.city %></td>
-            <td><%= park.street %></td>
-            <td><%= park.hours %></td>
-            <td><%= park.tel %></td>
-            <td><%= park.fee %></td>
-            <td><%= park.map %></td>
-            <td><%= park.website %></td>
-            <td><%= park.size %></td>
-            <td><%= park.profile %></td>
-            <td><%= park.status %></td>
-            <td><%= park.parking_info %></td>
-            <td><%= park.toilet_info %></td>
-            <td><%= park.playground_info %></td>
-            <td><%= park.facility_info %></td>
-            <td><%= park.sports_info %></td>
-            <td><%= park.view_info %></td>
-            <td><%= park.disaster_info %></td>
-            <td><%= park.other_info %></td>
-            <td><%= park.iframe %></td>
-            <td>
-                <%= form_tag('edit') do %>
-                    <%= text_field_tag 'park_id', park.id , class: 'edit_id' %>
-                    <%= button_to '編集'%>
-                <% end %>
-            </td>
-            <td>
-                <%= form_tag('delete') do %>
-                    <%= text_field_tag 'park_id', park.id , class: 'edit_id' %>
-                    <%= button_to '削除'%>
-                <% end %>
-            </td>
+            <th>ID</th>
+            <th>表示名</th>
+            <th>メールアドレス</th>
+            <th>郵便番号</th>
+            <th>住所(都道府県)</th>
+            <th>住所(市区町村)</th>
+            <th>それ以降の住所</th>
+            <th>電話番号</th>
+            <th>自治体名</th>
+            <th>所属課</th>
+            <th>プロフィール画像</th>
+            <th>プロフィール内容</th>
+            <th>メール通知設定</th>
+            <th>通知フラグ</th>
+            <th>管理者メモ</th>
+            <th colspan="2"></th>
         </tr>
-    <% end %>
-</table>
-<%= paginate @parks %>
-</div>
+        <% @users.each do |user| %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.zip %></td>
+                <td><%= user.prefecture %></td>
+                <td><%= user.city %></td>
+                <td><%= user.street %></td>
+                <td><%= user.tel %></td>
+                <td><%= user.municipality %></td>
+                <td><%= user.division %></td>
+                <td>
+                    <% if user.image %>
+                        <%= image_tag user.image.to_s, class: "icon" %>
+                    <% end %></td>
+                <td><%= user.profile %></td>
+                <td><%= user.notification %></td>
+                <td><%= user.flag %></td>
+                <td><%= user.admin_memo %></td>
+                <td>
+                    <%= form_tag('edit') do %>
+                        <%= text_field_tag 'user_id', user.id , class: 'edit_id' %>
+                        <%= button_to '編集'%>
+                    <% end %>
+                </td>
+                <td>
+                    <%= form_tag('delete') do %>
+                        <%= text_field_tag 'user_id', user.id , class: 'edit_id' %>
+                        <%= button_to '削除'%>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+    </div>
+    <%= paginate @users ,params: {:model => "user"} %>
+    </div>
 
 
-<div class="table_name" id="bench">
-<h2>ベンチ</h2>
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>所属公園ID</th>
-        <th>ベンチ名</th>
-        <th>MACアドレス</th>
-        <th>OS</th>
-        <th>導入日</th>
-        <th>位置情報</th>
-        <th>タイマーON/OFF</th>
-        <th colspan="2"></th>
-    </tr>
-    <% @benches.each do |bench| %>
+    <div class="table_name" id="park">
+    <h2>公園</h2>
+    <div class="table_wrap table_park">
+    <table class="table">
         <tr>
-            <td><%= bench.id %></td>
-            <td><%= bench.park_id %></td>
-            <td><%= bench.name %></td>
-            <td><%= bench.mac_address %></td>
-            <td><%= bench.os_name %></td>
-            <td><%= bench.introduced_date %></td>
-            <td><%= bench.position %></td>
-            <td><%= bench.timer %></td>
-            <td>
-                <%= form_tag('edit') do %>
-                    <%= text_field_tag 'bench_id', bench.id , class: 'edit_id' %>
-                    <%= button_to '編集'%>
-                <% end %>
-            </td>
-            <td>
-                <%= form_tag('delete') do %>
-                    <%= text_field_tag 'bench_id', bench.id , class: 'edit_id' %>
-                    <%= button_to '削除'%>
-                <% end %>
-            </td>
+            <th>ID</th>
+            <th>ユーザーID</th>
+            <th>公園名</th>
+            <th>郵便番号</th>
+            <th>住所(都道府県)</th>
+            <th>住所(市区町村)</th>
+            <th>それ以降の住所</th>
+            <th>営業時間</th>
+            <th>電話番号</th>
+            <th>入場料金</th>
+            <th>Google Map</th>
+            <th>公式ホームページ</th>
+            <th>面積</th>
+            <th>紹介文</th>
+            <th>駐車場情報</th>
+            <th>トイレ情報</th>
+            <th>遊具情報</th>
+            <th>施設情報</th>
+            <th>スポーツ情報</th>
+            <th>景観情報</th>
+            <th>防災情報</th>
+            <th>その他情報</th>
+            <th>地図のiframeURL</th>
+            <th colspan="2"></th>
         </tr>
-    <% end %>
-</table>
-<%= paginate @benches %>
-</div>
+        <% @parks.each do |park| %>
+            <tr>
+                <td><%= park.id %></td>
+                <td><%= park.user_id %></td>
+                <td><%= park.name %></td>
+                <td><%= park.zip %></td>
+                <td><%= park.prefecture %></td>
+                <td><%= park.city %></td>
+                <td><%= park.street %></td>
+                <td><%= park.hours %></td>
+                <td><%= park.tel %></td>
+                <td><%= park.fee %></td>
+                <td><%= park.map %></td>
+                <td><%= park.website %></td>
+                <td><%= park.size %></td>
+                <td><%= park.profile %></td>
+                <td><%= park.parking_info %></td>
+                <td><%= park.toilet_info %></td>
+                <td><%= park.playground_info %></td>
+                <td><%= park.facility_info %></td>
+                <td><%= park.sports_info %></td>
+                <td><%= park.view_info %></td>
+                <td><%= park.disaster_info %></td>
+                <td><%= park.other_info %></td>
+                <td><%= park.iframe %></td>
+                <td>
+                    <%= form_tag('edit') do %>
+                        <%= text_field_tag 'park_id', park.id , class: 'edit_id' %>
+                        <%= button_to '編集'%>
+                    <% end %>
+                </td>
+                <td>
+                    <%= form_tag('delete') do %>
+                        <%= text_field_tag 'park_id', park.id , class: 'edit_id' %>
+                        <%= button_to '削除'%>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+    </div>
+    <%= paginate @parks ,params: {:model => "park"} %>
+    </div>
 
 
-<div class="table_name" id="picture">
-<h2>写真</h2>
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>所属公園ID</th>
-        <th>写真のタイトル</th>
-        <th>写真のパス</th>
-        <th>サイズ</th>
-        <th colspan="2"></th>
-    </tr>
-    <% @pictures.each do |picture| %>
+    <div class="table_name" id="bench">
+    <h2>ベンチ</h2>
+    <div class="table_wrap">
+    <table class="table">
         <tr>
-            <td><%= picture.id %></td>
-            <td><%= picture.park_id %></td>
-            <td><%= picture.name %></td>
-            <td><%= picture.picture %></td>
-            <td><%= picture.size %></td>
-            <td>
-                <%= form_tag('edit') do %>
-                    <%= text_field_tag 'picture_id', picture.id , class: 'edit_id' %>
-                    <%= button_to '編集'%>
-                <% end %>
-            </td>
-            <td>
-                <%= form_tag('delete') do %>
-                    <%= text_field_tag 'picture_id', picture.id , class: 'edit_id' %>
-                    <%= button_to '削除'%>
-                <% end %>
-            </td>
+            <th>ID</th>
+            <th>所属公園ID</th>
+            <th>ベンチ名</th>
+            <th>MACアドレス</th>
+            <th>OS</th>
+            <th>導入日</th>
+            <th>位置情報</th>
+            <th colspan="2"></th>
         </tr>
-    <% end %>
-</table>
-<%= paginate @pictures %>
-</div>
+        <% @benches.each do |bench| %>
+            <tr>
+                <td><%= bench.id %></td>
+                <td><%= bench.park_id %></td>
+                <td><%= bench.name %></td>
+                <td><%= bench.mac_address %></td>
+                <td><%= bench.os_name %></td>
+                <td><%= bench.introduced_date %></td>
+                <td><%= bench.position %></td>
+                <td>
+                    <%= form_tag('edit') do %>
+                        <%= text_field_tag 'bench_id', bench.id , class: 'edit_id' %>
+                        <%= button_to '編集'%>
+                    <% end %>
+                </td>
+                <td>
+                    <%= form_tag('delete') do %>
+                        <%= text_field_tag 'bench_id', bench.id , class: 'edit_id' %>
+                        <%= button_to '削除'%>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+    </div>
+    <%= paginate @benches ,params: {:model => "bench"} %>
+    </div>
 
 
-<div class="table_name" id="event">
-<h2>イベント</h2>
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>所属公園ID</th>
-        <th>イベント名</th>
-        <th>写真</th>
-        <th>説明</th>
-        <th colspan="2"></th>
-    </tr>
-    <% @events.each do |event| %>
+    <div class="table_name" id="picture">
+    <h2>写真</h2>
+    <div class="table_wrap">
+    <table class="table">
         <tr>
-            <td><%= event.id %></td>
-            <td><%= event.park_id %></td>
-            <td><%= event.name %></td>
-            <td><%= event.image %></td>
-            <td><%= event.contents %></td>
-            <td>
-                <%= form_tag('edit') do %>
-                    <%= text_field_tag 'event_id', event.id , class: 'edit_id' %>
-                    <%= button_to '編集'%>
-                <% end %>
-            </td>
-            <td>
-                <%= form_tag('delete') do %>
-                    <%= text_field_tag 'event_id', event.id , class: 'edit_id' %>
-                    <%= button_to '削除'%>
-                <% end %>
-            </td>
+            <th>ID</th>
+            <th>所属公園ID</th>
+            <th>写真のタイトル</th>
+            <th>写真のパス</th>
+            <th>サイズ</th>
+            <th colspan="2"></th>
         </tr>
-    <% end %>
-</table>
-<%= paginate @events %>
-</div>
+        <% @pictures.each do |picture| %>
+            <tr>
+                <td><%= picture.id %></td>
+                <td><%= picture.park_id %></td>
+                <td><%= picture.name %></td>
+                <td><%= picture.picture %></td>
+                <td><%= picture.size %></td>
+                <td>
+                    <%= form_tag('edit') do %>
+                        <%= text_field_tag 'picture_id', picture.id , class: 'edit_id' %>
+                        <%= button_to '編集'%>
+                    <% end %>
+                </td>
+                <td>
+                    <%= form_tag('delete') do %>
+                        <%= text_field_tag 'picture_id', picture.id , class: 'edit_id' %>
+                        <%= button_to '削除'%>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+    </div>
+    <%= paginate @pictures ,params: {:model => "picture"} %>
+    </div>
 
 
-<div class="table_name" id="product">
-<h2>プロダクト</h2>
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>所属公園ID</th>
-        <th>プロダクト名</th>
-        <th>説明</th>
-        <th colspan="2"></th>
-    </tr>
-    <% @products.each do |product| %>
+    <div class="table_name" id="event">
+    <h2>イベント</h2>
+    <div class="table_wrap">
+    <table class="table">
         <tr>
-            <td><%= product.id %></td>
-            <td><%= product.park_id %></td>
-            <td><%= product.name %></td>
-            <td><%= product.contents %></td>
-            <td>
-                <%= form_tag('edit') do %>
-                    <%= text_field_tag 'product_id', product.id , class: 'edit_id' %>
-                    <%= button_to '編集'%>
-                <% end %>
-            </td>
-            <td>
-                <%= form_tag('delete') do %>
-                    <%= text_field_tag 'product_id', product.id , class: 'edit_id' %>
-                    <%= button_to '削除'%>
-                <% end %>
-            </td>
+            <th>ID</th>
+            <th>所属公園ID</th>
+            <th>イベント名</th>
+            <th>写真</th>
+            <th>説明</th>
+            <th colspan="2"></th>
         </tr>
-    <% end %>
-</table>
-<%= paginate @products %>
-</div>
+        <% @events.each do |event| %>
+            <tr>
+                <td><%= event.id %></td>
+                <td><%= event.park_id %></td>
+                <td><%= event.name %></td>
+                <td><%= event.image %></td>
+                <td><%= event.contents %></td>
+                <td>
+                    <%= form_tag('edit') do %>
+                        <%= text_field_tag 'event_id', event.id , class: 'edit_id' %>
+                        <%= button_to '編集'%>
+                    <% end %>
+                </td>
+                <td>
+                    <%= form_tag('delete') do %>
+                        <%= text_field_tag 'event_id', event.id , class: 'edit_id' %>
+                        <%= button_to '削除'%>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+    </div>
+    <%= paginate @events ,params: {:model => "event"} %>
+    </div>
 
 
-<div class="table_name" id="shortcut">
-<h2>ショートカット</h2>
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>ベンチID</th>
-        <th>ショートカット名</th>
-        <th>プログラム内容</th>
-        <th>導入日</th>
-        <th colspan="2"></th>
-    </tr>
-    <% @shortcuts.each do |shortcut| %>
+    <div class="table_name" id="shortcut">
+    <h2>ショートカット</h2>
+    <div class="table_wrap">
+    <table class="table">
         <tr>
-            <td><%= shortcut.id %></td>
-            <td><%= shortcut.bench_id %></td>
-            <td><%= shortcut.name %></td>
-            <td><%= shortcut.program %></td>
-            <td><%= shortcut.introduced_date %></td>
-            <td>
-                <%= form_tag('edit') do %>
-                    <%= text_field_tag 'shortcut_id', shortcut.id , class: 'edit_id' %>
-                    <%= button_to '編集'%>
-                <% end %>
-            </td>
-            <td>
-                <%= form_tag('delete') do %>
-                    <%= text_field_tag 'shortcut_id', shortcut.id , class: 'edit_id' %>
-                    <%= button_to '削除'%>
-                <% end %>
-            </td>
+            <th>ID</th>
+            <th>所属公園ID</th>
+            <th>所属ベンチID</th>
+            <th>内容</th>
+            <th>ニックネーム</th>
+            <th>開始時間</th>
+            <th>終了時間</th>
+            <th>リピート有無</th>
+            <th>プログラム内容</th>
+            <th colspan="2"></th>
         </tr>
-    <% end %>
-</table>
-<%= paginate @shortcuts %>
+        <% @shortcuts.each do |shortcut| %>
+            <tr>
+                <td><%= shortcut.id %></td>
+                <td><%= shortcut.park_id %></td>
+                <td><%= shortcut.title %></td>
+                <td><%= shortcut.nickname %></td>
+                <td><%= shortcut.start_time %></td>
+                <td><%= shortcut.end_time %></td>
+                <td><%= shortcut.repeat %></td>
+                <td><%= shortcut.program %></td>
+                <td>
+                    <%= form_tag('edit') do %>
+                        <%= text_field_tag 'shortcut_id', shortcut.id , class: 'edit_id' %>
+                        <%= button_to '編集'%>
+                    <% end %>
+                </td>
+                <td>
+                    <%= form_tag('delete') do %>
+                        <%= text_field_tag 'shortcut_id', shortcut.id , class: 'edit_id' %>
+                        <%= button_to '削除'%>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+    </div>
+    <%= paginate @shortcuts ,params: {:model => "shortcut"} %>
+    </div>
+
+    <div class="table_name" id="bench_image">
+    <h2>ベンチ用PDF</h2>
+    <div class="table_wrap">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>所属ユーザーID</th>
+            <th>所属ベンチID</th>
+            <th>名前</th>
+            <th>PDFのURL</th>
+            <th colspan="2"></th>
+        </tr>
+        <% @bench_images.each do |bench_image| %>
+            <tr>
+                <td><%= bench_image.id %></td>
+                <td><%= bench_image.user_id %></td>
+                <td><%= bench_image.bench_id %></td>
+                <td><%= bench_image.name %></td>
+                <td><%= bench_image.pdf_url %></td>
+                <td>
+                    <%= form_tag('edit') do %>
+                        <%= text_field_tag 'bench_image_id', bench_image.id , class: 'edit_id' %>
+                        <%= button_to '編集'%>
+                    <% end %>
+                </td>
+                <td>
+                    <%= form_tag('delete') do %>
+                        <%= text_field_tag 'bench_image_id', bench_image.id , class: 'edit_id' %>
+                        <%= button_to '削除'%>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+    </div>
+    <%= paginate @bench_images ,params: {:model => "bench_image"} %>
+    </div>
+
+    <div class="table_name" id="bench_video">
+    <h2>ベンチ用MP4</h2>
+    <div class="table_wrap">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>所属ユーザーID</th>
+            <th>所属ベンチID</th>
+            <th>名前</th>
+            <th>MP4のURL</th>
+            <th colspan="2"></th>
+        </tr>
+        <% @bench_videos.each do |bench_video| %>
+            <tr>
+                <td><%= bench_video.id %></td>
+                <td><%= bench_video.user_id %></td>
+                <td><%= bench_video.bench_id %></td>
+                <td><%= bench_video.name %></td>
+                <td><%= bench_video.video %></td>
+                <td>
+                    <%= form_tag('edit') do %>
+                        <%= text_field_tag 'bench_video_id', bench_video.id , class: 'edit_id' %>
+                        <%= button_to '編集'%>
+                    <% end %>
+                </td>
+                <td>
+                    <%= form_tag('delete') do %>
+                        <%= text_field_tag 'bench_video_id', bench_video.id , class: 'edit_id' %>
+                        <%= button_to '削除'%>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+    </div>
+    <%= paginate @bench_videos ,params: {:model => "bench_video"} %>
+    </div>
+
+    <div class="table_name" id="bench_audio">
+    <h2>ベンチ用MP3</h2>
+    <div class="table_wrap">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>所属ユーザーID</th>
+            <th>所属ベンチID</th>
+            <th>名前</th>
+            <th>MP3のURL</th>
+            <th colspan="2"></th>
+        </tr>
+        <% @bench_audios.each do |bench_audio| %>
+            <tr>
+                <td><%= bench_audio.id %></td>
+                <td><%= bench_audio.user_id %></td>
+                <td><%= bench_audio.bench_id %></td>
+                <td><%= bench_audio.name %></td>
+                <td><%= bench_audio.audio %></td>
+                <td>
+                    <%= form_tag('edit') do %>
+                        <%= text_field_tag 'bench_audio_id', bench_audio.id , class: 'edit_id' %>
+                        <%= button_to '編集'%>
+                    <% end %>
+                </td>
+                <td>
+                    <%= form_tag('delete') do %>
+                        <%= text_field_tag 'bench_audio_id', bench_audio.id , class: 'edit_id' %>
+                        <%= button_to '削除'%>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+    </div>
+    <%= paginate @bench_audios ,params: {:model => "bench_audio"} %>
+    </div>
+
 </div>
-
-
+<p id="hidden_model"><%= @model %></p>
+</main>
 
 
 
@@ -343,3 +445,55 @@
 <br>
 <br>
 <br>
+
+<script>
+let model_select = document.getElementById('model_select');
+let model_submit = document.getElementById('model_submit');
+let hidden_model = document.getElementById('hidden_model');
+let tables = document.getElementsByClassName('table_name');
+let first = document.getElementsByClassName('first')[0];
+let categories = {"ユーザー":"user", "公園":"park", "ベンチ":"bench", "写真":"picture", "イベント":"event", "ショートカット":"shortcut", "ベンチ用PDF":"bench_image", "ベンチ用MP4":"bench_video", "ベンチ用MP3":"bench_audio"}
+
+model_select.addEventListener('change', function(e) {
+    
+    if(first){
+        first_href = first.querySelector('a').href;
+        first_href = first_href.substring(0, first_href.indexOf("?"));
+        first.querySelector('a').href = "?model=" + categories[e.target.value]
+        first.querySelector('a').click();
+    }
+
+    $('.table_name').css({'display':'none'});
+
+    if(e.target.value == 'ユーザー'){
+        $('#user').css({'display':'block'});
+    } else if(e.target.value == '公園'){
+        $('#park').css({'display':'block'});
+    } else if(e.target.value == 'ベンチ'){
+        $('#bench').css({'display':'block'});
+    } else if(e.target.value == '写真'){
+        $('#picture').css({'display':'block'});
+    } else if(e.target.value == 'イベント'){
+        $('#event').css({'display':'block'});
+    } else if(e.target.value == 'ショートカット'){
+        $('#shortcut').css({'display':'block'});
+    } else if(e.target.value == 'ベンチ用PDF'){
+        $('#bench_image').css({'display':'block'});
+    } else if(e.target.value == 'ベンチ用MP4'){
+        $('#bench_video').css({'display':'block'});
+    } else if(e.target.value == 'ベンチ用MP3'){
+        $('#bench_audio').css({'display':'block'});
+    }
+    // model_submit.click();
+    
+});
+
+let models = ['user', 'park', 'bench', 'picture', 'event', 'shortcut', 'bench_image', 'bench_video', 'bench_audio'];
+for(let i = 0; i < tables.length; i++){
+    if(hidden_model.textContent == models[i]){
+        model_select.options[i+1].selected = true;
+        tables[i].style.display = 'block';
+    }
+}
+
+</script>

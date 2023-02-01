@@ -1,21 +1,19 @@
 class PasswordResetsController < ApplicationController
   before_action :get_user, only: [:edit, :update]
   before_action :valid_user, only: [:edit, :update]
+  before_action :check_expiration, only: [:edit, :update]
 
   def new
   end
 
   def create
-    
     @user = User.find_by(email: params[:password_reset][:email].downcase)
     if @user
       @user.create_reset_digest
       @user.send_password_reset_email
-      flash[:notice] = "パスワード再設定用のメールを送信しました。メールをご確認の上、パスワードの再設定を行ってください。"
-      redirect_to root_url
+      redirect_to '/password_resets/mail_done'
     else
-      flash.now[:error] = "メールアドレスが存在しません"
-      render "new", status: :unprocessable_entity
+      redirect_to '/password_resets/mail_error'
     end
   end
 
@@ -24,9 +22,10 @@ class PasswordResetsController < ApplicationController
       @user.errors.add(:password, :blank)
       render "edit", status: :unprocessable_entity
     elsif @user.update(user_params)
-      log_in @user
-      flash[:notice] = "パスワードが更新されました"
-      redirect_to @user
+      redirect_to '/password_resets/success'
+      # log_in @user
+      # flash[:notice] = "パスワードが更新されました"
+      # redirect_to @user
     else
       render "edit", status: :unprocessable_entity
     end

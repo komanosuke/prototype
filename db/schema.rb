@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_29_145211) do
+ActiveRecord::Schema.define(version: 2023_02_01_055848) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 2023_01_29_145211) do
   create_table "events", force: :cascade do |t|
     t.integer "park_id"
     t.string "name"
+    t.string "date"
     t.text "contents"
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
@@ -176,12 +177,6 @@ ActiveRecord::Schema.define(version: 2023_01_29_145211) do
   create_table "tmp_data", force: :cascade do |t|
     t.string "data"
     t.string "mac_address"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "tmp_messages", force: :cascade do |t|
-    t.string "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

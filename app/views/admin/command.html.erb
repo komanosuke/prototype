@@ -1,37 +1,44 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<p>コマンドによる制御操作</p>
-<p>ベンチを選択</p>
-<select id="bench_mac_adrs">
-    <option selected>aaaaaaaa</option>
-    <option>bbbbbbbb</option>
-</select>
-<br>
-<br>
-<br>
-<br>
+<p id="admin_title">ベンチを指定してコマンドを送る</p>
 
-<p>USB用5V電源供給を許可ON/OFFします</p>
-<button id="usb_btn">ON/OFF</button>
-<br>
-<br>
-<p>ラズパイターミナル画面へのログ出力をON/OFFします</p>
-<button id="log_btn">ON/OFF</button>
-<br>
-<br>
-<p>Smart Benchの位置（緯度、経度）を初期値として設定</p>
-<input id="lat" type="text" class="position_default">
-<input id="lon" type="text" class="position_default">
-<button id="position_btn">設定</button>
-<br>
-<br>
-<p>システムを停止します。プログラムの修正や追加の作業を行う際に指定します。</p>
-<button id="systemdown_btn">システム停止</button>
+<div id="contents">
+    <p class="back"><a href="/admin/index">adminトップに戻る>></a></p>
+    <br>
+    <p>ベンチを選択</p>
+    <% if @benches %>
+        <select id="bench_mac_adrs">
+            <option value="">ベンチを選択してください</option>
+            <% @benches.each do |bench| %>
+                <option value="<%= bench.mac_address %>"><%= bench.name %> （ MACアドレス: <%= bench.mac_address %> ）</option>
+            <% end %>
+        </select>
+        <% else %>
+        <p>登録されているスマートベンチはありません。</p>
+    <% end %>
+    <p class="hidden" id="hidden_mac_adrs"></p>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <p>USB用5V電源供給を許可ON/OFFします</p>
+    <button class="usb_btn">ON</button>
+    <button class="usb_btn">OFF</button>
+    <br>
+    <br>
+    <p>ラズパイターミナル画面へのログ出力をON/OFFします</p>
+    <button class="log_btn">ON</button>
+    <button class="log_btn">OFF</button>
+    <br>
+    <br>
+    <p>Smart Benchの位置（緯度、経度）を手動で設定</p>
+    <input id="lat" type="number" class="position_default">
+    <input id="lon" type="number" class="position_default">
+    <button id="position_btn">設定</button>
+    <br>
+    <br>
+    <p>システムを停止します。プログラムの修正や追加の作業を行う際に指定します。</p>
+    <button id="systemdown_btn">システム停止</button>
+</div>
 
 <br>
 <br>
