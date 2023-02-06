@@ -21,13 +21,13 @@
                   <a href="<%= data["link"] %>">
                     <div class="flex_container_s">
                       <div class="news_cat"><%= data["cat"] %></div>
-                      <div class="news_time"><%= data["date"] %><%= data["wday"] %></div>
-                      <div class="news_ttl"><%= data["title"] %></div>
+                      <div class="news_time"><%= data["date"] %> (<%= data["wday"] %>)</div>
+                      <div class="news_ttl"><h2><%= data["title"] %></h2></div>
                     </div>
                   </a>
               </div>
           <% end %>
-          <%= paginate @pager %>
+          <%= paginate @news_datas %>
       </div>
       <aside class="sidebar_news sidebar_menu">
         <div class="sidebar_news_ttl">お知らせカテゴリ</div>

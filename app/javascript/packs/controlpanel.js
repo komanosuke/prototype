@@ -21,12 +21,12 @@
 
 // ボタンのON,OFF切り替え処理
 //オンオフ判定変数
-let on_or_off = [false, false, false, false, false];
-let command = ''
+let on_or_off = [false, false, false, false, false, false];
+let command = '';
 
 //ONボタン　使うときは、引数にONにしたいボタンの番号を入れる
-const btn_name = ['LED', 'DISPLAY', 'AUDIO', 'MP4', 'MP3'];
-const btn_num = { 'LED': 0, 'DISPLAY': 1, 'AUDIO': 2, 'MP4': 3, 'MP3': 4 };
+const btn_name = ['LED', 'DISPLAY', 'AUDIO', 'MP4', 'MP3', 'CAMERA'];
+const btn_num = { 'LED': 0, 'DISPLAY': 1, 'AUDIO': 2, 'MP4': 3, 'MP3': 4, 'CAMERA': 5 };
 function switchOn(n, command){
     $('.toggle').eq(n).addClass('checked');
     $('.on').eq(n).css({'display':'block'});
@@ -54,6 +54,7 @@ function switchOff(n, command){
 //リロード時に、ベンチからの最新のJSONデータを取得してViewに表示（hiddenなのでコンソールログから確認）
 data = document.getElementById('data').textContent.replace(/(\\|\/)/g,''); //JSON Parseの処理も関数に
 data = JSON.parse(data.replaceAll('=>', ':'));
+data["CAMERA"] = "ON";
 for(let i = 0; i < btn_name.length; i++){
     if(data[btn_name[i]].includes('ON')){
         switchOn(i);
@@ -441,6 +442,17 @@ $('.delete_cancel_btn').on('click', function() {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+//カメラ
+$('#camera_switch').on('click', function() {
+    if(on_or_off[5] == true){
+        switchOff(5, 'CAMERA,OFF');
+    } else if(on_or_off[5] == false){
+        switchOn(5, 'CAMERA,ON:');
+    }
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 //ラズパイからのデータの定期更新（毎秒）
 function submit(){
@@ -463,8 +475,8 @@ for(let i = 0; i < ctx.length; i++){
 
 
 let chart_check = false;
-setInterval(updateData, 1000);
-setInterval(submit, 1000);
+// setInterval(updateData, 1000);
+// setInterval(submit, 1000);
 
 function updateData(){
     let data = document.getElementById('data').textContent.replace(/(\\|\/)/g,'');

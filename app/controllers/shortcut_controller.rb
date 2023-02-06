@@ -21,9 +21,18 @@ class ShortcutController < ApplicationController
 
         # shortcut = Shortcut.find(1)
         # p shortcut.program
+        @sc = Shortcut.find(1)
+        p @sc.start_time.to_s.match(/ /).post_match.match(/ /).pre_match.gsub!(":",",").gsub!("0","").split(",")
+        p "aaaaaaaa"
     end
 
     def create
+        p params[:shortcut][:repeat]
+        p params[:shortcut][:mac_address1]
+        p params[:shortcut][:triggers]
+        p params[:shortcut][:mac_address2]
+        p params[:shortcut][:actions]
+        
         # @shortcut = Shortcut.create(shortcut_params)
         # if @shortcut
         #     if @shortcut.end_time != nil
@@ -48,6 +57,6 @@ class ShortcutController < ApplicationController
 
     private
     def shortcut_params
-        params.require(:shortcut).permit(:park_id, :title, :start_time, :end_time, :program, :repeat)
+        params.require(:shortcut).permit(:park_id, :title, :nickname, :start_time, :end_time, :repeat, :mac_address1, :triggers, :mac_address2, :actions)
     end
 end

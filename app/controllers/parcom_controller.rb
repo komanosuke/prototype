@@ -95,9 +95,21 @@ class ParcomController < ApplicationController
         @benches = Bench.where(park_id: @park.id)
         @bench = @benches.find_by(id: params[:bench_id])
 
+        # 初期化処理
+        # if BenchImage.where(id: 1).empty?
+            
+        #     #デフォルト画像のパス
+        # elsif BenchVideo.where(id: 1).empty?
+            
+        #     #デフォルトMP4のパス
+        # elsif BenchAudio.where(id: 1).empty?
+            
+        #     #デフォルトMP3のパス
+        # else
         @bench_image_now = BenchImage.where(user_id: current_user.id).last
         @bench_video_now = BenchVideo.where(user_id: current_user.id).last
         @bench_audio_now = BenchAudio.where(user_id: current_user.id).last
+        # end
         
         #image、video、audioの保存
         if params[:image] or params[:video] or params[:audio]
@@ -135,17 +147,20 @@ class ParcomController < ApplicationController
     def post_data
         # ３つともMACアドレスを指定してその最後をとる
         if params[:cmd].include? 'PDF,ON'
-            sleep(2)
+            sleep(1)
             cmd = params[:cmd]
-            file = ':http://54.64.49.214:60001' + BenchImage.where(user_id: current_user.id).last.pdf_url
+            file = ':' + BenchImage.where(user_id: current_user.id).last.pdf_url
+            # file = ':http://54.64.49.214:3000/' + BenchImage.where(user_id: current_user.id).last.pdf_url
             socket_message(cmd.gsub(/:/, file))
         elsif params[:cmd].include? 'MP4,ON'
             cmd = params[:cmd]
-            file = ':http://54.64.49.214:60001' + BenchVideo.where(user_id: current_user.id).last.video.to_s
+            file = ':' + BenchVideo.where(user_id: current_user.id).last.video.to_s
+            # file = ':http://54.64.49.214:3000/' + BenchVideo.where(user_id: current_user.id).last.video.to_s
             socket_message(cmd.gsub(/:/, file))
         elsif params[:cmd].include? 'MP3,ON'
             cmd = params[:cmd]
-            file = ':http://54.64.49.214:60001' + BenchAudio.where(user_id: current_user.id).last.audio.to_s
+            file = ':' + BenchAudio.where(user_id: current_user.id).last.audio.to_s
+            # file = ':http://54.64.49.214:3000/' + BenchAudio.where(user_id: current_user.id).last.audio.to_s
             socket_message(cmd.gsub(/:/, file))
         else
             socket_message(params[:cmd])
@@ -166,9 +181,9 @@ class ParcomController < ApplicationController
             img_path = '/' + url_split[1] + '/' + url_split[2] + '/' + url_split[3] + '/' + url_split[4]
             sleep(1)
             # 指定してリネームする
-            file = Magick::Image.read("http://54.64.49.214:60001" + img_url)[0]
+            file = Magick::Image.read("http://localhost:3000" + img_url)[0]
             # 保存先をフルパスで指定
-            url = "/home/ec2-user/parcom_os/public" + img_path + "/out.pdf"
+            url = "/Users/komaitoshihiko/Desktop/prototype/public" + img_path + "/out.pdf"
             # url = "awsのパス/public" + img_path + "/out.pdf"
             file.write(url)
             # OK　名前をout.pdfからタイムスタンプにして保存
@@ -242,7 +257,7 @@ class ParcomController < ApplicationController
             h["cat"]   = (article_res_json[i]["_embedded"]["wp:term"][0][0]["name"])
             @article_datas.push(h)
         end
-        @article_datas = Kaminari.paginate_array(@article_datas).page(params[:page]).per(8)
+        @pager = Kaminari.paginate_array(@article_datas).page(params[:page]).per(2)
         #PARCOMに関するお知らせサイドバー
         # @article_datas_cat = []
         for i in 0..article_res_json_cat.length-1
@@ -252,15 +267,6 @@ class ParcomController < ApplicationController
             @article_datas_cat.push(cat)
         end
 
-    end
-
-    def account
-        @parks = Park.where(user_id: current_user.id)
-    end
-
-    def park
-        @parks = Park.where(user_id: current_user.id)
-        @park = @parks.find(params[:park_id])
     end
 
     def news
@@ -281,7 +287,7 @@ class ParcomController < ApplicationController
         @news_datas = []
         @news_datas_cat = []
         make_news(news_res_json, news_res_json_cat)
-
+        @pager = Kaminari.paginate_array(@news_datas).page(params[:page]).per(3)
     end
 
     def make_news(news_res_json, news_res_json_cat)
@@ -298,7 +304,7 @@ class ParcomController < ApplicationController
             h["cat"]   = (news_res_json[i]["_embedded"]["wp:term"][0][0]["name"])
             @news_datas.push(h)
         end
-        @news_datas = Kaminari.paginate_array(@news_datas).page(params[:page]).per(10)
+        
         #サービスに関するお知らせサイドバー
         # @news_datas_cat = []
         for i in 0..news_res_json_cat.length-1
@@ -307,7 +313,6 @@ class ParcomController < ApplicationController
             cat["name"] = (news_res_json_cat[i]["name"])
             @news_datas_cat.push(cat)
         end
-
     end
 
     def terms
@@ -339,7 +344,7 @@ def socket_message(msg)
     queue = []
 
     begin
-        TCPSocket.open("54.64.49.214", 8000) do |socket|
+        TCPSocket.open("localhost", 4000) do |socket|
 
             t1 = Thread.start do #送信スレッド node.jsのものと同じような動き のはず
                 message = 'FROM_RAILS : ' + msg
