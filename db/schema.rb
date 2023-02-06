@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_01_055848) do
+ActiveRecord::Schema.define(version: 2023_02_02_030146) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -144,15 +144,6 @@ ActiveRecord::Schema.define(version: 2023_02_01_055848) do
     t.index ["park_id"], name: "index_pictures_on_park_id"
   end
 
-  create_table "products", force: :cascade do |t|
-    t.integer "park_id"
-    t.string "name"
-    t.text "contents"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["park_id"], name: "index_products_on_park_id"
-  end
-
   create_table "schedules", force: :cascade do |t|
     t.string "title"
     t.datetime "start_time"
@@ -167,8 +158,11 @@ ActiveRecord::Schema.define(version: 2023_02_01_055848) do
     t.string "nickname"
     t.datetime "start_time", null: false
     t.datetime "end_time"
+    t.string "mac_address1", null: false
+    t.string "triggers", null: false
+    t.string "mac_address2", null: false
+    t.string "actions", null: false
     t.string "repeat"
-    t.text "program", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["park_id"], name: "index_shortcuts_on_park_id"
@@ -216,6 +210,5 @@ ActiveRecord::Schema.define(version: 2023_02_01_055848) do
   add_foreign_key "events", "parks"
   add_foreign_key "parks", "users"
   add_foreign_key "pictures", "parks"
-  add_foreign_key "products", "parks"
   add_foreign_key "shortcuts", "parks"
 end

@@ -29,14 +29,14 @@
                       <div class="cat"><%= data["cat"] %></div>
                     </div>
                     <div class="article_txt">
-                      <div class="news_time"><%= data["date"] %><%= data["wday"] %></div>
+                      <div class="news_time"><%= data["date"] %> (<%= data["wday"] %>)</div>
                       <h2><%= data["title"] %></h2>
                     </div>
                   </a>
               </div>
           <% end %>
         </div>
-        <%= paginate @pager %>
+        <%= paginate @article_datas %>
       </div>
       <aside class="sidebar_news sidebar_menu">
         <div class="sidebar_news_ttl">お知らせカテゴリ</div>

@@ -250,6 +250,27 @@
               </div>
             </div>
           </div>
+          <div class="panel_item">
+            <div class="panel_item_content">
+              <div class="panel_item_ttl">
+                <%= image_tag "/ctrlpanel/icon_vol_color.svg", alt: "カメラ" %>
+                <h2>カメラ</h2>
+                <p>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</p>
+              </div>
+            </div>
+            <div class="onoff_switch flex_container">
+              <div class="onoff_status">
+                <p class="on">現在ONになっています</p>
+                <p class="off">現在OFFになっています</p>
+              </div>
+              <div class="toggle">
+                <input type="checkbox" name="camera_switch" value="CAMERA">
+                <span>OFF</span>
+                <span>ON</span>
+                <div class="command_switch" id="camera_switch"></div>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -433,6 +454,7 @@
 <p id="mp4"></p>
 <p id="usb"></p>
 <p id="message"></p>
+<p id="camera"></p>
 <br>
 <br>
 <br>

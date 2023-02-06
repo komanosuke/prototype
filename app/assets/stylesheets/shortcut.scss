@@ -64,13 +64,17 @@
     border-radius: 5px;
 }
 
+.select2, .num2 {
+    display: none;
+}
+
 #save_btn {
     padding: 1px 6px;
     border-radius: 5px;
 }
 
 .time_setting select {
-    width: 85px;
+    width: 70px;
 }
 
 .data {
@@ -84,4 +88,8 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0%);
+}
+
+.sc_choice {
+    color: #eb7457;
 }
